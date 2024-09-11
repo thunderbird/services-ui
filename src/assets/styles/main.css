@@ -1,0 +1,31 @@
+@import './colours.css';
+@import './fonts.css';
+@import './variables.css';
+
+/* Force First Time User Experience to be different from the rest of the site */
+.page-ftue, .new-design {
+  font-family: 'Inter', 'sans-serif';
+  font-size: 0.8125rem;
+}
+
+.is-light-mode {
+  display: block;
+}
+
+.is-dark-mode {
+  display: none;
+}
+
+.dark {
+  .is-light-mode {
+    display: none;
+  }
+
+  .is-dark-mode {
+    display: block;
+  }
+}
+
+.modal-active {
+  overflow: hidden;
+}
