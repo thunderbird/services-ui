@@ -20,7 +20,7 @@ export const decorators = [
       lightSend: 'send',
       darkSend: 'send',
     },
-    defaultTheme: 'apmt',
+    defaultTheme: 'lightApmt',
     attributeName: 'data-tbpro-service',
   }),
 ];
