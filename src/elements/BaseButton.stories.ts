@@ -33,18 +33,33 @@ export const Primary: Story = {
   args: {
     type: 'primary',
   },
+  parameters: {
+    docs: {
+      source: {code: '<primary-button>Click me!</primary-button>'},
+    },
+  }
 };
 
 export const Secondary: Story = {
   args: {
     type: 'secondary',
   },
+  parameters: {
+    docs: {
+      source: {code: '<secondary-button>Click me!</secondary-button>'},
+    },
+  }
 };
 
 export const Link: Story = {
   args: {
     type: 'link',
   },
+  parameters: {
+    docs: {
+      source: {code: '<link-button>Click me!</link-button>'},
+    },
+  }
 };
 
 export const Small: Story = {
@@ -52,4 +67,9 @@ export const Small: Story = {
     type: 'primary',
     size: 'small',
   },
+  parameters: {
+    docs: {
+      source: {code: '<primary-button size="small">Click me!</primary-button>'},
+    },
+  }
 };

@@ -98,6 +98,8 @@ const t = (key) => key;
   height: 12.0rem;
   overflow-y: scroll;
   border-radius: 0.5rem;
+  list-style: none;
+  padding: 0;
 }
 
 .row {
