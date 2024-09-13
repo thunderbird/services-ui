@@ -275,7 +275,8 @@ export type TimeFormatted = Time<string>;
 
 export type SelectOption = {
   label: string;
-  value: number;
+  fullLabel: string;
+  value: any;
 };
 
 export type Coloring = {
