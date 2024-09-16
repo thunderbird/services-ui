@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-//import { useI18n } from 'vue-i18n';
+import { t } from '@/composable/i18n';
 import { CalendarItem } from '@/models';
 import PrimaryButton from '@/elements/PrimaryButton.vue';
 
-//const { t } = useI18n();
 const model = defineModel<CalendarItem[]>();
 
 const selected = computed(() => model.value.filter((item) => item.checked).length);
@@ -18,11 +17,8 @@ const selectAll = () => {
 // component properties
 interface Props {
   title: string;
-};
+}
 defineProps<Props>();
-
-// Polyfill l10n for now
-const t = (key) => key;
 </script>
 
 <template>
@@ -34,17 +30,17 @@ const t = (key) => key;
           {{ title }}
         </div>
         <div class="selected">
-          {{ t('ftue.itemsSelected', {'count': selected}) }}
+          {{ t('syncCard.itemsSelected', {'count': selected}) }}
         </div>
       </div>
-      <primary-button class="select-all" size="small" @click="selectAll" :title="t('ftue.selectAllCalendars')">
-        {{ t('ftue.selectAll') }}
+      <primary-button class="select-all" size="small" @click="selectAll" :title="t('syncCard.selectAllCalendars')">
+        {{ t('syncCard.selectAll') }}
       </primary-button>
     </div>
     <ul class="rows">
       <li class="row" v-for="(item, index) in model" :key="item.key">
         <label>
-          <input type="checkbox" v-model="model[index].checked"/>
+          <input class="tbpro-checkbox" type="checkbox" v-model="model[index].checked"/>
           {{ item.label }}
         </label>
       </li>
@@ -54,6 +50,11 @@ const t = (key) => key;
 
 <style scoped>
 @import '@/assets/styles/custom-media.pcss';
+
+.title {
+  font-size: 0.8125rem;
+  line-height: 1.21875rem;
+}
 
 .wrapper {
   --colour-highlight: var(--colour-service-primary);
@@ -72,6 +73,8 @@ const t = (key) => key;
 }
 
 .header {
+  box-sizing: border-box;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -91,6 +94,7 @@ const t = (key) => key;
 
 .selected {
   font-size: 0.5625rem;
+  line-height: var(--txt-default);
   color: var(--colour-highlight);
 }
 
@@ -120,7 +124,7 @@ label {
   align-items: center;
 }
 
-input {
+.tbpro-checkbox {
   width: 1.0rem;
   height: 1.0rem;
   border-radius: var(--border-radius);

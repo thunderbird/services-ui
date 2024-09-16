@@ -5,7 +5,7 @@ import { SelectOption } from "@/models";
 interface Props {
   options: SelectOption[];
   required: boolean;
-};
+}
 
 withDefaults(defineProps<Props>(), {
   required: false
@@ -101,6 +101,7 @@ const toggleBubble = (option: SelectOption) => {
   font-weight: 700;
   line-height: 150%;
   color: var(--colour-ti-muted);
+  cursor: pointer;
 }
 .selected {
   background-color: var(--colour-service-primary);

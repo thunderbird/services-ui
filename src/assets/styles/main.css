@@ -2,8 +2,8 @@
 /*@import './fonts.css';*/
 @import './variables.css';
 
-/* Force First Time User Experience to be different from the rest of the site */
-.page-ftue, .new-design {
+/* Apply this to your body or wrapper class for use with services-ui elements (temp) */
+.services-ui-base {
   font-family: 'Inter', 'sans-serif';
   font-size: 0.8125rem;
 }

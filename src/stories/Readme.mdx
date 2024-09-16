@@ -1,0 +1,23 @@
+{/* Readme.mdx */}
+
+# Services UI
+
+Welcome to visual documentation for the (work-in-progress) Services UI library.
+
+## V-Model
+
+Storybook doesn't support dynamic binding of v-model through story args. So a work-around is in place where if the args
+contain `modelValue` it will pipe it into v-model. In source examples replace `:modelValue` with `v-model`.
+
+## Element name styling
+
+Generally you'll want to kebab-case element names (e.g. `<SyncCard>` -> `<sync-card>`.)
+Storybook doesn't allow us to format their autodoc source files without overriding it entirely.
+
+## Localization
+
+Localization is supplied by vue-i18n. However there currently isn't a switch for available, so it defaults to your
+navigator.language value.
+
+To adjust it, create a localstorage key named `locale` with the value of either `en` (English) or `de` (German).
+

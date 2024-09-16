@@ -20,8 +20,26 @@ const meta = {
   args: {
     // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
     onClick: fn(),
-    modelValue: [],
+    fakeModelValue: [],
     title: 'Sync Card Demo',
+  },
+  parameters: {
+    docs: {
+      /*
+      source: {
+        format: true,
+        code: `
+        <sync-card title="Sync Card Demo" v-model="sync-card-model">
+          <template v-slot:icon>
+            <span>
+              <img :src="icon" alt="icon alt text"/>
+            </span>
+          </template>
+        </sync-card>
+      `
+      },
+       */
+    },
   },
   render: (args) => ({
     components: {SyncCard},
@@ -101,5 +119,5 @@ export const FileSync: Story = {
         checked: false,
       }
     ]
-  }
+  },
 };

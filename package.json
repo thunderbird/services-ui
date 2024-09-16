@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "license": "MPL-2.0",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/services-ui.umd.cjs",
   "module": "./dist/services-ui.js",
   "exports": {
@@ -26,7 +28,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "vue": "^3.4.29"
+    "vue": "^3.4.29",
+    "vue-i18n": "^10.0.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",

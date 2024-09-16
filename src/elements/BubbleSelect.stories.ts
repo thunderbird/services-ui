@@ -57,7 +57,6 @@ type Story = StoryObj<typeof meta>;
  */
 export const Weekdays: Story = {
   args: {
-    type: 'primary',
     default: 'Select Days',
     required: true
   },

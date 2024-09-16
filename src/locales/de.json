@@ -1,0 +1,17 @@
+{
+  "copyIcon": {
+    "copyLink": "Link kopieren"
+  },
+  "icons": {
+    "calendar": "Kalender",
+    "critical": "Kritisch",
+    "info": "Information",
+    "success": "Erfolg",
+    "warning": "Warnung"
+  },
+  "syncCard": {
+    "itemsSelected": "{count} ausgewählt",
+    "selectAll": "Alle auswählen",
+    "selectAllCalendars": "Alle Kalender auswählen"
+  }
+}

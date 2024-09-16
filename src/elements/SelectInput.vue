@@ -8,14 +8,14 @@ interface Props {
   options: SelectOption[];
   required?: boolean;
   disabled?: boolean;
-};
+}
 withDefaults(defineProps<Props>(), {
   required: false,
   disabled: false,
-})
+});
 
 defineEmits(['submit']);
-const model = defineModel<number|string>();
+const model = defineModel<any>();
 const isInvalid = ref(false);
 const validationMessage = ref('');
 
@@ -56,12 +56,12 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
 .wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
   color: var(--colour-ti-base);
   font-family: 'Inter', 'sans-serif';
   font-size: var(--txt-input);
   line-height: var(--line-height-input);
   font-weight: 400;
+  max-width: 320px;
 }
 
 .label {
