@@ -11,6 +11,7 @@ import SelectInput from "@/elements/SelectInput.vue";
 import TextInput from "@/elements/TextInput.vue";
 import BubbleSelect from "@/elements/BubbleSelect.vue";
 import SyncCard from "@/elements/SyncCard.vue";
+import SwitchToggle from "@/elements/SwitchToggle.vue";
 
 // Misc
 import NoticeBar from "@/elements/NoticeBar.vue";
@@ -25,6 +26,7 @@ export {
   TextInput,
   BubbleSelect,
   SyncCard,
+  SwitchToggle,
   NoticeBar,
   ToolTip
 };
