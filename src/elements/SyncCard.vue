@@ -129,6 +129,7 @@ label {
   height: 1.0rem;
   border-radius: var(--border-radius);
   border: 1px solid var(--colour-neutral-border-intense);
+  accent-color: var(--colour-highlight);
 
   &:focus {
     outline-color: var(--colour-highlight);
