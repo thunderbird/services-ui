@@ -3,19 +3,20 @@ import NoticeInfoIcon from '@/icons/NoticeInfoIcon.vue';
 import NoticeSuccessIcon from '@/icons/NoticeSuccessIcon.vue';
 import NoticeWarningIcon from '@/icons/NoticeWarningIcon.vue';
 import NoticeCriticalIcon from '@/icons/NoticeCriticalIcon.vue';
+import {computed} from "vue";
 
 // component properties
 interface Props {
   type?: string;
-};
+}
 const props = withDefaults(defineProps<Props>(), {
   type: 'info',
 })
 
-const isInfo = props.type === 'info';
-const isSuccess = props.type === 'success;';
-const isWarning = props.type === 'warning';
-const isError = props.type === 'error';
+const isInfo = computed(() => props.type === 'info');
+const isSuccess = computed(() => props.type === 'success');
+const isWarning = computed(() => props.type === 'warning');
+const isError = computed(() => props.type === 'error');
 </script>
 
 <template>
@@ -43,6 +44,7 @@ const isError = props.type === 'error';
 .icon {
   position: absolute;
   left: 0.5625rem;
+  top: 0.475rem;
   margin-top: auto;
   margin-bottom: auto;
 }
