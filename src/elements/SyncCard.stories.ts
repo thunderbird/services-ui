@@ -2,14 +2,7 @@ import {fn} from '@storybook/test';
 import type {Meta, StoryObj} from '@storybook/vue3';
 import SyncCard from "@/elements/SyncCard.vue";
 import {ref, watch} from "vue";
-//import { CalendarItem } from '@/models';
 import CalendarIcon from '@/assets/svg/icons/calendar.svg'
-
-type CalendarItem = {
-  key: number;
-  label: string;
-  checked: boolean;
-};
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
@@ -18,9 +11,6 @@ const meta = {
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   args: {
-    // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-    onClick: fn(),
-    fakeModelValue: [],
     title: 'Sync Card Demo',
   },
   parameters: {

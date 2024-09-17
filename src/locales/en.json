@@ -13,5 +13,9 @@
     "itemsSelected": "{count} Selected",
     "selectAll": "Select All",
     "selectAllCalendars": "Select All Calendars"
+  },
+  "switchToggle": {
+    "off": "Off",
+    "on": "On"
   }
 }
