@@ -6,6 +6,11 @@ name: Node.js Package
 on:
   release:
     types: [ created ]
+  workflow_dispatch:
+
+concurrency:
+  group: "npm"
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -18,6 +23,9 @@ jobs:
       - run: npm ci
 
   publish-npm:
+    environment:
+      name: npm
+      url: "https://www.npmjs.com/package/@thunderbirdops/services-ui"
     needs: build
     runs-on: ubuntu-latest
     steps:
