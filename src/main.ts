@@ -1,4 +1,4 @@
-import '@/assets/styles/main.css'
+import '@/assets/styles/main.css';
 
 // Buttons
 import BaseButton from "@/elements/BaseButton.vue";
@@ -17,6 +17,13 @@ import SwitchToggle from "@/elements/SwitchToggle.vue";
 import NoticeBar from "@/elements/NoticeBar.vue";
 import ToolTip from "@/elements/ToolTip.vue";
 
+// Icons
+import CopyIcon from "@/icons/CopyIcon.vue";
+import NoticeInfoIcon from "@/icons/NoticeInfoIcon.vue";
+import NoticeSuccessIcon from "@/icons/NoticeSuccessIcon.vue";
+import NoticeWarningIcon from "@/icons/NoticeWarningIcon.vue";
+import NoticeCriticalIcon from "@/icons/NoticeCriticalIcon.vue";
+
 export {
   BaseButton,
   PrimaryButton,
@@ -28,5 +35,11 @@ export {
   SyncCard,
   SwitchToggle,
   NoticeBar,
-  ToolTip
+  ToolTip,
+  // Icons
+  CopyIcon,
+  NoticeInfoIcon,
+  NoticeSuccessIcon,
+  NoticeWarningIcon,
+  NoticeCriticalIcon,
 };

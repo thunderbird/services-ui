@@ -15,6 +15,7 @@ withDefaults(defineProps<Props>(), {
   tooltip: '',
   forceTooltip: false,
 })
+defineEmits(['click']);
 </script>
 
 <template>

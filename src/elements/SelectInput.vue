@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { HTMLInputElementEvent, SelectOption } from '@/models';
+import { type HTMLInputElementEvent, type SelectOption } from '@/models';
 
 // component properties
 interface Props {

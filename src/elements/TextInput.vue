@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { HTMLInputElementEvent } from '@/models';
+import { type HTMLInputElementEvent } from '@/models';
 
 const model = defineModel<string>();
 const isInvalid = ref(false);

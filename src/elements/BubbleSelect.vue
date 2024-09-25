@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SelectOption } from "@/models";
+import { type SelectOption } from "@/models";
 
 // component properties
 interface Props {
@@ -12,6 +12,7 @@ withDefaults(defineProps<Props>(), {
 });
 
 const model = defineModel<number[]>({ default: [] });
+defineEmits(['click']);
 
 /**
  * Adds or removes the option value from the model.

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { t } from '@/composable/i18n';
-import { CalendarItem } from '@/models';
+import { type CalendarItem } from '@/models';
 import PrimaryButton from '@/elements/PrimaryButton.vue';
 
 const model = defineModel<CalendarItem[]>();

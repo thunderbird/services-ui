@@ -4,19 +4,20 @@ import NoticeSuccessIcon from '@/icons/NoticeSuccessIcon.vue';
 import NoticeWarningIcon from '@/icons/NoticeWarningIcon.vue';
 import NoticeCriticalIcon from '@/icons/NoticeCriticalIcon.vue';
 import {computed} from "vue";
+import {NoticeBarTypes} from "@/definitions";
 
 // component properties
 interface Props {
-  type?: string;
+  type?: NoticeBarTypes;
 }
 const props = withDefaults(defineProps<Props>(), {
-  type: 'info',
+  type: NoticeBarTypes.Info,
 })
 
-const isInfo = computed(() => props.type === 'info');
-const isSuccess = computed(() => props.type === 'success');
-const isWarning = computed(() => props.type === 'warning');
-const isError = computed(() => props.type === 'error');
+const isInfo = computed(() => props.type === NoticeBarTypes.Info);
+const isSuccess = computed(() => props.type === NoticeBarTypes.Success);
+const isWarning = computed(() => props.type === NoticeBarTypes.Warning);
+const isError = computed(() => props.type === NoticeBarTypes.Error);
 </script>
 
 <template>

@@ -3,18 +3,19 @@
   "include": [
     "env.d.ts",
     "src/**/*",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "src/**/*.json",
   ],
   "exclude": [
-    "src/**/__tests__/*"
+    "src/**/__tests__/*",
+    "src/**/*.stories.*",
   ],
   "compilerOptions": {
     "composite": true,
+    "strict": false,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-
-    "baseUrl": "./services-ui",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
   }
 }

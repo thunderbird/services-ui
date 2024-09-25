@@ -274,6 +274,13 @@ export enum MetricEvents {
   WaitingListEmailRemoved = 'apmt.signup.email-removed',
 }
 
+export enum NoticeBarTypes {
+  Info = 'info',
+  Success = 'success',
+  Warning = 'warning',
+  Error = 'error'
+}
+
 export default {
   AlertSchemes,
   BookingCalendarView,
