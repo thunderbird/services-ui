@@ -93,7 +93,6 @@ const onChange = () => {
 .wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
   color: var(--colour-ti-base);
   font-family: 'Inter', 'sans-serif';
   font-size: var(--txt-input);
@@ -104,6 +103,7 @@ const onChange = () => {
 .label {
   width: 100%;
   font-weight: 600;
+  padding: 0.1875rem;
 }
 
 .help-label {
@@ -128,7 +128,9 @@ const onChange = () => {
 .tbpro-input {
   --colour-btn-border: var(--colour-neutral-border);
   width: 100%;
+  padding: 0.75rem;
 
+  color: var(--txt-colour);
   background-color: var(--colour-neutral-base);
   border-radius: var(--border-radius);
   @mixin faded-border var(--colour-btn-border);
@@ -142,6 +144,10 @@ const onChange = () => {
   }
 
   &:focus:enabled {
+    --colour-btn-border: var(--colour-service-primary);
+    outline: 0.125rem solid var(--colour-btn-border);
+    /* Un-fade the border */
+    border: 0.0625rem solid var(--colour-btn-border) !important;
     border-radius: 0.125rem;
   }
 
