@@ -5,7 +5,7 @@ name: Node.js Package
 
 on:
   release:
-    types: [created]
+    types: [ created ]
 
 jobs:
   build:
@@ -27,11 +27,11 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: ls -la
       - name: Copy files to dist
-        run: cp README.md ./dist/README.md \
-             cp LICENSE ./dist/LICENSE \
-             cp package.json ./dist/package.json
+        run: |
+          cp README.md ./dist/README.md
+          cp LICENSE ./dist/LICENSE
+          cp package.json ./dist/package.json
       - run: npm publish ./dist
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
