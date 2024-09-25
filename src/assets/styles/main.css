@@ -13,6 +13,12 @@
   font-size: 0.8125rem;
 }
 
+.dark {
+  .services-ui-base {
+    color: var(--txt-colour);
+  }
+}
+
 .is-light-mode {
   display: block;
 }

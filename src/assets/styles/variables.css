@@ -3,7 +3,12 @@ html {
   --txt-default: 0.8125rem; /* 13px */
   --txt-input: var(--txt-default); /* 13px */
   --line-height-input: 1.25rem; /* 20px */
+  /* Some elements are stubborn so we need to force the color there */
+  --txt-colour: black;
 
   --transition: all 250ms ease-out;
   --transition-transform: .15s transform ease-in-out;
+}
+html.dark {
+  --txt-colour: white;
 }
