@@ -27,6 +27,7 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
       - run: npm ci
+      - run: ls -la
       - name: Copy files to dist
         run: cp README.md ./dist/README.md \
              cp LICENSE ./dist/LICENSE \
