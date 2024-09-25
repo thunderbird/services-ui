@@ -94,7 +94,9 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
   @mixin faded-border var(--colour-select-border);
   border-radius: var(--border-radius);
   font-weight: 400;
+  padding: 0.75rem;
 
+  color: var(--txt-colour);
 
   &:hover, &:focus {
     --colour-select-border: var(--colour-neutral-border-intense);
