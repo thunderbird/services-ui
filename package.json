@@ -1,18 +1,18 @@
 {
   "name": "@thunderbirdops/services-ui",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": "Thunderbird",
   "type": "module",
   "license": "MPL-2.0",
   "files": [
-    "dist"
+    "."
   ],
-  "main": "./dist/services-ui.umd.cjs",
-  "module": "./dist/services-ui.js",
+  "main": "./index.umd.cjs",
+  "module": "./index.js",
   "exports": {
     ".": {
-      "import": "./dist/services-ui.js",
-      "require": "./dist/services-ui.umd.cjs"
+      "import": "./index.js",
+      "require": "./index.umd.cjs"
     }
   },
   "scripts": {

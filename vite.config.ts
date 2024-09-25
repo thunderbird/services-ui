@@ -17,7 +17,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/main.ts'),
       name: 'ServicesUI',
-      fileName: 'services-ui',
+      fileName: 'index',
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
