@@ -1,6 +1,7 @@
 {
   "name": "@thunderbirdops/services-ui",
-  "version": "0.3.0",
+  "version": "0.3.1",
+  "author": "Thunderbird",
   "type": "module",
   "license": "MPL-2.0",
   "files": [
@@ -76,5 +77,13 @@
       "postcss-nesting": {},
       "postcss-custom-media": {}
     }
+  },
+  "homepage": "https://github.com/thunderbird/services-ui#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "funding": {
+    "type": "thunderbird.net",
+    "url": "https://www.thunderbird.net/donate?utm_campaign=npm_services-ui"
   }
 }
