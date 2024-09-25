@@ -6,10 +6,10 @@ Note this is heavily work-in-progress.
 
 ## Usage
 
-You can install the library by adding the following line as a dependancy to your package.json:
+You can install the library by adding the following line as a dependency to your package.json:
 
 ```
-https://github.com/thunderbird/services-ui.git
+npm i @thunderbirdops/services-ui
 ```
 
 ## Library Development

@@ -13,20 +13,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-
   publish-npm:
     environment:
       name: npm
       url: "https://www.npmjs.com/package/@thunderbirdops/services-ui"
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,12 +24,19 @@ jobs:
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - name: Copy files to dist
+      - name: Install project deps
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Copy extra files to dist
         run: |
           cp README.md ./dist/README.md
           cp LICENSE ./dist/LICENSE
           cp package.json ./dist/package.json
-      - run: npm publish ./dist
+
+      - name: Publish project on npm
+        run: npm publish ./dist
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
