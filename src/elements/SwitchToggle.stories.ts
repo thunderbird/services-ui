@@ -24,16 +24,22 @@ type Story = StoryObj<typeof meta>;
 
 export const Legend: Story = {
   args: {
-    noLegend: false
+    name: 'legend',
+    noLegend: false,
+    active: false,
   },
 };
 export const NoLegend: Story = {
   args: {
-    noLegend: true
+    name: 'nolegend',
+    noLegend: true,
+    active: false,
   },
 };
 export const Disabled: Story = {
   args: {
-    disabled: true
+    name: 'disabled',
+    disabled: true,
+    active: false,
   },
 };
