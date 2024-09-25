@@ -2,6 +2,11 @@
 @import './fonts.css';
 @import './variables.css';
 
+/* Only for storybook */
+.__sb_preview_background.dark {
+  background-color: rgb(55, 65, 81);
+}
+
 /* Apply this to your body or wrapper class for use with services-ui elements (temp) */
 .services-ui-base {
   font-family: 'Inter', 'sans-serif';
