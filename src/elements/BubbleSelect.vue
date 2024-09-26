@@ -58,7 +58,7 @@ const toggleBubble = (option: SelectOption) => {
             'selected': model.indexOf(option.value) > -1,
             disabled,
           }"
-          :title="option.label ?? String(option.value)"
+          :title="option.fullLabel ?? String(option.value)"
           type="button"
           @click="() => !disabled ? toggleBubble(option) : null"
         >
@@ -107,6 +107,7 @@ const toggleBubble = (option: SelectOption) => {
   font-weight: 700;
   line-height: 150%;
   color: var(--colour-ti-muted);
+  cursor: pointer;
 }
 .selected {
   background-color: var(--colour-service-primary);
