@@ -44,6 +44,7 @@ const meta = {
   args: {
     // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
     onClick: fn(),
+    disabled: false,
     options: scheduleDayOptions
   },
 } satisfies Meta<typeof BubbleSelect>;
@@ -59,5 +60,11 @@ export const Weekdays: Story = {
   args: {
     default: 'Select Days',
     required: true
+  },
+};
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    required: false,
   },
 };
