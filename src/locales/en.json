@@ -2,6 +2,14 @@
   "copyIcon": {
     "copyLink": "Copy link"
   },
+  "expiryIcon": {
+    "fileExpires": "This File Expires"
+  },
+  "expiryIndicator": {
+    "expiresInDays": "Expires in {days} days",
+    "expiresInDay": "Expires in {days} day",
+    "expired": "Expired"
+  },
   "icons": {
     "calendar": "Calendar",
     "critical": "Critical",
