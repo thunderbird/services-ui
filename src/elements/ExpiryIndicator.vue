@@ -28,12 +28,13 @@ const label = computed(() => {
 
 // Changes style from:
 // info > 5 days
-// warning < 5days
+// warning < 5 days
 // expired <= 0 days
+const warnTime = 5; //days before using the warning color
 const status = computed(() => {
   if (props.days <= 0) {
     return "expired";
-  } else if (props.days < 5) {
+  } else if (props.days < warnTime) {
     return "warning";
   } else {
     return "info";
