@@ -8,7 +8,7 @@ import { ExpiryUnitTypes } from "@/definitions";
 
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
-const meta = {
+const meta: Meta<typeof ExpiryIndicator> = {
   title: "Elements/ExpiryIndicator",
   component: ExpiryIndicator,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
@@ -18,7 +18,7 @@ const meta = {
     warn: 5,
     unit: ExpiryUnitTypes.Days,
   },
-} satisfies Meta<typeof BubbleSelect>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
