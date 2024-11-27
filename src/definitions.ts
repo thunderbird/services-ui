@@ -281,6 +281,16 @@ export enum NoticeBarTypes {
   Error = 'error'
 }
 
+export enum ExpiryUnitTypes {
+  Seconds = "second",
+  Minutes = "minute",
+  Hours = "hour",
+  Days = "day",
+  Weeks = "week",
+  Months = "month",
+  Years = "year",
+}
+
 export default {
   AlertSchemes,
   BookingCalendarView,
@@ -295,6 +305,7 @@ export default {
   DateFormatStrings,
   DEFAULT_SLOT_DURATION,
   EventLocationType,
+  ExpiryUnitTypes,
   ExternalConnectionProviders,
   FtueStep,
   InviteStatus,

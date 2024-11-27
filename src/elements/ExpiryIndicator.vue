@@ -2,44 +2,35 @@
 import ExpiryIcon from '@/icons/ExpiryIcon.vue';
 import {computed} from "vue";
 import { t } from '@/composable/i18n';
+import {ExpiryUnitTypes} from "@/definitions";
 
 // component properties
 interface Props {
-  days?: Integer;
+  timer?: number;
+  warn?: number;
+  unit?: ExpiryUnitTypes;
 }
 const props = withDefaults(defineProps<Props>(), {
-  days: 10,
+  timer: 10,
+  warn: 5,
+  unit: ExpiryUnitTypes.Days
 })
 
 // Changes label from:
 // EXPIRES IN (n) DAYS > 5 days
 // EXPIRES IN 1 DAYS == 1 day
 // EXPIRED <= 0 days
-const days = computed(() => props.days);
-const label = computed(() => {
-  if (props.days <= 0) {
-    return "expired";
-  } else if (props.days == 1) {
-    return "expiresInDay";
-  } else {
-    return "expiresInDays";
-  }
-})
-
-// Changes style from:
-// info > 5 days
-// warning < 5 days
-// expired <= 0 days
-const warnTime = 5; //days before using the warning color
+const timer = computed(() => props.timer);
+const warn = computed(() => props.warn); //timers before using the warning color
 const status = computed(() => {
-  if (props.days <= 0) {
+  if (timer.value <= 0) {
     return "expired";
-  } else if (props.days < warnTime) {
+  } else if (timer.value < warn.value) {
     return "warning";
   } else {
     return "info";
   }
-})
+});
 
 </script>
 
@@ -49,7 +40,7 @@ const status = computed(() => {
       <expiry-icon />
     </span>
     <span class="body">
-      {{ t(`expiryIndicator.${label}`, { 'days': days }) }}
+      {{ t(`expiryIndicator.${unit}`, timer) }}
     </span>
   </div>
 </template>
