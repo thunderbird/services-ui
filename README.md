@@ -8,7 +8,7 @@ Note this is heavily work-in-progress.
 
 You can install the library by adding the following line as a dependency to your package.json:
 
-```
+```bash
 npm i @thunderbirdops/services-ui
 ```
 
@@ -17,6 +17,7 @@ npm i @thunderbirdops/services-ui
 ### Storybook
 
 You can access storybook by running:
+
 ```bash
 npm run storybook
 ```
@@ -24,6 +25,7 @@ npm run storybook
 ### Building
 
 You can build the library by running:
+
 ```bash
 npm run build
 ```
