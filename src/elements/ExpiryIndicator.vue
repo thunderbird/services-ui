@@ -40,7 +40,7 @@ const status = computed(() => {
       <expiry-icon />
     </span>
     <span class="body">
-      {{ t(`expiryIndicator.${unit}`, timer) }}
+      {{ t(`expiryIndicator.${unit}`, {'n': timer}) }}
     </span>
   </div>
 </template>
