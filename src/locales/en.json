@@ -2,6 +2,18 @@
   "copyIcon": {
     "copyLink": "Copy link"
   },
+  "expiryIcon": {
+    "fileExpires": "This File Expires"
+  },
+  "expiryIndicator": {
+    "second": "Expired | Expires in {n} second | Expires in {n} seconds",
+    "minute": "Expired | Expires in {n} minute | Expires in {n} minutes",
+    "hour": "Expired | Expires in {n} hour | Expires in {n} hours",
+    "day": "Expired | Expires in {n} day | Expires in {n} days",
+    "week": "Expired | Expires in {n} week | Expires in {n} weeks",
+    "month": "Expired | Expires in {n} month | Expires in {n} months",
+    "year": "Expired | Expires in {n} year | Expires in {n} years"
+  },
   "icons": {
     "calendar": "Calendar",
     "critical": "Critical",

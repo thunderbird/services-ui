@@ -2,6 +2,18 @@
   "copyIcon": {
     "copyLink": "Link kopieren"
   },
+  "expiryIcon": {
+    "fileExpires": "Die Gültigkeit dieser Datei läuft ab"
+  },
+  "expiryIndicator": {
+    "second": "Abgelaufen | Läuft in {n} Sekunde ab | Läuft in {n} Sekunden ab",
+    "minute": "Abgelaufen | Läuft in {n} Minute ab | Läuft in {n} Minuten ab",
+    "hour": "Abgelaufen | Läuft in {n} Stunde ab | Läuft in {n} Stunden ab",
+    "day": "Abgelaufen | Läuft in {n} Tag ab | Läuft in {n} Tagen ab",
+    "week": "Abgelaufen | Läuft in {n} Woche ab | Läuft in {n} Wochen ab",
+    "month": "Abgelaufen | Läuft in {n} Monat ab | Läuft in {n} Monaten ab",
+    "year": "Abgelaufen | Läuft in {n} Jahr ab | Läuft in {n} Jahren ab"
+  },
   "icons": {
     "calendar": "Kalender",
     "critical": "Kritisch",

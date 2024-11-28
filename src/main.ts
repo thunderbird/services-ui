@@ -14,11 +14,13 @@ import SyncCard from "@/elements/SyncCard.vue";
 import SwitchToggle from "@/elements/SwitchToggle.vue";
 
 // Misc
+import ExpiryIndicator from "@/elements/ExpiryIndicator.vue";
 import NoticeBar from "@/elements/NoticeBar.vue";
 import ToolTip from "@/elements/ToolTip.vue";
 
 // Icons
 import CopyIcon from "@/icons/CopyIcon.vue";
+import ExpiryIcon from "@/icons/ExpiryIcon.vue";
 import NoticeInfoIcon from "@/icons/NoticeInfoIcon.vue";
 import NoticeSuccessIcon from "@/icons/NoticeSuccessIcon.vue";
 import NoticeWarningIcon from "@/icons/NoticeWarningIcon.vue";
@@ -36,8 +38,10 @@ export {
   SwitchToggle,
   NoticeBar,
   ToolTip,
+  ExpiryIndicator,
   // Icons
   CopyIcon,
+  ExpiryIcon,
   NoticeInfoIcon,
   NoticeSuccessIcon,
   NoticeWarningIcon,
