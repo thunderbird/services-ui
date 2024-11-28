@@ -1,11 +1,10 @@
-import {fn} from '@storybook/test';
-import type {Meta, StoryObj} from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3';
 import SyncCard from "@/elements/SyncCard.vue";
-import {ref, watch} from "vue";
+import { ref, watch } from "vue";
 import CalendarIcon from '@/assets/svg/icons/calendar.svg'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
-const meta = {
+const meta: Meta<typeof SyncCard> = {
   title: 'Elements/SyncCard',
   component: SyncCard,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
@@ -32,7 +31,7 @@ const meta = {
     },
   },
   render: (args) => ({
-    components: {SyncCard},
+    components: { SyncCard },
     setup() {
       const model = ref(args.modelValue);
 
@@ -43,7 +42,7 @@ const meta = {
         },
       );
 
-      return {args, model};
+      return { args, model };
     },
     template: `
       <sync-card v-bind="args" v-model="model">
@@ -54,7 +53,7 @@ const meta = {
         </template>
       </sync-card>`,
   }),
-} satisfies Meta<typeof SyncCard>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

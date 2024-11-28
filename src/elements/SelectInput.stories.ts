@@ -1,13 +1,10 @@
-import { fn } from '@storybook/test';
-import type {Meta, StoryObj} from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3';
 
 import SelectInput from "@/elements/SelectInput.vue";
-import SyncCard from "@/elements/SyncCard.vue";
-import {ref, watch} from "vue";
-import CalendarIcon from "@/assets/svg/icons/calendar.svg";
+import { ref, watch } from "vue";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
-const meta = {
+const meta: Meta<typeof SelectInput> = {
   title: 'Elements/SelectInput',
   component: SelectInput,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
@@ -17,13 +14,13 @@ const meta = {
     default: "How many?",
     modelValue: 'all',
     options: [
-      {label: 'All', value: 'all'},
-      {label: 'Many', value: 'many'},
-      {label: 'Some', value: 'some'},
+      { label: 'All', value: 'all' },
+      { label: 'Many', value: 'many' },
+      { label: 'Some', value: 'some' },
     ]
   },
   render: (args) => ({
-    components: {SelectInput},
+    components: { SelectInput },
     setup() {
       const model = ref(args.modelValue);
 
@@ -34,11 +31,11 @@ const meta = {
         },
       );
 
-      return {args, model};
+      return { args, model };
     },
     template: `<select-input v-bind="args" v-model="model">{{ args?.default }}</select-input>`,
   }),
-} satisfies Meta<typeof SelectInput>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

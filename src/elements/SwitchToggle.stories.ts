@@ -1,10 +1,10 @@
 import { fn } from '@storybook/test';
-import type {Meta, StoryObj} from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3';
 
 import SwitchToggle from "@/elements/SwitchToggle.vue";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
-const meta = {
+const meta: Meta<typeof SwitchToggle> = {
   title: 'Elements/SwitchToggle',
   component: SwitchToggle,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
@@ -17,7 +17,7 @@ const meta = {
     label: 'Switch Toggle',
     noLegend: false,
   },
-} satisfies Meta<typeof SwitchToggle>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

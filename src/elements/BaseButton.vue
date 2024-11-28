@@ -19,20 +19,15 @@ defineEmits(['click']);
 </script>
 
 <template>
-  <button class="tbpro-button" :class="{[type]: type, 'small': size === 'small'}" type="button">
+  <button class="tbpro-button" :class="{ [type]: type, 'small': size === 'small' }" type="button">
     <span class="icon" v-if="$slots?.icon">
-      <slot name="icon"/>
+      <slot name="icon" />
     </span>
     <span class="text">
-      <slot/>
+      <slot />
     </span>
-    <tool-tip
-      v-if="tooltip"
-      class="tooltip"
-      :class="{'display-tooltip': forceTooltip}"
-      :position="TooltipPosition.Bottom"
-      @click.prevent
-    >
+    <tool-tip v-if="tooltip" class="tooltip" :class="{ 'display-tooltip': forceTooltip }"
+      :position="TooltipPosition.Bottom" @click.prevent>
       {{ tooltip }}
     </tool-tip>
   </button>
@@ -47,7 +42,8 @@ defineEmits(['click']);
   opacity: 0;
   transition: opacity 250ms ease-out;
 }
-button:hover > .tooltip,
+
+button:hover>.tooltip,
 .display-tooltip {
   opacity: 1;
 }
@@ -96,6 +92,7 @@ button:hover > .tooltip,
     font-weight: 400;
     line-height: 1;
   }
+
   &:hover {
     box-shadow: none !important;
   }
@@ -177,5 +174,4 @@ button:hover > .tooltip,
     height: 1.25rem
   }
 }
-
 </style>

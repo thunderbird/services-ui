@@ -30,7 +30,7 @@ defineProps<Props>();
           {{ title }}
         </div>
         <div class="selected">
-          {{ t('syncCard.itemsSelected', {'count': selected}) }}
+          {{ t('syncCard.itemsSelected', { 'count': selected }) }}
         </div>
       </div>
       <primary-button class="select-all" size="small" @click="selectAll" :title="t('syncCard.selectAllCalendars')">
@@ -40,7 +40,7 @@ defineProps<Props>();
     <ul class="rows">
       <li class="row" v-for="(item, index) in model" :key="item.key">
         <label>
-          <input class="tbpro-checkbox" type="checkbox" v-model="model[index].checked"/>
+          <input class="tbpro-checkbox" type="checkbox" v-model="model[index].checked" />
           {{ item.label }}
         </label>
       </li>
@@ -135,7 +135,9 @@ label {
     outline-color: var(--colour-highlight);
   }
 
-  &:checked, &:checked:hover, &:checked:focus {
+  &:checked,
+  &:checked:hover,
+  &:checked:focus {
     background-color: var(--colour-highlight);
     border-color: var(--colour-highlight);
     color: var(--colour-neutral-raised);
@@ -155,6 +157,7 @@ label {
     align-items: flex-start;
     text-align: left;
   }
+
   .select-all {
     position: relative;
     margin-right: 0.25rem;

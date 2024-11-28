@@ -1,14 +1,11 @@
-import {fn} from '@storybook/test';
-import type {Meta, StoryObj} from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3';
 
-import BubbleSelect from "@/elements/BubbleSelect.vue";
-import type {SelectOption} from "@/models";
 import NoticeBar from "@/elements/NoticeBar.vue";
-import {NoticeBarTypes} from "@/definitions";
+import { NoticeBarTypes } from "@/definitions";
 
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
-const meta = {
+const meta: Meta<typeof NoticeBar> = {
   title: 'Elements/NoticeBar',
   component: NoticeBar,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
@@ -16,7 +13,7 @@ const meta = {
   args: {
     default: 'Hello World!',
   }
-} satisfies Meta<typeof BubbleSelect>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

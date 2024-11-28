@@ -58,7 +58,7 @@ const onChange = () => {
 <template>
   <label class="wrapper" :for="name">
     <span class="label">
-      <slot/>
+      <slot />
       <span v-if="required && model?.length === 0" class="required">*</span>
     </span>
     <input
@@ -164,6 +164,7 @@ const onChange = () => {
     color: var(--colour-ti-muted);
   }
 }
+
 .dark {
   .tbpro-input {
     background-color: var(--colour-neutral-lower);

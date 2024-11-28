@@ -50,7 +50,7 @@ const toggleState = () => {
   --colour-inactive: #FEFFFF;
   --colour-highlight: #FEFFFF;
   --colour-border-intense: #777580;
-  
+
   html.dark & {
     --colour-base: #737584;
     --colour-active: #A3ECE3;
@@ -99,7 +99,7 @@ const toggleState = () => {
   .toggle-input {
     display: none;
 
-    &:checked ~ .toggle-handle {
+    &:checked~.toggle-handle {
       background-color: var(--colour-highlight);
       transform: translateX(1rem);
       border-color: var(--colour-active);
