@@ -18,6 +18,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const timeRemaining = toRef(() => props.timeRemaining);
 const warningThreshold = toRef(() => props.warningThreshold);
+const timeRemainingLabel = computed(() => timeRemaining.value.toString());
 const status = computed(() => {
   if (timeRemaining.value <= 0) {
     return "expired";
@@ -36,7 +37,7 @@ const status = computed(() => {
       <expiry-icon />
     </span>
     <span class="body">
-      {{ t(`expiryIndicator.${timeUnit}`, { 'n': timeRemaining }) }}
+      {{ t(`expiryIndicator.${timeUnit}`, { 'n': timeRemainingLabel }) }}
     </span>
   </div>
 </template>

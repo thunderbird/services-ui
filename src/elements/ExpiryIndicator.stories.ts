@@ -25,6 +25,14 @@ export const Info: Story = {
   },
 };
 
+export const DecimalUsage: Story = {
+  args: {
+    timeRemaining: 1.4,
+    warningThreshold: 1,
+    timeUnit: ExpiryUnitTypes.Minutes,
+  },
+};
+
 export const Warning: Story = {
   args: {
     timeRemaining: 5,
