@@ -21,13 +21,13 @@ defineEmits(['click']);
 <template>
   <button class="tbpro-button" :class="{ [type]: type, 'small': size === 'small' }" type="button">
     <span class="icon" v-if="$slots?.icon">
-      <slot name="icon" />
+      <slot name="icon"/>
     </span>
     <span class="text">
-      <slot />
+      <slot/>
     </span>
     <tool-tip v-if="tooltip" class="tooltip" :class="{ 'display-tooltip': forceTooltip }"
-      :position="TooltipPosition.Bottom" @click.prevent>
+              :position="TooltipPosition.Bottom" @click.prevent>
       {{ tooltip }}
     </tool-tip>
   </button>
@@ -43,24 +43,27 @@ defineEmits(['click']);
   transition: opacity 250ms ease-out;
 }
 
-button:hover>.tooltip,
+button:hover > .tooltip,
 .display-tooltip {
   opacity: 1;
 }
 
 .primary {
+  --colour-btn-border: var(--colour-service-primary-hover);
+
   background-color: var(--colour-service-primary);
-  border-color: var(--colour-service-primary-hover);
   color: var(--colour-neutral-base);
 
   &:hover:enabled {
+    --colour-btn-border: var(--colour-success-pressed);
+
     background-color: var(--colour-service-primary-hover);
-    border-color: var(--colour-success-pressed);
   }
 
   &:active:enabled {
+    --colour-btn-border: var(--colour-service-primary-pressed);
+
     background-color: var(--colour-service-primary-pressed);
-    border-color: var(--colour-service-primary-pressed);
     box-shadow: none;
   }
 }
@@ -74,12 +77,15 @@ button:hover>.tooltip,
   }
 
   &:active:enabled {
+    --colour-btn-border: var(--colour-neutral-border);
+
     background-color: var(--colour-neutral-border);
-    border-color: var(--colour-neutral-border);
   }
 }
 
 .link {
+  --colour-btn-border: transparent;
+
   background-color: transparent;
   color: var(--colour-service-primary);
   text-decoration: underline;
@@ -101,15 +107,13 @@ button:hover>.tooltip,
 .tbpro-button {
   gap: 0.625rem;
 
-  --colour-btn-border: var(--colour-neutral-border);
+  --faded-colour-btn-border: var(--colour-btn-border, var(--colour-neutral-border));
   display: flex;
-
-
   justify-content: center;
   align-items: center;
 
   border-radius: var(--border-radius);
-  @mixin faded-border var(--colour-btn-border);
+  @mixin faded-border var(--faded-colour-btn-border);
   box-shadow: 0 0.375rem 0.188rem -0.25rem #152F3C4D;
   font-family: 'Inter', 'sans-serif';
   font-size: var(--txt-input); /* 13px */
