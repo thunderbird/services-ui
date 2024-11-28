@@ -1,10 +1,9 @@
-import { fn } from '@storybook/test';
-import type {Meta, StoryObj} from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3';
 
 import TextInput from "@/elements/TextInput.vue";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
-const meta = {
+const meta: Meta<typeof TextInput> = {
   title: 'Elements/TextInput',
   component: TextInput,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
@@ -13,7 +12,7 @@ const meta = {
     name: 'example',
     default: 'Example Input'
   },
-} satisfies Meta<typeof TextInput>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
