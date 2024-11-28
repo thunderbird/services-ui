@@ -234,6 +234,16 @@ html {
     --colour-service-accent-2: var(--colour-apmt-accent-2);
   }
   &[data-tbpro-service='send'] {
+    --colour-service-soft: var(--colour-primary-soft);
+    --colour-service-primary: var(--colour-primary-default);
+    --colour-service-primary-hover: var(--colour-primary-hover);
+    --colour-service-primary-pressed: var(--colour-primary-pressed);
+    --colour-service-secondary: var(--colour-neutral-subtle);
+    --colour-service-accent-1: var(--colour-send-primary-accent-1);
+    --colour-service-accent-2: var(--colour-send-primary-accent-2);
+  }
+  /*
+  &[data-tbpro-service='send'] {
     --colour-service-soft: var(--colour-send-soft);
     --colour-service-primary: var(--colour-send-primary);
     --colour-service-primary-hover: var(--colour-send-primary-hover);
@@ -242,6 +252,6 @@ html {
     --colour-service-accent-1: var(--colour-send-primary-accent-1);
     --colour-service-accent-2: var(--colour-send-primary-accent-2);
   }
-
+  */
 
 }
