@@ -1,11 +1,6 @@
-import {fn} from '@storybook/test';
-import type {Meta, StoryObj} from '@storybook/vue3';
-
-import BubbleSelect from "@/elements/BubbleSelect.vue";
-import type {SelectOption} from "@/models";
+import type { Meta, StoryObj } from '@storybook/vue3';
 import ExpiryIndicator from "@/elements/ExpiryIndicator.vue";
 import { ExpiryUnitTypes } from "@/definitions";
-
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof ExpiryIndicator> = {

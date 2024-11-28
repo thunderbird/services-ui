@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import ExpiryIcon from '@/icons/ExpiryIcon.vue';
-import {computed, toRef} from "vue";
+import { computed, toRef } from "vue";
 import { t } from '@/composable/i18n';
-import {ExpiryUnitTypes} from "@/definitions";
+import { ExpiryUnitTypes } from "@/definitions";
 
 // component properties
 interface Props {
@@ -36,7 +36,7 @@ const status = computed(() => {
       <expiry-icon />
     </span>
     <span class="body">
-      {{ t(`expiryIndicator.${timeUnit}`, {'n': timeRemaining}) }}
+      {{ t(`expiryIndicator.${timeUnit}`, { 'n': timeRemaining }) }}
     </span>
   </div>
 </template>
@@ -48,6 +48,7 @@ const status = computed(() => {
   margin-top: auto;
   margin-bottom: auto;
 }
+
 .body {
   margin: auto;
   font-size: 0.8125rem;
@@ -55,6 +56,7 @@ const status = computed(() => {
   line-height: 1;
   text-transform: uppercase;
 }
+
 .expiry-indicator {
   position: relative;
   display: inline-flex;
@@ -65,16 +67,19 @@ const status = computed(() => {
   border: 0.0625rem solid;
   padding: 0.140625rem 0.28125rem;
 }
+
 .info {
   background-color: var(--colour-primary-soft);
   border-color: var(--colour-primary-hover);
   color: var(--colour-primary-hover);
 }
+
 .warning {
   background-color: var(--colour-warning-soft);
   border-color: var(--colour-ti-warning);
   color: var(--colour-ti-warning);
 }
+
 .expired {
   background-color: var(--colour-neutral-subtle);
   border-color: var(--colour-ti-secondary);
