@@ -45,7 +45,7 @@ const toggleBubble = (option: SelectOption) => {
   <div class="wrapper">
     <label>
       <span class="label">
-        <slot/>
+        <slot />
         <span v-if="required && model?.length === 0" class="required">*</span>
       </span>
     </label>
@@ -109,17 +109,21 @@ const toggleBubble = (option: SelectOption) => {
   color: var(--colour-ti-muted);
   cursor: pointer;
 }
+
 .selected {
   background-color: var(--colour-service-primary);
   border-color: var(--colour-service-primary-pressed);
   color: var(--colour-neutral-base);
 }
+
 .required {
   color: var(--colour-ti-critical);
 }
+
 .disabled {
   cursor: default;
 }
+
 .selected.disabled {
   background-color: var(--colour-neutral-border);
   border-color: var(--colour-ti-muted);

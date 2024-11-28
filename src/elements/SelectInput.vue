@@ -28,23 +28,16 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
 <template>
   <label class="wrapper" :for="name">
     <span class="label">
-      <slot/>
+      <slot />
       <span v-if="required && (model === null || model === '')" class="required">*</span>
     </span>
-    <select
-      class="tbpro-select w-full rounded-md"
-      v-model="model"
-      :id="name"
-      :name="name"
-      :required="required"
-      :disabled="disabled"
-      @invalid="onInvalid"
-    >
+    <select class="tbpro-select w-full rounded-md" v-model="model" :id="name" :name="name" :required="required"
+      :disabled="disabled" @invalid="onInvalid">
       <option v-for="option in options" :value="option.value" :key="option.value">
         {{ option.label }}
       </option>
     </select>
-    <span :class="{'visible': isInvalid}" class="help-label">
+    <span :class="{ 'visible': isInvalid }" class="help-label">
       {{ validationMessage }}
     </span>
   </label>
@@ -98,7 +91,8 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
 
   color: var(--txt-colour);
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     --colour-select-border: var(--colour-neutral-border-intense);
   }
 
@@ -107,6 +101,7 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
     --colour-select-border: var(--colour-neutral-border-intense);
   }
 }
+
 .dark {
   .tbpro-select {
     background-color: var(--colour-neutral-lower);

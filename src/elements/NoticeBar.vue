@@ -3,8 +3,8 @@ import NoticeInfoIcon from '@/icons/NoticeInfoIcon.vue';
 import NoticeSuccessIcon from '@/icons/NoticeSuccessIcon.vue';
 import NoticeWarningIcon from '@/icons/NoticeWarningIcon.vue';
 import NoticeCriticalIcon from '@/icons/NoticeCriticalIcon.vue';
-import {computed} from "vue";
-import {NoticeBarTypes} from "@/definitions";
+import { computed } from "vue";
+import { NoticeBarTypes } from "@/definitions";
 
 // component properties
 interface Props {
@@ -28,13 +28,13 @@ const isError = computed(() => props.type === NoticeBarTypes.Error);
     success: isSuccess
   }" class="notice notice-bar">
     <span class="icon">
-      <notice-info-icon v-if="isInfo"/>
-      <notice-success-icon v-if="isSuccess"/>
-      <notice-warning-icon v-if="isWarning"/>
-      <notice-critical-icon v-if="isError"/>
+      <notice-info-icon v-if="isInfo" />
+      <notice-success-icon v-if="isSuccess" />
+      <notice-warning-icon v-if="isWarning" />
+      <notice-critical-icon v-if="isError" />
     </span>
     <span class="body">
-      <slot/>
+      <slot />
     </span>
   </div>
 </template>
@@ -49,12 +49,14 @@ const isError = computed(() => props.type === NoticeBarTypes.Error);
   margin-top: auto;
   margin-bottom: auto;
 }
+
 .body {
   margin: auto;
   font-size: 0.8125rem;
   font-weight: 700;
   line-height: 1;
 }
+
 .notice {
   position: relative;
   display: flex;
@@ -65,21 +67,25 @@ const isError = computed(() => props.type === NoticeBarTypes.Error);
   border: 0.0625rem solid;
   padding: 0.5625rem 0.5625rem 0.5625rem 1.75rem;
 }
+
 .info {
   background-color: var(--colour-service-soft);
   border-color: var(--colour-service-primary);
   color: var(--colour-service-primary-pressed);
 }
+
 .success {
   background-color: var(--colour-success-soft);
   border-color: var(--colour-success-default);
   color: var(--colour-ti-success);
 }
+
 .warning {
   background-color: var(--colour-warning-soft);
   border-color: var(--colour-warning-default);
   color: var(--colour-ti-warning);
 }
+
 .error {
   background-color: var(--colour-danger-soft);
   border-color: var(--colour-danger-default);

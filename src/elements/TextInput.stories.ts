@@ -40,7 +40,7 @@ export const Required: Story = {
   },
 };
 
-export const RequiredWithPlaceholder : Story = {
+export const RequiredWithPlaceholder: Story = {
   args: {
     name: 'fav-food',
     default: 'Favourite Food?',
@@ -49,7 +49,7 @@ export const RequiredWithPlaceholder : Story = {
   },
 };
 
-export const Help : Story = {
+export const Help: Story = {
   args: {
     name: 'fav-beverage',
     default: 'Favourite Beverage',

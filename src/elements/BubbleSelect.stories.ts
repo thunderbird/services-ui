@@ -1,8 +1,8 @@
-import {fn} from '@storybook/test';
-import type {Meta, StoryObj} from '@storybook/vue3';
+import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/vue3';
 
 import BubbleSelect from "@/elements/BubbleSelect.vue";
-import type {SelectOption} from "@/models";
+import type { SelectOption } from "@/models";
 
 const scheduleDayOptions: SelectOption[] = [
   {
@@ -36,7 +36,7 @@ const scheduleDayOptions: SelectOption[] = [
 ]
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
-const meta = {
+const meta: Meta<typeof BubbleSelect> = {
   title: 'Elements/BubbleSelect',
   component: BubbleSelect,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
@@ -47,7 +47,7 @@ const meta = {
     disabled: false,
     options: scheduleDayOptions
   },
-} satisfies Meta<typeof BubbleSelect>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

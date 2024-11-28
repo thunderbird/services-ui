@@ -31,7 +31,7 @@ const meta: Meta<typeof SyncCard> = {
     },
   },
   render: (args) => ({
-    components: {SyncCard},
+    components: { SyncCard },
     setup() {
       const model = ref(args.modelValue);
 
@@ -42,7 +42,7 @@ const meta: Meta<typeof SyncCard> = {
         },
       );
 
-      return {args, model};
+      return { args, model };
     },
     template: `
       <sync-card v-bind="args" v-model="model">
