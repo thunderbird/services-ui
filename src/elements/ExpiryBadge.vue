@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BaseBadge from "./BaseBadge.vue";
+import StatusExpiryIcon from "@/icons/StatusExpiryIcon.vue";
 import { computed, toRef } from "vue";
 import { t } from '@/composable/i18n';
 import { ExpiryUnitTypes } from "@/definitions";
@@ -33,6 +34,9 @@ const status = computed(() => {
 
 <template>
   <base-badge :class="status" type="expiry" icon>
+    <template #icon>
+      <status-expiry-icon/>
+    </template>
     {{ t(`expiryIndicator.${timeUnit}`, { 'n': timeRemainingLabel }) }}
   </base-badge>
 </template>

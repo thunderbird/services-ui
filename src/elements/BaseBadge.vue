@@ -2,7 +2,6 @@
 
 import StatusInfoIcon from '@/icons/StatusInfoIcon.vue';
 import StatusWarningIcon from '@/icons/StatusWarningIcon.vue';
-import StatusExpiryIcon from '@/icons/StatusExpiryIcon.vue';
 
 // component properties
 interface Props {
@@ -21,7 +20,6 @@ withDefaults(defineProps<Props>(), {
       <slot name="icon">
         <status-info-icon v-if="type == 'primary' || type == 'secondary'"/>
         <status-warning-icon v-if="type == 'warning'"/>
-        <status-expiry-icon v-if="type == 'expiry'"/>
       </slot>
     </span>
     <span class="text">
