@@ -224,6 +224,19 @@ html {
     --colour-send-primary-accent-2: #1F8DDB;
   }
 
+  /*
+  * Brand Colours
+  * Thunderbird
+  * The fallback if no service is set.
+  */
+  --colour-service-soft: var(--colour-primary-soft);
+  --colour-service-primary: var(--colour-primary-default);
+  --colour-service-primary-hover: var(--colour-primary-hover);
+  --colour-service-primary-pressed: var(--colour-primary-pressed);
+  --colour-service-secondary: var(--colour-secondary-default);
+  --colour-service-accent-1: var(--colour-accent-purple);
+  --colour-service-accent-2: var(--colour-accent-teal);
+
   &[data-tbpro-service='apmt'] {
     --colour-service-soft: var(--colour-apmt-soft);
     --colour-service-primary: var(--colour-apmt-primary);

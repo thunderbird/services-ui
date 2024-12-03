@@ -2,9 +2,6 @@
   "copyIcon": {
     "copyLink": "Link kopieren"
   },
-  "expiryIcon": {
-    "fileExpires": "Die Gültigkeit dieser Datei läuft ab"
-  },
   "expiryIndicator": {
     "second": "Abgelaufen | Läuft in {n} Sekunde ab | Läuft in {n} Sekunden ab",
     "minute": "Abgelaufen | Läuft in {n} Minute ab | Läuft in {n} Minuten ab",
@@ -19,7 +16,8 @@
     "critical": "Kritisch",
     "info": "Information",
     "success": "Erfolg",
-    "warning": "Warnung"
+    "warning": "Warnung",
+    "expires": "Die Gültigkeit dieser Datei läuft ab"
   },
   "syncCard": {
     "itemsSelected": "{count} ausgewählt",
