@@ -33,7 +33,7 @@ const status = computed(() => {
 </script>
 
 <template>
-  <base-badge :class="status" type="expiry" icon>
+  <base-badge :class="status" icon>
     <template #icon>
       <status-expiry-icon/>
     </template>
