@@ -2,9 +2,6 @@
   "copyIcon": {
     "copyLink": "Copy link"
   },
-  "expiryIcon": {
-    "fileExpires": "This File Expires"
-  },
   "expiryIndicator": {
     "second": "Expired | Expires in {n} second | Expires in {n} seconds",
     "minute": "Expired | Expires in {n} minute | Expires in {n} minutes",
@@ -19,7 +16,8 @@
     "critical": "Critical",
     "info": "Information",
     "success": "Success",
-    "warning": "Warning"
+    "warning": "Warning",
+    "expires": "This File Expires"
   },
   "syncCard": {
     "itemsSelected": "{count} Selected",
