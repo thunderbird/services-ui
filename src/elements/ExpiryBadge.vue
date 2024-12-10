@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<Props>(), {
   timeUnit: ExpiryUnitTypes.Days
 })
 
-const timeRemaining = toRef(() => props.timeRemaining);
+const timeRemaining = toRef(() => Math.ceil(props.timeRemaining));
 const warningThreshold = toRef(() => props.warningThreshold);
 const timeRemainingLabel = computed(() => timeRemaining.value.toString());
 const status = computed(() => {
