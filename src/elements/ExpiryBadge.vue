@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import BaseBadge from "./BaseBadge.vue";
 import StatusExpiryIcon from "@/icons/StatusExpiryIcon.vue";
-import { computed, toRef } from "vue";
+import { computed } from "vue";
 import { t } from '@/composable/i18n';
 import { ExpiryUnitTypes } from "@/definitions";
 
@@ -17,8 +17,8 @@ const props = withDefaults(defineProps<Props>(), {
   timeUnit: ExpiryUnitTypes.Days
 })
 
-const timeRemaining = toRef(() => Math.ceil(props.timeRemaining));
-const warningThreshold = toRef(() => props.warningThreshold);
+const timeRemaining = computed(() => Math.ceil(props.timeRemaining));
+const warningThreshold = computed(() => props.warningThreshold);
 const status = computed(() => {
   if (timeRemaining.value <= 0) {
     return "secondary";
