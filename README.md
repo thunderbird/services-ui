@@ -12,6 +12,8 @@ You can install the library by adding the following line as a dependency to your
 npm i @thunderbirdops/services-ui
 ```
 
+We recommend you pull in the `Inter` font separately.
+
 ## Library Development
 
 ### Storybook
