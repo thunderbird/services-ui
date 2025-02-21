@@ -12,6 +12,12 @@ You can install the library by adding the following line as a dependency to your
 npm i @thunderbirdops/services-ui
 ```
 
+Then, include the stylesheet into your top-level component:
+
+```ts
+import "@thunderbirdops/services-ui/style.css";
+````
+
 We recommend you pull in the `Inter` font separately.
 
 ## Library Development
