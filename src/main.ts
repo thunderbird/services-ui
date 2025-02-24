@@ -34,8 +34,8 @@ import StatusInfoIcon from './icons/StatusInfoIcon.vue';
 import StatusWarningIcon from './icons/StatusWarningIcon.vue';
 import StatusExpiryIcon from './icons/StatusExpiryIcon.vue';
 
-// Types 
-import { ExpiryUnitTypes } from './definitions'
+// Types
+import { ExpiryUnitTypes, NoticeBarTypes } from "./definitions";
 
 export {
   BaseBadge,
@@ -64,5 +64,6 @@ export {
   StatusWarningIcon,
   StatusExpiryIcon,
   // Types
-  ExpiryUnitTypes
+  ExpiryUnitTypes,
+  NoticeBarTypes,
 };
