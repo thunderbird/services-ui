@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { type HTMLInputElementEvent } from '@/models';
+import { ref, computed } from "vue";
+import { useElementSize } from "@vueuse/core";
+import { type HTMLInputElementEvent } from "@/models";
 
 const model = defineModel<string>();
 const isInvalid = ref(false);
-const validationMessage = ref('');
+const validationMessage = ref("");
 const isDirty = ref(false);
 const inputRef = ref<HTMLInputElement>(null);
+const inputPrefix = ref<HTMLSpanElement>(null);
+const { width: inputPrefixWidth } = useElementSize(inputPrefix); // Calculate the width of the prefix element
 /**
  * Forwards focus intent to the text input element.
  * Unlike HTMLElement.focus() this does not take any parameters.
@@ -22,23 +25,34 @@ const focus = () => {
 interface Props {
   name: string;
   help?: string;
-  remoteError?: string;
+  error?: string;
   type?: string;
   placeholder?: string;
+  prefix?: string; // A prefix shows up at the start of the input field and moves the actual input to the right.
   required?: boolean;
   disabled?: boolean;
+  smallText?: boolean;
+  maxLength?: number | string;
 }
-withDefaults(defineProps<Props>(), {
-  type: 'text',
+const props = withDefaults(defineProps<Props>(), {
+  type: "text",
   help: null,
-  remoteError: null,
-  placeholder: '',
+  error: null,
+  placeholder: null,
+  prefix: null,
   required: false,
   disabled: false,
+  smallText: false,
+  maxLength: null,
 });
 
-defineEmits(['submit']);
+defineEmits(["submit"]);
 defineExpose({ focus });
+
+// Calculate padding left for the actual input considering prefix width and existing padding
+const inputPaddingLeft = computed(() =>
+  props.prefix ? `${inputPrefixWidth.value + 12}px` : "12px",
+);
 
 const onInvalid = (evt: HTMLInputElementEvent) => {
   isInvalid.value = true;
@@ -61,20 +75,27 @@ const onChange = () => {
       <slot />
       <span v-if="required && model?.length === 0" class="required">*</span>
     </span>
-    <input
-      class="tbpro-input"
-      v-model="model"
-      :class="{'dirty': isDirty}"
-      :type="type"
-      :id="name"
-      :name="name"
-      :disabled="disabled"
-      :placeholder="placeholder"
-      :required="required"
-      @invalid="onInvalid"
-      @change="onChange"
-      ref="inputRef"
-    />
+    <span class="tbpro-input" :class="{ 'small-text': props.smallText }">
+      <span v-if="prefix" ref="inputPrefix" class="tbpro-input-prefix">{{
+        prefix
+      }}</span>
+      <input
+        class="tbpro-input-element"
+        v-model="model"
+        :class="{ dirty: isDirty }"
+        :type="type"
+        :id="name"
+        :name="name"
+        :disabled="disabled"
+        :placeholder="placeholder"
+        :required="required"
+        :maxLength="maxLength"
+        @invalid="onInvalid"
+        @change="onChange"
+        ref="inputRef"
+        :style="{ paddingLeft: inputPaddingLeft }"
+      />
+    </span>
     <span v-if="isInvalid" class="help-label invalid">
       {{ validationMessage }}
     </span>
@@ -88,13 +109,13 @@ const onChange = () => {
 </template>
 
 <style scoped>
-@import '@/assets/styles/mixins.pcss';
+@import "@/assets/styles/mixins.pcss";
 
 .wrapper {
   display: flex;
   flex-direction: column;
   color: var(--colour-ti-base);
-  font-family: 'Inter', 'sans-serif';
+  font-family: "Inter", "sans-serif";
   font-size: var(--txt-input);
   line-height: var(--line-height-input);
   font-weight: 400;
@@ -126,42 +147,64 @@ const onChange = () => {
 }
 
 .tbpro-input {
-  --colour-btn-border: var(--colour-neutral-border);
+  display: inline-block;
+  position: relative;
   width: 100%;
-  padding: 0.75rem;
 
-  color: var(--txt-colour);
-  background-color: var(--colour-neutral-base);
-  border-radius: var(--border-radius);
-  @mixin faded-border var(--colour-btn-border);
-
-  &:hover:enabled {
-    --colour-btn-border: var(--colour-neutral-border-intense);
-  }
-
-  &:active:enabled {
-    --colour-btn-border: var(--colour-neutral-border-intense);
-  }
-
-  &:focus:enabled {
-    --colour-btn-border: var(--colour-service-primary);
-    outline: 0.125rem solid var(--colour-btn-border);
-    /* Un-fade the border */
-    border: 0.0625rem solid var(--colour-btn-border) !important;
-    border-radius: 0.125rem;
-  }
-
-  &.dirty:invalid {
-    --colour-btn-border: var(--colour-ti-critical);
-  }
-
-  &:disabled {
-    filter: grayscale(50%);
-    cursor: not-allowed;
-  }
-
-  &::placeholder {
+  .tbpro-input-prefix {
+    position: absolute;
+    top: 0.7rem;
+    left: 12px;
+    font-size: var(--txt-input);
+    line-height: var(--line-height-input);
     color: var(--colour-ti-muted);
+    user-select: none;
+    text-overflow: ".../";
+    overflow: hidden;
+    max-width: 40%;
+    text-wrap: nowrap;
+    z-index: 1;
+  }
+
+  .tbpro-input-element {
+    --colour-btn-border: var(--colour-neutral-border);
+    width: 100%;
+    transition-property: none;
+    font-size: var(--txt-input);
+
+    background-color: var(--colour-neutral-base);
+    border-radius: var(--border-radius);
+    @mixin faded-border var(--colour-btn-border);
+
+    &:hover:enabled {
+      --colour-btn-border: var(--colour-neutral-border-intense);
+    }
+
+    &:active:enabled {
+      --colour-btn-border: var(--colour-neutral-border-intense);
+    }
+
+    &:focus:enabled {
+      border-radius: 0.125rem;
+    }
+
+    &.dirty:invalid {
+      --colour-btn-border: var(--colour-ti-critical);
+    }
+
+    &:disabled {
+      filter: grayscale(50%);
+      cursor: not-allowed;
+    }
+
+    &::placeholder {
+      color: var(--colour-ti-muted);
+    }
+
+    &[type="time"]::-webkit-calendar-picker-indicator {
+      margin-right: -0.5rem;
+      background: none;
+    }
   }
 }
 
