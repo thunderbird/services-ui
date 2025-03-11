@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "vue": "^3.4.29",
-    "vue-i18n": "^11.1.0"
+    "vue-i18n": "^11.1.2"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",
@@ -67,9 +67,9 @@
     "storybook": "^8.3.0",
     "typescript": "~5.7.3",
     "typescript-eslint": "^8.16.0",
-    "vite": "^5.3.1",
+    "vite": "^6.2.1",
     "vite-plugin-dts": "^4.2.2",
-    "vitest": "^1.6.1",
+    "vitest": "^3.0.8",
     "vue-tsc": "^2.0.21"
   },
   "packageManager": "pnpm@8.12.0+sha1.7134f9b8d0b70bc7a1954f47af52123cd2b2acce",
