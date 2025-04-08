@@ -171,7 +171,9 @@ const onChange = () => {
     width: 100%;
     transition-property: none;
     font-size: var(--txt-input);
+    padding: 0.75rem;
 
+    color: var(--txt-colour);
     background-color: var(--colour-neutral-base);
     border-radius: var(--border-radius);
     @mixin faded-border var(--colour-btn-border);
@@ -185,6 +187,10 @@ const onChange = () => {
     }
 
     &:focus:enabled {
+      --colour-btn-border: var(--colour-service-primary);
+      outline: 0.125rem solid var(--colour-btn-border);
+      /* Un-fade the border */
+      border: 0.0625rem solid var(--colour-btn-border) !important;
       border-radius: 0.125rem;
     }
 
