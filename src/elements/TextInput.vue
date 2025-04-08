@@ -93,7 +93,10 @@ const onChange = () => {
         @invalid="onInvalid"
         @change="onChange"
         ref="inputRef"
-        :style="{ paddingLeft: inputPaddingLeft }"
+        :style="{
+          paddingLeft: inputPaddingLeft,
+          width: `calc(100% - ${inputPaddingLeft})`,
+        }"
       />
     </span>
     <span v-if="isInvalid" class="help-label invalid">
@@ -153,7 +156,7 @@ const onChange = () => {
 
   .tbpro-input-prefix {
     position: absolute;
-    top: 0.7rem;
+    top: 0.75rem;
     left: 12px;
     font-size: var(--txt-input);
     line-height: var(--line-height-input);

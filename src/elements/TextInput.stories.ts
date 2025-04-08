@@ -73,3 +73,12 @@ export const Email: Story = {
     required: true,
   },
 };
+export const Prefix: Story = {
+  args: {
+    name: "Currency",
+    default: "",
+    placeholder: "100.00",
+    required: true,
+    prefix: "€",
+  },
+};
