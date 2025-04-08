@@ -99,8 +99,8 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
   background-color: var(--colour-neutral-base);
   @mixin faded-border var(--colour-select-border);
   border-radius: var(--border-radius);
-  font-size: var(--txt-input);
   font-weight: 400;
+  padding: 0.75rem;
 
   color: var(--txt-colour);
 
