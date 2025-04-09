@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { type HTMLInputElementEvent, type SelectOption } from '@/models';
+import { ref } from "vue";
+import { type HTMLInputElementEvent, type SelectOption } from "@/models";
 
 // component properties
 interface Props {
@@ -14,10 +14,10 @@ withDefaults(defineProps<Props>(), {
   disabled: false,
 });
 
-defineEmits(['submit']);
+defineEmits(["submit"]);
 const model = defineModel<any>();
 const isInvalid = ref(false);
-const validationMessage = ref('');
+const validationMessage = ref("");
 
 const onInvalid = (evt: HTMLInputElementEvent) => {
   isInvalid.value = true;
@@ -29,28 +29,41 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
   <label class="wrapper" :for="name">
     <span class="label">
       <slot />
-      <span v-if="required && (model === null || model === '')" class="required">*</span>
+      <span v-if="required && (model === null || model === '')" class="required"
+        >*</span
+      >
     </span>
-    <select class="tbpro-select w-full rounded-md" v-model="model" :id="name" :name="name" :required="required"
-      :disabled="disabled" @invalid="onInvalid">
-      <option v-for="option in options" :value="option.value" :key="option.value">
+    <select
+      class="tbpro-select w-full rounded-md"
+      v-model="model"
+      :id="name"
+      :name="name"
+      :required="required"
+      :disabled="disabled"
+      @invalid="onInvalid"
+    >
+      <option
+        v-for="option in options"
+        :value="option.value"
+        :key="option.value"
+      >
         {{ option.label }}
       </option>
     </select>
-    <span :class="{ 'visible': isInvalid }" class="help-label">
+    <span :class="{ visible: isInvalid }" class="help-label">
       {{ validationMessage }}
     </span>
   </label>
 </template>
 
 <style scoped>
-@import '@/assets/styles/mixins.pcss';
+@import "@/assets/styles/mixins.pcss";
 
 .wrapper {
   display: flex;
   flex-direction: column;
   color: var(--colour-ti-base);
-  font-family: 'Inter', 'sans-serif';
+  font-family: "Inter", "sans-serif";
   font-size: var(--txt-input);
   line-height: var(--line-height-input);
   font-weight: 400;
