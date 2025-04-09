@@ -95,7 +95,6 @@ const onChange = () => {
         ref="inputRef"
         :style="{
           paddingLeft: inputPaddingLeft,
-          width: `calc(100% - ${inputPaddingLeft})`,
         }"
       />
     </span>
@@ -156,7 +155,7 @@ const onChange = () => {
 
   .tbpro-input-prefix {
     position: absolute;
-    top: 0.75rem;
+    top: 0.6rem;
     left: 12px;
     font-size: var(--txt-input);
     line-height: var(--line-height-input);
@@ -175,6 +174,7 @@ const onChange = () => {
     transition-property: none;
     font-size: var(--txt-input);
     padding: 0.75rem;
+    box-sizing: border-box;
 
     color: var(--txt-colour);
     background-color: var(--colour-neutral-base);
