@@ -1,7 +1,6 @@
 import { fn } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/vue3';
-
-import SwitchToggle from "@/elements/SwitchToggle.vue";
+import SwitchToggle from '@/elements/SwitchToggle.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof SwitchToggle> = {
@@ -12,7 +11,8 @@ const meta: Meta<typeof SwitchToggle> = {
   args: {
     // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
     onChanged: fn(),
-    active: true,
+    // Spying on the update event breaks reactivity.
+    // 'onUpdate:modelValue': fn(), // Spy on the update event for v-model
     disabled: false,
     label: 'Switch Toggle',
     noLegend: false,
@@ -26,20 +26,20 @@ export const Legend: Story = {
   args: {
     name: 'legend',
     noLegend: false,
-    active: false,
+    modelValue: false,
   },
 };
 export const NoLegend: Story = {
   args: {
     name: 'nolegend',
     noLegend: true,
-    active: false,
+    modelValue: false,
   },
 };
 export const Disabled: Story = {
   args: {
     name: 'disabled',
     disabled: true,
-    active: false,
+    modelValue: false,
   },
 };
