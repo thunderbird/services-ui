@@ -27,5 +27,8 @@
   "switchToggle": {
     "off": "Off",
     "on": "On"
+  },
+  "textArea": {
+    "invalidInput": "Invalid input"
   }
 }
