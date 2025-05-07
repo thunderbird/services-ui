@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { t } from '@/composable/i18n';
+
+const model = defineModel<boolean>();
 
 // component emits
 const emit = defineEmits(['changed']);
@@ -8,22 +10,37 @@ const emit = defineEmits(['changed']);
 // component properties
 interface Props {
   name: string;
-  active: boolean; // initial toggle state
+  active?: boolean; // deprecated in favor of v-model, sets initial toggle state
   disabled?: boolean; // flag for making toggle non changable
   label?: string; // input label
   noLegend?: boolean; // hide "on" and "off" labels
 }
 const props = defineProps<Props>();
 
-// current state
-const state = ref(false);
+// Internal state ref, used only when v-model is not provided
+const internalState = ref(false);
+
 onMounted(() => {
-  state.value = props.active;
+  // Initialize internal state only if v-model is not being used
+  if (model.value === undefined) {
+    internalState.value = props.active;
+  }
 });
+
+const currentState = computed(() => (model.value !== undefined ? model.value : internalState.value));
+
 const toggleState = () => {
   if (!props.disabled) {
-    state.value = !state.value;
-    emit('changed', state.value);
+    const newState = !currentState.value;
+
+    // Update the model if available, else update the internal state.
+    // In either case, `currentState` will be recomputed.
+    if (model.value !== undefined) {
+      model.value = newState;
+    } else {
+      internalState.value = newState;
+      emit('changed', newState); // Emit legacy event for non-v-model usage
+    }
   }
 };
 </script>
@@ -34,7 +51,7 @@ const toggleState = () => {
     <div class="toggle-container">
       <div v-if="!noLegend" class="toggle-label">{{ t('switchToggle.off') }}</div>
       <div class="toggle">
-        <input class="toggle-input" type="checkbox" :name="name" :checked="state" :disabled="disabled" />
+        <input class="toggle-input" type="checkbox" :name="name" :checked="model" :disabled="disabled" />
         <div class="toggle-handle"></div>
       </div>
       <div v-if="!noLegend" class="toggle-label">{{ t('switchToggle.on') }}</div>
