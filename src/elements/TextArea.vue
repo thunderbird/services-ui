@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { t } from '@/composable/i18n';
 
 const model = defineModel<string>();
 const isInvalid = ref(false);
@@ -78,6 +79,7 @@ const onChange = () => {
     <span v-if="isInvalid" class="help-label invalid">
       <!-- Placeholder -->
       Invalid input
+      {{ t('textArea.invalidInput') }}
     </span>
     <span v-else-if="help" class="help-label">
       {{ help }}
