@@ -24,6 +24,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/main.ts'),
       name: 'ServicesUI',
       fileName: 'index',
+      cssFileName: 'style',
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
@@ -34,13 +35,6 @@ export default defineConfig({
         // for externalized deps
         globals: {
           vue: 'Vue',
-        },
-        // Explicit naming for output css file
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.names.some((name) => name.endsWith('.css'))) {
-            return 'style.css';
-          }
-          return '[name].[ext]';
         },
       },
     },
