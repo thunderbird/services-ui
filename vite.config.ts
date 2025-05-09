@@ -1,9 +1,9 @@
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, URL } from 'node:url';
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import dts from 'vite-plugin-dts'
-import { resolve } from 'path'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import dts from 'vite-plugin-dts';
+import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,7 +17,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-    }
+    },
   },
   build: {
     lib: {
@@ -35,7 +35,14 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
         },
+        // Explicit naming for output css file
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.names.some((name) => name.endsWith('.css'))) {
+            return 'style.css';
+          }
+          return '[name].[ext]';
+        },
       },
     },
   },
-})
+});
