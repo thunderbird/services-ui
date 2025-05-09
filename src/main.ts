@@ -19,6 +19,7 @@ import TextInput from "@/elements/TextInput.vue";
 import BubbleSelect from "@/elements/BubbleSelect.vue";
 import SyncCard from "@/elements/SyncCard.vue";
 import SwitchToggle from "@/elements/SwitchToggle.vue";
+import TextArea from '@/elements/TextArea.vue';
 
 // Misc
 import NoticeBar from "@/elements/NoticeBar.vue";
@@ -49,6 +50,7 @@ export {
   LinkButton,
   SelectInput,
   TextInput,
+  TextArea,
   BubbleSelect,
   SyncCard,
   SwitchToggle,
