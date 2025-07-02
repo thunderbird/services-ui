@@ -37,6 +37,28 @@ export const Required: Story = {
     default: 'Why is a hot dog a sandwich?',
     required: true,
   },
+  decorators: [
+    (story) => ({
+      components: { story },
+      template: `
+        <div>
+          <story />
+          <button @click="triggerInvalid">
+            Force trigger invalid state
+          </button>
+        </div>
+      `,
+      methods: {
+        triggerInvalid() {
+          const textarea = document.querySelector('textarea');
+          if (textarea) {
+            const invalidEvent = new Event('invalid', { bubbles: true });
+            textarea.dispatchEvent(invalidEvent);
+          }
+        }
+      }
+    })
+  ]
 };
 
 export const RequiredWithPlaceholder: Story = {
