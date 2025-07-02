@@ -78,7 +78,6 @@ const onChange = () => {
     </span>
     <span v-if="isInvalid" class="help-label invalid">
       <!-- Placeholder -->
-      Invalid input
       {{ t('textArea.invalidInput') }}
     </span>
     <span v-else-if="help" class="help-label">
