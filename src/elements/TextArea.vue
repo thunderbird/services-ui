@@ -57,7 +57,7 @@ const onChange = () => {
   <label class="wrapper" :for="name">
     <span class="label">
       <slot />
-      <span v-if="required && model?.length === 0" class="required">*</span>
+      <span v-if="required && !model?.length" class="required">*</span>
     </span>
     <span class="tbpro-textarea" :class="{ 'small-text': props.smallText }">
       <textarea
