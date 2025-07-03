@@ -21,6 +21,17 @@ const focus = () => {
   inputRef.value.focus();
 };
 
+/**
+ * Resets the component's internal validation state and clears the input value.
+ * This should be explicitly called when the parent form is reset.
+ */
+const reset = () => {
+  model.value = "";
+  isInvalid.value = false;
+  isDirty.value = false;
+  validationMessage.value = "";
+};
+
 // component properties
 interface Props {
   name: string;
@@ -47,7 +58,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 defineEmits(["submit"]);
-defineExpose({ focus });
+defineExpose({ focus, reset });
 
 // Calculate padding left for the actual input considering prefix width and existing padding
 const inputPaddingLeft = computed(() =>
