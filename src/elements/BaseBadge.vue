@@ -5,7 +5,7 @@ import StatusWarningIcon from '@/icons/StatusWarningIcon.vue';
 
 // component properties
 interface Props {
-  type?: string;
+  type?: 'primary' | 'secondary' | 'warning';
   icon?: boolean;
 }
 withDefaults(defineProps<Props>(), {
