@@ -2,6 +2,9 @@
   "copyIcon": {
     "copyLink": "Link kopieren"
   },
+  "refreshIcon": {
+    "refreshLink": "Link ändern"
+  },
   "expiryIndicator": {
     "second": "Abgelaufen | Läuft in {n} Sekunde ab | Läuft in {n} Sekunden ab",
     "minute": "Abgelaufen | Läuft in {n} Minute ab | Läuft in {n} Minuten ab",
