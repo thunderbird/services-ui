@@ -46,8 +46,19 @@ const focus = () => {
   inputRef.value.focus();
 };
 
+/**
+ * Resets the component's internal validation state and clears the input value.
+ * This should be explicitly called when the parent form is reset.
+ */
+const reset = () => {
+  model.value = props.checked ?? false;
+  isInvalid.value = false;
+  isDirty.value = false;
+  validationMessage.value = "";
+};
+
 const emit = defineEmits(['submit', 'change']);
-defineExpose({ focus });
+defineExpose({ focus, reset });
 
 const onInvalid = (evt: HTMLInputElementEvent) => {
   isInvalid.value = true;
