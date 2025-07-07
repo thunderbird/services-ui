@@ -20,6 +20,7 @@ import BubbleSelect from "@/elements/BubbleSelect.vue";
 import SyncCard from "@/elements/SyncCard.vue";
 import SwitchToggle from "@/elements/SwitchToggle.vue";
 import TextArea from '@/elements/TextArea.vue';
+import CheckboxInput from '@/elements/CheckboxInput.vue';
 
 // Misc
 import NoticeBar from "@/elements/NoticeBar.vue";
@@ -44,6 +45,7 @@ export {
   PrimaryBadge,
   SecondaryBadge,
   WarningBadge,
+  CheckboxInput,
   ExpiryBadge,
   BaseButton,
   PrimaryButton,
