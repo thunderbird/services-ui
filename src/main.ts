@@ -27,6 +27,7 @@ import ToolTip from "@/elements/ToolTip.vue";
 
 // Icons
 import CopyIcon from "@/icons/CopyIcon.vue";
+import RefreshIcon from "@/icons/RefreshIcon.vue";
 import NoticeInfoIcon from "@/icons/NoticeInfoIcon.vue";
 import NoticeSuccessIcon from "@/icons/NoticeSuccessIcon.vue";
 import NoticeWarningIcon from "@/icons/NoticeWarningIcon.vue";
@@ -58,6 +59,7 @@ export {
   ToolTip,
   // Icons
   CopyIcon,
+  RefreshIcon,
   NoticeInfoIcon,
   NoticeSuccessIcon,
   NoticeWarningIcon,
