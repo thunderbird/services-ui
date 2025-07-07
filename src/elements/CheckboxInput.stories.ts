@@ -51,9 +51,14 @@ export const Required: Story = {
       template: `
         <div>
           <story />
-          <button @click="triggerInvalid">
-            Force trigger invalid state
-          </button>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button @click="triggerInvalid">
+              Trigger Invalid State
+            </button>
+            <button @click="manualReset">
+              Manual Reset
+            </button>
+          </div>
         </div>
       `,
       methods: {
@@ -63,7 +68,14 @@ export const Required: Story = {
             const invalidEvent = new Event('invalid', { bubbles: true });
             input.dispatchEvent(invalidEvent);
           }
-        }
+        },
+        manualReset() {
+          const input = document.querySelector('#required');
+
+          // Access the exposed methods through the Vue component's public interface
+          const componentExposed = (input as any).__vueParentComponent?.exposed;
+          componentExposed.reset();
+        },
       }
     })
   ]
