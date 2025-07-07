@@ -4,8 +4,8 @@ import ToolTip from '@/elements/ToolTip.vue';
 
 // component properties
 interface Props {
-  type?: string;
-  size?: string;
+  type?: 'primary' | 'secondary' | 'link';
+  size?: 'regular' | 'small';
   tooltip?: string;
   forceTooltip?: boolean;
 };
