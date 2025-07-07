@@ -15,19 +15,29 @@ withDefaults(defineProps<Props>(), {
   tooltip: '',
   forceTooltip: false,
 })
-defineEmits(['click']);
+const emit = defineEmits(['click']);
 </script>
 
 <template>
-  <button class="tbpro-button" :class="{ [type]: type, 'small': size === 'small' }" type="button">
+  <button
+    class="tbpro-button"
+    :class="{ [type]: type, 'small': size === 'small' }"
+    type="button"
+    @click="emit('click')"
+  >
     <span class="icon" v-if="$slots?.icon">
       <slot name="icon"/>
     </span>
     <span class="text">
       <slot/>
     </span>
-    <tool-tip v-if="tooltip" class="tooltip" :class="{ 'display-tooltip': forceTooltip }"
-              :position="TooltipPosition.Bottom" @click.prevent>
+    <tool-tip
+      v-if="tooltip"
+      class="tooltip"
+      :class="{ 'display-tooltip': forceTooltip }"
+      :position="TooltipPosition.Bottom"
+      @click.prevent
+    >
       {{ tooltip }}
     </tool-tip>
   </button>
