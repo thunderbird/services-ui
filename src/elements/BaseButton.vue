@@ -15,7 +15,6 @@ withDefaults(defineProps<Props>(), {
   tooltip: '',
   forceTooltip: false,
 })
-const emit = defineEmits(['click']);
 </script>
 
 <template>
@@ -23,7 +22,6 @@ const emit = defineEmits(['click']);
     class="tbpro-button"
     :class="{ [type]: type, 'small': size === 'small' }"
     type="button"
-    @click="emit('click')"
   >
     <span class="icon" v-if="$slots?.icon">
       <slot name="icon"/>
