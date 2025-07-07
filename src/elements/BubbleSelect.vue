@@ -14,7 +14,7 @@ withDefaults(defineProps<Props>(), {
 });
 
 const model = defineModel<number[]>({ default: [] });
-defineEmits(['click']);
+const emit = defineEmits(['click']);
 
 /**
  * Adds or removes the option value from the model.
@@ -38,6 +38,9 @@ const toggleBubble = (option: SelectOption) => {
 
   // Sort for niceness
   model.value.sort();
+
+  // Finally let the parent know there was a click
+  emit('click');
 };
 </script>
 
