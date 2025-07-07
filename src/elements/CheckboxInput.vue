@@ -84,7 +84,7 @@ const onChange = () => {
         ref="inputRef"
       />
       <span v-if="label">{{ label }}</span>
-      <span v-if="required" class="required">*</span>
+      <span v-if="required && !model" class="required">*</span>
     </label>
     <span v-if="isInvalid" class="help-label invalid">
       {{ validationMessage }}
