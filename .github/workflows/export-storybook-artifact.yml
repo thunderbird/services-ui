@@ -30,9 +30,12 @@ jobs:
       - name: Build Storybook
         run: npm run build-storybook
 
+      - name: Set short commit SHA
+        run: echo "SHORT_COMMIT_SHA=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: storybook-artifact
+          name: storybook-artifact-${{ env.SHORT_COMMIT_SHA }}
           path: storybook-static/
           retention-days: 7
