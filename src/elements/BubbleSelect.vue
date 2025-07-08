@@ -3,7 +3,7 @@ import { type SelectOption } from "@/models";
 
 // component properties
 interface Props {
-  options: SelectOption[];
+  options: SelectOption<string | number>[];
   required: boolean;
   disabled?: boolean;
 }
@@ -13,7 +13,7 @@ withDefaults(defineProps<Props>(), {
   disabled: false,
 });
 
-const model = defineModel<number[]>({ default: [] });
+const model = defineModel<(string | number)[]>({ default: [] });
 const emit = defineEmits(['click']);
 
 /**
@@ -21,7 +21,7 @@ const emit = defineEmits(['click']);
  * There's probably a better way to do this lol!
  * @param option
  */
-const toggleBubble = (option: SelectOption) => {
+const toggleBubble = (option: SelectOption<string | number>) => {
   // Detect what our current state is
   const val = model.value.indexOf(option.value);
 
