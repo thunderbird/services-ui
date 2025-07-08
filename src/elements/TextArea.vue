@@ -76,6 +76,7 @@ const onChange = () => {
         @invalid="onInvalid"
         @change="onChange"
         ref="textareaRef"
+        :data-testid="dataTestid"
       />
     </span>
     <span v-if="isInvalid" class="help-label invalid">

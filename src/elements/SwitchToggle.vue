@@ -54,7 +54,14 @@ const toggleState = () => {
     <div class="toggle-container">
       <div v-if="!noLegend" class="toggle-label">{{ t('switchToggle.off') }}</div>
       <div class="toggle">
-        <input class="toggle-input" type="checkbox" :name="name" :checked="model" :disabled="disabled" />
+        <input
+          class="toggle-input"
+          type="checkbox"
+          :name="name"
+          :checked="model"
+          :disabled="disabled"
+          :data-testid="dataTestid"
+        />
         <div class="toggle-handle"></div>
       </div>
       <div v-if="!noLegend" class="toggle-label">{{ t('switchToggle.on') }}</div>

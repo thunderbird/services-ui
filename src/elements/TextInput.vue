@@ -106,9 +106,8 @@ const onChange = () => {
         @invalid="onInvalid"
         @change="onChange"
         ref="inputRef"
-        :style="{
-          paddingLeft: inputPaddingLeft,
-        }"
+        :style="{ paddingLeft: inputPaddingLeft }"
+        :data-testid="dataTestid"
       />
     </span>
     <span v-if="isInvalid" class="help-label invalid">

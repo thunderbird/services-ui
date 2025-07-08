@@ -66,6 +66,7 @@ const toggleBubble = (option: SelectOption) => {
           :title="option.fullLabel ?? String(option.value)"
           type="button"
           @click="() => !disabled ? toggleBubble(option) : null"
+          :data-testid="dataTestid"
         >
           {{ option.label }}
         </button>

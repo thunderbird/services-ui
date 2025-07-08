@@ -43,6 +43,7 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
       :required="required"
       :disabled="disabled"
       @invalid="onInvalid"
+      :data-testid="dataTestid"
     >
       <option
         v-for="option in options"
