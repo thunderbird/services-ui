@@ -46,3 +46,10 @@ export const PositionRight: Story = {
     position: TooltipPosition.Right,
   },
 };
+
+export const PositionNone: Story = {
+  args: {
+    default: 'Pointing nowhere',
+    position: TooltipPosition.None,
+  },
+};
