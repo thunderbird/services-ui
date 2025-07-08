@@ -8,10 +8,12 @@ interface Props {
   options: SelectOption[];
   required?: boolean;
   disabled?: boolean;
+  dataTestid?: string;
 }
 withDefaults(defineProps<Props>(), {
   required: false,
   disabled: false,
+  dataTestid: 'select-input',
 });
 
 defineEmits(["submit"]);

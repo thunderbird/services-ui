@@ -27,6 +27,7 @@ interface Props {
   smallText?: boolean;
   maxLength?: number | string;
   rows?: number | string;
+  dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
   help: null,
@@ -36,6 +37,7 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false,
   smallText: false,
   maxLength: null,
+  dataTestid: 'text-area',
 });
 defineExpose({ focus });
 

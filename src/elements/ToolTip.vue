@@ -6,10 +6,12 @@ import { TooltipPosition } from '@/definitions';
 interface Props {
   alt?: string;
   position?: TooltipPosition;
+  dataTestid?: string;
 };
 withDefaults(defineProps<Props>(), {
   alt: '',
   position: TooltipPosition.Bottom,
+  dataTestid: 'tool-tip',
 })
 </script>
 

@@ -8,12 +8,14 @@ interface Props {
   size?: 'regular' | 'small';
   tooltip?: string;
   forceTooltip?: boolean;
+  dataTestid?: string;
 };
 withDefaults(defineProps<Props>(), {
   type: 'secondary',
   size: 'regular',
   tooltip: '',
   forceTooltip: false,
+  dataTestid: 'button',
 })
 </script>
 

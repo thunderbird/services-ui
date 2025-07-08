@@ -14,8 +14,11 @@ interface Props {
   disabled?: boolean; // flag for making toggle non changable
   label?: string; // input label
   noLegend?: boolean; // hide "on" and "off" labels
+  dataTestid?: string;
 }
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  dataTestid: 'switch-toggle',
+});
 
 // Internal state ref, used only when v-model is not provided
 const internalState = ref(false);

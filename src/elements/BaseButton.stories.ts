@@ -18,7 +18,7 @@ const meta: Meta<typeof BaseButton> = {
     tooltip: '',
     // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
     onClick: fn(),
-    default: 'Click me!'
+    default: 'Click me!',
   },
 };
 

@@ -44,6 +44,7 @@ interface Props {
   disabled?: boolean;
   smallText?: boolean;
   maxLength?: number | string;
+  dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
   type: "text",
@@ -55,6 +56,7 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false,
   smallText: false,
   maxLength: null,
+  dataTestid: 'text-input',
 });
 
 defineEmits(["submit"]);

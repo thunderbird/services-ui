@@ -17,8 +17,11 @@ const selectAll = () => {
 // component properties
 interface Props {
   title: string;
+  dataTestid?: string;
 }
-defineProps<Props>();
+withDefaults(defineProps<Props>(), {
+  dataTestid: 'sync-card',
+});
 </script>
 
 <template>
