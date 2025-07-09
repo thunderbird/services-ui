@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { computed } from "vue";
+import { NoticeBarTypes } from "@/definitions";
+
 import NoticeInfoIcon from '@/icons/NoticeInfoIcon.vue';
 import NoticeSuccessIcon from '@/icons/NoticeSuccessIcon.vue';
 import NoticeWarningIcon from '@/icons/NoticeWarningIcon.vue';
 import NoticeCriticalIcon from '@/icons/NoticeCriticalIcon.vue';
-import { computed } from "vue";
-import { NoticeBarTypes } from "@/definitions";
 
 // component properties
 interface Props {

@@ -17,6 +17,9 @@ interface Props {
   dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
+  disabled: false,
+  label: null,
+  noLegend: true,
   dataTestid: 'switch-toggle',
 });
 
@@ -71,21 +74,6 @@ const toggleState = () => {
 
 <style scoped>
 .component-container {
-  /* Colour definitions */
-  --colour-base: #E4E4E7;
-  --colour-active: #008080;
-  --colour-inactive: #FEFFFF;
-  --colour-highlight: #FEFFFF;
-  --colour-border-intense: #777580;
-
-  html.dark & {
-    --colour-base: #737584;
-    --colour-active: #A3ECE3;
-    --colour-inactive: #FEFFFF;
-    --colour-highlight: #1A202C;
-    --colour-border-intense: #777580;
-  }
-
   position: relative;
   display: flex;
   align-items: center;
@@ -109,14 +97,14 @@ const toggleState = () => {
 }
 
 .toggle {
-  background: var(--colour-base);
+  background: var(--colour-neutral-border);
   width: 2rem;
   height: 1rem;
   flex-shrink: 0;
   border-radius: 9999px;
 
   &:has(.toggle-input:checked) {
-    background: var(--colour-active);
+    background: var(--colour-service-primary);
   }
 
   &:has(.toggle-input:disabled) {
@@ -127,20 +115,20 @@ const toggleState = () => {
     display: none;
 
     &:checked~.toggle-handle {
-      background-color: var(--colour-highlight);
+      background-color: var(--colour-neutral-base);
       transform: translateX(1rem);
-      border-color: var(--colour-active);
+      border-color: var(--colour-service-primary);
     }
   }
 
   .toggle-handle {
-    background-color: var(--colour-inactive);
+    background-color: var(--colour-neutral-base);
     width: 1rem;
     height: 1rem;
     box-sizing: border-box;
     border-radius: 9999px;
     transition: var(--transition-transform);
-    border: 1px solid var(--colour-border-intense);
+    border: 1px solid var(--colour-neutral-border-intense);
   }
 }
 </style>

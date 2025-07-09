@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { type HTMLInputElementEvent, type SelectOption } from "@/models";
+import { ref } from 'vue';
+import { type HTMLInputElementEvent, type SelectOption } from '@/models';
 
 // component properties
 interface Props {
   name: string;
-  options: SelectOption[];
+  options: SelectOption<number | string>[];
   required?: boolean;
   disabled?: boolean;
   dataTestid?: string;
@@ -16,10 +16,10 @@ withDefaults(defineProps<Props>(), {
   dataTestid: 'select-input',
 });
 
-defineEmits(["submit"]);
-const model = defineModel<any>();
+defineEmits(['submit']);
+const model = defineModel<number | string>();
 const isInvalid = ref(false);
-const validationMessage = ref("");
+const validationMessage = ref('');
 
 const onInvalid = (evt: HTMLInputElementEvent) => {
   isInvalid.value = true;
