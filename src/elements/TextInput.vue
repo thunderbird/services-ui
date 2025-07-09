@@ -44,6 +44,7 @@ interface Props {
   disabled?: boolean;
   smallText?: boolean;
   maxLength?: number | string;
+  dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
   type: "text",
@@ -55,6 +56,7 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false,
   smallText: false,
   maxLength: null,
+  dataTestid: 'text-input',
 });
 
 defineEmits(["submit"]);
@@ -104,9 +106,8 @@ const onChange = () => {
         @invalid="onInvalid"
         @change="onChange"
         ref="inputRef"
-        :style="{
-          paddingLeft: inputPaddingLeft,
-        }"
+        :style="{ paddingLeft: inputPaddingLeft }"
+        :data-testid="dataTestid"
       />
     </span>
     <span v-if="isInvalid" class="help-label invalid">

@@ -8,10 +8,12 @@ interface Props {
   options: SelectOption<number | string>[];
   required?: boolean;
   disabled?: boolean;
+  dataTestid?: string;
 }
 withDefaults(defineProps<Props>(), {
   required: false,
   disabled: false,
+  dataTestid: 'select-input',
 });
 
 defineEmits(['submit']);
@@ -41,6 +43,7 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
       :required="required"
       :disabled="disabled"
       @invalid="onInvalid"
+      :data-testid="dataTestid"
     >
       <option
         v-for="option in options"

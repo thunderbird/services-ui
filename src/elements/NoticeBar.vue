@@ -10,9 +10,11 @@ import NoticeCriticalIcon from '@/icons/NoticeCriticalIcon.vue';
 // component properties
 interface Props {
   type?: NoticeBarTypes;
+  dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
   type: NoticeBarTypes.Info,
+  dataTestid: 'notice-bar',
 })
 
 const isInfo = computed(() => props.type === NoticeBarTypes.Info);

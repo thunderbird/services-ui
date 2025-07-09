@@ -6,11 +6,13 @@ interface Props {
   options: SelectOption<string | number>[];
   required: boolean;
   disabled?: boolean;
+  dataTestid?: string;
 }
 
 withDefaults(defineProps<Props>(), {
   required: false,
   disabled: false,
+  dataTestid: 'bubble-select',
 });
 
 const model = defineModel<(string | number)[]>({ default: [] });
@@ -64,6 +66,7 @@ const toggleBubble = (option: SelectOption<string | number>) => {
           :title="option.fullLabel ?? String(option.value)"
           type="button"
           @click="() => !disabled ? toggleBubble(option) : null"
+          :data-testid="dataTestid"
         >
           {{ option.label }}
         </button>

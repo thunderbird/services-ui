@@ -7,10 +7,12 @@ import StatusWarningIcon from '@/icons/StatusWarningIcon.vue';
 interface Props {
   type?: 'primary' | 'secondary' | 'warning';
   icon?: boolean;
+  dataTestid?: string;
 }
 withDefaults(defineProps<Props>(), {
   type: "primary",
   icon: false,
+  dataTestid: 'badge',
 })
 </script>
 

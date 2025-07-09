@@ -14,11 +14,13 @@ interface Props {
   disabled?: boolean; // flag for making toggle non changable
   label?: string; // input label
   noLegend?: boolean; // hide "on" and "off" labels
+  dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
   disabled: false,
   label: null,
   noLegend: true,
+  dataTestid: 'switch-toggle',
 });
 
 // Internal state ref, used only when v-model is not provided
@@ -55,7 +57,14 @@ const toggleState = () => {
     <div class="toggle-container">
       <div v-if="!noLegend" class="toggle-label">{{ t('switchToggle.off') }}</div>
       <div class="toggle">
-        <input class="toggle-input" type="checkbox" :name="name" :checked="model" :disabled="disabled" />
+        <input
+          class="toggle-input"
+          type="checkbox"
+          :name="name"
+          :checked="model"
+          :disabled="disabled"
+          :data-testid="dataTestid"
+        />
         <div class="toggle-handle"></div>
       </div>
       <div v-if="!noLegend" class="toggle-label">{{ t('switchToggle.on') }}</div>

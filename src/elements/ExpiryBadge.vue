@@ -10,11 +10,13 @@ interface Props {
   timeRemaining?: number;
   warningThreshold?: number;
   timeUnit?: ExpiryUnitTypes;
+  dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
   timeRemaining: 10,
   warningThreshold: 5,
-  timeUnit: ExpiryUnitTypes.Days
+  timeUnit: ExpiryUnitTypes.Days,
+  dataTestid: 'expiry-badge',
 })
 
 const timeRemaining = computed(() => Math.ceil(props.timeRemaining));
