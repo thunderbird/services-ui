@@ -4,7 +4,7 @@ import ToolTip from '@/elements/ToolTip.vue';
 
 // component properties
 interface Props {
-  type?: 'primary' | 'secondary' | 'link';
+  type?: 'primary' | 'secondary' | 'danger' | 'link';
   size?: 'regular' | 'small';
   tooltip?: string;
   forceTooltip?: boolean;
@@ -14,7 +14,7 @@ withDefaults(defineProps<Props>(), {
   size: 'regular',
   tooltip: '',
   forceTooltip: false,
-})
+});
 </script>
 
 <template>
@@ -91,6 +91,25 @@ button:hover > .tooltip,
   }
 }
 
+.danger {
+  --colour-btn-border: var(--colour-danger-hover);
+
+  background-color: var(--colour-danger-default);
+  color: var(--colour-neutral-base);
+
+  &:hover:enabled {
+    --colour-btn-border: var(--colour-danger-pressed);
+
+    background-color: var(--colour-danger-hover);
+  }
+
+  &:active:enabled {
+    --colour-btn-border: var(--colour-danger-pressed);
+
+    background-color: var(--colour-danger-pressed);
+  }
+}
+
 .link {
   --colour-btn-border: transparent;
 
@@ -99,12 +118,16 @@ button:hover > .tooltip,
   text-decoration: underline;
   box-shadow: none !important;
   border: none !important;
+  min-width: 0;
 
   .text {
     padding: 0;
     user-select: all;
     font-weight: 400;
     line-height: 1;
+  }
+  &.small .text {
+    padding: 0;
   }
 
   &:hover {
@@ -113,12 +136,12 @@ button:hover > .tooltip,
 }
 
 .tbpro-button {
-  gap: 0.625rem;
-
   --faded-colour-btn-border: var(--colour-btn-border, var(--colour-neutral-border));
+
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.625rem;
 
   border-radius: var(--border-radius);
   @mixin faded-border var(--faded-colour-btn-border);

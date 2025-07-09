@@ -51,6 +51,17 @@ export const Secondary: Story = {
   }
 };
 
+export const Danger: Story = {
+  args: {
+    type: 'danger',
+  },
+  parameters: {
+    docs: {
+      source: { code: '<danger-button>Click me!</danger-button>' },
+    },
+  }
+};
+
 export const Link: Story = {
   args: {
     type: 'link',
