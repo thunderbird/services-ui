@@ -1,0 +1,41 @@
+# Simple workflow for exporting storybook artifact
+name: Export Storybook Artifact
+
+on:
+  # Runs on all branches except main
+  push:
+    branches:
+      - '**'
+      - '!main'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  # Single deploy job since we're just creating and uploading the artifact
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4.0.3
+        with:
+          cache: npm
+
+      - name: Install Deps
+        run: npm install
+
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      - name: Set short commit SHA
+        run: echo "SHORT_COMMIT_SHA=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: storybook-artifact-${{ env.SHORT_COMMIT_SHA }}
+          path: storybook-static/
+          retention-days: 7
