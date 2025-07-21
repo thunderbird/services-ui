@@ -17,6 +17,16 @@ const focus = () => {
   textareaRef.value.focus();
 };
 
+/**
+ * Resets the component's internal validation state and clears the input value.
+ * This should be explicitly called when the parent form is reset.
+ */
+const reset = () => {
+  model.value = "";
+  isInvalid.value = false;
+  isDirty.value = false;
+};
+
 // component properties
 interface Props {
   name: string;
@@ -39,7 +49,8 @@ const props = withDefaults(defineProps<Props>(), {
   maxLength: null,
   dataTestid: 'text-area',
 });
-defineExpose({ focus });
+
+defineExpose({ focus, reset });
 
 const onInvalid = () => {
   isInvalid.value = true;
