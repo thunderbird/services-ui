@@ -43,9 +43,14 @@ export const Required: Story = {
       template: `
         <div>
           <story />
-          <button @click="triggerInvalid">
-            Force trigger invalid state
-          </button>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button @click="triggerInvalid">
+              Force trigger invalid state
+            </button>
+            <button @click="manualReset">
+              Manual Reset
+            </button>
+          </div>
         </div>
       `,
       methods: {
@@ -55,7 +60,14 @@ export const Required: Story = {
             const invalidEvent = new Event('invalid', { bubbles: true });
             textarea.dispatchEvent(invalidEvent);
           }
-        }
+        },
+        manualReset() {
+          const inputElement = document.querySelector('textarea[name="fav-food"]');
+
+          // Access the exposed methods through the Vue component's public interface
+          const componentExposed = (inputElement as any).__vueParentComponent?.exposed;
+          componentExposed.reset();
+        },
       }
     })
   ]
