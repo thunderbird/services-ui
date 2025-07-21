@@ -9,6 +9,7 @@ import WarningBadge from '@/elements/WarningBadge.vue';
 
 // Buttons
 import BaseButton from '@/elements/BaseButton.vue';
+import DangerButton from '@/elements/DangerButton.vue';
 import LinkButton from '@/elements/LinkButton.vue';
 import PrimaryButton from '@/elements/PrimaryButton.vue';
 import SecondaryButton from '@/elements/SecondaryButton.vue';
@@ -49,6 +50,7 @@ export {
   WarningBadge,
   // Buttons
   BaseButton,
+  DangerButton,
   LinkButton,
   PrimaryButton,
   SecondaryButton,
