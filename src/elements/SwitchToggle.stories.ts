@@ -1,4 +1,4 @@
-import { fn } from '@storybook/test';
+import { fn } from 'storybook/test';
 import type { Meta, StoryObj } from '@storybook/vue3';
 import SwitchToggle from '@/elements/SwitchToggle.vue';
 

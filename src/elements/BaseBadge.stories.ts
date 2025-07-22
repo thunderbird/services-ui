@@ -17,8 +17,8 @@ const meta: Meta<typeof BaseBadge> = {
     default: "Recommended",
   },
 };
-
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
