@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { HTMLInputElementEvent } from '@/models';
+import { type HTMLInputElementEvent } from '@/models';
 
 // component properties
 interface Props {

@@ -29,11 +29,9 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
 
 <template>
   <label class="wrapper" :for="name">
-    <span class="label">
-      <slot />
-      <span v-if="required && (model === null || model === '')" class="required"
-        >*</span
-      >
+    <span v-if="$slots.default" class="label">
+      <slot/>
+      <span v-if="required && (model === null || model === '')" class="required">*</span>
     </span>
     <select
       class="tbpro-select w-full rounded-md"
@@ -45,11 +43,7 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
       @invalid="onInvalid"
       :data-testid="dataTestid"
     >
-      <option
-        v-for="option in options"
-        :value="option.value"
-        :key="option.value"
-      >
+      <option v-for="option in options" :value="option.value" :key="option.value">
         {{ option.label }}
       </option>
     </select>
@@ -60,22 +54,22 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
 </template>
 
 <style scoped>
-@import "@/assets/styles/mixins.pcss";
+@import '@/assets/styles/mixins.pcss';
 
 .wrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
   color: var(--colour-ti-base);
-  font-family: "Inter", "sans-serif";
+  font-family: var(--font-sans);
   font-size: var(--txt-input);
   line-height: var(--line-height-input);
   font-weight: 400;
-  max-width: 320px;
 }
 
 .label {
   width: 100%;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .help-label {
@@ -84,7 +78,6 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
   color: var(--colour-ti-critical);
 
   width: 100%;
-  min-height: 0.9375rem;
   font-size: 0.625rem;
   line-height: 0.9375rem;
 }
@@ -102,13 +95,13 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
   background-color: var(--colour-neutral-base);
   @mixin faded-border var(--colour-select-border);
   border-radius: var(--border-radius);
+  font-size: var(--txt-input);
   font-weight: 400;
   padding: 0.75rem;
 
   color: var(--txt-colour);
-
-  &:hover,
-  &:focus {
+  
+  &:hover, &:focus {
     --colour-select-border: var(--colour-neutral-border-intense);
   }
 
@@ -116,11 +109,16 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
     background-color: var(--colour-neutral-subtle);
     --colour-select-border: var(--colour-neutral-border-intense);
   }
+
+  &:disabled {
+    filter: grayscale(50%);
+    cursor: not-allowed;
+  }
 }
 
 .dark {
   .tbpro-select {
-    background-color: var(--colour-neutral-lower);
+    background-color: var(--colour-neutral-base);
   }
 }
 </style>
