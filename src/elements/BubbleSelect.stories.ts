@@ -1,10 +1,10 @@
-import { fn } from '@storybook/test';
+import { fn } from 'storybook/test';
 import type { Meta, StoryObj } from '@storybook/vue3';
 
 import BubbleSelect from "@/elements/BubbleSelect.vue";
 import type { SelectOption } from "@/models";
 
-const scheduleDayOptions: SelectOption[] = [
+const scheduleDayOptions: SelectOption<string>[] = [
   {
     label: 'S',
     value: 'Sunday',
