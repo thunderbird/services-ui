@@ -105,12 +105,40 @@ export const Email: Story = {
     required: true,
   },
 };
-export const Prefix: Story = {
+
+export const InnerPrefix: Story = {
   args: {
-    name: "Currency",
-    default: "",
-    placeholder: "100.00",
+    name: 'Currency',
+    default: 'Currency',
+    placeholder: '100.00',
     required: true,
-    prefix: "€",
+    prefix: '€',
+  },
+};
+
+export const OuterPrefix: Story = {
+  args: {
+    name: 'username',
+    default: 'Username',
+    placeholder: 'handle',
+    outerPrefix: 'https://test.org/',
+  },
+};
+
+export const SmallText: Story = {
+  args: {
+    name: 'small-text',
+    default: 'Small text',
+    placeholder: 'What are you gonna do',
+    smallText: true,
+  },
+};
+
+export const SmallInput: Story = {
+  args: {
+    name: 'small-input',
+    default: 'Small input',
+    placeholder: 'Save some space',
+    smallInput: true,
   },
 };
