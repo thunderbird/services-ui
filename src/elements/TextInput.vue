@@ -263,7 +263,7 @@ const onChange = () => {
 }
 
 .dark {
-  .tbpro-input {
+  .tbpro-input-element {
     background-color: var(--colour-neutral-lower);
   }
 }
