@@ -99,7 +99,7 @@ const toggleBubble = (option: SelectOption<string | number>) => {
 }
 
 .tbpro-bubble {
-  transition: all 250ms ease-out;
+  transition: var(--transition);
 
   display: flex;
   justify-content: center;

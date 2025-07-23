@@ -153,10 +153,7 @@ button:hover > .tooltip,
   line-height: 0.983rem; /* 15.73px */
   font-weight: 700;
 
-  min-width: 8.0rem;
-
-  transition: all 250ms ease-out;
-
+  transition: var(--transition);
   cursor: pointer;
 
   &:hover {
