@@ -98,6 +98,7 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
   font-size: var(--txt-input);
   font-weight: 400;
   padding: 0.75rem;
+  width: 100%;
 
   color: var(--txt-colour);
   
