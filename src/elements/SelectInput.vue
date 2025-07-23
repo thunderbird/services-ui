@@ -34,7 +34,7 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
       <span v-if="required && (model === null || model === '')" class="required">*</span>
     </span>
     <select
-      class="tbpro-select w-full rounded-md"
+      class="tbpro-select"
       v-model="model"
       :id="name"
       :name="name"
