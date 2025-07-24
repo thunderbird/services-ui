@@ -16,7 +16,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <div class="tooltip" :aria-label="alt">
+  <div class="tooltip" :aria-label="alt" :data-testid="dataTestid">
     <div class="tooltip-container">
       <div class="tooltip-body">
         <slot></slot>

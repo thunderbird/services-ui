@@ -17,7 +17,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <div :class="{ [type]: type }" class="badge">
+  <div :class="{ [type]: type }" class="badge" :data-testid="dataTestid">
     <span class="icon" v-if="icon">
       <slot name="icon">
         <status-info-icon v-if="type == 'primary' || type == 'secondary'"/>

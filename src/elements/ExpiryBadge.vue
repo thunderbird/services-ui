@@ -34,7 +34,7 @@ const status = computed(() => {
 </script>
 
 <template>
-  <base-badge :class="status" icon>
+  <base-badge :class="status" icon :data-testid="dataTestid">
     <template #icon>
       <status-expiry-icon/>
     </template>
