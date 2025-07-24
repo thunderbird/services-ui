@@ -25,7 +25,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <div class="wrapper">
+  <div class="wrapper" :data-testid="dataTestid">
     <div class="header">
       <slot name="icon"></slot>
       <div class="text-wrapper">

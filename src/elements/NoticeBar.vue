@@ -29,7 +29,7 @@ const isError = computed(() => props.type === NoticeBarTypes.Error);
     info: isInfo,
     warning: isWarning,
     success: isSuccess
-  }" class="notice notice-bar">
+  }" class="notice notice-bar" :data-testid="dataTestid">
     <span class="icon">
       <notice-info-icon v-if="isInfo" />
       <notice-success-icon v-if="isSuccess" />
