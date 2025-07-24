@@ -24,6 +24,7 @@ withDefaults(defineProps<Props>(), {
     class="tbpro-button"
     :class="{ [type]: type, 'small': size === 'small' }"
     type="button"
+    :data-testid="dataTestid"
   >
     <span class="icon" v-if="$slots?.icon">
       <slot name="icon"/>
