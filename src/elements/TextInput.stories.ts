@@ -125,6 +125,15 @@ export const OuterPrefix: Story = {
   },
 };
 
+export const OuterSuffix: Story = {
+  args: {
+    name: 'username',
+    default: 'Username',
+    placeholder: 'handle',
+    outerSuffix: '@example.org',
+  },
+};
+
 export const SmallText: Story = {
   args: {
     name: 'small-text',
