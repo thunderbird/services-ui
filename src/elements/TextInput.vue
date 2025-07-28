@@ -42,6 +42,7 @@ interface Props {
   placeholder?: string;
   prefix?: string; // A prefix shows up at the start of the input field and moves the actual input to the right.
   outerPrefix?: string; // A prefix shows up outside the input field and moves the whole input to the right.
+  outerSuffix?: string;
   required?: boolean;
   disabled?: boolean;
   smallText?: boolean;
@@ -120,6 +121,7 @@ const onChange = () => {
           ref="inputRef"
         />
       </span>
+      <span v-if="outerSuffix" class="tbpro-input-outer-suffix">{{ outerSuffix }}</span>
     </span>
     <span v-if="isInvalid" class="help-label invalid">
       {{ validationMessage }}
@@ -182,7 +184,8 @@ const onChange = () => {
   gap: 0.25rem;
   width: 100%;
 
-  .tbpro-input-outer-prefix {
+  .tbpro-input-outer-prefix,
+  .tbpro-input-outer-suffix {
     white-space: nowrap;
   }
 
