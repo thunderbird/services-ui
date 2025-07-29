@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import SyncCard from "@/elements/SyncCard.vue";
 import { ref, watch } from "vue";
 import CalendarIcon from '@/assets/svg/icons/calendar.svg'
