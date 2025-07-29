@@ -4,14 +4,14 @@ import importPlugin from 'eslint-plugin-import';
 import playwright from 'eslint-plugin-playwright';
 import storybook from 'eslint-plugin-storybook';
 import vueLint from 'eslint-plugin-vue';
-import vueTsEslintConfig from '@vue/eslint-config-typescript';
+import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript';
 
-export default [
+export default defineConfigWithVueTs(
   jsLint.configs.recommended,
   ...tsLint.configs.recommended,
   importPlugin.flatConfigs.recommended,
   ...vueLint.configs['flat/essential'],
-  ...vueTsEslintConfig(),
+  vueTsConfigs.recommended,
   ...storybook.configs['flat/recommended'],
   {
     ...playwright.configs['flat/recommended'],
@@ -38,11 +38,13 @@ export default [
         js: 'never',
         vue: 'off',
       }],
-      'no-param-reassign': 'off',
       'import/prefer-default-export': 'off',
       'radix': 'off',
       'dot-notation': 'off',
+      'vue/no-use-v-if-with-v-for': 'warn',
+      '@typescript-eslint/ban-ts-comment': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
+      'no-extra-boolean-cast': 'off',
       // Disable full warning, and customize the typescript one
       // Warn about unused vars unless they start with an underscore
       'no-unused-vars': 'off',
@@ -62,4 +64,4 @@ export default [
       },
     },
   }
-];
+);
