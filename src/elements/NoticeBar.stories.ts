@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
 import NoticeBar from "@/elements/NoticeBar.vue";
 import { NoticeBarTypes } from "@/definitions";

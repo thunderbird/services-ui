@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import CheckboxInput from '@/elements/CheckboxInput.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories

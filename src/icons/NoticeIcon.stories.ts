@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
 import NoticeInfoIcon from "@/icons/NoticeInfoIcon.vue";
 import NoticeSuccessIcon from "@/icons/NoticeSuccessIcon.vue";

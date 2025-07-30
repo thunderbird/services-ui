@@ -1,4 +1,4 @@
-import type {Preview} from "@storybook/vue3";
+import type { Preview } from "@storybook/vue3-vite";
 import '@/assets/styles/fonts.css';
 import '@/assets/styles/main.css';
 import {withThemeByClassName, withThemeByDataAttribute} from "@storybook/addon-themes";

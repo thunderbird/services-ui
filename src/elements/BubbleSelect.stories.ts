@@ -1,5 +1,5 @@
 import { fn } from 'storybook/test';
-import type { Meta, StoryObj } from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
 import BubbleSelect from "@/elements/BubbleSelect.vue";
 import type { SelectOption } from "@/models";
