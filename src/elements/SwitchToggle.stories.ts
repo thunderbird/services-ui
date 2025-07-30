@@ -1,4 +1,5 @@
 import { fn } from 'storybook/test';
+import { ref } from 'vue';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import SwitchToggle from '@/elements/SwitchToggle.vue';
 
@@ -42,4 +43,57 @@ export const Disabled: Story = {
     disabled: true,
     modelValue: false,
   },
+};
+
+export const WithVModel: Story = {
+  render: (args) => ({
+    components: { SwitchToggle },
+    setup() {
+      const currentState = ref(false);
+
+      return {
+        ...args,
+        currentState,
+      };
+    },
+    template: `
+      <div>
+        <SwitchToggle
+          name="with-vmodel"
+          v-model="currentState"
+          :label="'Click me to trigger events'"
+        />
+        <p><strong>Current State:</strong> {{ currentState ? 'ON' : 'OFF' }}</p>
+      </div>
+    `,
+  }),
+};
+
+export const WithoutVModel: Story = {
+  render: (args) => ({
+    components: { SwitchToggle },
+    setup() {
+      const currentState = ref(false);
+
+      const handleChanged = (newState: boolean) => {
+        currentState.value = newState;
+      };
+
+      return {
+        ...args,
+        currentState,
+        handleChanged,
+      };
+    },
+    template: `
+      <div>
+        <SwitchToggle
+          name="without-vmodel"
+          @changed="handleChanged"
+          :label="'Click me to trigger events'"
+        />
+        <p><strong>Current State:</strong> {{ currentState ? 'ON' : 'OFF' }}</p>
+      </div>
+    `,
+  }),
 };

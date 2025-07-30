@@ -2,7 +2,7 @@
 import { ref, onMounted, computed } from 'vue';
 import { t } from '@/composable/i18n';
 
-const model = defineModel<boolean>();
+const model = defineModel();
 
 // component emits
 const emit = defineEmits(['changed']);
@@ -61,7 +61,7 @@ const toggleState = () => {
           class="toggle-input"
           type="checkbox"
           :name="name"
-          :checked="model"
+          :checked="!!currentState"
           :disabled="disabled"
           :data-testid="dataTestid"
         />
