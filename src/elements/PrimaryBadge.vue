@@ -4,6 +4,6 @@ import BaseBadge from '@/elements/BaseBadge.vue';
 
 <template>
   <base-badge type="primary">
-    <slot/>
+    <slot />
   </base-badge>
 </template>

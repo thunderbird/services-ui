@@ -1,7 +1,7 @@
-import type { Preview } from "@storybook/vue3-vite";
+import type { Preview } from '@storybook/vue3-vite';
 import '@/assets/styles/fonts.css';
 import '@/assets/styles/main.css';
-import {withThemeByClassName, withThemeByDataAttribute} from "@storybook/addon-themes";
+import { withThemeByClassName, withThemeByDataAttribute } from '@storybook/addon-themes';
 
 export const decorators = [
   withThemeByClassName({

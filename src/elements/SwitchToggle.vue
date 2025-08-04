@@ -88,11 +88,11 @@ const toggleState = () => {
 .toggle-container {
   display: flex;
   align-items: center;
-  gap: .375rem;
+  gap: 0.375rem;
 }
 
 .toggle-label {
-  font-size: .75rem;
+  font-size: 0.75rem;
   line-height: 1rem;
 }
 
@@ -114,7 +114,7 @@ const toggleState = () => {
   .toggle-input {
     display: none;
 
-    &:checked~.toggle-handle {
+    &:checked ~ .toggle-handle {
       background-color: var(--colour-neutral-base);
       transform: translateX(1rem);
       border-color: var(--colour-service-primary);

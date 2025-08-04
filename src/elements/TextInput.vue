@@ -103,8 +103,8 @@ const onChange = () => {
           class="tbpro-input-element"
           :class="{
             'small-input': props.smallInput,
-            'dirty': isDirty,
-            'error': error !== null,
+            dirty: isDirty,
+            error: error !== null,
           }"
           :type="type"
           :id="name"
@@ -136,7 +136,7 @@ const onChange = () => {
 </template>
 
 <style scoped>
-@import "@/assets/styles/mixins.pcss";
+@import '@/assets/styles/mixins.pcss';
 
 .wrapper {
   display: flex;
@@ -175,7 +175,7 @@ const onChange = () => {
 
 .required {
   color: var(--colour-ti-critical);
-  padding-left: .25rem;
+  padding-left: 0.25rem;
 }
 
 .tbpro-input {
@@ -223,10 +223,10 @@ const onChange = () => {
       @mixin faded-border var(--colour-btn-border);
 
       &.small-input {
-        padding: .125rem;
+        padding: 0.125rem;
         --txt-input: 0.7384375rem;
       }
-      
+
       &:hover:enabled {
         --colour-btn-border: var(--colour-neutral-border-intense);
       }
@@ -257,7 +257,7 @@ const onChange = () => {
         color: var(--colour-ti-muted);
       }
 
-      &[type="time"]::-webkit-calendar-picker-indicator {
+      &[type='time']::-webkit-calendar-picker-indicator {
         margin-right: -0.5rem;
         background: none;
       }

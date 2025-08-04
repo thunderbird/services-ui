@@ -15,8 +15,8 @@ npm i @thunderbirdops/services-ui
 Then, include the stylesheet into your top-level component:
 
 ```ts
-import "@thunderbirdops/services-ui/style.css";
-````
+import '@thunderbirdops/services-ui/style.css';
+```
 
 We recommend you pull in the `Inter` font separately.
 

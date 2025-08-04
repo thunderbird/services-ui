@@ -68,9 +68,9 @@ export const Required: Story = {
           const componentExposed = (inputElement as any).__vueParentComponent?.exposed;
           componentExposed.reset();
         },
-      }
-    })
-  ]
+      },
+    }),
+  ],
 };
 
 export const RequiredWithPlaceholder: Story = {

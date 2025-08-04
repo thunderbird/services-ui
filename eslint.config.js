@@ -15,31 +15,25 @@ export default defineConfigWithVueTs(
   ...storybook.configs['flat/recommended'],
   {
     ...playwright.configs['flat/recommended'],
-    files: [
-      '**/*.vue',
-      '**/*.js',
-      '**/*.jsx',
-      '**/*.cjs',
-      '**/*.mjs',
-      '**/*.ts',
-      '**/*.tsx',
-      '**/*.cts',
-      '**/*.mts',
-    ],
+    files: ['**/*.vue', '**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs', '**/*.ts', '**/*.tsx', '**/*.cts', '**/*.mts'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
     },
     rules: {
       ...playwright.configs['flat/recommended'].rules,
-      'import/extensions': ['error', 'ignorePackages', {
-        '': 'never',
-        ts: 'never',
-        js: 'never',
-        vue: 'off',
-      }],
+      'import/extensions': [
+        'error',
+        'ignorePackages',
+        {
+          '': 'never',
+          ts: 'never',
+          js: 'never',
+          vue: 'off',
+        },
+      ],
       'import/prefer-default-export': 'off',
-      'radix': 'off',
+      radix: 'off',
       'dot-notation': 'off',
       'vue/no-use-v-if-with-v-for': 'warn',
       '@typescript-eslint/ban-ts-comment': 'off',

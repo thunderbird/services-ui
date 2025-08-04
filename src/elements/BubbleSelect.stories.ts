@@ -1,8 +1,8 @@
 import { fn } from 'storybook/test';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
-import BubbleSelect from "@/elements/BubbleSelect.vue";
-import type { SelectOption } from "@/models";
+import BubbleSelect from '@/elements/BubbleSelect.vue';
+import type { SelectOption } from '@/models';
 
 const scheduleDayOptions: SelectOption<string>[] = [
   {
@@ -32,8 +32,8 @@ const scheduleDayOptions: SelectOption<string>[] = [
   {
     label: 'S',
     value: 'Saturday',
-  }
-]
+  },
+];
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof BubbleSelect> = {
@@ -45,7 +45,7 @@ const meta: Meta<typeof BubbleSelect> = {
     // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
     onClick: fn(),
     disabled: false,
-    options: scheduleDayOptions
+    options: scheduleDayOptions,
   },
 };
 
@@ -59,7 +59,7 @@ type Story = StoryObj<typeof meta>;
 export const Weekdays: Story = {
   args: {
     default: 'Select Days',
-    required: true
+    required: true,
   },
 };
 export const Disabled: Story = {

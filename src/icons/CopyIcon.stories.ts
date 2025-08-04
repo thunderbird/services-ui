@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
-import CopyIcon from "@/icons/CopyIcon.vue";
+import CopyIcon from '@/icons/CopyIcon.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof CopyIcon> = {
@@ -18,5 +18,5 @@ export const Standard: Story = {
     docs: {
       source: { code: '<copy-icon />' },
     },
-  }
+  },
 };

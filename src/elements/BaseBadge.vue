@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import StatusInfoIcon from '@/icons/StatusInfoIcon.vue';
 import StatusWarningIcon from '@/icons/StatusWarningIcon.vue';
 
@@ -10,22 +9,22 @@ interface Props {
   dataTestid?: string;
 }
 withDefaults(defineProps<Props>(), {
-  type: "primary",
+  type: 'primary',
   icon: false,
   dataTestid: 'badge',
-})
+});
 </script>
 
 <template>
   <div :class="{ [type]: type }" class="badge" :data-testid="dataTestid">
     <span class="icon" v-if="icon">
       <slot name="icon">
-        <status-info-icon v-if="type == 'primary' || type == 'secondary'"/>
-        <status-warning-icon v-if="type == 'warning'"/>
+        <status-info-icon v-if="type == 'primary' || type == 'secondary'" />
+        <status-warning-icon v-if="type == 'warning'" />
       </slot>
     </span>
     <span class="text">
-      <slot/>
+      <slot />
     </span>
   </div>
 </template>

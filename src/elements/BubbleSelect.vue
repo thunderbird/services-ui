@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type SelectOption } from "@/models";
+import { type SelectOption } from '@/models';
 
 // component properties
 interface Props {
@@ -32,10 +32,7 @@ const toggleBubble = (option: SelectOption<string | number>) => {
     model.value = model.value.filter((value) => option.value !== value);
   } else {
     // We don't have the value, so mix it in
-    model.value = [
-      ...model.value,
-      option.value,
-    ];
+    model.value = [...model.value, option.value];
   }
 
   // Sort for niceness
@@ -60,12 +57,12 @@ const toggleBubble = (option: SelectOption<string | number>) => {
           class="tbpro-bubble"
           :aria-pressed="model.indexOf(option.value) > -1"
           :class="{
-            'selected': model.indexOf(option.value) > -1,
+            selected: model.indexOf(option.value) > -1,
             disabled,
           }"
           :title="option.fullLabel ?? String(option.value)"
           type="button"
-          @click="() => !disabled ? toggleBubble(option) : null"
+          @click="() => (!disabled ? toggleBubble(option) : null)"
           :data-testid="dataTestid"
         >
           {{ option.label }}

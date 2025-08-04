@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
-import NoticeInfoIcon from "@/icons/NoticeInfoIcon.vue";
-import NoticeSuccessIcon from "@/icons/NoticeSuccessIcon.vue";
-import NoticeWarningIcon from "@/icons/NoticeWarningIcon.vue";
-import NoticeCriticalIcon from "@/icons/NoticeCriticalIcon.vue";
+import NoticeInfoIcon from '@/icons/NoticeInfoIcon.vue';
+import NoticeSuccessIcon from '@/icons/NoticeSuccessIcon.vue';
+import NoticeWarningIcon from '@/icons/NoticeWarningIcon.vue';
+import NoticeCriticalIcon from '@/icons/NoticeCriticalIcon.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof NoticeInfoIcon> = {
@@ -25,7 +25,7 @@ export const Info: Story = {
     docs: {
       source: { code: '<notice-info-icon />' },
     },
-  }
+  },
 };
 
 export const Success: Story = {
@@ -37,7 +37,7 @@ export const Success: Story = {
     docs: {
       source: { code: '<notice-success-icon />' },
     },
-  }
+  },
 };
 
 export const Warning: Story = {
@@ -49,7 +49,7 @@ export const Warning: Story = {
     docs: {
       source: { code: '<notice-warning-icon />' },
     },
-  }
+  },
 };
 
 export const Critical: Story = {
@@ -61,5 +61,5 @@ export const Critical: Story = {
     docs: {
       source: { code: '<notice-critical-icon />' },
     },
-  }
+  },
 };

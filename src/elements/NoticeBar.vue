@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { NoticeBarTypes } from "@/definitions";
+import { computed } from 'vue';
+import { NoticeBarTypes } from '@/definitions';
 
 import NoticeInfoIcon from '@/icons/NoticeInfoIcon.vue';
 import NoticeSuccessIcon from '@/icons/NoticeSuccessIcon.vue';
@@ -15,7 +15,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   type: NoticeBarTypes.Info,
   dataTestid: 'notice-bar',
-})
+});
 
 const isInfo = computed(() => props.type === NoticeBarTypes.Info);
 const isSuccess = computed(() => props.type === NoticeBarTypes.Success);
@@ -24,12 +24,16 @@ const isError = computed(() => props.type === NoticeBarTypes.Error);
 </script>
 
 <template>
-  <div :class="{
-    error: isError,
-    info: isInfo,
-    warning: isWarning,
-    success: isSuccess
-  }" class="notice notice-bar" :data-testid="dataTestid">
+  <div
+    :class="{
+      error: isError,
+      info: isInfo,
+      warning: isWarning,
+      success: isSuccess,
+    }"
+    class="notice notice-bar"
+    :data-testid="dataTestid"
+  >
     <span class="icon">
       <notice-info-icon v-if="isInfo" />
       <notice-success-icon v-if="isSuccess" />

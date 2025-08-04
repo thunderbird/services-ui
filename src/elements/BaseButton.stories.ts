@@ -12,7 +12,7 @@ const meta: Meta<typeof BaseButton> = {
   argTypes: {
     size: { control: 'select', options: ['regular', 'small'] },
     type: { control: 'select', options: ['primary', 'secondary', 'link'] },
-    tooltip: { control: 'text' }
+    tooltip: { control: 'text' },
   },
   args: {
     tooltip: '',
@@ -37,7 +37,7 @@ export const Primary: Story = {
     docs: {
       source: { code: '<primary-button>Click me!</primary-button>' },
     },
-  }
+  },
 };
 
 export const Secondary: Story = {
@@ -48,7 +48,7 @@ export const Secondary: Story = {
     docs: {
       source: { code: '<secondary-button>Click me!</secondary-button>' },
     },
-  }
+  },
 };
 
 export const Danger: Story = {
@@ -59,7 +59,7 @@ export const Danger: Story = {
     docs: {
       source: { code: '<danger-button>Click me!</danger-button>' },
     },
-  }
+  },
 };
 
 export const Link: Story = {
@@ -70,7 +70,7 @@ export const Link: Story = {
     docs: {
       source: { code: '<link-button>Click me!</link-button>' },
     },
-  }
+  },
 };
 
 export const Small: Story = {
@@ -82,5 +82,5 @@ export const Small: Story = {
     docs: {
       source: { code: '<primary-button size="small">Click me!</primary-button>' },
     },
-  }
+  },
 };

@@ -111,7 +111,6 @@ export enum BookingsViewTypes {
   Grid = 2,
 }
 
-
 /**
  * Type for event location.
  * Corresponds to models.LocationType
@@ -192,7 +191,7 @@ export enum AlertSchemes {
   Warning = 2, // Alert indicates something important
   Success = 3, // Alert indicates something's gone right
   Info = 4, // Alert indicates some neutral information
-};
+}
 
 /**
  * Used as the session storage key for the location the user wanted to go to before logging in.
@@ -231,7 +230,7 @@ export enum FtueStep {
   SetupSchedule = 40,
   ConnectVideoConferencing = 50,
   Finish = 100,
-};
+}
 
 export enum TooltipPosition {
   None = 'pos-none',
@@ -239,7 +238,7 @@ export enum TooltipPosition {
   Bottom = 'pos-bottom',
   Left = 'pos-left',
   Right = 'pos-right',
-};
+}
 
 /**
  * This should match the enum in routes/waiting_list.py
@@ -247,7 +246,7 @@ export enum TooltipPosition {
 export enum WaitingListAction {
   Confirm = 1,
   Leave = 2,
-};
+}
 
 export enum MetricEvents {
   PageLoaded = 'apmt.page.loaded',
@@ -278,17 +277,17 @@ export enum NoticeBarTypes {
   Info = 'info',
   Success = 'success',
   Warning = 'warning',
-  Error = 'error'
+  Error = 'error',
 }
 
 export enum ExpiryUnitTypes {
-  Seconds = "second",
-  Minutes = "minute",
-  Hours = "hour",
-  Days = "day",
-  Weeks = "week",
-  Months = "month",
-  Years = "year",
+  Seconds = 'second',
+  Minutes = 'minute',
+  Hours = 'hour',
+  Days = 'day',
+  Weeks = 'week',
+  Months = 'month',
+  Years = 'year',
 }
 
 export default {
