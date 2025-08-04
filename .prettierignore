@@ -3,6 +3,9 @@ node_modules
 /dist
 public/fonts
 
+# Filetypes to keep as is
+*.svg
+
 # Version control and IDEs
 .git
 .github
