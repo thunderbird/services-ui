@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import SyncCard from "@/elements/SyncCard.vue";
-import { ref, watch } from "vue";
-import CalendarIcon from '@/assets/svg/icons/calendar.svg'
+import SyncCard from '@/elements/SyncCard.vue';
+import { ref, watch } from 'vue';
+import CalendarIcon from '@/assets/svg/icons/calendar.svg';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof SyncCard> = {
@@ -39,7 +39,7 @@ const meta: Meta<typeof SyncCard> = {
         () => args.modelValue,
         (val) => {
           model.value = val;
-        },
+        }
       );
 
       return { args, model };
@@ -84,9 +84,9 @@ export const CalendarSync: Story = {
         key: 4,
         label: 'That calendar you never use but its full of holidays',
         checked: false,
-      }
-    ]
-  }
+      },
+    ],
+  },
 };
 
 export const FileSync: Story = {
@@ -106,7 +106,7 @@ export const FileSync: Story = {
         key: 2,
         label: 'chill beats to hibernate to.zip',
         checked: false,
-      }
-    ]
+      },
+    ],
   },
 };

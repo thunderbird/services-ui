@@ -33,7 +33,7 @@ withDefaults(defineProps<Props>(), {
           {{ title }}
         </div>
         <div class="selected">
-          {{ t('syncCard.itemsSelected', { 'count': selected }) }}
+          {{ t('syncCard.itemsSelected', { count: selected }) }}
         </div>
       </div>
       <primary-button class="select-all" size="small" @click="selectAll" :title="t('syncCard.selectAllCalendars')">
@@ -102,7 +102,7 @@ withDefaults(defineProps<Props>(), {
 }
 
 .rows {
-  height: 12.0rem;
+  height: 12rem;
   overflow-y: scroll;
   border-radius: 0.5rem;
   list-style: none;
@@ -128,8 +128,8 @@ label {
 }
 
 .tbpro-checkbox {
-  width: 1.0rem;
-  height: 1.0rem;
+  width: 1rem;
+  height: 1rem;
   border-radius: var(--border-radius);
   border: 1px solid var(--colour-neutral-border-intense);
   accent-color: var(--colour-highlight);

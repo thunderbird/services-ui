@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<Props>(), {
   checked: false,
   required: false,
   disabled: false,
-  dataTestid: 'checkbox-input'
+  dataTestid: 'checkbox-input',
 });
 
 const model = defineModel<boolean>();
@@ -54,7 +54,7 @@ const reset = () => {
   model.value = props.checked ?? false;
   isInvalid.value = false;
   isDirty.value = false;
-  validationMessage.value = "";
+  validationMessage.value = '';
 };
 
 const emit = defineEmits(['submit', 'change']);
@@ -83,7 +83,7 @@ const onChange = () => {
         class="checkbox-input"
         v-model="model"
         type="checkbox"
-        :class="{ 'dirty': isDirty }"
+        :class="{ dirty: isDirty }"
         :id="name"
         :name="name"
         :checked="checked"
@@ -159,8 +159,8 @@ const onChange = () => {
 
 .checkbox-input {
   --colour-input-border: var(--colour-neutral-border-intense);
-  width: 1.0rem;
-  height: 1.0rem;
+  width: 1rem;
+  height: 1rem;
   border-radius: var(--border-radius);
   border: 1px solid var(--colour-input-border);
 
@@ -168,7 +168,9 @@ const onChange = () => {
     outline-color: var(--colour-highlight);
   }
 
-  &:checked, &:checked:hover, &:checked:focus {
+  &:checked,
+  &:checked:hover,
+  &:checked:focus {
     background-color: var(--colour-highlight);
     border-color: var(--colour-highlight);
     color: var(--colour-neutral-raised);
@@ -180,7 +182,7 @@ const onChange = () => {
 
   &:disabled {
     cursor: not-allowed;
-    opacity: .5;
+    opacity: 0.5;
 
     & ~ span {
       color: var(--colour-ti-muted);

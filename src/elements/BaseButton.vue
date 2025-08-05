@@ -9,7 +9,7 @@ interface Props {
   tooltip?: string;
   forceTooltip?: boolean;
   dataTestid?: string;
-};
+}
 withDefaults(defineProps<Props>(), {
   type: 'secondary',
   size: 'regular',
@@ -22,15 +22,15 @@ withDefaults(defineProps<Props>(), {
 <template>
   <button
     class="tbpro-button"
-    :class="{ [type]: type, 'small': size === 'small' }"
+    :class="{ [type]: type, small: size === 'small' }"
     type="button"
     :data-testid="dataTestid"
   >
     <span class="icon" v-if="$slots?.icon">
-      <slot name="icon"/>
+      <slot name="icon" />
     </span>
     <span class="text">
-      <slot/>
+      <slot />
     </span>
     <tool-tip
       v-if="tooltip"
@@ -84,7 +84,7 @@ button:hover > .tooltip,
   color: var(--colour-ti-base);
 
   &:hover:enabled {
-    box-shadow: 0 0.25rem 0.125rem -0.1875rem #0000001A;
+    box-shadow: 0 0.25rem 0.125rem -0.1875rem #0000001a;
   }
 
   &:active:enabled {
@@ -148,7 +148,7 @@ button:hover > .tooltip,
 
   border-radius: var(--border-radius);
   @mixin faded-border var(--faded-colour-btn-border);
-  box-shadow: 0 0.375rem 0.188rem -0.25rem #152F3C4D;
+  box-shadow: 0 0.375rem 0.188rem -0.25rem #152f3c4d;
   font-family: 'Inter', 'sans-serif';
   font-size: var(--txt-input); /* 13px */
   line-height: 0.983rem; /* 15.73px */
@@ -158,7 +158,7 @@ button:hover > .tooltip,
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0 0.25rem 0.125rem -0.1875rem #0000001A;
+    box-shadow: 0 0.25rem 0.125rem -0.1875rem #0000001a;
   }
 
   &:active {
@@ -206,7 +206,7 @@ button:hover > .tooltip,
 
   &button {
     min-width: initial;
-    height: 1.25rem
+    height: 1.25rem;
   }
 }
 </style>

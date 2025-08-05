@@ -30,7 +30,7 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
 <template>
   <label class="wrapper" :for="name">
     <span v-if="$slots.default" class="label">
-      <slot/>
+      <slot />
       <span v-if="required && (model === null || model === '')" class="required">*</span>
     </span>
     <select
@@ -101,8 +101,9 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
   width: 100%;
 
   color: var(--txt-colour);
-  
-  &:hover, &:focus {
+
+  &:hover,
+  &:focus {
     --colour-select-border: var(--colour-neutral-border-intense);
   }
 

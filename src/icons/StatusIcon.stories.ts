@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
-import StatusInfoIcon from "@/icons/StatusInfoIcon.vue";
-import StatusExpiryIcon from "@/icons/StatusExpiryIcon.vue";
-import StatusWarningIcon from "@/icons/StatusWarningIcon.vue";
+import StatusInfoIcon from '@/icons/StatusInfoIcon.vue';
+import StatusExpiryIcon from '@/icons/StatusExpiryIcon.vue';
+import StatusWarningIcon from '@/icons/StatusWarningIcon.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof StatusInfoIcon> = {
@@ -24,7 +24,7 @@ export const Info: Story = {
     docs: {
       source: { code: '<status-info-icon />' },
     },
-  }
+  },
 };
 
 export const Expiry: Story = {
@@ -36,7 +36,7 @@ export const Expiry: Story = {
     docs: {
       source: { code: '<status-expiry-icon />' },
     },
-  }
+  },
 };
 
 export const Warning: Story = {
@@ -48,5 +48,5 @@ export const Warning: Story = {
     docs: {
       source: { code: '<status-warning-icon />' },
     },
-  }
+  },
 };

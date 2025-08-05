@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
-import SelectInput from "@/elements/SelectInput.vue";
-import { ref, watch } from "vue";
+import SelectInput from '@/elements/SelectInput.vue';
+import { ref, watch } from 'vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof SelectInput> = {
@@ -11,13 +11,13 @@ const meta: Meta<typeof SelectInput> = {
   tags: ['autodocs'],
   args: {
     name: 'example',
-    default: "How many?",
+    default: 'How many?',
     modelValue: 'all',
     options: [
       { label: 'All', value: 'all' },
       { label: 'Many', value: 'many' },
       { label: 'Some', value: 'some' },
-    ]
+    ],
   },
   render: (args) => ({
     components: { SelectInput },
@@ -28,7 +28,7 @@ const meta: Meta<typeof SelectInput> = {
         () => args.modelValue,
         (val) => {
           model.value = val;
-        },
+        }
       );
 
       return { args, model };
@@ -42,7 +42,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
   args: {
-    name: 'standard'
+    name: 'standard',
   },
 };
 
@@ -52,7 +52,6 @@ export const Disabled: Story = {
     disabled: true,
   },
 };
-
 
 export const Required: Story = {
   args: {

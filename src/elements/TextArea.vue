@@ -22,7 +22,7 @@ const focus = () => {
  * This should be explicitly called when the parent form is reset.
  */
 const reset = () => {
-  model.value = "";
+  model.value = '';
   isInvalid.value = false;
   isDirty.value = false;
 };

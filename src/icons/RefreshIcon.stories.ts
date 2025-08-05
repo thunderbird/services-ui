@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
-import RefreshIcon from "@/icons/RefreshIcon.vue";
+import RefreshIcon from '@/icons/RefreshIcon.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof RefreshIcon> = {
@@ -18,5 +18,5 @@ export const Standard: Story = {
     docs: {
       source: { code: '<refresh-icon />' },
     },
-  }
+  },
 };

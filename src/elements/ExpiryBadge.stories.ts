@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import ExpiryBadge from "@/elements/ExpiryBadge.vue";
-import { ExpiryUnitTypes } from "@/definitions";
+import ExpiryBadge from '@/elements/ExpiryBadge.vue';
+import { ExpiryUnitTypes } from '@/definitions';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof ExpiryBadge> = {
-  title: "Elements/ExpiryBadge",
+  title: 'Elements/ExpiryBadge',
   component: ExpiryBadge,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   args: {
     timeRemaining: 10,
     warningThreshold: 5,

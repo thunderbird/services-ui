@@ -76,9 +76,9 @@ export const Required: Story = {
           const componentExposed = (input as any).__vueParentComponent?.exposed;
           componentExposed.reset();
         },
-      }
-    })
-  ]
+      },
+    }),
+  ],
 };
 
 export const Help: Story = {
