@@ -6,12 +6,14 @@ interface Props {
   options: SelectOption<string | number>[];
   required: boolean;
   disabled?: boolean;
+  singleSelection?: boolean;
   dataTestid?: string;
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   required: false,
   disabled: false,
+  singleSelection: false,
   dataTestid: 'bubble-select',
 });
 
@@ -30,6 +32,9 @@ const toggleBubble = (option: SelectOption<string | number>) => {
   if (val > -1) {
     // We have the value, so filter it out
     model.value = model.value.filter((value) => option.value !== value);
+  } else if (props.singleSelection) {
+    // We don't have the value but we should only ever have one selection
+    model.value = [option.value]
   } else {
     // We don't have the value, so mix it in
     model.value = [...model.value, option.value];
