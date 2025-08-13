@@ -39,6 +39,34 @@ export const Checked: Story = {
   },
 };
 
+export const OnChangeEvent: Story = {
+  args: {
+    name: 'on-change-event',
+    label: 'I agree to the terms and conditions.',
+  },
+  decorators: [
+    (story) => ({
+      components: { story },
+      data() {
+        return {
+          checkboxState: 'unchecked',
+        };
+      },
+      template: `
+        <div>
+          <story @change="handleChange" />
+          <p><strong>Current checkbox state:</strong> {{ checkboxState }}</p>
+        </div>
+      `,
+      methods: {
+        handleChange(event) {
+          this.checkboxState = event.target.checked ? 'checked' : 'unchecked';
+        },
+      },
+    }),
+  ],
+};
+
 export const Required: Story = {
   args: {
     name: 'required',
