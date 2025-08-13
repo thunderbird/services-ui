@@ -68,3 +68,8 @@ export const Disabled: Story = {
     required: false,
   },
 };
+export const SingleSelection: Story = {
+  args: {
+    singleSelection: true,
+  },
+};
