@@ -70,9 +70,9 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
  * this is so we can delay :invalid until
  * the user does something worth invalidating
  */
-const onChange = () => {
+const onChange = (event: Event) => {
   isDirty.value = true;
-  emit('change');
+  emit('change', event);
 };
 </script>
 
