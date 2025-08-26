@@ -26,6 +26,12 @@ export const Initials: Story = {
   },
 };
 
+export const InitialsWithEmptyString: Story = {
+  args: {
+    username: '',
+  },
+};
+
 export const AvatarUrl: Story = {
   args: {
     username: 'Beatrice',

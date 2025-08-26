@@ -10,13 +10,13 @@ interface PropTypes {
 const props = defineProps<PropTypes>()
 
 const usernameInitial = computed(() => {
-  return props.username?.charAt(0)[0]?.toUpperCase() ?? '??';
+  return props.username?.charAt(0)[0]?.toUpperCase() ?? '?';
 })
 </script>
 
 <template>
   <aside class="avatar">
-    <img class="img" :src="avatarUrl" v-if="avatarUrl" :alt="t('avatar.alt-text', {'username': username})"/>
+    <img class="img" :src="avatarUrl" v-if="avatarUrl" :alt="t('userAvatar.altText', {'username': username})"/>
     <span class="initials" :title="username" v-else>{{ usernameInitial }}</span>
   </aside>
 </template>
