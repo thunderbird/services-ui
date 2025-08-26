@@ -4,7 +4,7 @@ import UserAvatar from '@/elements/UserAvatar.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof UserAvatar> = {
-  title: 'Elements/Avatar',
+  title: 'Elements/UserAvatar',
   component: UserAvatar,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
@@ -29,6 +29,6 @@ export const Initials: Story = {
 export const AvatarUrl: Story = {
   args: {
     username: 'Beatrice',
-    avatarUrl: '/public/img/placeholder.png'
+    avatarUrl: '/img/placeholder.png'
   },
 };
