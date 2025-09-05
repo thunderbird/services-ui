@@ -57,5 +57,12 @@ export const Required: Story = {
   args: {
     name: 'required',
     required: true,
+    modelValue: '',
+    options: [
+      { label: '', value: '' },
+      { label: 'All', value: 'all' },
+      { label: 'Many', value: 'many' },
+      { label: 'Some', value: 'some' },
+    ],
   },
 };
