@@ -25,6 +25,13 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
   isInvalid.value = true;
   validationMessage.value = evt.target.validationMessage;
 };
+const onInput = (evt: HTMLInputElementEvent) => {
+  // Revalidate on input change
+  if (evt.target.checkValidity()) {
+    isInvalid.value = false;
+    validationMessage.value = '';
+  }
+};
 </script>
 
 <template>
@@ -41,6 +48,7 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
       :required="required"
       :disabled="disabled"
       @invalid="onInvalid"
+      @input="onInput"
       :data-testid="dataTestid"
     >
       <option v-for="option in options" :value="option.value" :key="option.value">
