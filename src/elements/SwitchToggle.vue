@@ -56,7 +56,7 @@ const toggleState = () => {
     <div v-if="label">{{ label }}</div>
     <div class="toggle-container">
       <div v-if="!noLegend" class="toggle-label">{{ t('switchToggle.off') }}</div>
-      <div class="toggle">
+      <div class="toggle" tabindex="0" @keypress.space.prevent="toggleState">
         <input
           class="toggle-input"
           type="checkbox"
