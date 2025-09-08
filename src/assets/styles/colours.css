@@ -1,5 +1,18 @@
 html {
   /*
+   * Bolt Colours
+   * Reference: https://bolt.thunderbird.net/8b179dbfd/p/61e4c7-color
+   */
+  --colour-user-red: #E53935;
+  --colour-user-orange: #FF8C00;
+  --colour-user-yellow: #F4C430;
+  --colour-user-graphite: #B0B0B0;
+  --colour-user-green: #34C759;
+  --colour-user-blue: #0A84FF;
+  --colour-user-purple: #7753CC;
+  --colour-user-pink: #E91E63;
+
+  /*
    * Reference:  https://www.figma.com/design/3pWlMatoNdA2BT3BPVziFL/
    */
 
@@ -72,6 +85,7 @@ html {
    * Applied frequently for text and icons.
    */
   --colour-ti-base: #1a202c;
+  --colour-ti-base-light: #1a202c; /* No override */
   --colour-ti-secondary: #4c4d58;
   --colour-ti-muted: #737584;
   --colour-ti-highlight: #1373d9;
