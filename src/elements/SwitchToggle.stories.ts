@@ -15,7 +15,7 @@ const meta: Meta<typeof SwitchToggle> = {
     // Spying on the update event breaks reactivity.
     // 'onUpdate:modelValue': fn(), // Spy on the update event for v-model
     disabled: false,
-    label: 'Switch Toggle',
+    label: 'Label text',
     noLegend: false,
   },
 };

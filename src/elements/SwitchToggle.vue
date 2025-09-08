@@ -65,7 +65,19 @@ const toggleState = () => {
           :disabled="disabled"
           :data-testid="dataTestid"
         />
-        <div class="toggle-handle"></div>
+        <div class="toggle-handle">
+          <svg class="toggle-icon-on" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+            <rect width="256" height="256" fill="none"/>
+            <polyline
+              points="40 144 96 200 224 72"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="36"
+            />
+          </svg>
+        </div>
       </div>
       <div v-if="!noLegend" class="toggle-label">{{ t('switchToggle.on') }}</div>
     </div>
@@ -93,15 +105,18 @@ const toggleState = () => {
 
 .toggle-label {
   font-size: 0.75rem;
-  line-height: 1rem;
+  line-height: 1.5rem;
 }
 
 .toggle {
   background: var(--colour-neutral-border);
-  width: 2rem;
-  height: 1rem;
+  width: 2.5rem;
+  height: 1.5rem;
   flex-shrink: 0;
   border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  box-shadow: 1px 1px 3px 0px #00000026 inset;
 
   &:has(.toggle-input:checked) {
     background: var(--colour-service-primary);
@@ -116,19 +131,30 @@ const toggleState = () => {
 
     &:checked ~ .toggle-handle {
       background-color: var(--colour-neutral-base);
-      transform: translateX(1rem);
+      transform: translateX(1.125rem);
       border-color: var(--colour-service-primary);
+      color: var(--colour-service-primary);
     }
   }
 
   .toggle-handle {
     background-color: var(--colour-neutral-base);
-    width: 1rem;
-    height: 1rem;
-    box-sizing: border-box;
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-left: 0.125rem;
+    margin-right: 0.125rem;
     border-radius: 9999px;
-    transition: var(--transition-transform);
-    border: 1px solid var(--colour-neutral-border-intense);
+    transition: var(--transition);
+    box-shadow: 0px 1px 2px 0px #0000001A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+
+    .toggle-icon-on {
+      width: 0.625rem;
+      height: 0.625rem;
+    }
   }
 }
 </style>
