@@ -38,3 +38,25 @@ export const AvatarUrl: Story = {
     avatarUrl: '/img/placeholder.png'
   },
 };
+
+export const Sizes: Story = {
+  render: () => ({
+    components: { UserAvatar },
+    template: `
+      <div style="display:flex;gap:1rem;align-items:center;">
+        <user-avatar
+          username="Jennifer"
+          size="small"
+        />
+        <user-avatar
+          username="Jennifer"
+          size="regular"
+        />
+        <user-avatar
+          username="Jennifer"
+          size="large"
+        />
+      </div>
+    `,
+  }),
+};
