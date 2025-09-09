@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import { t } from '@/composable/i18n';
+import CheckIcon from '@/icons/CheckIcon.vue';
 
 const model = defineModel();
 
@@ -66,17 +67,7 @@ const toggleState = () => {
           :data-testid="dataTestid"
         />
         <div class="toggle-handle">
-          <svg class="toggle-icon-on" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-            <rect width="256" height="256" fill="none"/>
-            <polyline
-              points="40 144 96 200 224 72"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="36"
-            />
-          </svg>
+          <check-icon class="toggle-icon-on" />
         </div>
       </div>
       <div v-if="!noLegend" class="toggle-label">{{ t('switchToggle.on') }}</div>

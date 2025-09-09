@@ -20,7 +20,8 @@
     "info": "Information",
     "success": "Success",
     "warning": "Warning",
-    "expires": "This File Expires"
+    "expires": "This File Expires",
+    "check": "Check"
   },
   "syncCard": {
     "itemsSelected": "{count} Selected",
