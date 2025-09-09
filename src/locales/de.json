@@ -20,7 +20,8 @@
     "info": "Information",
     "success": "Erfolg",
     "warning": "Warnung",
-    "expires": "Die Gültigkeit dieser Datei läuft ab"
+    "expires": "Die Gültigkeit dieser Datei läuft ab",
+    "check": "Häkchen"
   },
   "syncCard": {
     "itemsSelected": "{count} ausgewählt",
