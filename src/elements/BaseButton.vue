@@ -15,7 +15,7 @@ interface Props {
 withDefaults(defineProps<Props>(), {
   type: 'primary',
   size: 'default',
-  variant: 'outline',
+  variant: 'filled',
   tooltip: '',
   forceTooltip: false,
   dataTestid: 'button',
@@ -100,19 +100,13 @@ button:hover > .tooltip,
     outline: 0.125rem solid var(--colour-primary-default);
     outline-offset: 0.125rem;
   }
-
-  &:disabled {
-    background-color: var(--colour-neutral-border);
-    border-color: var(--colour-neutral-border);
-    color: var(--colour-ti-muted);
-    cursor: not-allowed;
-  }
 }
 
 .primary {
+  border: 0.0625rem solid transparent;
+
   &.filled {
-    background: linear-gradient(180deg, var(--colour-accent-blue) -31.82%, var(--colour-primary-default) 8.74%, var(--colour-primary-hover) 100%);
-    border: none;
+    background: linear-gradient(180deg, var(--colour-accent-blue) -31.82%, var(--colour-primary-default) 8.74%, var(--colour-primary-hover) 100%) border-box;
     color: var(--colour-neutral-base);
 
     &:hover:enabled {
@@ -125,18 +119,19 @@ button:hover > .tooltip,
 
     &:disabled {
       background: var(--colour-neutral-border);
+      color: var(--colour-ti-muted);
+      cursor: not-allowed;
     }
   }
 
   &.outline {
-    border: 1px solid transparent;
     background:
       linear-gradient(var(--colour-neutral-base), var(--colour-neutral-base)) padding-box,
       linear-gradient(180deg, var(--colour-primary-default) 31%, var(--colour-primary-hover) 100%) border-box;
     color: var(--colour-primary-hover);
 
     &:hover:enabled {
-      border: 2px solid var(--colour-primary-hover);
+      border: 0.125rem solid var(--colour-primary-hover);
       border-image: none;
       margin: -1px; /* Compensate for the extra 1px border to prevent layout shift */
     }
@@ -146,9 +141,10 @@ button:hover > .tooltip,
     }
 
     &:disabled {
-      /* TODO: Border colour is not a variable, roughly translates to #ADACB3 */
-      border: 1px solid rgba(119, 117, 128, 0.50);
       background: var(--colour-neutral-border);
+      border: 0.0625rem solid rgba(119, 117, 128, 0.50);
+      color: var(--colour-ti-muted);
+      cursor: not-allowed;
     }
   }
 }
@@ -158,7 +154,7 @@ button:hover > .tooltip,
   font-weight: 600;
   font-size: 0.8125rem;
   text-transform: uppercase;
-  border: 1px solid transparent;
+  border: 0.0625rem solid transparent;
 
   &.filled {
     background:
@@ -170,7 +166,7 @@ button:hover > .tooltip,
     &:hover:enabled {
       background:
         linear-gradient(var(--colour-primary-hover), var(--colour-primary-hover)) padding-box,
-        /* TODO: This gradient doesn't seem correct and colours are not variables */
+        /* One-off colours specific for the brand button */
         linear-gradient(#A0E1FF, #2B8CDC) border-box;
       color: var(--colour-neutral-base);
     }
@@ -178,7 +174,7 @@ button:hover > .tooltip,
     &:active:enabled {
       background:
         linear-gradient(var(--colour-primary-pressed), var(--colour-primary-pressed)) padding-box,
-        /* TODO: This gradient doesn't seem correct and colours are not variables */
+        /* One-off colours specific for the brand button */
         linear-gradient(#A0E1FF, #2B8CDC) border-box;
       color: var(--colour-neutral-base);
     }
@@ -192,13 +188,23 @@ button:hover > .tooltip,
 
     &:hover:enabled {
       background:
-        linear-gradient(var(--colour-neutral-base), var(--colour-neutral-base)) padding-box,
+        /* One-off colour specific for the brand button */
+        linear-gradient(#EAECEC, #EAECEC) padding-box,
+        linear-gradient(99deg, var(--colour-accent-blue) 19.15%, var(--colour-accent-gray) 75.77%) border-box;
+    }
+
+    &:active:enabled {
+      background:
+        /* One-off colour specific for the brand button */
+        linear-gradient(#E3E3E3, #E3E3E3) padding-box,
         linear-gradient(99deg, var(--colour-accent-blue) 19.15%, var(--colour-accent-gray) 75.77%) border-box;
     }
   }
 }
 
 .destructive {
+  border: 0.0625rem solid transparent;
+
   &.filled {
     background-color: var(--colour-danger-default);
     color: var(--colour-neutral-base);
@@ -213,20 +219,20 @@ button:hover > .tooltip,
   }
 
   &.outline {
-    border: 1px solid var(--colour-danger-default);
+    border: 0.0625rem solid var(--colour-danger-default);
     background: var(--colour-neutral-base);
     color: var(--colour-danger-default);
 
     &:hover:enabled {
-      border: 2px solid var(--colour-danger-hover);
+      border: 0.125rem solid var(--colour-danger-hover);
       margin: -1px; /* Compensate for the extra 1px border to prevent layout shift */
       color: var(--colour-danger-hover);
     }
 
     &:active:enabled {
-      border: 2px solid var(--colour-danger-pressed);
+      border: 0.125rem solid var(--colour-danger-pressed);
       background-color: var(--colour-danger-soft);
-      margin: -1px; /* Compensate for the extra 1px border to prevent layout shift */
+      margin: -0.0625rem; /* Compensate for the extra 1px border to prevent layout shift */
       color: var(--colour-danger-pressed);
     }
   }
@@ -259,6 +265,10 @@ button:hover > .tooltip,
 
 .small {
   padding: 0.38rem 0.75rem;
+
+  &.brand .text {
+    font-size: 0.6875rem;
+  }
 
   .text {
     font-size: 0.875rem;
