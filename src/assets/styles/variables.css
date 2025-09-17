@@ -1,7 +1,7 @@
 html {
-  --border-radius: 0.1875rem; /* 3px */
-  --txt-default: 0.8125rem; /* 13px */
-  --txt-input: var(--txt-default); /* 13px */
+  --border-radius: 0.5rem; /* 8px */
+  --txt-default: 0.875rem; /* 14px */
+  --txt-input: var(--txt-default); /* 14px */
   --line-height-input: 1.25rem; /* 20px */
   --font-sans: 'Inter', 'sans-serif';
 

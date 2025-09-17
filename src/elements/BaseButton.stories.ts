@@ -2,6 +2,7 @@ import { fn } from 'storybook/test';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
 import BaseButton from '@/elements/BaseButton.vue';
+import RefreshIcon from '@/icons/RefreshIcon.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof BaseButton> = {
@@ -11,8 +12,10 @@ const meta: Meta<typeof BaseButton> = {
   tags: ['autodocs'],
   argTypes: {
     size: { control: 'select', options: ['regular', 'small'] },
-    type: { control: 'select', options: ['primary', 'secondary', 'link'] },
+    variant: { control: 'select', options: ['filled', 'outline'] },
+    type: { control: 'select', options: ['primary', 'brand', 'destructive', 'link'] },
     tooltip: { control: 'text' },
+    disabled: { control: 'boolean' },
   },
   args: {
     tooltip: '',
@@ -40,20 +43,22 @@ export const Primary: Story = {
   },
 };
 
-export const Secondary: Story = {
+export const Brand: Story = {
   args: {
-    type: 'secondary',
+    type: 'brand',
+    variant: 'filled',
+    default: 'Subscribe now',
   },
   parameters: {
     docs: {
-      source: { code: '<secondary-button>Click me!</secondary-button>' },
+      source: { code: '<brand-button>Subscribe now</brand-button>' },
     },
   },
 };
 
-export const Danger: Story = {
+export const Destructive: Story = {
   args: {
-    type: 'danger',
+    type: 'destructive',
   },
   parameters: {
     docs: {
@@ -81,6 +86,33 @@ export const Small: Story = {
   parameters: {
     docs: {
       source: { code: '<primary-button size="small">Click me!</primary-button>' },
+    },
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    type: 'primary',
+    variant: 'filled',
+    default: 'Refresh',
+  },
+  render: (args) => ({
+    components: { BaseButton, RefreshIcon },
+    setup() {
+      return { args };
+    },
+    template: `
+      <BaseButton v-bind="args" @click="args.onClick">
+        <template #icon>
+          <RefreshIcon />
+        </template>
+        {{ args.default }}
+      </BaseButton>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: { code: '<primary-button variant="filled"><template #icon><RefreshIcon /></template>Refresh</primary-button>' },
     },
   },
 };
