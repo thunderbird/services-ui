@@ -3,7 +3,7 @@ import '@/assets/styles/fonts.css';
 import '@/assets/styles/main.css';
 import { withThemeByClassName, withThemeByDataAttribute } from '@storybook/addon-themes';
 import { setup } from '@storybook/vue3-vite';
-import i18ninstance from '../src/composable/i18n';
+import i18ninstance from '@/composable/i18n';
 
 export const decorators = [
   withThemeByClassName({
