@@ -3,7 +3,7 @@ import BaseButton from '@/elements/BaseButton.vue';
 </script>
 
 <template>
-  <base-button type="secondary">
+  <base-button type="brand">
     <template v-for="(_, name) in $slots" v-slot:[name]="slotData">
       <slot :name="name" v-bind="slotData" />
     </template>
