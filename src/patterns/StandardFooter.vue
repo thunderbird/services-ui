@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { t } from '@/composable/i18n';
 import VisualDivider from '@/elements/VisualDivider.vue';
 
@@ -39,19 +38,6 @@ const urlMap = {
 } as const;
 
 const getUrl = (key: keyof typeof urlMap): string => urlMap[key];
-
-// Manually interpolating the copyright text as we can't use the i18n-t component
-const copyrightText = computed(() => {
-  const mzlaLinkHtml = `<a href="${getUrl('mzlaLink')}">${t('footer.mzlaLinkText')}</a>`;
-  const creativeCommonsLinkHtml = `<a href="${getUrl('creativeCommonsLink')}">${t('footer.creativeCommonsLinkText')}</a>`;
-  const currentYear = new Date().getFullYear();
-
-  return t('footer.copywrite', {
-    mzlaLink: mzlaLinkHtml,
-    currentYear: currentYear,
-    creativeCommonsLink: creativeCommonsLinkHtml
-  });
-});
 </script>
 
 <template>
@@ -84,7 +70,23 @@ const copyrightText = computed(() => {
           </li>
         </ul>
 
-        <p v-html="copyrightText"></p>
+        <p>
+          <i18n-t keypath="footer.copywrite" scope="global">
+            <template v-slot:mzlaLink>
+              <a :href="getUrl('mzlaLink')">
+                {{ $t('footer.mzlaLinkText') }}
+              </a>
+            </template>
+            <template v-slot:currentYear>
+              {{ new Date().getFullYear() }}
+            </template>
+            <template v-slot:creativeCommonsLink>
+              <a :href="getUrl('creativeCommonsLink')">
+                {{ $t('footer.creativeCommonsLinkText') }}
+              </a>
+            </template>
+          </i18n-t>
+        </p>
 
         <a class="underline" :href="props.contributeToThisSiteUrl" target="_blank">
           {{ t('footer.contributeToThisSite' )}}
