@@ -3,24 +3,28 @@ import { computed } from 'vue';
 import { t } from '@/composable/i18n';
 import VisualDivider from '@/elements/VisualDivider.vue';
 
-const props = defineProps<{
-  contributeToThisSiteUrl: string;
-}>();
+interface Props {
+  contributeToThisSiteUrl: string
+}
 
-const mozillaNavItems = [
-  { 
-    i18nKey: 'sendDMCANotice', 
-    type: 'external', 
+const props = defineProps<Props>();
+
+interface NavItem {
+  i18nKey: string;
+  urlKey: string;
+}
+
+const mozillaNavItems: NavItem[] = [
+  {
+    i18nKey: 'sendDMCANotice',
     urlKey: 'dmcaNotice'
   },
-  { 
-    i18nKey: 'reportFraud', 
-    type: 'external', 
+  {
+    i18nKey: 'reportFraud',
     urlKey: 'reportFraud'
   },
-  { 
-    i18nKey: 'participationGuidelines', 
-    type: 'external', 
+  {
+    i18nKey: 'participationGuidelines',
     urlKey: 'participationGuidelines'
   },
 ];
