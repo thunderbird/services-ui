@@ -37,7 +37,6 @@
     "@storybook/addon-a11y": "^9.0.18",
     "@storybook/addon-docs": "^9.0.18",
     "@storybook/addon-links": "^9.0.18",
-    "@storybook/addon-onboarding": "^9.0.18",
     "@storybook/addon-themes": "^9.0.18",
     "@storybook/vue3-vite": "^9.0.18",
     "@tsconfig/node20": "^20.1.4",

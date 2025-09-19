@@ -14,6 +14,18 @@
     "month": "Abgelaufen | Läuft in {n} Monat ab | Läuft in {n} Monaten ab",
     "year": "Abgelaufen | Läuft in {n} Jahr ab | Läuft in {n} Jahren ab"
   },
+  "footer": {
+    "privacyPolicy": "Datenschutzerklärung",
+    "cookies": "Cookies",
+    "legal": "Impressum",
+    "sendDMCANotice": "DMCA-Benachrichtigung senden",
+    "reportFraud": "Missbrauch melden",
+    "participationGuidelines": "Teilnahmebestimmungen",
+    "contributeToThisSite": "Zum Inhalt beitragen",
+    "mzlaLinkText": "MZLA Technologies Corporation",
+    "creativeCommonsLinkText": "Creative-Commons-Lizenz",
+    "copywrite": "Thunderbird gehört zu {mzlaLink}, einer vollständigen Tochtergesellschaft der Mozilla Foundation. Teile dieses Inhalts unterliegen dem Copyright ©1998-{currentYear} einzelner Mitwirkender. Der Inhalt ist unter einer {creativeCommonsLink} verfügbar."
+  },
   "icons": {
     "calendar": "Kalender",
     "critical": "Kritisch",
