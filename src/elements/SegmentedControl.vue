@@ -26,7 +26,7 @@ const setOption = (option: SelectOption<string | number>) => {
   model.value = option.value;
 
   // Let the parent know there was a click
-  emit('click');
+  emit('click', option);
 };
 </script>
 
