@@ -2,6 +2,8 @@ import type { Preview } from '@storybook/vue3-vite';
 import '@/assets/styles/fonts.css';
 import '@/assets/styles/main.css';
 import { withThemeByClassName, withThemeByDataAttribute } from '@storybook/addon-themes';
+import { setup } from '@storybook/vue3-vite';
+import i18ninstance from '../src/composable/i18n';
 
 export const decorators = [
   withThemeByClassName({
@@ -36,5 +38,9 @@ const preview: Preview = {
     },
   },
 };
+
+setup((app) => {
+  app.use(i18ninstance);
+});
 
 export default preview;
