@@ -65,8 +65,6 @@ button:hover > .tooltip,
 }
 
 .base {
-  --faded-colour-btn-border: var(--colour-btn-border, var(--colour-neutral-border));
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,6 +76,7 @@ button:hover > .tooltip,
   font-weight: 400;
   padding: 1rem 1.12rem;
   cursor: pointer;
+  user-select: none;
 
   .icon {
     display: flex;
@@ -100,6 +99,23 @@ button:hover > .tooltip,
     outline: 0.125rem solid var(--colour-primary-default);
     outline-offset: 0.125rem;
   }
+
+  &.filled {
+    &:disabled {
+      background: var(--colour-neutral-border);
+      color: var(--colour-ti-muted);
+      cursor: not-allowed;
+    }
+  }
+
+  &.outline {
+    &:disabled {
+      background: var(--colour-neutral-base);
+      border: 0.0625rem solid var(--colour-neutral-border);
+      color: var(--colour-ti-muted);
+      cursor: not-allowed;
+    }
+  }
 }
 
 .primary {
@@ -116,12 +132,6 @@ button:hover > .tooltip,
     &:active:enabled {
       background: var(--colour-primary-pressed);
     }
-
-    &:disabled {
-      background: var(--colour-neutral-border);
-      color: var(--colour-ti-muted);
-      cursor: not-allowed;
-    }
   }
 
   &.outline {
@@ -133,18 +143,15 @@ button:hover > .tooltip,
     &:hover:enabled {
       border: 0.125rem solid var(--colour-primary-hover);
       border-image: none;
-      margin: -1px; /* Compensate for the extra 1px border to prevent layout shift */
+      margin: -0.0625rem; /* Compensate for the extra 1px border to prevent layout shift */
+
+      &.small {
+        margin: 0 -0.0625rem; /* Compensate for the extra 1px border to prevent layout shift */
+      }
     }
 
     &:active:enabled {
       background: color-mix(in srgb, var(--colour-accent-blue), transparent 90%);
-    }
-
-    &:disabled {
-      background: var(--colour-neutral-border);
-      border: 0.0625rem solid rgba(119, 117, 128, 0.50);
-      color: var(--colour-ti-muted);
-      cursor: not-allowed;
     }
   }
 }
@@ -225,8 +232,12 @@ button:hover > .tooltip,
 
     &:hover:enabled {
       border: 0.125rem solid var(--colour-danger-hover);
-      margin: -1px; /* Compensate for the extra 1px border to prevent layout shift */
+      margin: -0.0625rem; /* Compensate for the extra 1px border to prevent layout shift */
       color: var(--colour-danger-hover);
+
+      &.small {
+        margin: 0 -0.0625rem; /* Compensate for the extra 1px border to prevent layout shift */
+      }
     }
 
     &:active:enabled {
