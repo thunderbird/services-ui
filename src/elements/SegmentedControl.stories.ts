@@ -6,7 +6,7 @@ import SegmentedControl from '@/elements/SegmentedControl.vue';
 
 const selectOptions: SelectOption<number>[] = [
   {
-    label: 'instant',
+    label: 'Instant',
     value: 0,
   },
   {

@@ -98,11 +98,10 @@ const setOption = (option: SelectOption<string | number>) => {
       margin-left: -1px;
       cursor: pointer;
       box-shadow: 0.125rem 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.05) inset;
-      font-weight: 700;
       color: var(--colour-ti-secondary);
     
       &.selected {
-        background-color: var(--colour-service-primary);
+        background-color: var(--colour-ti-secondary);
         color: var(--colour-neutral-base);
     
         &.disabled {
