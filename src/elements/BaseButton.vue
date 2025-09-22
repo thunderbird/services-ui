@@ -4,33 +4,41 @@ import ToolTip from '@/elements/ToolTip.vue';
 
 // component properties
 interface Props {
-  type?: 'primary' | 'secondary' | 'danger' | 'link';
-  size?: 'regular' | 'small';
+  type?: 'primary' | 'brand' | 'danger' | 'link';
+  size?: 'default' | 'small';
+  variant?: 'filled' | 'outline';
   tooltip?: string;
   forceTooltip?: boolean;
   dataTestid?: string;
+  disabled?: boolean;
 }
 withDefaults(defineProps<Props>(), {
-  type: 'secondary',
-  size: 'regular',
+  type: 'primary',
+  size: 'default',
+  variant: 'filled',
   tooltip: '',
   forceTooltip: false,
   dataTestid: 'button',
+  disabled: false,
 });
 </script>
 
 <template>
   <button
-    class="tbpro-button"
-    :class="{ [type]: type, small: size === 'small' }"
+    class="base"
+    :class="{ [type]: type, small: size === 'small', [variant]: variant }"
     type="button"
     :data-testid="dataTestid"
+    :disabled="disabled"
   >
-    <span class="icon" v-if="$slots?.icon">
-      <slot name="icon" />
+    <span class="icon" v-if="$slots?.iconLeft">
+      <slot name="iconLeft" />
     </span>
     <span class="text">
       <slot />
+    </span>
+    <span class="icon" v-if="$slots?.iconRight">
+      <slot name="iconRight" />
     </span>
     <tool-tip
       v-if="tooltip"
@@ -43,6 +51,20 @@ withDefaults(defineProps<Props>(), {
     </tool-tip>
   </button>
 </template>
+
+<style>
+html {
+  --button-destructive-color: var(--colour-danger-default);
+  --button-destructive-color-hover: var(--colour-danger-hover);
+  --button-destructive-color-active: var(--colour-danger-pressed);
+
+  &.dark {
+    --button-destructive-color: var(--colour-danger-pressed);
+    --button-destructive-color-hover: #f87171; /* TODO: var(--critical-hover) in Figma (?) */
+    --button-destructive-color-active: var(--colour-ti-critical);
+  }
+}
+</style>
 
 <style scoped>
 @import '@/assets/styles/mixins.pcss';
@@ -59,57 +81,180 @@ button:hover > .tooltip,
   opacity: 1;
 }
 
-.primary {
-  --colour-btn-border: var(--colour-service-primary-hover);
+.base {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 
-  background-color: var(--colour-service-primary);
-  color: var(--colour-neutral-base);
+  border-radius: var(--border-radius);
+  font-family: 'Inter', 'sans-serif';
+  font-size: var(--txt-input); /* 14px */
+  font-weight: 400;
+  line-height: 1;
+  padding: 1rem 1.12rem;
+  cursor: pointer;
+  user-select: none;
 
-  &:hover:enabled {
-    --colour-btn-border: var(--colour-success-pressed);
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.75rem;
+    height: 0.75rem;
 
-    background-color: var(--colour-service-primary-hover);
+    svg {
+      width: 100%;
+      height: 100%;
+    }
   }
 
-  &:active:enabled {
-    --colour-btn-border: var(--colour-service-primary-pressed);
+  &:active {
+    outline: none !important;
+  }
 
-    background-color: var(--colour-service-primary-pressed);
-    box-shadow: none;
+  &:focus {
+    outline: 0.125rem solid var(--colour-primary-default);
+    outline-offset: 0.125rem;
+  }
+
+  &.filled {
+    &:disabled {
+      background: var(--colour-neutral-border);
+      color: var(--colour-ti-muted);
+      cursor: not-allowed;
+    }
+  }
+
+  &.outline {
+    &:disabled {
+      background: var(--colour-neutral-base);
+      border: 0.0625rem solid var(--colour-neutral-border);
+      color: var(--colour-ti-muted);
+      cursor: not-allowed;
+    }
   }
 }
 
-.secondary {
-  background-color: var(--colour-neutral-subtle);
-  color: var(--colour-ti-base);
+.primary {
+  border: 0.0625rem solid transparent;
 
-  &:hover:enabled {
-    box-shadow: 0 0.25rem 0.125rem -0.1875rem #0000001a;
+  &.filled {
+    background: linear-gradient(180deg, var(--colour-accent-blue) -31.82%, var(--colour-primary-default) 8.74%, var(--colour-primary-hover) 100%) border-box;
+    color: var(--colour-neutral-base);
+
+    &:hover:enabled {
+      background: linear-gradient(180deg, var(--colour-primary-hover) 0%, var(--colour-primary-hover) 100%);
+    }
+
+    &:active:enabled {
+      background: linear-gradient(180deg, var(--colour-primary-pressed) 0%, var(--colour-primary-pressed) 100%);
+    }
   }
 
-  &:active:enabled {
-    --colour-btn-border: var(--colour-neutral-border);
+  &.outline {
+    background: var(--colour-neutral-base);
+    border: 0.0625rem solid var(--colour-primary-default);
+    color: var(--colour-primary-hover);
 
-    background-color: var(--colour-neutral-border);
+    &:hover:enabled {
+      border-color: var(--colour-primary-hover);
+      box-shadow: 0 0 0 0.0625rem var(--colour-primary-hover);
+    }
+
+    &:active:enabled {
+      background: color-mix(in srgb, var(--colour-accent-blue), transparent 90%);
+      box-shadow: 0 0 0 0.0625rem var(--colour-primary-hover);
+    }
+  }
+}
+
+.brand {
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  border: 0.0625rem solid transparent;
+
+  &.filled {
+    /* For brand buttons, we are using one-off colours for light / dark mode */
+    --button-brand-filled-border-gradient: linear-gradient(to bottom right, #7BC6F4 10%, #2B8CDC 60%) border-box;
+
+    background:
+      linear-gradient(329deg, var(--colour-primary-default) -21.06%, var(--colour-accent-blue) 64%) padding-box,
+      var(--button-brand-filled-border-gradient);
+    color: var(--colour-ti-base-light);
+
+    &:hover:enabled {
+      background:
+        linear-gradient(var(--colour-primary-hover), var(--colour-primary-hover)) padding-box,
+        var(--button-brand-filled-border-gradient);
+      color: var(--colour-neutral-base);
+    }
+
+    &:active:enabled {
+      background:
+        linear-gradient(var(--colour-primary-pressed), var(--colour-primary-pressed)) padding-box,
+        var(--button-brand-filled-border-gradient);
+      color: var(--colour-neutral-base);
+    }
+  }
+
+  &.outline {
+    --button-brand-outline-border-gradient: linear-gradient(99deg, var(--colour-accent-blue) 19.15%, var(--colour-accent-gray) 75.77%) border-box;
+
+    background:
+      linear-gradient(var(--colour-neutral-base), var(--colour-neutral-base)) padding-box,
+      var(--button-brand-outline-border-gradient);
+    color: var(--colour-ti-base);
+
+    &:hover:enabled {
+      background:
+        linear-gradient(var(--colour-neutral-raised), var(--colour-neutral-raised)) padding-box,
+        var(--button-brand-outline-border-gradient);
+    }
+
+    &:active:enabled {
+      background:
+        linear-gradient(var(--colour-neutral-lower), var(--colour-neutral-lower)) padding-box,
+        var(--button-brand-outline-border-gradient);
+    }
   }
 }
 
 .danger {
-  --colour-btn-border: var(--colour-danger-hover);
+  border: 0.0625rem solid transparent;
 
-  background-color: var(--colour-danger-default);
-  color: var(--colour-neutral-base);
+  &.filled {
+    background-color: var(--button-destructive-color);
+    color: var(--colour-neutral-base);
 
-  &:hover:enabled {
-    --colour-btn-border: var(--colour-danger-pressed);
+    &:hover:enabled {
+      background-color: var(--button-destructive-color-hover);
+    }
 
-    background-color: var(--colour-danger-hover);
+    &:active:enabled {
+      background-color: var(--button-destructive-color-active);
+    }
   }
 
-  &:active:enabled {
-    --colour-btn-border: var(--colour-danger-pressed);
+  &.outline {
+    border: 0.0625rem solid var(--button-destructive-color);
+    background: var(--colour-neutral-base);
+    color: var(--button-destructive-color);
+    box-shadow: 0 0 0 0 var(--button-destructive-color);
 
-    background-color: var(--colour-danger-pressed);
+    &:hover:enabled {
+      border-color: var(--button-destructive-color-hover);
+      color: var(--button-destructive-color-hover);
+      box-shadow: 0 0 0 0.0625rem var(--button-destructive-color-hover);
+    }
+
+    &:active:enabled {
+      border-color: var(--button-destructive-color-active);
+      color: var(--button-destructive-color-active);
+      box-shadow: 0 0 0 0.0625rem var(--button-destructive-color-active);
+    }
   }
 }
 
@@ -138,75 +283,30 @@ button:hover > .tooltip,
   }
 }
 
-.tbpro-button {
-  --faded-colour-btn-border: var(--colour-btn-border, var(--colour-neutral-border));
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.625rem;
-
-  border-radius: var(--border-radius);
-  @mixin faded-border var(--faded-colour-btn-border);
-  box-shadow: 0 0.375rem 0.188rem -0.25rem #152f3c4d;
-  font-family: 'Inter', 'sans-serif';
-  font-size: var(--txt-input); /* 13px */
-  line-height: 0.983rem; /* 15.73px */
-  font-weight: 700;
-
-  transition: var(--transition);
-  cursor: pointer;
-
-  &:hover {
-    box-shadow: 0 0.25rem 0.125rem -0.1875rem #0000001a;
-  }
-
-  &:active {
-    box-shadow: none;
-    outline: none !important;
-  }
-
-  &:focus {
-    outline: 0.125rem solid var(--colour-service-primary);
-    outline-offset: 0.0625rem;
-    box-shadow: none;
-  }
-
-  &:disabled {
-    background-color: var(--colour-neutral-border);
-    border-color: var(--colour-neutral-border);
-    color: var(--colour-ti-muted);
-    box-shadow: none;
-    cursor: not-allowed;
-  }
-}
-
-.icon {
-  display: flex;
-  align-items: center;
-  height: 100%;
-
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  margin-right: -0.75rem;
-}
-
-.text {
-  user-select: none;
-  padding: 0.75rem 1.5rem;
-}
-
 .small {
+  padding: 0.38rem 0.75rem;
+
+  &.brand .text {
+    font-size: 0.6875rem;
+  }
+
   .text {
-    text-transform: uppercase;
-    font-size: 0.5625rem;
-    padding: 0.5625rem;
-    font-weight: 700;
+    font-size: 0.875rem;
   }
 
   &button {
     min-width: initial;
-    height: 1.25rem;
+    height: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .base {
+      transition: background-color 250ms ease-in-out,
+              background 250ms ease-in-out,
+              border 250ms ease-in-out,
+              color 250ms ease-in-out,
+              box-shadow 250ms ease-in-out;
   }
 }
 </style>
