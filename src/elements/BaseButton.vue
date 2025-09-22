@@ -31,11 +31,14 @@ withDefaults(defineProps<Props>(), {
     :data-testid="dataTestid"
     :disabled="disabled"
   >
-    <span class="icon" v-if="$slots?.icon">
-      <slot name="icon" />
+    <span class="icon" v-if="$slots?.iconLeft">
+      <slot name="iconLeft" />
     </span>
     <span class="text">
       <slot />
+    </span>
+    <span class="icon" v-if="$slots?.iconRight">
+      <slot name="iconRight" />
     </span>
     <tool-tip
       v-if="tooltip"
@@ -48,6 +51,18 @@ withDefaults(defineProps<Props>(), {
     </tool-tip>
   </button>
 </template>
+
+<style>
+html {
+  /* For brand buttons, we are using one-off colours for light / dark mode */
+  --button-brand-filled-border-gradient: linear-gradient(#A0E1FF, #2B8CDC) border-box;
+  --button-brand-filled-color: var(--colour-ti-base);
+
+  &.dark {
+    --button-brand-filled-color: #1a202c; /* keep light --colour-ti-base instead of switching to dark variant */
+  }
+}
+</style>
 
 <style scoped>
 @import '@/assets/styles/mixins.pcss';
@@ -166,44 +181,39 @@ button:hover > .tooltip,
   &.filled {
     background:
       linear-gradient(329deg, var(--colour-primary-default) -21.06%, var(--colour-accent-blue) 64%) padding-box,
-      /* TODO: This gradient doesn't seem correct and colours are not variables */
-      linear-gradient(#A0E1FF, #2B8CDC) border-box;
-    color: var(--colour-ti-base);
+      var(--button-brand-filled-border-gradient);
+    color: var(--button-brand-filled-color);
 
     &:hover:enabled {
       background:
         linear-gradient(var(--colour-primary-hover), var(--colour-primary-hover)) padding-box,
-        /* One-off colours specific for the brand button */
-        linear-gradient(#A0E1FF, #2B8CDC) border-box;
+        var(--button-brand-filled-border-gradient);
       color: var(--colour-neutral-base);
     }
 
     &:active:enabled {
       background:
         linear-gradient(var(--colour-primary-pressed), var(--colour-primary-pressed)) padding-box,
-        /* One-off colours specific for the brand button */
-        linear-gradient(#A0E1FF, #2B8CDC) border-box;
+        var(--button-brand-filled-border-gradient);
       color: var(--colour-neutral-base);
     }
   }
 
   &.outline {
     background:
-      /* TODO: This is light/gray/gray-50 (?) in Figma */
-      linear-gradient(#FFF, #FFF) padding-box,
+      linear-gradient(var(--colour-neutral-base), var(--colour-neutral-base)) padding-box,
       linear-gradient(99deg, var(--colour-accent-blue) 19.15%, var(--colour-accent-gray) 75.77%) border-box;
+    color: var(--colour-ti-base);
 
     &:hover:enabled {
       background:
-        /* One-off colour specific for the brand button */
-        linear-gradient(#EAECEC, #EAECEC) padding-box,
+        linear-gradient(var(--colour-neutral-raised), var(--colour-neutral-raised)) padding-box,
         linear-gradient(99deg, var(--colour-accent-blue) 19.15%, var(--colour-accent-gray) 75.77%) border-box;
     }
 
     &:active:enabled {
       background:
-        /* One-off colour specific for the brand button */
-        linear-gradient(#E3E3E3, #E3E3E3) padding-box,
+        linear-gradient(var(--colour-neutral-lower), var(--colour-neutral-lower)) padding-box,
         linear-gradient(99deg, var(--colour-accent-blue) 19.15%, var(--colour-accent-gray) 75.77%) border-box;
     }
   }

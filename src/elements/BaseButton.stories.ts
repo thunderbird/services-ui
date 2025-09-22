@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
 import BaseButton from '@/elements/BaseButton.vue';
 import RefreshIcon from '@/icons/RefreshIcon.vue';
+import ArrowRightIcon from '@/icons/ArrowRightIcon.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof BaseButton> = {
@@ -90,7 +91,7 @@ export const Small: Story = {
   },
 };
 
-export const WithIcon: Story = {
+export const WithIconLeft: Story = {
   args: {
     type: 'primary',
     variant: 'filled',
@@ -103,7 +104,7 @@ export const WithIcon: Story = {
     },
     template: `
       <BaseButton v-bind="args" @click="args.onClick">
-        <template #icon>
+        <template #iconLeft>
           <RefreshIcon />
         </template>
         {{ args.default }}
@@ -113,6 +114,34 @@ export const WithIcon: Story = {
   parameters: {
     docs: {
       source: { code: '<primary-button variant="filled"><template #icon><RefreshIcon /></template>Refresh</primary-button>' },
+    },
+  },
+};
+
+export const WithIconRight: Story = {
+  args: {
+    type: 'primary',
+    variant: 'filled',
+    default: 'Refresh',
+  },
+  render: (args) => ({
+    components: { BaseButton, RefreshIcon },
+    setup() {
+      return { args };
+    },
+    template: `
+      <BaseButton v-bind="args" @click="args.onClick">
+        {{ args.default }}
+
+        <template #iconRight>
+          <RefreshIcon />
+        </template>
+      </BaseButton>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: { code: '<primary-button variant="filled"><template #iconRight><RefreshIcon /></template>Refresh</primary-button>' },
     },
   },
 };
