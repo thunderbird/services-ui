@@ -71,7 +71,7 @@ const getUrl = (key: keyof typeof urlMap): string => urlMap[key];
         </ul>
 
         <p>
-          <i18n-t keypath="footer.copywrite" scope="global">
+          <i18n-t keypath="footer.copywrite">
             <template v-slot:mzlaLink>
               <a :href="getUrl('mzlaLink')">
                 {{ $t('footer.mzlaLinkText') }}
