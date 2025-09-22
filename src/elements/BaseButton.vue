@@ -95,11 +95,6 @@ button:hover > .tooltip,
   padding: 1rem 1.12rem;
   cursor: pointer;
   user-select: none;
-  transition: background-color 250ms ease-in-out,
-              background 250ms ease-in-out,
-              border 250ms ease-in-out,
-              color 250ms ease-in-out,
-              box-shadow 250ms ease-in-out;
 
   .icon {
     display: flex;
@@ -183,7 +178,7 @@ button:hover > .tooltip,
 
   &.filled {
     /* For brand buttons, we are using one-off colours for light / dark mode */
-    --button-brand-filled-border-gradient: linear-gradient(#A0E1FF, #2B8CDC) border-box;
+    --button-brand-filled-border-gradient: linear-gradient(to bottom right, #7BC6F4 10%, #2B8CDC 60%) border-box;
 
     background:
       linear-gradient(329deg, var(--colour-primary-default) -21.06%, var(--colour-accent-blue) 64%) padding-box,
@@ -302,6 +297,16 @@ button:hover > .tooltip,
   &button {
     min-width: initial;
     height: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .base {
+      transition: background-color 250ms ease-in-out,
+              background 250ms ease-in-out,
+              border 250ms ease-in-out,
+              color 250ms ease-in-out,
+              box-shadow 250ms ease-in-out;
   }
 }
 </style>
