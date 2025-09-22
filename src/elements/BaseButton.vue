@@ -4,7 +4,7 @@ import ToolTip from '@/elements/ToolTip.vue';
 
 // component properties
 interface Props {
-  type?: 'primary' | 'brand' | 'destructive' | 'link';
+  type?: 'primary' | 'brand' | 'danger' | 'link';
   size?: 'default' | 'small';
   variant?: 'filled' | 'outline';
   tooltip?: string;
@@ -226,7 +226,7 @@ button:hover > .tooltip,
   }
 }
 
-.destructive {
+.danger {
   border: 0.0625rem solid transparent;
 
   &.filled {

@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
 import BaseButton from '@/elements/BaseButton.vue';
 import RefreshIcon from '@/icons/RefreshIcon.vue';
-import ArrowRightIcon from '@/icons/ArrowRightIcon.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof BaseButton> = {
@@ -14,7 +13,7 @@ const meta: Meta<typeof BaseButton> = {
   argTypes: {
     size: { control: 'select', options: ['regular', 'small'] },
     variant: { control: 'select', options: ['filled', 'outline'] },
-    type: { control: 'select', options: ['primary', 'brand', 'destructive', 'link'] },
+    type: { control: 'select', options: ['primary', 'brand', 'danger', 'link'] },
     tooltip: { control: 'text' },
     disabled: { control: 'boolean' },
   },
@@ -57,9 +56,9 @@ export const Brand: Story = {
   },
 };
 
-export const Destructive: Story = {
+export const Danger: Story = {
   args: {
-    type: 'destructive',
+    type: 'danger',
   },
   parameters: {
     docs: {
