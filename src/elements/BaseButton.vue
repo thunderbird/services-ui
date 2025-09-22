@@ -91,6 +91,7 @@ button:hover > .tooltip,
   font-family: 'Inter', 'sans-serif';
   font-size: var(--txt-input); /* 14px */
   font-weight: 400;
+  line-height: 1;
   padding: 1rem 1.12rem;
   cursor: pointer;
   user-select: none;

@@ -56,6 +56,19 @@ export const Brand: Story = {
   },
 };
 
+export const Outline: Story = {
+  args: {
+    type: 'brand',
+    variant: 'outline',
+    default: 'Subscribe now',
+  },
+  parameters: {
+    docs: {
+      source: { code: '<brand-button type="outline">Subscribe now</brand-button>' },
+    },
+  },
+};
+
 export const Danger: Story = {
   args: {
     type: 'danger',
