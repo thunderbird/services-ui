@@ -95,6 +95,11 @@ button:hover > .tooltip,
   padding: 1rem 1.12rem;
   cursor: pointer;
   user-select: none;
+  transition: background-color 250ms ease-in-out,
+              background 250ms ease-in-out,
+              border 250ms ease-in-out,
+              color 250ms ease-in-out,
+              box-shadow 250ms ease-in-out;
 
   .icon {
     display: flex;
@@ -144,32 +149,27 @@ button:hover > .tooltip,
     color: var(--colour-neutral-base);
 
     &:hover:enabled {
-      background: var(--colour-primary-hover);
+      background: linear-gradient(180deg, var(--colour-primary-hover) 0%, var(--colour-primary-hover) 100%);
     }
 
     &:active:enabled {
-      background: var(--colour-primary-pressed);
+      background: linear-gradient(180deg, var(--colour-primary-pressed) 0%, var(--colour-primary-pressed) 100%);
     }
   }
 
   &.outline {
-    background:
-      linear-gradient(var(--colour-neutral-base), var(--colour-neutral-base)) padding-box,
-      linear-gradient(180deg, var(--colour-primary-default) 31%, var(--colour-primary-hover) 100%) border-box;
+    background: var(--colour-neutral-base);
+    border: 0.0625rem solid var(--colour-primary-default);
     color: var(--colour-primary-hover);
 
     &:hover:enabled {
-      border: 0.125rem solid var(--colour-primary-hover);
-      border-image: none;
-      margin: -0.0625rem; /* Compensate for the extra 1px border to prevent layout shift */
-
-      &.small {
-        margin: 0 -0.0625rem; /* Compensate for the extra 1px border to prevent layout shift */
-      }
+      border-color: var(--colour-primary-hover);
+      box-shadow: 0 0 0 0.0625rem var(--colour-primary-hover);
     }
 
     &:active:enabled {
       background: color-mix(in srgb, var(--colour-accent-blue), transparent 90%);
+      box-shadow: 0 0 0 0.0625rem var(--colour-primary-hover);
     }
   }
 }
@@ -247,21 +247,18 @@ button:hover > .tooltip,
     border: 0.0625rem solid var(--button-destructive-color);
     background: var(--colour-neutral-base);
     color: var(--button-destructive-color);
+    box-shadow: 0 0 0 0 var(--button-destructive-color);
 
     &:hover:enabled {
-      border: 0.125rem solid var(--button-destructive-color-hover);
-      margin: -0.0625rem; /* Compensate for the extra 1px border to prevent layout shift */
+      border-color: var(--button-destructive-color-hover);
       color: var(--button-destructive-color-hover);
-
-      &.small {
-        margin: 0 -0.0625rem; /* Compensate for the extra 1px border to prevent layout shift */
-      }
+      box-shadow: 0 0 0 0.0625rem var(--button-destructive-color-hover);
     }
 
     &:active:enabled {
-      border: 0.125rem solid var(--button-destructive-color-active);
-      margin: -0.0625rem; /* Compensate for the extra 1px border to prevent layout shift */
+      border-color: var(--button-destructive-color-active);
       color: var(--button-destructive-color-active);
+      box-shadow: 0 0 0 0.0625rem var(--button-destructive-color-active);
     }
   }
 }
