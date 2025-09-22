@@ -24,18 +24,16 @@ withDefaults(defineProps<Props>(), {
       <svg
         class="beak"
         :class="position"
-        width="28"
+        width="29"
         height="6"
-        viewBox="0 0 28 6"
+        viewBox="0 0 29 6"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g>
-          <path
-            d="M15.4142 4.58579C14.6332 5.36683 13.3668 5.36683 12.5858 4.58579L8 0L20 0L15.4142 4.58579Z"
-            fill="currentColor"
-          />
-        </g>
+        <path
+          d="M15.9142 4.58579C15.1332 5.36683 13.8668 5.36683 13.0858 4.58579L8.5 0L20.5 0L15.9142 4.58579Z"
+          fill="currentColor"
+        />
       </svg>
     </div>
   </div>
@@ -45,11 +43,12 @@ withDefaults(defineProps<Props>(), {
 .tooltip {
   position: absolute;
   text-wrap: wrap;
-  border-radius: 0.25rem;
-  background-color: var(--colour-neutral-subtle);
-  font-family: 'Inter', sans-serif;
-  color: var(--colour-ti-base);
+  border-radius: 0.5rem;
+  background-color: var(--colour-neutral-base);
+  font-family: var(--font-sans);
+  color: var(--colour-ti-secondary);
   z-index: 100;
+  max-width: 15rem;
   box-shadow:
     0px 4px 8px 0px rgba(0, 0, 0, 0.14),
     0px 0px 2px 0px rgba(0, 0, 0, 0.12);
@@ -59,7 +58,7 @@ withDefaults(defineProps<Props>(), {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.25rem 0.5rem;
+  padding: 0.75rem 1rem;
 }
 
 .tooltip-container {
@@ -71,7 +70,8 @@ withDefaults(defineProps<Props>(), {
 
 .beak {
   position: absolute;
-  color: var(--colour-neutral-subtle);
+  color: var(--colour-neutral-base);
+  filter: drop-shadow(0px 1px 0px #00000010);
 }
 
 .pos-none {
@@ -81,6 +81,10 @@ withDefaults(defineProps<Props>(), {
 .pos-top {
   top: -6px;
   transform: scaleY(-1);
+
+  &.beak {
+    filter: drop-shadow(0px -1px 0px #00000010);
+  }
 }
 
 .pos-bottom {
