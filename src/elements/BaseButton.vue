@@ -54,12 +54,14 @@ withDefaults(defineProps<Props>(), {
 
 <style>
 html {
-  /* For brand buttons, we are using one-off colours for light / dark mode */
-  --button-brand-filled-border-gradient: linear-gradient(#A0E1FF, #2B8CDC) border-box;
-  --button-brand-filled-color: var(--colour-ti-base);
+  --button-destructive-color: var(--colour-danger-default);
+  --button-destructive-color-hover: var(--colour-danger-hover);
+  --button-destructive-color-active: var(--colour-danger-pressed);
 
   &.dark {
-    --button-brand-filled-color: #1a202c; /* keep light --colour-ti-base instead of switching to dark variant */
+    --button-destructive-color: var(--colour-danger-pressed);
+    --button-destructive-color-hover: #f87171; /* TODO: var(--critical-hover) in Figma (?) */
+    --button-destructive-color-active: var(--colour-ti-critical);
   }
 }
 </style>
@@ -179,10 +181,13 @@ button:hover > .tooltip,
   border: 0.0625rem solid transparent;
 
   &.filled {
+    /* For brand buttons, we are using one-off colours for light / dark mode */
+    --button-brand-filled-border-gradient: linear-gradient(#A0E1FF, #2B8CDC) border-box;
+
     background:
       linear-gradient(329deg, var(--colour-primary-default) -21.06%, var(--colour-accent-blue) 64%) padding-box,
       var(--button-brand-filled-border-gradient);
-    color: var(--button-brand-filled-color);
+    color: var(--colour-ti-base-light);
 
     &:hover:enabled {
       background:
@@ -200,21 +205,23 @@ button:hover > .tooltip,
   }
 
   &.outline {
+    --button-brand-outline-border-gradient: linear-gradient(99deg, var(--colour-accent-blue) 19.15%, var(--colour-accent-gray) 75.77%) border-box;
+
     background:
       linear-gradient(var(--colour-neutral-base), var(--colour-neutral-base)) padding-box,
-      linear-gradient(99deg, var(--colour-accent-blue) 19.15%, var(--colour-accent-gray) 75.77%) border-box;
+      var(--button-brand-outline-border-gradient);
     color: var(--colour-ti-base);
 
     &:hover:enabled {
       background:
         linear-gradient(var(--colour-neutral-raised), var(--colour-neutral-raised)) padding-box,
-        linear-gradient(99deg, var(--colour-accent-blue) 19.15%, var(--colour-accent-gray) 75.77%) border-box;
+        var(--button-brand-outline-border-gradient);
     }
 
     &:active:enabled {
       background:
         linear-gradient(var(--colour-neutral-lower), var(--colour-neutral-lower)) padding-box,
-        linear-gradient(99deg, var(--colour-accent-blue) 19.15%, var(--colour-accent-gray) 75.77%) border-box;
+        var(--button-brand-outline-border-gradient);
     }
   }
 }
@@ -223,27 +230,27 @@ button:hover > .tooltip,
   border: 0.0625rem solid transparent;
 
   &.filled {
-    background-color: var(--colour-danger-default);
+    background-color: var(--button-destructive-color);
     color: var(--colour-neutral-base);
 
     &:hover:enabled {
-      background-color: var(--colour-danger-hover);
+      background-color: var(--button-destructive-color-hover);
     }
 
     &:active:enabled {
-      background-color: var(--colour-danger-pressed);
+      background-color: var(--button-destructive-color-active);
     }
   }
 
   &.outline {
-    border: 0.0625rem solid var(--colour-danger-default);
+    border: 0.0625rem solid var(--button-destructive-color);
     background: var(--colour-neutral-base);
-    color: var(--colour-danger-default);
+    color: var(--button-destructive-color);
 
     &:hover:enabled {
-      border: 0.125rem solid var(--colour-danger-hover);
+      border: 0.125rem solid var(--button-destructive-color-hover);
       margin: -0.0625rem; /* Compensate for the extra 1px border to prevent layout shift */
-      color: var(--colour-danger-hover);
+      color: var(--button-destructive-color-hover);
 
       &.small {
         margin: 0 -0.0625rem; /* Compensate for the extra 1px border to prevent layout shift */
@@ -251,10 +258,9 @@ button:hover > .tooltip,
     }
 
     &:active:enabled {
-      border: 0.125rem solid var(--colour-danger-pressed);
-      background-color: var(--colour-danger-soft);
+      border: 0.125rem solid var(--button-destructive-color-active);
       margin: -0.0625rem; /* Compensate for the extra 1px border to prevent layout shift */
-      color: var(--colour-danger-pressed);
+      color: var(--button-destructive-color-active);
     }
   }
 }
