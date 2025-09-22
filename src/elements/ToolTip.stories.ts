@@ -17,6 +17,12 @@ export const Standard: Story = {
   args: {
     default: 'Important note',
   },
+  decorators: [
+    (story) => ({
+      components: { story },
+      template: `<div style="min-height:60px;"><story /></div>`,
+    })
+  ]
 };
 
 export const PositionTop: Story = {
@@ -24,6 +30,12 @@ export const PositionTop: Story = {
     default: 'Pointing upwards',
     position: TooltipPosition.Top,
   },
+  decorators: [
+    (story) => ({
+      components: { story },
+      template: `<div style="min-height:60px;"><story /></div>`,
+    })
+  ]
 };
 
 export const PositionLeft: Story = {
@@ -31,6 +43,12 @@ export const PositionLeft: Story = {
     default: 'Pointing left',
     position: TooltipPosition.Left,
   },
+  decorators: [
+    (story) => ({
+      components: { story },
+      template: `<div style="min-height:60px;"><story /></div>`,
+    })
+  ]
 };
 
 export const PositionBottom: Story = {
@@ -38,6 +56,12 @@ export const PositionBottom: Story = {
     default: 'Pointing downwards',
     position: TooltipPosition.Bottom,
   },
+  decorators: [
+    (story) => ({
+      components: { story },
+      template: `<div style="min-height:60px;"><story /></div>`,
+    })
+  ]
 };
 
 export const PositionRight: Story = {
@@ -45,6 +69,12 @@ export const PositionRight: Story = {
     default: 'Pointing right',
     position: TooltipPosition.Right,
   },
+  decorators: [
+    (story) => ({
+      components: { story },
+      template: `<div style="min-height:60px;"><story /></div>`,
+    })
+  ]
 };
 
 export const PositionNone: Story = {
@@ -52,4 +82,10 @@ export const PositionNone: Story = {
     default: 'Pointing nowhere',
     position: TooltipPosition.None,
   },
+  decorators: [
+    (story) => ({
+      components: { story },
+      template: `<div style="min-height:60px;"><story /></div>`,
+    })
+  ]
 };
