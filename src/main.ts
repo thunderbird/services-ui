@@ -9,6 +9,7 @@ import WarningBadge from '@/elements/WarningBadge.vue';
 
 // Buttons
 import BaseButton from '@/elements/BaseButton.vue';
+import BrandButton from '@/elements/BrandButton.vue';
 import DangerButton from '@/elements/DangerButton.vue';
 import LinkButton from '@/elements/LinkButton.vue';
 import PrimaryButton from '@/elements/PrimaryButton.vue';
@@ -21,10 +22,13 @@ import SwitchToggle from '@/elements/SwitchToggle.vue';
 import SyncCard from '@/elements/SyncCard.vue';
 import TextArea from '@/elements/TextArea.vue';
 import TextInput from '@/elements/TextInput.vue';
+import SegmentedControl from '@/elements/SegmentedControl.vue';
 
 // Misc
 import NoticeBar from '@/elements/NoticeBar.vue';
 import ToolTip from '@/elements/ToolTip.vue';
+import UserAvatar from '@/elements/UserAvatar.vue';
+import VisualDivider from '@/elements/VisualDivider.vue';
 
 // Icons
 import CopyIcon from '@/icons/CopyIcon.vue';
@@ -40,6 +44,9 @@ import StatusWarningIcon from '@/icons/StatusWarningIcon.vue';
 // Types
 import { ExpiryUnitTypes, NoticeBarTypes } from '@/definitions';
 
+// Patterns
+import StandardFooter from '@/patterns/StandardFooter.vue';
+
 export {
   // Badges
   BaseBadge,
@@ -49,12 +56,14 @@ export {
   WarningBadge,
   // Buttons
   BaseButton,
+  BrandButton,
   DangerButton,
   LinkButton,
   PrimaryButton,
   // Inputs
   BubbleSelect,
   CheckboxInput,
+  SegmentedControl,
   SelectInput,
   SwitchToggle,
   SyncCard,
@@ -63,6 +72,8 @@ export {
   // Misc
   NoticeBar,
   ToolTip,
+  UserAvatar,
+  VisualDivider,
   // Icons
   CopyIcon,
   NoticeCriticalIcon,
@@ -76,4 +87,6 @@ export {
   // Types
   ExpiryUnitTypes,
   NoticeBarTypes,
+  // Patterns
+  StandardFooter
 };
