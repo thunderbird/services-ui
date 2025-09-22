@@ -56,10 +56,10 @@ export {
   WarningBadge,
   // Buttons
   BaseButton,
+  BrandButton,
   DangerButton,
   LinkButton,
   PrimaryButton,
-  BrandButton,
   // Inputs
   BubbleSelect,
   CheckboxInput,
