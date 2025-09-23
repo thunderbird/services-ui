@@ -5,7 +5,7 @@ import { t } from '@/composable/i18n';
 interface Props {
   username: string,
   avatarUrl?: string,
-  size?: 'small' | 'regular' | 'large';
+  size?: 'extra-small' | 'small' | 'regular' | 'large';
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -49,6 +49,11 @@ const usernameInitial = computed(() => {
     font-style: normal;
     line-height: 1.43;
     color: var(--colour-ti-base-light);
+  }
+
+  &.extra-small {
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   &.small {

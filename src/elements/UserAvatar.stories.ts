@@ -46,6 +46,10 @@ export const Sizes: Story = {
       <div style="display:flex;gap:1rem;align-items:center;">
         <user-avatar
           username="Jennifer"
+          size="extra-small"
+        />
+        <user-avatar
+          username="Jennifer"
           size="small"
         />
         <user-avatar
