@@ -3,9 +3,6 @@ import '@/assets/styles/main.css';
 // Badges
 import BaseBadge from '@/elements/BaseBadge.vue';
 import ExpiryBadge from '@/elements/ExpiryBadge.vue';
-import PrimaryBadge from '@/elements/PrimaryBadge.vue';
-import SecondaryBadge from '@/elements/SecondaryBadge.vue';
-import WarningBadge from '@/elements/WarningBadge.vue';
 
 // Buttons
 import BaseButton from '@/elements/BaseButton.vue';
@@ -51,9 +48,6 @@ export {
   // Badges
   BaseBadge,
   ExpiryBadge,
-  PrimaryBadge,
-  SecondaryBadge,
-  WarningBadge,
   // Buttons
   BaseButton,
   BrandButton,
