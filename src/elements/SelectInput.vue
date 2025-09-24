@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { type HTMLInputElementEvent, type SelectOption } from '@/models';
+import NoticeCriticalIcon from '@/icons/NoticeCriticalIcon.vue';
 
 // component properties
 interface Props {
   name: string;
   options: SelectOption<number | string>[];
+  help?: string;
   required?: boolean;
   disabled?: boolean;
   dataTestid?: string;
@@ -16,22 +18,38 @@ withDefaults(defineProps<Props>(), {
   dataTestid: 'select-input',
 });
 
-defineEmits(['submit']);
 const model = defineModel<number | string>();
 const isInvalid = ref(false);
+const isDirty = ref(false);
 const validationMessage = ref('');
+
+/**
+ * Resets the component's internal validation state and clears the input value.
+ * This should be explicitly called when the parent form is reset.
+ */
+const reset = () => {
+  model.value = '';
+  isInvalid.value = false;
+  isDirty.value = false;
+  validationMessage.value = '';
+};
 
 const onInvalid = (evt: HTMLInputElementEvent) => {
   isInvalid.value = true;
   validationMessage.value = evt.target.validationMessage;
 };
 const onInput = (evt: HTMLInputElementEvent) => {
+  isDirty.value = true;
+
   // Revalidate on input change
   if (evt.target.checkValidity()) {
     isInvalid.value = false;
     validationMessage.value = '';
   }
 };
+
+defineEmits(['submit']);
+defineExpose({ reset });
 </script>
 
 <template>
@@ -42,6 +60,7 @@ const onInput = (evt: HTMLInputElementEvent) => {
     </span>
     <select
       class="tbpro-select"
+      :class="{ dirty: isDirty, invalid: isInvalid }"
       v-model="model"
       :id="name"
       :name="name"
@@ -55,8 +74,12 @@ const onInput = (evt: HTMLInputElementEvent) => {
         {{ option.label }}
       </option>
     </select>
-    <span :class="{ visible: isInvalid }" class="help-label">
+    <span v-if="isInvalid" class="help-label invalid">
+      <notice-critical-icon />
       {{ validationMessage }}
+    </span>
+    <span v-if="help" class="help-label">
+      {{ help }}
     </span>
   </label>
 </template>
@@ -68,7 +91,8 @@ const onInput = (evt: HTMLInputElementEvent) => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: var(--colour-ti-base);
+  gap: 0.5rem;
+  color: var(--colour-ti-secondary);
   font-family: var(--font-sans);
   font-size: var(--txt-input);
   line-height: var(--line-height-input);
@@ -76,18 +100,29 @@ const onInput = (evt: HTMLInputElementEvent) => {
 }
 
 .label {
+  display: flex;
+  gap: 0.25rem;
   width: 100%;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .help-label {
-  visibility: hidden;
   display: flex;
-  color: var(--colour-ti-critical);
+  color: var(--colour-ti-muted);
+  box-sizing: border-box;
 
   width: 100%;
   font-size: 0.625rem;
   line-height: 0.9375rem;
+
+  &.invalid {
+    gap: 0.25rem;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    font-size: 0.75rem;
+    background-color: var(--colour-danger-soft);
+    color: var(--colour-danger-default);
+  }
 }
 
 .visible {
@@ -99,30 +134,41 @@ const onInput = (evt: HTMLInputElementEvent) => {
 }
 
 .tbpro-select {
-  --colour-select-border: var(--colour-neutral-border);
-  background-color: var(--colour-neutral-base);
-  @mixin faded-border var(--colour-select-border);
-  border-radius: var(--border-radius);
   font-size: var(--txt-input);
   font-weight: 400;
   padding: 0.75rem;
   width: 100%;
+  border-radius: var(--border-radius);
+  color: var(--colour-ti-secondary);
+  background-color: var(--colour-neutral-base);
+  border: 0.0625rem solid var(--colour-neutral-border);
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.05) inset;
+  outline: none;
 
-  color: var(--txt-colour);
+  &::placeholder {
+    color: var(--colour-ti-muted);
+  }
 
-  &:hover,
-  &:focus {
-    --colour-select-border: var(--colour-neutral-border-intense);
+  &:hover {
+    border-color: var(--colour-neutral-border-intense);
+  }
+
+  &:focus-within {
+    border-color: var(--colour-primary-default);
+    box-shadow: 0 0 0 0.0625rem var(--colour-primary-default);
   }
 
   &:active {
     background-color: var(--colour-neutral-subtle);
-    --colour-select-border: var(--colour-neutral-border-intense);
   }
 
   &:disabled {
     filter: grayscale(50%);
     cursor: not-allowed;
+  }
+
+  &.invalid {
+    border-color: var(--colour-ti-critical);
   }
 }
 

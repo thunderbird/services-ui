@@ -125,11 +125,11 @@ const onChange = () => {
       <span v-if="outerSuffix" class="tbpro-input-outer-suffix">{{ outerSuffix }}</span>
     </span>
     <span v-if="isInvalid" class="help-label invalid">
-      <NoticeCriticalIcon />
+      <notice-critical-icon />
       {{ validationMessage }}
     </span>
     <span v-else-if="error" class="help-label invalid">
-      <NoticeCriticalIcon />
+      <notice-critical-icon />
       {{ error }}
     </span>
     <span v-if="help" class="help-label">
