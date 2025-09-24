@@ -20,17 +20,12 @@ const props = withDefaults(defineProps<Props>(), {
 const isInfo = computed(() => props.type === NoticeBarTypes.Info);
 const isSuccess = computed(() => props.type === NoticeBarTypes.Success);
 const isWarning = computed(() => props.type === NoticeBarTypes.Warning);
-const isError = computed(() => props.type === NoticeBarTypes.Error);
+const isError = computed(() => props.type === NoticeBarTypes.Critical);
 </script>
 
 <template>
   <div
-    :class="{
-      error: isError,
-      info: isInfo,
-      warning: isWarning,
-      success: isSuccess,
-    }"
+    :class="{ [type]: type }"
     class="notice notice-bar"
     :data-testid="dataTestid"
   >
@@ -43,6 +38,9 @@ const isError = computed(() => props.type === NoticeBarTypes.Error);
     <span class="body">
       <slot />
     </span>
+    <div class="cta" v-if="$slots?.cta">
+      <slot name="cta" />
+    </div>
   </div>
 </template>
 
@@ -50,65 +48,58 @@ const isError = computed(() => props.type === NoticeBarTypes.Error);
 @import '@/assets/styles/custom-media.pcss';
 
 .icon {
-  position: absolute;
-  left: 0.5625rem;
-  top: 0.475rem;
-  margin-top: auto;
-  margin-bottom: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .body {
-  margin: auto;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  line-height: 1;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 132%;
+  color: var(--colour-ti-secondary);
+  flex-grow: 1;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .notice {
-  position: relative;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  justify-content: start;
   align-items: center;
-  border-radius: 0.1875rem;
-  gap: 0.625rem;
+  border-radius: 1rem;
+  gap: 0.5rem;
   border: 0.0625rem solid;
-  padding: 0.5625rem 0.5625rem 0.5625rem 1.75rem;
+  padding: 1rem;
+
+  &:has(.cta) {
+    padding: 0.75rem 0.75rem 0.75rem 1rem;
+  }
 }
 
 .info {
-  background-color: var(--colour-service-soft);
-  border-color: var(--colour-service-primary);
-  color: var(--colour-service-primary-pressed);
+  background-color: var(--colour-primary-soft);
+  border-color: var(--colour-primary-default);
 }
 
 .success {
   background-color: var(--colour-success-soft);
   border-color: var(--colour-success-default);
-  color: var(--colour-ti-success);
 }
 
 .warning {
   background-color: var(--colour-warning-soft);
   border-color: var(--colour-warning-default);
-  color: var(--colour-ti-warning);
 }
 
-.error {
+.critical {
   background-color: var(--colour-danger-soft);
   border-color: var(--colour-danger-default);
-  color: var(--colour-danger-pressed);
-}
-
-.dark {
-  .info {
-    color: var(--colour-service-accent-1);
-    border-color: var(--colour-service-accent-1);
-  }
-}
-
-@media (--md) {
-  .notice {
-    min-width: 31.25rem;
-  }
 }
 </style>

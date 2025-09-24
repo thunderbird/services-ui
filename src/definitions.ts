@@ -277,7 +277,7 @@ export enum NoticeBarTypes {
   Info = 'info',
   Success = 'success',
   Warning = 'warning',
-  Error = 'error',
+  Critical = 'critical',
 }
 
 export enum ExpiryUnitTypes {
