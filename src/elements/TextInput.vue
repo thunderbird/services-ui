@@ -87,6 +87,16 @@ const onChange = () => {
   isDirty.value = true;
   validationMessage.value = '';
 };
+
+const onBlur = (evt) => {
+  if (evt.target.checkValidity()) {
+    isInvalid.value = false;
+    isDirty.value = true;
+    validationMessage.value = '';
+  }
+
+  emit('blur');
+}
 </script>
 
 <template>
@@ -118,7 +128,7 @@ const onChange = () => {
           :data-testid="dataTestid"
           @invalid="onInvalid"
           @change="onChange"
-          @blur="emit('blur')"
+          @blur="onBlur"
           ref="inputRef"
         />
       </span>
