@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { BaseBadgeTypes } from '@/definitions';
+
 // component properties
 interface Props {
-  type?: 'set' | 'primary' | 'subscription' | 'pending' | 'not-set' | 'verified' | 'emails' | 'default' | 'counter';
+  type?: BaseBadgeTypes;
   dataTestid?: string;
 }
 withDefaults(defineProps<Props>(), {
-  type: 'primary',
+  type: BaseBadgeTypes.Primary,
   dataTestid: 'badge',
 });
 </script>

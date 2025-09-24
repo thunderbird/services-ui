@@ -280,6 +280,18 @@ export enum NoticeBarTypes {
   Critical = 'critical',
 }
 
+export enum BaseBadgeTypes {
+  Set = 'set',
+  Primary = 'primary',
+  Subscription = 'subscription',
+  Pending = 'pending',
+  NotSet = 'not-set',
+  Verified = 'verified',
+  Emails = 'emails',
+  Default = 'default',
+  Counter = 'counter'
+}
+
 export enum ExpiryUnitTypes {
   Seconds = 'second',
   Minutes = 'minute',

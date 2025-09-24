@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
 import BaseBadge from '@/elements/BaseBadge.vue';
 import CheckCircleFilledIcon from '@/icons/CheckCircleFilledIcon.vue';
+import { BaseBadgeTypes } from '@/definitions';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof BaseBadge> = {
@@ -10,7 +11,7 @@ const meta: Meta<typeof BaseBadge> = {
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   argTypes: {
-    type: { control: 'select', options: ['set', 'primary', 'subscription', 'pending', 'not-set', 'verified', 'emails', 'default'] },
+    type: { control: 'select', options: Object.values(BaseBadgeTypes) },
     default: { control: 'text' },
   },
   args: {
@@ -23,14 +24,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Set: Story = {
   args: {
-    type: 'set',
+    type: BaseBadgeTypes.Set,
     default: 'set'
   },
 };
 
 export const SetWithIcon: Story = {
   args: {
-    type: 'set',
+    type: BaseBadgeTypes.Set,
     default: 'set'
   },
   render: (args) => ({
@@ -51,14 +52,14 @@ export const SetWithIcon: Story = {
 
 export const Primary: Story = {
   args: {
-    type: 'primary',
+    type: BaseBadgeTypes.Primary,
     default: 'primary'
   },
 };
 
 export const PrimaryWithIcon: Story = {
   args: {
-    type: 'primary',
+    type: BaseBadgeTypes.Primary,
     default: 'primary'
   },
   render: (args) => ({
@@ -79,14 +80,14 @@ export const PrimaryWithIcon: Story = {
 
 export const Subscription: Story = {
   args: {
-    type: 'subscription',
+    type: BaseBadgeTypes.Subscription,
     default: 'subscription'
   },
 };
 
 export const SubscriptionWithIcon: Story = {
   args: {
-    type: 'subscription',
+    type: BaseBadgeTypes.Subscription,
     default: 'subscription'
   },
   render: (args) => ({
@@ -107,14 +108,14 @@ export const SubscriptionWithIcon: Story = {
 
 export const Pending: Story = {
   args: {
-    type: 'pending',
+    type: BaseBadgeTypes.Pending,
     default: 'pending'
   },
 };
 
 export const PendingWithIcon: Story = {
   args: {
-    type: 'pending',
+    type: BaseBadgeTypes.Pending,
     default: 'pending'
   },
   render: (args) => ({
@@ -135,14 +136,14 @@ export const PendingWithIcon: Story = {
 
 export const NotSet: Story = {
   args: {
-    type: 'not-set',
+    type: BaseBadgeTypes.NotSet,
     default: 'not set'
   },
 };
 
 export const NotSetWithIcon: Story = {
   args: {
-    type: 'not-set',
+    type: BaseBadgeTypes.NotSet,
     default: 'not set'
   },
   render: (args) => ({
@@ -163,14 +164,14 @@ export const NotSetWithIcon: Story = {
 
 export const Verified: Story = {
   args: {
-    type: 'verified',
+    type: BaseBadgeTypes.Verified,
     default: 'verified'
   },
 };
 
 export const VerifiedWithIcon: Story = {
   args: {
-    type: 'verified',
+    type: BaseBadgeTypes.Verified,
     default: 'verified'
   },
   render: (args) => ({
@@ -191,14 +192,14 @@ export const VerifiedWithIcon: Story = {
 
 export const Emails: Story = {
   args: {
-    type: 'emails',
+    type: BaseBadgeTypes.Emails,
     default: '#emails'
   },
 };
 
 export const EmailsWithIcon: Story = {
   args: {
-    type: 'emails',
+    type: BaseBadgeTypes.Emails,
     default: '#emails'
   },
   render: (args) => ({
@@ -219,14 +220,14 @@ export const EmailsWithIcon: Story = {
 
 export const Default: Story = {
   args: {
-    type: 'default',
+    type: BaseBadgeTypes.Default,
     default: 'default'
   },
 };
 
 export const DefaultWithIcon: Story = {
   args: {
-    type: 'default',
+    type: BaseBadgeTypes.Default,
     default: 'default'
   },
   render: (args) => ({
@@ -247,7 +248,7 @@ export const DefaultWithIcon: Story = {
 
 export const Counter: Story = {
   args: {
-    type: 'counter',
+    type: BaseBadgeTypes.Counter,
     default: '2'
   },
 };
