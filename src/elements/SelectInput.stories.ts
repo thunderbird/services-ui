@@ -58,6 +58,7 @@ export const Required: Story = {
     name: 'required',
     required: true,
     modelValue: '',
+    help: 'Choose wisely.',
     options: [
       { label: '', value: '' },
       { label: 'All', value: 'all' },
