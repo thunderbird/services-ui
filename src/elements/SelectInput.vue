@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { type HTMLInputElementEvent, type SelectOption } from '@/models';
 import NoticeCriticalIcon from '@/icons/NoticeCriticalIcon.vue';
+import CaretDownIcon from '@/icons/CaretDownIcon.vue';
 
 // component properties
 interface Props {
@@ -58,22 +59,25 @@ defineExpose({ reset });
       <slot />
       <span v-if="required && (model === null || model === '')" class="required">*</span>
     </span>
-    <select
-      class="tbpro-select"
-      :class="{ dirty: isDirty, invalid: isInvalid }"
-      v-model="model"
-      :id="name"
-      :name="name"
-      :required="required"
-      :disabled="disabled"
-      @invalid="onInvalid"
-      @input="onInput"
-      :data-testid="dataTestid"
-    >
-      <option v-for="option in options" :value="option.value" :key="option.value">
-        {{ option.label }}
-      </option>
-    </select>
+    <div class="tbpro-select-container">
+      <select
+        class="tbpro-select"
+        :class="{ dirty: isDirty, invalid: isInvalid }"
+        v-model="model"
+        :id="name"
+        :name="name"
+        :required="required"
+        :disabled="disabled"
+        @invalid="onInvalid"
+        @input="onInput"
+        :data-testid="dataTestid"
+      >
+        <option v-for="option in options" :value="option.value" :key="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+      <caret-down-icon class="dropdown-caret" />
+    </div>
     <span v-if="isInvalid" class="help-label invalid">
       <notice-critical-icon />
       {{ validationMessage }}
@@ -133,10 +137,23 @@ defineExpose({ reset });
   color: var(--colour-ti-critical);
 }
 
+.tbpro-select-container {
+  position: relative;
+  width: 100%;
+
+  .dropdown-caret {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
 .tbpro-select {
   font-size: var(--txt-input);
   font-weight: 400;
-  padding: 0.75rem;
+  padding: 0.75rem 2.5rem 0.75rem 0.75rem;
   width: 100%;
   border-radius: var(--border-radius);
   color: var(--colour-ti-secondary);
@@ -144,6 +161,9 @@ defineExpose({ reset });
   border: 0.0625rem solid var(--colour-neutral-border);
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.05) inset;
   outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 
   &::placeholder {
     color: var(--colour-ti-muted);
