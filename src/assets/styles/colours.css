@@ -39,6 +39,7 @@ html {
    */
   --colour-primary-soft: #f0f8ff;
   --colour-primary-default: #1373d9;
+  --colour-primary-default-dark: #58c9ff; /* No override */
   --colour-primary-hover: #175fb6;
   --colour-primary-pressed: #19518f;
 
@@ -99,7 +100,7 @@ html {
    * *Do not use with text
    */
   --colour-accent-teal: #25a6a0;
-  --colour-accent-blue: #58c9ff;
+  --colour-accent-blue: #37ADF9;
   --colour-accent-purple: #ae55f7;
   --colour-accent-orange: #ea7308;
   --colour-accent-pink: #e247c4;
