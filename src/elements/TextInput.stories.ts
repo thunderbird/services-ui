@@ -21,6 +21,7 @@ export const Standard: Story = {
   args: {
     name: 'name',
     default: 'Full Name',
+    placeholder: 'e.g. John Doe'
   },
 };
 
@@ -28,6 +29,7 @@ export const Disabled: Story = {
   args: {
     name: 'name',
     default: 'Full Name',
+    placeholder: 'e.g. John Doe',
     disabled: true,
   },
 };
@@ -36,7 +38,9 @@ export const Required: Story = {
   args: {
     name: 'fav-food',
     default: 'Favourite Food?',
+    placeholder: '(e.g. Pizza)',
     required: true,
+    help: 'Choose wisely.',
   },
   decorators: [
     (story) => ({
@@ -44,7 +48,7 @@ export const Required: Story = {
       template: `
         <div>
           <story />
-          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;margin-top: 0.5rem;">
             <button @click="triggerInvalid">
               Trigger Invalid State
             </button>
@@ -85,6 +89,7 @@ export const Help: Story = {
   args: {
     name: 'fav-beverage',
     default: 'Favourite Beverage',
+    placeholder: 'e.g. Ginger ale',
     help: 'When in doubt, go with water.',
   },
 };

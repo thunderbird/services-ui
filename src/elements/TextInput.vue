@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue';
 import { useElementSize } from '@vueuse/core';
 import { type HTMLInputElementEvent } from '@/models';
+import NoticeCriticalIcon from '@/icons/NoticeCriticalIcon.vue';
 
 const model = defineModel<string>();
 const isInvalid = ref(false);
@@ -124,12 +125,14 @@ const onChange = () => {
       <span v-if="outerSuffix" class="tbpro-input-outer-suffix">{{ outerSuffix }}</span>
     </span>
     <span v-if="isInvalid" class="help-label invalid">
+      <NoticeCriticalIcon />
       {{ validationMessage }}
     </span>
     <span v-else-if="error" class="help-label invalid">
+      <NoticeCriticalIcon />
       {{ error }}
     </span>
-    <span v-else-if="help" class="help-label">
+    <span v-if="help" class="help-label">
       {{ help }}
     </span>
   </label>
@@ -142,7 +145,8 @@ const onChange = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: var(--colour-ti-base);
+  gap: 0.5rem;
+  color: var(--colour-ti-secondary);
   font-family: var(--font-sans);
   font-size: var(--txt-input);
   line-height: var(--line-height-input);
@@ -152,7 +156,6 @@ const onChange = () => {
 .label {
   width: 100%;
   font-weight: 600;
-  padding: 0.1875rem;
 }
 
 .small-text {
@@ -161,21 +164,26 @@ const onChange = () => {
 
 .help-label {
   display: flex;
-  color: var(--colour-ti-base);
+  color: var(--colour-ti-muted);
+  box-sizing: border-box;
 
   width: 100%;
   font-size: 0.625rem;
   line-height: 0.9375rem;
-  padding: 0.1875rem;
 
   &.invalid {
+    gap: 0.25rem;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    font-size: 0.75rem;
+    background-color: var(--colour-danger-soft);
     color: var(--colour-danger-default);
   }
 }
 
 .required {
   color: var(--colour-ti-critical);
-  padding-left: 0.25rem;
+  padding-inline-start: 0.25rem;
 }
 
 .tbpro-input {
@@ -183,10 +191,45 @@ const onChange = () => {
   align-items: center;
   gap: 0.25rem;
   width: 100%;
+  border-radius: var(--border-radius);
+  border: 0.0625rem solid var(--colour-neutral-border);
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.05) inset;
+
+  &:has(.tbpro-input-outer-prefix, .tbpro-input-outer-suffix) {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    gap: 0;
+
+    .tbpro-input-wrapper {
+      .tbpro-input-element {
+        border-radius: 0;
+      }
+    }
+  }
 
   .tbpro-input-outer-prefix,
   .tbpro-input-outer-suffix {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     white-space: nowrap;
+    background-color: var(--colour-neutral-border);
+    padding: 0.5rem 0.75rem;
+    align-self: stretch;
+  }
+
+  &:hover:has(input:enabled):not(:focus-within) {
+    border-color: var(--colour-neutral-border-intense);
+  }
+
+  &:focus-within {
+    border-color: var(--colour-primary-default);
+    box-shadow: 0 0 0 0.0625rem var(--colour-primary-default);
+  }
+
+  &:has(.dirty:invalid):not(:focus-within),
+  &:has(.error):not(:focus-within) {
+    border-color: var(--colour-ti-critical);
   }
 
   .tbpro-input-wrapper {
@@ -209,7 +252,6 @@ const onChange = () => {
     }
 
     .tbpro-input-element {
-      --colour-btn-border: var(--colour-neutral-border);
       width: 100%;
       transition-property: none;
       font-size: var(--txt-input);
@@ -217,35 +259,14 @@ const onChange = () => {
       padding: 0.75rem;
       box-sizing: border-box;
 
-      color: var(--txt-colour);
+      color: var(--colour-ti-secondary);
       background-color: var(--colour-neutral-base);
+      border: none;
       border-radius: var(--border-radius);
-      @mixin faded-border var(--colour-btn-border);
 
       &.small-input {
         padding: 0.125rem;
         --txt-input: 0.7384375rem;
-      }
-
-      &:hover:enabled {
-        --colour-btn-border: var(--colour-neutral-border-intense);
-      }
-
-      &:active:enabled {
-        --colour-btn-border: var(--colour-neutral-border-intense);
-      }
-
-      &:focus:enabled {
-        --colour-btn-border: var(--colour-service-primary);
-        outline: 0.125rem solid var(--colour-btn-border);
-        /* Un-fade the border */
-        border: 0.0625rem solid var(--colour-btn-border) !important;
-        border-radius: 0.125rem;
-      }
-
-      &.dirty:invalid,
-      &.error {
-        --colour-btn-border: var(--colour-ti-critical);
       }
 
       &:disabled {
@@ -255,6 +276,10 @@ const onChange = () => {
 
       &::placeholder {
         color: var(--colour-ti-muted);
+      }
+
+      &:focus {
+        outline: none; /* The outline is applied to the .tbpro-input itself */
       }
 
       &[type='time']::-webkit-calendar-picker-indicator {
