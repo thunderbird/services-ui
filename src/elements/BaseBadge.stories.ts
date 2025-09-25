@@ -22,6 +22,34 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+export const Default: Story = {
+  args: {
+    type: BaseBadgeTypes.Default,
+    default: 'default'
+  },
+};
+
+export const DefaultWithIcon: Story = {
+  args: {
+    type: BaseBadgeTypes.Default,
+    default: 'default'
+  },
+  render: (args) => ({
+    components: { BaseBadge, CheckCircleFilledIcon },
+    setup() {
+      return { args };
+    },
+    template: `
+      <BaseBadge type="default">
+        <template #icon>
+          <CheckCircleFilledIcon />
+        </template>
+        {{ args.default }}
+      </BaseBadge>
+    `,
+  }),
+};
+
 export const Set: Story = {
   args: {
     type: BaseBadgeTypes.Set,
@@ -209,34 +237,6 @@ export const EmailsWithIcon: Story = {
     },
     template: `
       <BaseBadge type="emails">
-        <template #icon>
-          <CheckCircleFilledIcon />
-        </template>
-        {{ args.default }}
-      </BaseBadge>
-    `,
-  }),
-};
-
-export const Default: Story = {
-  args: {
-    type: BaseBadgeTypes.Default,
-    default: 'default'
-  },
-};
-
-export const DefaultWithIcon: Story = {
-  args: {
-    type: BaseBadgeTypes.Default,
-    default: 'default'
-  },
-  render: (args) => ({
-    components: { BaseBadge, CheckCircleFilledIcon },
-    setup() {
-      return { args };
-    },
-    template: `
-      <BaseBadge type="default">
         <template #icon>
           <CheckCircleFilledIcon />
         </template>
