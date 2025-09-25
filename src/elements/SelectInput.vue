@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { type HTMLInputElementEvent, type SelectOption } from '@/models';
-import NoticeCriticalIcon from '@/icons/NoticeCriticalIcon.vue';
+import ErrorIcon from '@/icons/ErrorIcon.vue';
 import CaretDownIcon from '@/icons/CaretDownIcon.vue';
 
 // component properties
@@ -79,7 +79,7 @@ defineExpose({ reset });
       <caret-down-icon class="dropdown-caret" />
     </div>
     <span v-if="isInvalid" class="help-label invalid">
-      <notice-critical-icon />
+      <error-icon />
       {{ validationMessage }}
     </span>
     <span v-if="help" class="help-label">
@@ -112,6 +112,7 @@ defineExpose({ reset });
 
 .help-label {
   display: flex;
+  align-items: center;
   color: var(--colour-ti-muted);
   box-sizing: border-box;
 
