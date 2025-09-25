@@ -40,7 +40,9 @@ export const Standard: Story = {
       return { args };
     },
     template: `
-      <CopyToClipboard v-bind="args" />
+      <div style="padding: 2rem;">
+        <CopyToClipboard v-bind="args" />
+      </div>
     `,
   }),
 };
@@ -56,7 +58,9 @@ export const WithCopyValue: Story = {
       return { args };
     },
     template: `
-      <CopyToClipboard v-bind="args" />
+      <div style="padding: 2rem;">
+        <CopyToClipboard v-bind="args" />
+      </div>
     `,
   }),
 };
@@ -72,7 +76,9 @@ export const IconOnly: Story = {
       return { args };
     },
     template: `
-      <CopyToClipboard v-bind="args" />
+      <div style="padding: 2rem;">
+        <CopyToClipboard v-bind="args" />
+      </div>
     `,
   }),
 };
