@@ -1,27 +1,21 @@
 <script setup lang="ts">
-import StatusInfoIcon from '@/icons/StatusInfoIcon.vue';
-import StatusWarningIcon from '@/icons/StatusWarningIcon.vue';
+import { BaseBadgeTypes } from '@/definitions';
 
 // component properties
 interface Props {
-  type?: 'primary' | 'secondary' | 'warning';
-  icon?: boolean;
+  type?: BaseBadgeTypes;
   dataTestid?: string;
 }
 withDefaults(defineProps<Props>(), {
-  type: 'primary',
-  icon: false,
+  type: BaseBadgeTypes.Primary,
   dataTestid: 'badge',
 });
 </script>
 
 <template>
   <div :class="{ [type]: type }" class="badge" :data-testid="dataTestid">
-    <span class="icon" v-if="icon">
-      <slot name="icon">
-        <status-info-icon v-if="type == 'primary' || type == 'secondary'" />
-        <status-warning-icon v-if="type == 'warning'" />
-      </slot>
+    <span class="icon" v-if="$slots?.icon">
+      <slot name="icon" />
     </span>
     <span class="text">
       <slot />
@@ -33,44 +27,108 @@ withDefaults(defineProps<Props>(), {
 @import '@/assets/styles/custom-media.pcss';
 
 .icon {
-  margin-top: auto;
-  margin-bottom: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
 }
 
 .text {
   margin: auto;
   font-size: 0.8125rem;
-  font-weight: 700;
-  line-height: 1.2;
+  font-weight: 600;
+  line-height: normal;
   text-transform: uppercase;
 }
 
 .badge {
-  position: relative;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0.1875rem;
-  gap: 0.3125rem;
-  border: 0.0625rem solid;
-  padding: 0.140625rem 0.28125rem;
+  border-radius: 4rem;
+  gap: 0.25rem;
+  border: 1px solid transparent;
+  padding: 0.25rem 0.75rem;
+
+  &:has(.icon) {
+    padding-inline-start: 0.25rem;
+  }
+}
+
+/* Types / Variants */
+
+.set {
+  background-color: var(--colour-ti-secondary);
+  color: var(--colour-neutral-base);
 }
 
 .primary {
-  background-color: var(--colour-primary-soft);
-  border-color: var(--colour-service-primary-hover);
-  color: var(--colour-service-primary-hover);
+  background-color: var(--colour-accent-blue);
+  color: var(--colour-ti-base);
 }
 
-.secondary {
-  background-color: var(--colour-neutral-subtle);
-  border-color: var(--colour-ti-secondary);
+.subscription {
+  background: color-mix(in srgb, var(--colour-primary-default-dark), transparent 80%);
   color: var(--colour-ti-secondary);
+
+  .icon {
+    color: var(--colour-primary-default);
+  }
 }
 
-.warning {
+.pending {
   background-color: var(--colour-warning-soft);
-  border-color: var(--colour-ti-warning);
-  color: var(--colour-ti-warning);
+  border-color: var(--colour-warning-default);
+  color: var(--colour-ti-secondary);
+
+  .icon {
+    color: var(--colour-ti-warning);
+  }
+}
+
+.not-set {
+  background-color: var(--colour-danger-soft);
+  border-color: var(--colour-ti-critical);
+  color: var(--colour-ti-secondary);
+
+  .icon {
+    color: var(--colour-danger-default);
+  }
+}
+
+.verified {
+  background-color: var(--colour-success-soft);
+  border-color: var(--colour-ti-success);
+  color: var(--colour-ti-secondary);
+
+  .icon {
+    color: var(--colour-ti-success);
+  }
+}
+
+.emails {
+  background-color: var(--colour-neutral-border);
+  color: var(--colour-ti-base);
+
+  .icon {
+    color: var(--colour-ti-secondary);
+  }
+}
+
+.default {
+  background-color: var(--colour-neutral-lower);
+  color: var(--colour-ti-base);
+
+  .icon {
+    color: var(--colour-ti-muted);
+  }
+}
+
+.counter {
+  background: color-mix(in srgb, var(--colour-ti-highlight), transparent 60%);
+  color: var(--colour-ti-base);
+  padding: 0.25rem 0.5rem;
+  font-variant-numeric: tabular-nums;
 }
 </style>
