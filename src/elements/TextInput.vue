@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue';
 import { useElementSize } from '@vueuse/core';
 import { type HTMLInputElementEvent } from '@/models';
-import NoticeCriticalIcon from '@/icons/NoticeCriticalIcon.vue';
+import ErrorIcon from '@/icons/ErrorIcon.vue';
 
 const model = defineModel<string>();
 const isInvalid = ref(false);
@@ -135,11 +135,11 @@ const onBlur = (evt) => {
       <span v-if="outerSuffix" class="tbpro-input-outer-suffix">{{ outerSuffix }}</span>
     </span>
     <span v-if="isInvalid" class="help-label invalid">
-      <notice-critical-icon />
+      <error-icon />
       {{ validationMessage }}
     </span>
     <span v-else-if="error" class="help-label invalid">
-      <notice-critical-icon />
+      <error-icon />
       {{ error }}
     </span>
     <span v-if="help" class="help-label">
@@ -174,6 +174,7 @@ const onBlur = (evt) => {
 
 .help-label {
   display: flex;
+  align-items: center;
   color: var(--colour-ti-muted);
   box-sizing: border-box;
 
