@@ -58,6 +58,7 @@ export const Required: Story = {
     name: 'required',
     required: true,
     modelValue: '',
+    help: 'Choose wisely.',
     options: [
       { label: '', value: '' },
       { label: 'All', value: 'all' },
@@ -65,4 +66,36 @@ export const Required: Story = {
       { label: 'Some', value: 'some' },
     ],
   },
+  decorators: [
+    (story) => ({
+      components: { story },
+      template: `
+        <div>
+          <story />
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;margin-top: 0.5rem;">
+            <button @click="triggerInvalid">
+              Trigger Invalid State
+            </button>
+            <button @click="manualReset">
+              Manual Reset
+            </button>
+          </div>
+        </div>
+      `,
+      methods: {
+        triggerInvalid() {
+          const input = document.querySelector('select[name="required"]') as HTMLInputElement;
+          const invalidEvent = new Event('invalid', { bubbles: true });
+          input.dispatchEvent(invalidEvent);
+        },
+        manualReset() {
+          const inputElement = document.querySelector('select[name="required"]');
+
+          // Access the exposed methods through the Vue component's public interface
+          const componentExposed = (inputElement as any).__vueParentComponent?.exposed;
+          componentExposed.reset();
+        },
+      },
+    }),
+  ],
 };

@@ -31,7 +31,7 @@ html {
   --colour-neutral-raised: var(--colour-neutral-base);
   --colour-neutral-subtle: var(--colour-neutral-lower);
   --colour-neutral-border: #e4e4e7;
-  --colour-neutral-border-intense: #91939f;
+  --colour-neutral-border-intense: #777580;
 
   /*
    * Primary

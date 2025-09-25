@@ -19,24 +19,28 @@ type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
   args: {
-    name: 'name',
+    name: 'standard-input',
     default: 'Full Name',
+    placeholder: 'e.g. John Doe'
   },
 };
 
 export const Disabled: Story = {
   args: {
-    name: 'name',
+    name: 'disabled-input',
     default: 'Full Name',
+    placeholder: 'e.g. John Doe',
     disabled: true,
   },
 };
 
 export const Required: Story = {
   args: {
-    name: 'fav-food',
+    name: 'required-input',
     default: 'Favourite Food?',
+    placeholder: '(e.g. Pizza)',
     required: true,
+    help: 'Choose wisely.',
   },
   decorators: [
     (story) => ({
@@ -44,7 +48,7 @@ export const Required: Story = {
       template: `
         <div>
           <story />
-          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;margin-top: 0.5rem;">
             <button @click="triggerInvalid">
               Trigger Invalid State
             </button>
@@ -56,12 +60,12 @@ export const Required: Story = {
       `,
       methods: {
         triggerInvalid() {
-          const input = document.querySelector('input[name="fav-food"]') as HTMLInputElement;
+          const input = document.querySelector('input[name="required-input"]') as HTMLInputElement;
           const invalidEvent = new Event('invalid', { bubbles: true });
           input.dispatchEvent(invalidEvent);
         },
         manualReset() {
-          const inputElement = document.querySelector('input[name="fav-food"]');
+          const inputElement = document.querySelector('input[name="required-input"]');
 
           // Access the exposed methods through the Vue component's public interface
           const componentExposed = (inputElement as any).__vueParentComponent?.exposed;
@@ -74,24 +78,68 @@ export const Required: Story = {
 
 export const RequiredWithPlaceholder: Story = {
   args: {
-    name: 'fav-food',
+    name: 'required-input-with-placeholder',
     default: 'Favourite Food?',
     placeholder: 'Pizza',
     required: true,
   },
 };
 
+export const RequiredWithOuterPrefix: Story = {
+  args: {
+    name: 'required-input-with-outer-prefix',
+    default: 'Favourite Food?',
+    placeholder: '(e.g. Pizza)',
+    required: true,
+    help: 'Choose wisely.',
+    outerPrefix: 'https://test.org/',
+  },
+  decorators: [
+    (story) => ({
+      components: { story },
+      template: `
+        <div>
+          <story />
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;margin-top: 0.5rem;">
+            <button @click="triggerInvalid">
+              Trigger Invalid State
+            </button>
+            <button @click="manualReset">
+              Manual Reset
+            </button>
+          </div>
+        </div>
+      `,
+      methods: {
+        triggerInvalid() {
+          const input = document.querySelector('input[name="required-input-with-outer-prefix"]') as HTMLInputElement;
+          const invalidEvent = new Event('invalid', { bubbles: true });
+          input.dispatchEvent(invalidEvent);
+        },
+        manualReset() {
+          const inputElement = document.querySelector('input[name="required-input-with-outer-prefix"]');
+
+          // Access the exposed methods through the Vue component's public interface
+          const componentExposed = (inputElement as any).__vueParentComponent?.exposed;
+          componentExposed.reset();
+        },
+      },
+    }),
+  ],
+};
+
 export const Help: Story = {
   args: {
-    name: 'fav-beverage',
+    name: 'help-input',
     default: 'Favourite Beverage',
+    placeholder: 'e.g. Ginger ale',
     help: 'When in doubt, go with water.',
   },
 };
 
 export const Time: Story = {
   args: {
-    name: 'time',
+    name: 'time-input',
     default: 'Current Time',
     type: 'time',
   },
@@ -99,7 +147,7 @@ export const Time: Story = {
 
 export const Email: Story = {
   args: {
-    name: 'email',
+    name: 'email-input',
     default: 'Email Address',
     type: 'email',
     required: true,
@@ -108,7 +156,7 @@ export const Email: Story = {
 
 export const InnerPrefix: Story = {
   args: {
-    name: 'Currency',
+    name: 'currency-input',
     default: 'Currency',
     placeholder: '100.00',
     required: true,
@@ -118,7 +166,7 @@ export const InnerPrefix: Story = {
 
 export const OuterPrefix: Story = {
   args: {
-    name: 'username',
+    name: 'outer-prefix-input',
     default: 'Username',
     placeholder: 'handle',
     outerPrefix: 'https://test.org/',
@@ -127,7 +175,7 @@ export const OuterPrefix: Story = {
 
 export const OuterSuffix: Story = {
   args: {
-    name: 'username',
+    name: 'outer-suffix-input',
     default: 'Username',
     placeholder: 'handle',
     outerSuffix: '@example.org',
