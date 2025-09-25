@@ -4,11 +4,24 @@ import { t } from '@/composable/i18n';
 import CopyIcon from '@/icons/CopyIcon.vue';
 import LinkButton from '@/elements/LinkButton.vue';
 
-interface Props {
-  displayText: string;
-  copyValue?: string;
+type BaseProps = {
   dataTestid?: string;
-}
+  iconOnly?: boolean;
+};
+
+type WithDisplayText = BaseProps & {
+  displayText?: string;
+  copyValue?: string;
+};
+
+type IconOnlyProps = BaseProps & {
+  displayText?: string;
+  iconOnly: true;
+  copyValue: string;
+};
+
+export type Props = WithDisplayText | IconOnlyProps;
+
 const props = withDefaults(defineProps<Props>(), {
   displayText: t('copyToClipboard.default'),
   dataTestid: 'copy-to-clipboard-button',
@@ -52,6 +65,6 @@ const copyLink = async () => {
       <copy-icon/>
     </template>
 
-    {{ displayText }}
+    {{ !iconOnly ? displayText : '' }}
   </link-button>
 </template>
