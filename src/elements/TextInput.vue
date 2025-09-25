@@ -205,6 +205,7 @@ const onBlur = (evt) => {
   border-radius: var(--border-radius);
   border: 0.0625rem solid var(--colour-neutral-border);
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.05) inset;
+  box-sizing: border-box;
 
   &:has(.tbpro-input-outer-prefix, .tbpro-input-outer-suffix) {
     border-radius: var(--border-radius);
