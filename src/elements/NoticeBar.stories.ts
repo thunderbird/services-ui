@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
 import NoticeBar from '@/elements/NoticeBar.vue';
+import PrimaryButton from '@/elements/PrimaryButton.vue';
+import LinkButton from '@/elements/LinkButton.vue';
 import { NoticeBarTypes } from '@/definitions';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
@@ -24,6 +26,33 @@ export const Info: Story = {
   },
 };
 
+export const InfoWithCTA: Story = {
+  args: {
+    default: 'You have 10,000 new emails.',
+    type: NoticeBarTypes.Info,
+  },
+  render: (args) => ({
+    components: { NoticeBar, PrimaryButton, LinkButton },
+    setup() {
+      return { args };
+    },
+    template: `
+      <NoticeBar>
+        {{ args.default }}
+
+        <template #cta>
+          <button
+            style="border:none;background-color:inherit;color: var(--colour-ti-secondary);text-decoration:underline;cursor:pointer;"
+          >
+            Revert changes
+          </button>
+          <PrimaryButton size="small">Save changes</PrimaryButton>
+        </template>
+      </NoticeBar>
+    `,
+  }),
+};
+
 export const Success: Story = {
   args: {
     default: 'You have 10,000 new emails.',
@@ -38,9 +67,9 @@ export const Warning: Story = {
   },
 };
 
-export const Error: Story = {
+export const Critical: Story = {
   args: {
     default: 'You have 10,000 new emails.',
-    type: NoticeBarTypes.Error,
+    type: NoticeBarTypes.Critical,
   },
 };
