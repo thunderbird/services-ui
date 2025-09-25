@@ -2,6 +2,11 @@
   "copyIcon": {
     "copyLink": "Link kopieren"
   },
+  "copyToClipboard": {
+    "default": "Link kopieren",
+    "copied": "Link kopiert",
+    "error": "Fehler beim Kopieren des Links"
+  },
   "refreshIcon": {
     "refreshLink": "Link ändern"
   },
