@@ -110,7 +110,7 @@ const toggleState = () => {
   box-shadow: 1px 1px 3px 0px #00000026 inset;
 
   &:has(.toggle-input:checked) {
-    background: var(--colour-service-primary);
+    background: var(--colour-primary-default);
   }
 
   &:has(.toggle-input:disabled) {
@@ -123,8 +123,8 @@ const toggleState = () => {
     &:checked ~ .toggle-handle {
       background-color: var(--colour-neutral-base);
       transform: translateX(1.125rem);
-      border-color: var(--colour-service-primary);
-      color: var(--colour-service-primary);
+      border-color: var(--colour-primary-default);
+      color: var(--colour-primary-default);
     }
   }
 

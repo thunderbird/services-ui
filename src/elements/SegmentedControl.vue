@@ -3,7 +3,6 @@ import { type SelectOption } from '@/models';
 
 interface Props {
   options: SelectOption<string | number>[];
-  legend: string;
   required: boolean;
   disabled?: boolean;
   dataTestid?: string;
@@ -31,7 +30,7 @@ const setOption = (option: SelectOption<string | number>) => {
 </script>
 
 <template>
-  <div class="wrapper">
+  <div class="segment-wrapper">
     <label>
       <span class="label">
         <slot />
@@ -60,10 +59,11 @@ const setOption = (option: SelectOption<string | number>) => {
 </template>
 
 <style scoped>
-.wrapper {
+.segment-wrapper {
   display: inline-flex;
   flex-direction: column;
-  color: var(--colour-ti-base);
+  gap: 0.5rem;
+  color: var(--colour-ti-secondary);
   font-family: 'Inter', 'sans-serif';
   font-size: var(--txt-input);
   line-height: var(--line-height-input);
@@ -76,10 +76,12 @@ const setOption = (option: SelectOption<string | number>) => {
 }
 .required {
   color: var(--colour-ti-critical);
+  padding-inline-start: 0.25rem;
 }
 
 .segment-list {
   padding: 0;
+  margin: 0;
   display: inline-flex;
   list-style: none;
 

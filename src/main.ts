@@ -39,7 +39,7 @@ import StatusInfoIcon from '@/icons/StatusInfoIcon.vue';
 import StatusWarningIcon from '@/icons/StatusWarningIcon.vue';
 
 // Types
-import { ExpiryUnitTypes, NoticeBarTypes } from '@/definitions';
+import { ExpiryUnitTypes, NoticeBarTypes, BaseBadgeTypes } from '@/definitions';
 
 // Patterns
 import StandardFooter from '@/patterns/StandardFooter.vue';
@@ -81,6 +81,7 @@ export {
   // Types
   ExpiryUnitTypes,
   NoticeBarTypes,
+  BaseBadgeTypes,
   // Patterns
   StandardFooter
 };
