@@ -177,7 +177,7 @@ button:hover > .tooltip,
 
   &.outline {
     position: relative;
-    background: var(--colour-neutral-base);
+    background: transparent;
     --button-outline-border: var(--colour-primary-default);
     color: var(--colour-primary-hover);
 
@@ -258,7 +258,7 @@ button:hover > .tooltip,
 
   &.outline {
     position: relative;
-    background: var(--colour-neutral-base);
+    background: transparent;
     color: var(--button-destructive-color);
     --button-outline-border: var(--button-destructive-color);
 
