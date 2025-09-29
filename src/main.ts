@@ -43,6 +43,7 @@ import { ExpiryUnitTypes, NoticeBarTypes, BaseBadgeTypes } from '@/definitions';
 
 // Patterns
 import StandardFooter from '@/patterns/StandardFooter.vue';
+import CopyToClipboard from './patterns/CopyToClipboard.vue';
 
 export {
   // Badges
@@ -83,5 +84,6 @@ export {
   NoticeBarTypes,
   BaseBadgeTypes,
   // Patterns
+  CopyToClipboard,
   StandardFooter
 };
