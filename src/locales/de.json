@@ -1,6 +1,6 @@
 {
   "bubbleSelect": {
-    "error": "Bitte wählen Sie mindestens eine Option."
+    "error": "Bitte mindestens eine Option wählen."
   },
   "copyIcon": {
     "copyLink": "Link kopieren"
