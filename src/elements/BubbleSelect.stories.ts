@@ -73,6 +73,12 @@ export const SingleSelection: Story = {
     singleSelection: true,
   },
 };
+export const LargeGap: Story = {
+  args: {
+    default: 'Select Days',
+    bubbleGap: 'large',
+  },
+};
 export const WithHelp: Story = {
   args: {
     default: 'Select Days',

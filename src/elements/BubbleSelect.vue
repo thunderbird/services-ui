@@ -8,6 +8,7 @@ import ErrorIcon from '@/icons/ErrorIcon.vue';
 interface Props {
   options: SelectOption<string | number>[];
   required: boolean;
+  bubbleGap?: 'default' | 'large';
   help?: string;
   error?: string;
   disabled?: boolean;
@@ -17,6 +18,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   required: false,
+  bubbleGap: 'default',
   help: null,
   error: null,
   disabled: false,
@@ -79,7 +81,7 @@ defineExpose({ reset });
         <span v-if="required && model?.length === 0" class="required">*</span>
       </span>
     </label>
-    <ul class="bubble-list">
+    <ul class="bubble-list" :class="`gap-${bubbleGap}`">
       <li v-for="option in options" :key="option.value">
         <button
           class="tbpro-bubble"
@@ -128,8 +130,15 @@ defineExpose({ reset });
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: space-between;
   list-style: none;
+
+  &.gap-default {
+    gap: 0.5rem;
+  }
+
+  &.gap-large {
+    gap: 1rem;
+  }
 }
 
 .label {
