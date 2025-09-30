@@ -39,8 +39,10 @@ html {
    */
   --colour-primary-soft: #f0f8ff;
   --colour-primary-default: #1373d9;
+  --colour-primary-default-light: #1373d9; /* No override */
   --colour-primary-default-dark: #58c9ff; /* No override */
   --colour-primary-hover: #175fb6;
+  --colour-primary-hover-light: #175fb6; /* No override */
   --colour-primary-pressed: #19518f;
 
   /*
@@ -87,6 +89,7 @@ html {
    */
   --colour-ti-base: #1a202c;
   --colour-ti-base-light: #1a202c; /* No override */
+  --colour-ti-base-dark: #eeeef0; /* No override */
   --colour-ti-secondary: #4c4d58;
   --colour-ti-muted: #737584;
   --colour-ti-highlight: #1373d9;
