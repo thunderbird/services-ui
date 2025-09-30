@@ -1,4 +1,3 @@
-import { ref } from 'vue';
 import { fn } from 'storybook/test';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
@@ -75,40 +74,9 @@ export const SingleSelection: Story = {
   },
 };
 export const WithHelp: Story = {
-  render: (args) => ({
-    components: { BubbleSelect },
-    setup() {
-      const error = ref<string | null>(null);
-
-      const setError = () => {
-        error.value = 'Please select at least one option.';
-      };
-
-      const resetError = () => {
-        error.value = null;
-      };
-
-      return {
-        ...args,
-        error,
-        setError,
-        resetError,
-        options: scheduleDayOptions,
-      };
-    },
-    template: `
-      <div>
-        <BubbleSelect name="with-vmodel" required :options="options" :error="error">Select Days</BubbleSelect>
-        <div style="display: inline-flex; gap: 0.5rem; margin-top: 0.5rem;">
-          <button type="button" @click="setError">
-            Trigger error
-          </button>
-
-          <button type="button" @click="resetError">
-            Reset error
-          </button>
-        </div>
-      </div>
-    `,
-  }),
+  args: {
+    default: 'Select Days',
+    required: true,
+    help: 'Select a desired day'
+  },
 };

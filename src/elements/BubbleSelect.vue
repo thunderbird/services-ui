@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue';
 import { type SelectOption } from '@/models';
+import { t } from '@/composable/i18n';
 import ErrorIcon from '@/icons/ErrorIcon.vue';
 
 // component properties
@@ -25,12 +27,17 @@ const props = withDefaults(defineProps<Props>(), {
 const model = defineModel<(string | number)[]>({ default: [] });
 const emit = defineEmits(['click']);
 
+const isDirty = ref(false);
+const emptyError = computed(() => props.required && isDirty.value && model?.value.length === 0);
+
 /**
  * Adds or removes the option value from the model.
  * There's probably a better way to do this lol!
  * @param option
  */
 const toggleBubble = (option: SelectOption<string | number>) => {
+  isDirty.value = true;
+
   // Detect what our current state is
   const val = model.value.indexOf(option.value);
 
@@ -51,6 +58,17 @@ const toggleBubble = (option: SelectOption<string | number>) => {
   // Finally let the parent know there was a click
   emit('click');
 };
+
+/**
+ * Resets the component's internal validation state and clears the input value.
+ * This should be explicitly called when the parent form is reset.
+ */
+const reset = () => {
+  model.value = [];
+  isDirty.value = false;
+};
+
+defineExpose({ reset });
 </script>
 
 <template>
@@ -80,7 +98,11 @@ const toggleBubble = (option: SelectOption<string | number>) => {
         </button>
       </li>
     </ul>
-    <span v-if="error" class="help-label invalid">
+    <span v-if="emptyError" class="help-label invalid">
+      <error-icon />
+      {{ t('bubbleSelect.error') }}
+    </span>
+    <span v-else-if="error" class="help-label invalid">
       <error-icon />
       {{ error }}
     </span>
@@ -155,7 +177,7 @@ const toggleBubble = (option: SelectOption<string | number>) => {
   cursor: pointer;
   text-transform: uppercase;
 
-  &:hover:not(.selected) {
+  &:hover:not(.selected):not(.disabled) {
     border-color: var(--colour-primary-hover);
   }
 }
