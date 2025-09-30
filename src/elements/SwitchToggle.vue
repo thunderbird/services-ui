@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import { t } from '@/composable/i18n';
-import CheckIcon from '@/icons/CheckIcon.vue';
+import SwitchCheckIcon from '@/icons/SwitchCheckIcon.vue';
 
 const model = defineModel();
 
@@ -67,7 +67,7 @@ const toggleState = () => {
           :data-testid="dataTestid"
         />
         <div class="toggle-handle">
-          <check-icon class="toggle-icon-on" />
+          <switch-check-icon class="toggle-icon-on" />
         </div>
       </div>
       <div v-if="!noLegend" class="toggle-label">{{ t('switchToggle.on') }}</div>
