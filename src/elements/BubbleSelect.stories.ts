@@ -1,3 +1,4 @@
+import { ref } from 'vue';
 import { fn } from 'storybook/test';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
@@ -6,31 +7,31 @@ import type { SelectOption } from '@/models';
 
 const scheduleDayOptions: SelectOption<string>[] = [
   {
-    label: 'S',
+    label: 'Sun',
     value: 'Sunday',
   },
   {
-    label: 'M',
+    label: 'Mon',
     value: 'Monday',
   },
   {
-    label: 'T',
+    label: 'Tue',
     value: 'Tuesday',
   },
   {
-    label: 'W',
+    label: 'Wed',
     value: 'Wednesday',
   },
   {
-    label: 'T',
+    label: 'Thu',
     value: 'Thursday',
   },
   {
-    label: 'F',
+    label: 'Fri',
     value: 'Friday',
   },
   {
-    label: 'S',
+    label: 'Sat',
     value: 'Saturday',
   },
 ];
@@ -72,4 +73,42 @@ export const SingleSelection: Story = {
   args: {
     singleSelection: true,
   },
+};
+export const WithHelp: Story = {
+  render: (args) => ({
+    components: { BubbleSelect },
+    setup() {
+      const error = ref<string | null>(null);
+
+      const setError = () => {
+        error.value = 'Please select at least one option.';
+      };
+
+      const resetError = () => {
+        error.value = null;
+      };
+
+      return {
+        ...args,
+        error,
+        setError,
+        resetError,
+        options: scheduleDayOptions,
+      };
+    },
+    template: `
+      <div>
+        <BubbleSelect name="with-vmodel" required :options="options" :error="error">Select Days</BubbleSelect>
+        <div style="display: inline-flex; gap: 0.5rem; margin-top: 0.5rem;">
+          <button type="button" @click="setError">
+            Trigger error
+          </button>
+
+          <button type="button" @click="resetError">
+            Reset error
+          </button>
+        </div>
+      </div>
+    `,
+  }),
 };

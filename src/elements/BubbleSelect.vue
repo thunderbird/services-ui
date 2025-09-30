@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { type SelectOption } from '@/models';
+import ErrorIcon from '@/icons/ErrorIcon.vue';
 
 // component properties
 interface Props {
   options: SelectOption<string | number>[];
   required: boolean;
+  help?: string;
+  error?: string;
   disabled?: boolean;
   singleSelection?: boolean;
   dataTestid?: string;
@@ -12,6 +15,8 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   required: false,
+  help: null,
+  error: null,
   disabled: false,
   singleSelection: false,
   dataTestid: 'bubble-select',
@@ -63,6 +68,7 @@ const toggleBubble = (option: SelectOption<string | number>) => {
           :aria-pressed="model.indexOf(option.value) > -1"
           :class="{
             selected: model.indexOf(option.value) > -1,
+            error,
             disabled,
           }"
           :title="option.fullLabel ?? String(option.value)"
@@ -74,6 +80,13 @@ const toggleBubble = (option: SelectOption<string | number>) => {
         </button>
       </li>
     </ul>
+    <span v-if="error" class="help-label invalid">
+      <error-icon />
+      {{ error }}
+    </span>
+    <span v-if="help" class="help-label">
+      {{ help }}
+    </span>
   </div>
 </template>
 
@@ -81,15 +94,17 @@ const toggleBubble = (option: SelectOption<string | number>) => {
 .wrapper {
   display: flex;
   flex-direction: column;
-  color: var(--colour-ti-base);
+  gap: 0.5rem;
+  color: var(--colour-ti-secondary);
   font-family: 'Inter', 'sans-serif';
-  font-size: var(--txt-input);
+  font-size: 1rem;
   line-height: var(--line-height-input);
   font-weight: 400;
 }
 
 .bubble-list {
   padding: 0;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   list-style: none;
@@ -100,6 +115,26 @@ const toggleBubble = (option: SelectOption<string | number>) => {
   font-weight: 600;
 }
 
+.help-label {
+  display: flex;
+  align-items: center;
+  color: var(--colour-ti-muted);
+  box-sizing: border-box;
+
+  width: 100%;
+  font-size: 0.6875rem;
+  line-height: 0.9375rem;
+
+  &.invalid {
+    gap: 0.25rem;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    font-size: 0.75rem;
+    background-color: var(--colour-danger-soft);
+    color: var(--colour-danger-default);
+  }
+}
+
 .tbpro-bubble {
   transition: var(--transition);
 
@@ -107,29 +142,40 @@ const toggleBubble = (option: SelectOption<string | number>) => {
   justify-content: center;
   align-items: center;
 
-  width: 2rem;
-  height: 2rem;
-  border: 0.0625rem solid var(--colour-neutral-border);
-  border-radius: 100%;
-  background-color: var(--colour-neutral-subtle);
-  font-weight: 700;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0.0625rem solid rgba(0, 0, 0, 0.1);
+  border-radius: 6.25rem;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.05) inset;
+  background-color: var(--colour-neutral-lower);
+  font-weight: 600;
+  font-size: 0.8125rem;
   line-height: 150%;
-  color: var(--colour-ti-muted);
+  color: var(--colour-ti-secondary);
   cursor: pointer;
+  text-transform: uppercase;
+
+  &:hover:not(.selected) {
+    border-color: var(--colour-primary-hover);
+  }
 }
 
 .selected {
-  background-color: var(--colour-service-primary);
-  border-color: var(--colour-service-primary-pressed);
+  background-color: var(--colour-ti-secondary);
   color: var(--colour-neutral-base);
 }
 
 .required {
   color: var(--colour-ti-critical);
+  padding-inline-start: 0.25rem;
 }
 
 .disabled {
   cursor: default;
+}
+
+.error {
+  border-color: var(--colour-ti-critical);
 }
 
 .selected.disabled {
