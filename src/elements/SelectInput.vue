@@ -98,7 +98,7 @@ defineExpose({ reset });
   gap: 0.5rem;
   color: var(--colour-ti-secondary);
   font-family: var(--font-sans);
-  font-size: var(--txt-input);
+  font-size: 1rem;
   line-height: var(--line-height-input);
   font-weight: 400;
 }
@@ -117,7 +117,7 @@ defineExpose({ reset });
   box-sizing: border-box;
 
   width: 100%;
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   line-height: 0.9375rem;
 
   &.invalid {
