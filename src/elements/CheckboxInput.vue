@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { type HTMLInputElementEvent } from '@/models';
+import CheckboxCheckIcon from '@/icons/CheckboxCheckIcon.vue';
+import ErrorIcon from '@/icons/ErrorIcon.vue';
 
 // component properties
 interface Props {
@@ -10,7 +12,6 @@ interface Props {
   error?: string;
   checked?: boolean;
   required?: boolean;
-  disabled?: boolean;
   dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
@@ -19,7 +20,6 @@ const props = withDefaults(defineProps<Props>(), {
   error: null,
   checked: false,
   required: false,
-  disabled: false,
   dataTestid: 'checkbox-input',
 });
 
@@ -74,36 +74,53 @@ const onChange = (event: Event) => {
   isDirty.value = true;
   emit('change', event);
 };
+
+/**
+ * Standard HTML attributes should be passed on to the input
+ * through the v-bind and not to the wrapper div
+ */
+defineOptions({
+  inheritAttrs: false
+});
 </script>
 
 <template>
-  <div class="wrapper">
+  <div class="checkbox-wrapper">
     <label class="label" :for="name">
       <input
-        class="checkbox-input"
-        v-model="model"
         type="checkbox"
+        class="screen-reader-only"
+        v-model="model"
+        v-bind="$attrs"
         :class="{ dirty: isDirty }"
         :id="name"
         :name="name"
         :checked="checked"
-        :disabled="disabled"
         :required="required"
         :data-testid="dataTestid"
         @invalid="onInvalid"
         @change="onChange"
         ref="inputRef"
       />
-      <span v-if="label">{{ label }}</span>
-      <span v-if="required && !model" class="required">*</span>
+
+      <span class="checkbox-control" aria-hidden="true">
+        <checkbox-check-icon v-if="model" class="checkbox-icon" />
+      </span>
+
+      <span v-if="label">
+        {{ label }}
+        <span v-if="required && !model" class="required">*</span>
+      </span>
     </label>
     <span v-if="isInvalid" class="help-label invalid">
+      <error-icon />
       {{ validationMessage }}
     </span>
     <span v-else-if="error" class="help-label invalid">
+      <error-icon />
       {{ error }}
     </span>
-    <span v-else-if="help" class="help-label">
+    <span v-if="help" class="help-label">
       {{ help }}
     </span>
   </div>
@@ -112,21 +129,24 @@ const onChange = (event: Event) => {
 <style scoped>
 @import '@/assets/styles/mixins.pcss';
 
-.wrapper {
-  --colour-highlight: var(--colour-service-primary);
+input[type="checkbox"] {
+  appearance: none;
+}
+
+.checkbox-wrapper {
   display: flex;
   flex-direction: column;
   align-items: start;
-  color: var(--colour-ti-base);
-  font-family: var(--font-sans);
-  font-size: var(--txt-input);
-  line-height: var(--line-height-input);
+  gap: 0.5rem;
+  color: var(--colour-ti-secondary);
   font-weight: 400;
+  font-size: 1rem;
   width: 100%;
 }
+
 .dark {
-  .wrapper {
-    --colour-highlight: var(--colour-service-secondary);
+  .checkbox-control {
+    color: var(--colour-ti-base-light);
   }
 }
 
@@ -135,58 +155,78 @@ const onChange = (event: Event) => {
   gap: 0.625rem;
   justify-content: flex-start;
   align-items: center;
-  font-weight: 500;
+  color: var(--colour-ti-secondary);
 }
 
 .help-label {
   display: flex;
-  color: var(--colour-ti-base);
+  align-items: center;
+  color: var(--colour-ti-muted);
+  box-sizing: border-box;
 
   width: 100%;
-  min-height: 0.9375rem;
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   line-height: 0.9375rem;
-  padding: 0.1875rem;
 
   &.invalid {
+    gap: 0.25rem;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    font-size: 0.75rem;
+    background-color: var(--colour-danger-soft);
     color: var(--colour-danger-default);
   }
 }
 
 .required {
   color: var(--colour-ti-critical);
+  padding-inline-start: 0.25rem;
 }
 
-.checkbox-input {
-  --colour-input-border: var(--colour-neutral-border-intense);
-  width: 1rem;
-  height: 1rem;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--colour-input-border);
+.checkbox-control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.05) inset;
+  background-color: var(--colour-surface-raised, #fff);
+  color: var(--colour-ti-base-dark);
 
-  &:focus {
-    outline-color: var(--colour-highlight);
+  .checkbox-icon {
+    width: 1rem;
+    height: 1rem;
   }
+}
 
-  &:checked,
-  &:checked:hover,
-  &:checked:focus {
-    background-color: var(--colour-highlight);
-    border-color: var(--colour-highlight);
-    color: var(--colour-neutral-raised);
-  }
+input:hover + .checkbox-control {
+  border-color: rgba(0, 0, 0, 0.3);
+}
 
-  &:invalid {
-    --colour-input-border: var(--colour-ti-critical);
-  }
+input:focus-visible + .checkbox-control {
+  outline: 2px solid var(--colour-primary-hover);
+  outline-offset: 2px;
+}
 
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
+input.dirty:invalid + .checkbox-control {
+  border-color: var(--colour-ti-critical);
+}
 
-    & ~ span {
-      color: var(--colour-ti-muted);
-    }
-  }
+input:checked + .checkbox-control,
+input:checked + .checkbox-control:hover,
+input:checked:focus-visible + .checkbox-control {
+  background-color: var(--colour-primary-default-light);
+  border-color: var(--colour-primary-hover-light);
+}
+
+input:disabled + .checkbox-control {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+input:disabled + .checkbox-control ~ span {
+  color: var(--colour-ti-muted);
 }
 </style>

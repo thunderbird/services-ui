@@ -65,7 +65,7 @@ const setOption = (option: SelectOption<string | number>) => {
   gap: 0.5rem;
   color: var(--colour-ti-secondary);
   font-family: 'Inter', 'sans-serif';
-  font-size: var(--txt-input);
+  font-size: 1rem;
   line-height: var(--line-height-input);
   font-weight: 400;
 }

@@ -166,6 +166,7 @@ const onBlur = (evt) => {
 .label {
   width: 100%;
   font-weight: 600;
+  font-size: 1rem;
 }
 
 .small-text {
@@ -179,7 +180,7 @@ const onBlur = (evt) => {
   box-sizing: border-box;
 
   width: 100%;
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   line-height: 0.9375rem;
 
   &.invalid {

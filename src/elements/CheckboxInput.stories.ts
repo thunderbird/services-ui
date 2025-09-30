@@ -19,22 +19,30 @@ type Story = StoryObj<typeof meta>;
 export const Standard: Story = {
   args: {
     name: 'standard',
-    label: 'I agree to the terms and conditions.',
+    label: 'I agree to the terms and conditions',
   },
 };
 
 export const Disabled: Story = {
   args: {
     name: 'disabled',
-    label: 'I agree to the terms and conditions.',
-    disabled: true,
+    label: 'I agree to the terms and conditions',
   },
+  render: (args) => ({
+    components: { CheckboxInput },
+    setup() {
+      return { args };
+    },
+    template: `
+      <CheckboxInput disabled label="${args.label}" />
+    `,
+  }),
 };
 
 export const Checked: Story = {
   args: {
     name: 'checked',
-    label: 'I agree to the terms and conditions.',
+    label: 'I agree to the terms and conditions',
     checked: true,
   },
 };
@@ -42,7 +50,7 @@ export const Checked: Story = {
 export const OnChangeEvent: Story = {
   args: {
     name: 'on-change-event',
-    label: 'I agree to the terms and conditions.',
+    label: 'I agree to the terms and conditions',
   },
   decorators: [
     (story) => ({
@@ -70,7 +78,8 @@ export const OnChangeEvent: Story = {
 export const Required: Story = {
   args: {
     name: 'required',
-    label: 'I agree to the terms and conditions.',
+    label: 'I agree to the terms and conditions',
+    help: 'All good. Nothing to see here',
     required: true,
   },
   decorators: [
@@ -79,7 +88,7 @@ export const Required: Story = {
       template: `
         <div>
           <story />
-          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-block-start: 1rem;">
             <button @click="triggerInvalid">
               Trigger Invalid State
             </button>
@@ -112,7 +121,7 @@ export const Required: Story = {
 export const Help: Story = {
   args: {
     name: 'help',
-    label: 'I agree to the terms and conditions.',
+    label: 'I agree to the terms and conditions',
     help: 'There is no catch here, we promise.',
   },
 };
