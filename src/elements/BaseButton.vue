@@ -176,9 +176,10 @@ button:hover > .tooltip,
   }
 
   &.outline {
+    --button-outline-border: var(--colour-primary-default);
+
     position: relative;
     background: transparent;
-    --button-outline-border: var(--colour-primary-default);
     color: var(--colour-primary-hover);
 
     &:hover:enabled {
@@ -205,12 +206,12 @@ button:hover > .tooltip,
   text-transform: uppercase;
 
   &.filled {
-    position: relative;
-
     /* For brand buttons, we are using one-off colours for light / dark mode */
     --button-outline-border: linear-gradient(to bottom right, #7BC6F4 10%, #2B8CDC 60%) border-box;
+
     background: linear-gradient(329deg, var(--colour-primary-default) -21.06%, var(--colour-accent-blue) 64%);
     color: var(--colour-ti-base-light);
+    position: relative;
 
     &:hover:enabled {
       background: linear-gradient(var(--colour-primary-hover), var(--colour-primary-hover));
@@ -257,14 +258,16 @@ button:hover > .tooltip,
   }
 
   &.outline {
+    --button-outline-border: var(--button-destructive-color);
+
     position: relative;
     background: transparent;
     color: var(--button-destructive-color);
-    --button-outline-border: var(--button-destructive-color);
 
     &:hover:enabled {
-      color: var(--button-destructive-color-hover);
       --button-outline-border: var(--button-destructive-color-hover);
+
+      color: var(--button-destructive-color-hover);
 
       &::before {
         padding: 0.125rem; /* Controls border-width */
@@ -272,8 +275,9 @@ button:hover > .tooltip,
     }
 
     &:active:enabled {
-      color: var(--button-destructive-color-active);
       --button-outline-border: var(--button-destructive-color-active);
+
+      color: var(--button-destructive-color-active);
 
       &::before {
         padding: 0.125rem; /* Controls border-width */
