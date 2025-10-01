@@ -6,31 +6,31 @@ import type { SelectOption } from '@/models';
 
 const scheduleDayOptions: SelectOption<string>[] = [
   {
-    label: 'S',
+    label: 'Sun',
     value: 'Sunday',
   },
   {
-    label: 'M',
+    label: 'Mon',
     value: 'Monday',
   },
   {
-    label: 'T',
+    label: 'Tue',
     value: 'Tuesday',
   },
   {
-    label: 'W',
+    label: 'Wed',
     value: 'Wednesday',
   },
   {
-    label: 'T',
+    label: 'Thu',
     value: 'Thursday',
   },
   {
-    label: 'F',
+    label: 'Fri',
     value: 'Friday',
   },
   {
-    label: 'S',
+    label: 'Sat',
     value: 'Saturday',
   },
 ];
@@ -71,5 +71,18 @@ export const Disabled: Story = {
 export const SingleSelection: Story = {
   args: {
     singleSelection: true,
+  },
+};
+export const LargeGap: Story = {
+  args: {
+    default: 'Select Days',
+    bubbleGap: 'large',
+  },
+};
+export const WithHelp: Story = {
+  args: {
+    default: 'Select Days',
+    required: true,
+    help: 'Select a desired day'
   },
 };
