@@ -43,7 +43,7 @@ export const Required: Story = {
       template: `
         <div>
           <story />
-          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-block-start: 0.5rem;">
             <button @click="triggerInvalid">
               Force trigger invalid state
             </button>
