@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
 import BaseButton from '@/elements/BaseButton.vue';
 import RefreshIcon from '@/icons/RefreshIcon.vue';
+import TextInput from './TextInput.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof BaseButton> = {
@@ -89,6 +90,44 @@ export const Link: Story = {
       source: { code: '<link-button>Click me!</link-button>' },
     },
   },
+};
+
+export const Submit: Story = {
+  args: {
+    type: 'primary',
+    formAction: 'submit',
+    default: 'Submit',
+  },
+  decorators: [
+    (story) => ({
+      components: { story, TextInput },
+      template: `
+        <form style="display:flex;gap:1rem;max-width:500px">
+          <text-input type="text" placeholder="Fill and submit me" />
+          <story />
+        </form>
+      `,
+    })
+  ]
+};
+
+export const Reset: Story = {
+  args: {
+    type: 'primary',
+    formAction: 'reset',
+    default: 'Reset',
+  },
+  decorators: [
+    (story) => ({
+      components: { story, TextInput },
+      template: `
+        <form style="display:flex;gap:1rem;max-width:500px">
+          <text-input type="text" placeholder="Fill and reset me" />
+          <story />
+        </form>
+      `,
+    })
+  ]
 };
 
 export const Small: Story = {

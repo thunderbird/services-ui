@@ -9,6 +9,7 @@ interface Props {
   variant?: 'filled' | 'outline';
   tooltip?: string;
   forceTooltip?: boolean;
+  formAction?: 'none' | 'submit' | 'reset';
   dataTestid?: string;
   disabled?: boolean;
 }
@@ -18,6 +19,7 @@ withDefaults(defineProps<Props>(), {
   variant: 'filled',
   tooltip: '',
   forceTooltip: false,
+  formAction: 'none',
   dataTestid: 'button',
   disabled: false,
 });
@@ -27,7 +29,7 @@ withDefaults(defineProps<Props>(), {
   <button
     class="base"
     :class="{ [type]: type, small: size === 'small', [variant]: variant }"
-    type="button"
+    :type="formAction === 'none' ? 'button' : formAction"
     :data-testid="dataTestid"
     :disabled="disabled"
   >
