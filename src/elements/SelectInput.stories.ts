@@ -99,3 +99,16 @@ export const Required: Story = {
     }),
   ],
 };
+
+export const Autofocus: Story = {
+  args: {
+    name: 'autofocus-select',
+    default: 'Get Focus from',
+    options: [
+      { label: 'Aloy', value: 'aloy' },
+      { label: 'Rost', value: 'rost' },
+      { label: 'Sylens', value: 'sylens' },
+    ],
+    autofocus: true,
+  },
+};

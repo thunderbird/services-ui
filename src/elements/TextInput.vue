@@ -45,6 +45,7 @@ interface Props {
   outerPrefix?: string; // A prefix shows up outside the input field and moves the whole input to the right.
   outerSuffix?: string;
   required?: boolean;
+  autofocus?: boolean;
   disabled?: boolean;
   smallText?: boolean;
   smallInput?: boolean;
@@ -58,6 +59,7 @@ const props = withDefaults(defineProps<Props>(), {
   placeholder: null,
   prefix: null,
   required: false,
+  autofocus: false,
   disabled: false,
   smallText: false,
   smallInput: false,
@@ -123,6 +125,7 @@ const onBlur = (evt) => {
           :disabled="disabled"
           :placeholder="placeholder"
           :required="required"
+          :autofocus="autofocus"
           :maxLength="maxLength"
           :style="{ paddingLeft: inputPaddingLeft }"
           :data-testid="dataTestid"

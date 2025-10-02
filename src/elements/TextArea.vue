@@ -33,6 +33,7 @@ interface Props {
   help?: string;
   placeholder?: string;
   required?: boolean;
+  autofocus?: boolean;
   disabled?: boolean;
   smallText?: boolean;
   maxLength?: number | string;
@@ -44,6 +45,7 @@ const props = withDefaults(defineProps<Props>(), {
   placeholder: null,
   prefix: null,
   required: false,
+  autofocus: false,
   disabled: false,
   smallText: false,
   maxLength: null,
@@ -82,6 +84,7 @@ const onChange = () => {
         :disabled="disabled"
         :placeholder="placeholder"
         :required="required"
+        :autofocus="autofocus"
         :maxLength="maxLength"
         :rows="rows"
         @invalid="onInvalid"
