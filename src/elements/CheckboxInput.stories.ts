@@ -118,6 +118,14 @@ export const Required: Story = {
   ],
 };
 
+export const Autofocus: Story = {
+  args: {
+    name: 'autofocus-input',
+    label: 'Get Focus',
+    autofocus: true,
+  },
+};
+
 export const Help: Story = {
   args: {
     name: 'help',

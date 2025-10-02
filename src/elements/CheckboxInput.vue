@@ -12,6 +12,7 @@ interface Props {
   error?: string;
   checked?: boolean;
   required?: boolean;
+  autofocus?: boolean;
   dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
@@ -20,6 +21,7 @@ const props = withDefaults(defineProps<Props>(), {
   error: null,
   checked: false,
   required: false,
+  autofocus: false,
   dataTestid: 'checkbox-input',
 });
 
@@ -97,6 +99,7 @@ defineOptions({
         :name="name"
         :checked="checked"
         :required="required"
+        :autofocus="autofocus"
         :data-testid="dataTestid"
         @invalid="onInvalid"
         @change="onChange"

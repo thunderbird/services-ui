@@ -128,6 +128,15 @@ export const RequiredWithOuterPrefix: Story = {
   ],
 };
 
+export const Autofocus: Story = {
+  args: {
+    name: 'autofocus-input',
+    default: 'Give me my Focus',
+    placeholder: 'e.g. Aloy',
+    autofocus: true,
+  },
+};
+
 export const Help: Story = {
   args: {
     name: 'help-input',

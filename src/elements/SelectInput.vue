@@ -10,11 +10,13 @@ interface Props {
   options: SelectOption<number | string>[];
   help?: string;
   required?: boolean;
+  autofocus?: boolean;
   disabled?: boolean;
   dataTestid?: string;
 }
 withDefaults(defineProps<Props>(), {
   required: false,
+  autofocus: false,
   disabled: false,
   dataTestid: 'select-input',
 });
@@ -67,6 +69,7 @@ defineExpose({ reset });
         :id="name"
         :name="name"
         :required="required"
+        :autofocus="autofocus"
         :disabled="disabled"
         @invalid="onInvalid"
         @input="onInput"
