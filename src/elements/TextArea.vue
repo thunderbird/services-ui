@@ -166,6 +166,7 @@ const onChange = () => {
     transition-property: none;
     font-family: var(--font-sans);
     font-size: var(--txt-input);
+    line-height: 1.5;
     padding: 1rem 0.75rem;
     box-sizing: border-box;
     overflow: auto;
