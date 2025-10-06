@@ -205,14 +205,25 @@ export const IconOnly: Story = {
       return { args };
     },
     template: `
-      <icon-button>
+      <div style="display:flex;gap:.5rem;align-items:center;">
+        <icon-button size="small">
+          <refresh-icon />
+        </icon-button>
+        <icon-button>
         <refresh-icon />
-      </icon-button>
+        </icon-button>
+        <icon-button size="medium">
+          <refresh-icon />
+        </icon-button>
+        <icon-button size="large">
+          <refresh-icon />
+        </icon-button>
+      </div>
     `,
   }),
   parameters: {
     docs: {
-      source: { code: '<icon-button><refresh-icon /></icon-button>' },
+      source: { code: '<icon-button size="small"><refresh-icon /></icon-button>\n<icon-button><refresh-icon /></icon-button>\n<icon-button size="medium"><refresh-icon /></icon-button>\n<icon-button size="large"><refresh-icon /></icon-button>' },
     },
   },
 };

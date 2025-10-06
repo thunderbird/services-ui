@@ -1,9 +1,16 @@
 <script setup lang="ts">
 import BaseButton from '@/elements/BaseButton.vue';
+
+interface Props {
+  size?: 'small' | 'default' | 'medium' | 'large';
+}
+withDefaults(defineProps<Props>(), {
+  size: 'default',
+});
 </script>
 
 <template>
-  <base-button type="link" class="icon-only">
+  <base-button type="link" class="icon-only" :class="{ [size]: size }">
     <template #iconLeft>
       <slot />
     </template>
@@ -14,9 +21,26 @@ import BaseButton from '@/elements/BaseButton.vue';
 .link.icon-only {
   padding: .5rem;
 
-  .icon {
-    width: 1em;
-    height: 1em;
+  .icon,
+  .icon svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &.small .icon,
+  &.small .icon svg {
+    width: .75rem;
+    height: .75rem;
+  }
+  &.medium .icon,
+  &.medium .icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  &.large .icon,
+  &.large .icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   .text {
