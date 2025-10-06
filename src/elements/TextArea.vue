@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { t } from '@/composable/i18n';
 import ErrorIcon from '@/icons/ErrorIcon.vue';
 
@@ -7,6 +7,9 @@ const model = defineModel<string>();
 const isInvalid = ref(false);
 const isDirty = ref(false);
 const textareaRef = ref<HTMLTextAreaElement>(null);
+
+const charCount = computed(() => model.value?.length ?? 0);
+
 /**
  * Forwards focus intent to the text input element.
  * Unlike HTMLElement.focus() this does not take any parameters.
@@ -78,6 +81,7 @@ const onChange = () => {
     <span class="tbpro-textarea" :class="{ 'small-text': props.smallText }">
       <textarea
         class="tbpro-textarea-element"
+        ref="textareaRef"
         v-model="model"
         :class="{ dirty: isDirty }"
         :id="name"
@@ -88,12 +92,13 @@ const onChange = () => {
         :autofocus="autofocus"
         :maxLength="maxLength"
         :rows="rows"
+        :data-testid="dataTestid"
         @invalid="onInvalid"
         @change="onChange"
-        ref="textareaRef"
-        :data-testid="dataTestid"
       />
-      <span class="character-count">10/100</span>
+      <span v-if="maxLength !== null" class="character-count">
+        {{ charCount }}/{{ maxLength }}
+      </span>
     </span>
     <span v-if="isInvalid" class="help-label invalid">
       <error-icon />
@@ -209,6 +214,7 @@ const onChange = () => {
     bottom: 1rem;
     right: 0.75rem;
     pointer-events: none;
+    font-weight: 600;
   }
 }
 

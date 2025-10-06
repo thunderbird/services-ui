@@ -106,3 +106,12 @@ export const NumRows: Story = {
     rows: 13,
   },
 };
+
+export const MaxLength: Story = {
+  args: {
+    name: 'char-count',
+    default: 'Input with max length',
+    maxLength: 250,
+    rows: 3,
+  },
+};
