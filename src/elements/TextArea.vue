@@ -113,7 +113,7 @@ const onChange = () => {
   flex-direction: column;
   gap: 0.5rem;
   color: var(--colour-ti-secondary);
-  font-family: 'Inter', 'sans-serif';
+  font-family: var(--font-sans);
   font-size: var(--txt-input);
   line-height: var(--line-height-input);
   font-weight: 400;
@@ -159,6 +159,7 @@ const onChange = () => {
     min-height: 5rem; /* Provide a sensible default minimum height */
     resize: vertical; /* Allow vertical resizing */
     transition-property: none;
+    font-family: var(--font-sans);
     font-size: var(--txt-input);
     padding: 1rem 0.75rem;
     box-sizing: border-box;
