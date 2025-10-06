@@ -148,6 +148,9 @@ button:hover > .tooltip,
       -webkit-mask:
           linear-gradient(#000 0 0) content-box,
           linear-gradient(#000 0 0);
+      mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
       -webkit-mask-composite: xor; /* Chrome/Safari/Edge */
       mask-composite: exclude; /* Firefox */
 
@@ -300,7 +303,7 @@ button:hover > .tooltip,
 
   .text {
     padding: 0;
-    user-select: all;
+    user-select: none;
     font-weight: 400;
     line-height: 1;
   }
