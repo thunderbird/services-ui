@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import BaseButton from '@/elements/BaseButton.vue';
 import RefreshIcon from '@/icons/RefreshIcon.vue';
 import TextInput from './TextInput.vue';
+import IconButton from './IconButton.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof BaseButton> = {
@@ -103,7 +104,7 @@ export const Submit: Story = {
       components: { story, TextInput },
       template: `
         <form style="display:flex;gap:1rem;max-width:500px">
-          <text-input type="text" placeholder="Fill and submit me" />
+          <text-input name="submit" type="text" placeholder="Fill and submit me" />
           <story />
         </form>
       `,
@@ -122,7 +123,7 @@ export const Reset: Story = {
       components: { story, TextInput },
       template: `
         <form style="display:flex;gap:1rem;max-width:500px">
-          <text-input type="text" placeholder="Fill and reset me" />
+          <text-input name="reset" type="text" placeholder="Fill and reset me" />
           <story />
         </form>
       `,
@@ -193,6 +194,36 @@ export const WithIconRight: Story = {
   parameters: {
     docs: {
       source: { code: '<primary-button variant="filled"><template #iconRight><RefreshIcon /></template>Refresh</primary-button>' },
+    },
+  },
+};
+
+export const IconOnly: Story = {
+  render: (args) => ({
+    components: { IconButton, RefreshIcon },
+    setup() {
+      return { args };
+    },
+    template: `
+      <div style="display:flex;gap:.5rem;align-items:center;">
+        <icon-button size="small">
+          <refresh-icon />
+        </icon-button>
+        <icon-button>
+        <refresh-icon />
+        </icon-button>
+        <icon-button size="medium">
+          <refresh-icon />
+        </icon-button>
+        <icon-button size="large">
+          <refresh-icon />
+        </icon-button>
+      </div>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: { code: '<icon-button size="small"><refresh-icon /></icon-button>\n<icon-button><refresh-icon /></icon-button>\n<icon-button size="medium"><refresh-icon /></icon-button>\n<icon-button size="large"><refresh-icon /></icon-button>' },
     },
   },
 };
