@@ -18,14 +18,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
   args: {
-    name: 'name',
+    name: 'name-standard',
     default: 'Blog Post',
   },
 };
 
 export const Disabled: Story = {
   args: {
-    name: 'name',
+    name: 'name-disabled',
     default: 'Blog Post',
     disabled: true,
   },
@@ -33,7 +33,7 @@ export const Disabled: Story = {
 
 export const Required: Story = {
   args: {
-    name: 'fav-food',
+    name: 'fav-food-required',
     default: 'Why is a hot dog a sandwich?',
     required: true,
   },
@@ -55,14 +55,14 @@ export const Required: Story = {
       `,
       methods: {
         triggerInvalid() {
-          const textarea = document.querySelector('textarea');
+          const textarea = document.querySelector('textarea[name="fav-food-required"]');
           if (textarea) {
             const invalidEvent = new Event('invalid', { bubbles: true });
             textarea.dispatchEvent(invalidEvent);
           }
         },
         manualReset() {
-          const inputElement = document.querySelector('textarea[name="fav-food"]');
+          const inputElement = document.querySelector('textarea[name="fav-food-required"]');
 
           // Access the exposed methods through the Vue component's public interface
           const componentExposed = (inputElement as any).__vueParentComponent?.exposed;
@@ -75,7 +75,7 @@ export const Required: Story = {
 
 export const RequiredWithPlaceholder: Story = {
   args: {
-    name: 'fav-food',
+    name: 'fav-food-required-with-placeholder',
     default: 'Why is a hot dog a sandwich?',
     placeholder: 'Yes because it is food inside of bread.',
     required: true,
@@ -101,7 +101,7 @@ export const Help: Story = {
 
 export const NumRows: Story = {
   args: {
-    name: 'name',
+    name: 'num-rows',
     default: 'Long Blog Post',
     rows: 13,
   },
