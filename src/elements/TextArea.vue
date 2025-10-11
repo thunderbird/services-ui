@@ -2,11 +2,11 @@
 import { computed, ref } from 'vue';
 import { t } from '@/composable/i18n';
 import ErrorIcon from '@/icons/ErrorIcon.vue';
+import { useTextareaAutosize } from '@vueuse/core';
 
-const model = defineModel<string>();
 const isInvalid = ref(false);
 const isDirty = ref(false);
-const textareaRef = ref<HTMLTextAreaElement>(null);
+const { textarea, input: model } = useTextareaAutosize();
 
 const charCount = computed(() => model.value?.length ?? 0);
 
@@ -15,10 +15,10 @@ const charCount = computed(() => model.value?.length ?? 0);
  * Unlike HTMLElement.focus() this does not take any parameters.
  */
 const focus = () => {
-  if (!textareaRef.value) {
+  if (!textarea.value) {
     return;
   }
-  textareaRef.value.focus();
+  textarea.value.focus();
 };
 
 /**
@@ -81,7 +81,7 @@ const onChange = () => {
     <span class="tbpro-textarea" :class="{ 'small-text': props.smallText }">
       <textarea
         class="tbpro-textarea-element"
-        ref="textareaRef"
+        ref="textarea"
         v-model="model"
         :class="{ dirty: isDirty }"
         :id="name"
@@ -170,6 +170,8 @@ const onChange = () => {
     padding: 1rem 0.75rem;
     box-sizing: border-box;
     overflow: auto;
+    resize: none;
+    scrollbar-width: none;
 
     color: var(--txt-colour);
     background-color: var(--colour-neutral-base);
