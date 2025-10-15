@@ -1,20 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { t } from '@/composable/i18n';
+import ErrorIcon from '@/icons/ErrorIcon.vue';
+import { useTextareaAutosize } from '@vueuse/core';
 
-const model = defineModel<string>();
 const isInvalid = ref(false);
 const isDirty = ref(false);
-const textareaRef = ref<HTMLTextAreaElement>(null);
+const { textarea, input: model } = useTextareaAutosize();
+
+const charCount = computed(() => model.value?.length ?? 0);
+
 /**
  * Forwards focus intent to the text input element.
  * Unlike HTMLElement.focus() this does not take any parameters.
  */
 const focus = () => {
-  if (!textareaRef.value) {
+  if (!textarea.value) {
     return;
   }
-  textareaRef.value.focus();
+  textarea.value.focus();
 };
 
 /**
@@ -77,6 +81,7 @@ const onChange = () => {
     <span class="tbpro-textarea" :class="{ 'small-text': props.smallText }">
       <textarea
         class="tbpro-textarea-element"
+        ref="textarea"
         v-model="model"
         :class="{ dirty: isDirty }"
         :id="name"
@@ -87,21 +92,20 @@ const onChange = () => {
         :autofocus="autofocus"
         :maxLength="maxLength"
         :rows="rows"
+        :data-testid="dataTestid"
         @invalid="onInvalid"
         @change="onChange"
-        ref="textareaRef"
-        :data-testid="dataTestid"
       />
+      <span v-if="maxLength !== null" class="character-count">
+        {{ charCount }}/{{ maxLength }}
+      </span>
     </span>
     <span v-if="isInvalid" class="help-label invalid">
-      <!-- Placeholder -->
+      <error-icon />
       {{ t('textArea.invalidInput') }}
     </span>
     <span v-else-if="help" class="help-label">
       {{ help }}
-    </span>
-    <span v-else class="help-label">
-      <!-- Empty space -->
     </span>
   </label>
 </template>
@@ -112,8 +116,9 @@ const onChange = () => {
 .wrapper {
   display: flex;
   flex-direction: column;
-  color: var(--colour-ti-base);
-  font-family: 'Inter', 'sans-serif';
+  gap: 0.5rem;
+  color: var(--colour-ti-secondary);
+  font-family: var(--font-sans);
   font-size: var(--txt-input);
   line-height: var(--line-height-input);
   font-weight: 400;
@@ -122,26 +127,31 @@ const onChange = () => {
 .label {
   width: 100%;
   font-weight: 600;
-  padding: 0.1875rem;
 }
 
 .help-label {
   display: flex;
-  color: var(--colour-ti-base);
+  align-items: center;
+  color: var(--colour-ti-muted);
 
   width: 100%;
   min-height: 0.9375rem;
   font-size: 0.625rem;
   line-height: 0.9375rem;
-  padding: 0.1875rem;
 
   &.invalid {
+    gap: 0.25rem;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    font-size: 0.75rem;
+    background-color: var(--colour-danger-soft);
     color: var(--colour-danger-default);
   }
 }
 
 .required {
   color: var(--colour-ti-critical);
+  padding-inline-start: 0.25rem;
 }
 
 .tbpro-textarea {
@@ -150,38 +160,38 @@ const onChange = () => {
   width: 100%;
 
   .tbpro-textarea-element {
-    --colour-btn-border: var(--colour-neutral-border);
     width: 100%;
     min-height: 5rem; /* Provide a sensible default minimum height */
     resize: vertical; /* Allow vertical resizing */
     transition-property: none;
+    font-family: var(--font-sans);
     font-size: var(--txt-input);
-    padding: 0.75rem;
+    line-height: 1.5;
+    padding: 1rem 0.75rem;
     box-sizing: border-box;
+    overflow: auto;
+    resize: none;
+    scrollbar-width: none;
 
     color: var(--txt-colour);
     background-color: var(--colour-neutral-base);
     border-radius: var(--border-radius);
-    @mixin faded-border var(--colour-btn-border);
+    border: 0.0625rem solid var(--colour-neutral-border);
 
     &:hover:enabled {
-      --colour-btn-border: var(--colour-neutral-border-intense);
+      border-color: var(--colour-neutral-border-intense);
     }
 
-    &:active:enabled {
-      --colour-btn-border: var(--colour-neutral-border-intense);
+    &:active:enabled, &:focus:enabled {
+      border-color: var(--colour-primary-default);
     }
 
     &:focus:enabled {
-      --colour-btn-border: var(--colour-service-primary);
-      outline: 0.125rem solid var(--colour-btn-border);
-      /* Un-fade the border */
-      border: 0.0625rem solid var(--colour-btn-border) !important;
-      border-radius: 0.125rem;
+      outline: 0.0625rem solid var(--colour-primary-default);
     }
 
     &.dirty:invalid {
-      --colour-btn-border: var(--colour-ti-critical);
+      border-color: var(--colour-ti-critical);
     }
 
     &:disabled {
@@ -192,6 +202,22 @@ const onChange = () => {
     &::placeholder {
       color: var(--colour-ti-muted);
     }
+  }
+
+  &:has(.character-count) {
+    .tbpro-textarea-element {
+      /* Compensate for the character-count */
+      padding: 1rem 1rem 2rem 0.75rem;
+      scroll-padding-block-end: 2rem;
+    }
+  }
+
+  .character-count {
+    position: absolute;
+    bottom: 1rem;
+    right: 0.75rem;
+    pointer-events: none;
+    font-weight: 600;
   }
 }
 
