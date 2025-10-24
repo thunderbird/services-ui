@@ -54,5 +54,8 @@
   },
   "textArea": {
     "invalidInput": "Ungültige Eingabe"
+  },
+  "loadingSkeleton": {
+    "loadingMessage": "Laden."
   }
 }
