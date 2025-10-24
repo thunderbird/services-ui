@@ -57,5 +57,8 @@
   },
   "userAvatar": {
     "altText": "{username}'s avatar."
+  },
+  "loadingSkeleton": {
+    "loadingMessage": "Loading."
   }
 }

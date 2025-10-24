@@ -22,6 +22,7 @@ import TextInput from '@/elements/TextInput.vue';
 import SegmentedControl from '@/elements/SegmentedControl.vue';
 
 // Misc
+import LoadingSkeleton from '@/elements/LoadingSkeleton.vue';
 import NoticeBar from '@/elements/NoticeBar.vue';
 import ToolTip from '@/elements/ToolTip.vue';
 import UserAvatar from '@/elements/UserAvatar.vue';
@@ -65,6 +66,7 @@ export {
   TextArea,
   TextInput,
   // Misc
+  LoadingSkeleton,
   NoticeBar,
   ToolTip,
   UserAvatar,
@@ -85,5 +87,5 @@ export {
   BaseBadgeTypes,
   // Patterns
   CopyToClipboard,
-  StandardFooter
+  StandardFooter,
 };
