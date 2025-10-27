@@ -6,21 +6,31 @@ Note this is heavily work-in-progress.
 
 ## Usage
 
-You can install the library by adding the following line as a dependency to your package.json:
+Install the library:
 
 ```bash
 npm i @thunderbirdops/services-ui
 ```
 
-Then, include the stylesheet into your top-level component:
+Include the stylesheet into your top-level component (we recommend you pull in the `Inter` font separately):
 
 ```ts
 import '@thunderbirdops/services-ui/style.css';
 ```
 
-We recommend you pull in the `Inter` font separately.
+Now you can use UI components by importing them in your components:
+
+```ts
+import { PrimaryButton } from '@thunderbirdops/services-ui';
+```
 
 ## Library Development
+
+We have the following structure for Vue components:
+
+1. `src/foundation/`: Foundational items (typography, icons, spacing, etc.)
+2. `src/components/`: Design system components (buttons, badges, etc.)
+3. `src/patterns/`: Custom usage or bundling of two or more design system components (copy button, standard footer, etc.)
 
 ### Storybook
 
@@ -40,8 +50,8 @@ npm run build
 
 ### Publishing a new version
 
-Once a release is deemed either a major update, minor update or patch update go ahead and update the version in package.json.
+Once a release is deemed either a major update, minor update or patch update go ahead and update the version in package.json. Don't forget to run `npm i` to update the package version number in the lockfile too.
 
-Once that's done commit it with the version number (i.e. if the new version is 0.6.1, commit just package.json with the message "0.6.1".)
+Once that's done commit it with the version number (i.e. if the new version is 0.6.1, commit just package.json and package-lock.json with the message "0.6.1".)
 
 After that create a tag for that commit as v$versionNumber (i.e. v0.6.1 from our previous example.) and draft and publish a new release based off that tag. The npm automation should kick in, and it should publish that new version soon.
