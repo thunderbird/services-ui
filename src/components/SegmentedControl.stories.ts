@@ -91,3 +91,33 @@ export const WithVModel: Story = {
     `,
   }),
 };
+
+export const WithOptionBadges: Story = {
+  args: {
+    default: 'Todo',
+    options: [
+      {
+        label: 'Backlog',
+        value: 0,
+      },
+      {
+        label: 'In progress',
+        value: 1,
+      },
+      {
+        label: 'Done',
+        value: 2,
+      },
+      {
+        label: 'Blocked',
+        value: 3,
+      },
+    ],
+    optionBadges: {
+      0: '256',
+      1: '2',
+      2: '14',
+    },
+    modelValue: 0,
+  },
+};

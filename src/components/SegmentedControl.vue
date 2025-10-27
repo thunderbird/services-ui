@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { type SelectOption } from '@/models';
+import type { SelectOptionBadges, SelectOption } from '@/models';
 
 interface Props {
   options: SelectOption<string | number>[];
-  required: boolean;
+  optionBadges?: SelectOptionBadges;
+  required?: boolean;
   disabled?: boolean;
   dataTestid?: string;
 }
@@ -52,6 +53,9 @@ const setOption = (option: SelectOption<string | number>) => {
           :data-testid="dataTestid"
         >
           {{ option.label }}
+          <span v-if="optionBadges?.hasOwnProperty(option.value)" class="badge">
+            {{ optionBadges[option.value] }}
+          </span>
         </button>
       </li>
     </ul>
@@ -96,7 +100,9 @@ const setOption = (option: SelectOption<string | number>) => {
       border: 1px solid rgba(0, 0, 0, 0.2);
       border-width: 1px 0 1px 1px;
       background-color: transparent;
-      padding: 0.5rem 1rem;
+      padding: 0 1rem;
+      height: 2.25rem;
+      gap: .5rem;
       margin-left: -1px;
       cursor: pointer;
       box-shadow: 0.125rem 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.05) inset;
@@ -114,6 +120,21 @@ const setOption = (option: SelectOption<string | number>) => {
       
       &.disabled {
         cursor: not-allowed;
+      }
+
+      .badge {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 1.5rem;
+        min-width: 1.5rem;
+        border-radius: 1.5rem;
+        background-color: rgba(19, 115, 217, 0.4); /* TODO: One off color from Zeplin */
+        padding: 0 .25rem;
+        box-sizing: border-box;
+
+        font-weight: 600;
       }
     }
 

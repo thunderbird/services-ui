@@ -17,6 +17,9 @@ export type SelectOption<T = number> = {
   value: T;
   fullLabel?: string;
 };
+export type SelectOptionBadges = {
+  [key: string | number]: string | number;
+};
 
 export type Coloring = {
   border?: string;
