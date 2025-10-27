@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { t } from '@/composable/i18n';
-import VisualDivider from '@/elements/VisualDivider.vue';
+import VisualDivider from '@/components/VisualDivider.vue';
 
 interface Props {
   contributeToThisSiteUrl: string

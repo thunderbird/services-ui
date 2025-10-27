@@ -1,43 +1,43 @@
 import '@/assets/styles/main.css';
 
 // Badges
-import BaseBadge from '@/elements/BaseBadge.vue';
-import ExpiryBadge from '@/elements/ExpiryBadge.vue';
+import BaseBadge from '@/components/BaseBadge.vue';
+import ExpiryBadge from '@/components/ExpiryBadge.vue';
 
 // Buttons
-import BaseButton from '@/elements/BaseButton.vue';
-import BrandButton from '@/elements/BrandButton.vue';
-import DangerButton from '@/elements/DangerButton.vue';
-import LinkButton from '@/elements/LinkButton.vue';
-import PrimaryButton from '@/elements/PrimaryButton.vue';
+import BaseButton from '@/components/BaseButton.vue';
+import BrandButton from '@/components/BrandButton.vue';
+import DangerButton from '@/components/DangerButton.vue';
+import LinkButton from '@/components/LinkButton.vue';
+import PrimaryButton from '@/components/PrimaryButton.vue';
 
 // Inputs
-import BubbleSelect from '@/elements/BubbleSelect.vue';
-import CheckboxInput from '@/elements/CheckboxInput.vue';
-import SelectInput from '@/elements/SelectInput.vue';
-import SwitchToggle from '@/elements/SwitchToggle.vue';
-import SyncCard from '@/elements/SyncCard.vue';
-import TextArea from '@/elements/TextArea.vue';
-import TextInput from '@/elements/TextInput.vue';
-import SegmentedControl from '@/elements/SegmentedControl.vue';
+import BubbleSelect from '@/components/BubbleSelect.vue';
+import CheckboxInput from '@/components/CheckboxInput.vue';
+import SelectInput from '@/components/SelectInput.vue';
+import SwitchToggle from '@/components/SwitchToggle.vue';
+import SyncCard from '@/components/SyncCard.vue';
+import TextArea from '@/components/TextArea.vue';
+import TextInput from '@/components/TextInput.vue';
+import SegmentedControl from '@/components/SegmentedControl.vue';
 
 // Misc
-import LoadingSkeleton from '@/elements/LoadingSkeleton.vue';
-import NoticeBar from '@/elements/NoticeBar.vue';
-import ToolTip from '@/elements/ToolTip.vue';
-import UserAvatar from '@/elements/UserAvatar.vue';
-import VisualDivider from '@/elements/VisualDivider.vue';
+import LoadingSkeleton from '@/components/LoadingSkeleton.vue';
+import NoticeBar from '@/components/NoticeBar.vue';
+import ToolTip from '@/components/ToolTip.vue';
+import UserAvatar from '@/components/UserAvatar.vue';
+import VisualDivider from '@/components/VisualDivider.vue';
 
-// Icons
-import CopyIcon from '@/icons/CopyIcon.vue';
-import NoticeCriticalIcon from '@/icons/NoticeCriticalIcon.vue';
-import NoticeInfoIcon from '@/icons/NoticeInfoIcon.vue';
-import NoticeSuccessIcon from '@/icons/NoticeSuccessIcon.vue';
-import NoticeWarningIcon from '@/icons/NoticeWarningIcon.vue';
-import RefreshIcon from '@/icons/RefreshIcon.vue';
-import StatusExpiryIcon from '@/icons/StatusExpiryIcon.vue';
-import StatusInfoIcon from '@/icons/StatusInfoIcon.vue';
-import StatusWarningIcon from '@/icons/StatusWarningIcon.vue';
+// Foundational items
+import CopyIcon from '@/foundation/CopyIcon.vue';
+import NoticeCriticalIcon from '@/foundation/NoticeCriticalIcon.vue';
+import NoticeInfoIcon from '@/foundation/NoticeInfoIcon.vue';
+import NoticeSuccessIcon from '@/foundation/NoticeSuccessIcon.vue';
+import NoticeWarningIcon from '@/foundation/NoticeWarningIcon.vue';
+import RefreshIcon from '@/foundation/RefreshIcon.vue';
+import StatusExpiryIcon from '@/foundation/StatusExpiryIcon.vue';
+import StatusInfoIcon from '@/foundation/StatusInfoIcon.vue';
+import StatusWarningIcon from '@/foundation/StatusWarningIcon.vue';
 
 // Types
 import { ExpiryUnitTypes, NoticeBarTypes, BaseBadgeTypes } from '@/definitions';
@@ -71,7 +71,7 @@ export {
   ToolTip,
   UserAvatar,
   VisualDivider,
-  // Icons
+  // Foundational items
   CopyIcon,
   NoticeCriticalIcon,
   NoticeInfoIcon,

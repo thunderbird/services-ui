@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { t } from '@/composable/i18n';
-import CopyIcon from '@/icons/CopyIcon.vue';
-import LinkButton from '@/elements/LinkButton.vue';
+import CopyIcon from '@/foundation/CopyIcon.vue';
+import LinkButton from '@/components/LinkButton.vue';
 
 type BaseProps = {
   dataTestid?: string;
