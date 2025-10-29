@@ -163,6 +163,15 @@ export const Email: Story = {
   },
 };
 
+export const Password: Story = {
+  args: {
+    name: 'password-input',
+    default: 'Password',
+    type: 'password',
+    required: true,
+  },
+};
+
 export const InnerPrefix: Story = {
   args: {
     name: 'currency-input',

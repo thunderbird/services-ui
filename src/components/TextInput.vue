@@ -3,6 +3,8 @@ import { ref, computed } from 'vue';
 import { useElementSize } from '@vueuse/core';
 import { type HTMLInputElementEvent } from '@/models';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
+import EyeIcon from '@/foundation/EyeIcon.vue';
+import EyeOffIcon from '@/foundation/EyeOffIcon.vue';
 
 const model = defineModel<string>();
 const isInvalid = ref(false);
@@ -99,6 +101,15 @@ const onBlur = (evt) => {
 
   emit('blur');
 }
+
+// null: no password input, false: hide password, true: show password
+const passwordIsVisible = ref(props.type === 'password' ? false : null);
+const inputType = ref(props.type);
+
+const togglePasswordVisibility = () => {
+  inputType.value = passwordIsVisible.value ? 'password' : 'text';
+  passwordIsVisible.value = !passwordIsVisible.value;
+};
 </script>
 
 <template>
@@ -119,7 +130,7 @@ const onBlur = (evt) => {
             dirty: isDirty,
             error: error !== null,
           }"
-          :type="type"
+          :type="inputType"
           :id="name"
           :name="name"
           :disabled="disabled"
@@ -134,6 +145,12 @@ const onBlur = (evt) => {
           @blur="onBlur"
           ref="inputRef"
         />
+        <span v-if="passwordIsVisible === true" class="tbpro-input-suffix" @click="togglePasswordVisibility">
+          <eye-off-icon class="icon" />
+        </span>
+        <span v-else-if="passwordIsVisible === false" class="tbpro-input-suffix" @click="togglePasswordVisibility">
+          <eye-icon class="icon" />
+        </span>
       </span>
       <span v-if="outerSuffix" class="tbpro-input-outer-suffix">{{ outerSuffix }}</span>
     </span>
@@ -301,6 +318,19 @@ const onBlur = (evt) => {
       &[type='time']::-webkit-calendar-picker-indicator {
         margin-right: -0.5rem;
         background: none;
+      }
+    }
+
+    .tbpro-input-suffix {
+      position: absolute;
+      top: 0.625rem;
+      right: 0.75rem;
+      color: var(--colour-ti-muted);
+      z-index: 1;
+      cursor: pointer;
+
+      .icon {
+        stroke-width: 1.25;
       }
     }
   }
