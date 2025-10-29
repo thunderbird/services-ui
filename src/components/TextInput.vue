@@ -319,6 +319,10 @@ const togglePasswordVisibility = () => {
         margin-right: -0.5rem;
         background: none;
       }
+
+      &:has(~ .tbpro-input-suffix) {
+        padding-right: 2.75rem;
+      }
     }
 
     .tbpro-input-suffix {
