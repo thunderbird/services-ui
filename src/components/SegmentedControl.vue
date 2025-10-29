@@ -131,7 +131,7 @@ const setOption = (option: SelectOption<string | number>) => {
         min-width: 1.5rem;
         border-radius: 1.5rem;
         background-color: rgba(19, 115, 217, 0.4); /* TODO: One off color from Zeplin */
-        padding: 0 .25rem;
+        padding: 0 .5rem;
         box-sizing: border-box;
 
         font-weight: 600;
