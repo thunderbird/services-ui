@@ -5,6 +5,10 @@ import BaseButton from '@/components/BaseButton.vue';
 import RefreshIcon from '@/foundation/RefreshIcon.vue';
 import TextInput from '@/components/TextInput.vue';
 import IconButton from '@/components/IconButton.vue';
+import PrimaryButton from './PrimaryButton.vue';
+import BrandButton from './BrandButton.vue';
+import DangerButton from './DangerButton.vue';
+import LinkButton from './LinkButton.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof BaseButton> = {
@@ -34,169 +38,149 @@ type Story = StoryObj<typeof meta>;
  * See https://storybook.js.org/docs/api/csf
  * to learn how to use render functions.
  */
-export const Primary: Story = {
-  args: {
-    type: 'primary',
-  },
+
+export const Type: Story = {
+  render: (args) => ({
+    components: { PrimaryButton, BrandButton, DangerButton, LinkButton },
+    setup() {
+      return { args };
+    },
+    template: `
+      <div style="display:flex;gap:.5rem;align-items:center;">
+        <primary-button>Primary</primary-button>
+        <brand-button>Brand</brand-button>
+        <danger-button>Danger</danger-button>
+        <link-button>Link</link-button>
+      </div>
+    `,
+  }),
   parameters: {
     docs: {
-      source: { code: '<primary-button>Click me!</primary-button>' },
+      source: { code: '<primary-button>Primary</primary-button>\n<brand-button>Brand</brand-button>\n<danger-button>Danger</danger-button>\n<link-button>Link</link-button>' },
     },
   },
 };
 
-export const Brand: Story = {
-  args: {
-    type: 'brand',
-    variant: 'filled',
-    default: 'Subscribe now',
-  },
+export const Variant: Story = {
+  render: (args) => ({
+    components: { PrimaryButton },
+    setup() {
+      return { args };
+    },
+    template: `
+      <div style="display:flex;gap:.5rem;align-items:center;">
+        <primary-button variant="filled">Filled</primary-button>
+        <primary-button variant="outline">Outline</primary-button>
+      </div>
+    `,
+  }),
   parameters: {
     docs: {
-      source: { code: '<brand-button>Subscribe now</brand-button>' },
+      source: { code: '<primary-button variant="filled">Filled</primary-button>\n<primary-button variant="outline">Outline</primary-button>' },
     },
   },
 };
 
-export const Outline: Story = {
-  args: {
-    type: 'brand',
-    variant: 'outline',
-    default: 'Subscribe now',
-  },
+export const Disabled: Story = {
+  render: (args) => ({
+    components: { PrimaryButton },
+    setup() {
+      return { args };
+    },
+    template: `
+      <div style="display:flex;gap:.5rem;align-items:center;">
+        <primary-button variant="filled" disabled>Disabled</primary-button>
+        <primary-button variant="outline" disabled>Disabled</primary-button>
+      </div>
+    `,
+  }),
   parameters: {
     docs: {
-      source: { code: '<brand-button type="outline">Subscribe now</brand-button>' },
+      source: { code: '<primary-button variant="filled" disabled>Filled</primary-button>\n<primary-button variant="outline" disabled>Outline</primary-button>' },
     },
   },
 };
 
-export const Danger: Story = {
-  args: {
-    type: 'danger',
-  },
-  parameters: {
-    docs: {
-      source: { code: '<danger-button>Click me!</danger-button>' },
+export const FormAction: Story = {
+  render: (args) => ({
+    components: { PrimaryButton, TextInput },
+    setup() {
+      return { args };
     },
-  },
-};
-
-export const Link: Story = {
-  args: {
-    type: 'link',
-  },
-  parameters: {
-    docs: {
-      source: { code: '<link-button>Click me!</link-button>' },
-    },
-  },
-};
-
-export const Submit: Story = {
-  args: {
-    type: 'primary',
-    formAction: 'submit',
-    default: 'Submit',
-  },
-  decorators: [
-    (story) => ({
-      components: { story, TextInput },
-      template: `
-        <form style="display:flex;gap:1rem;max-width:500px">
+    template: `
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <form style="display:flex;gap:.5rem;max-width:500px">
           <text-input name="submit" type="text" placeholder="Fill and submit me" />
-          <story />
+          <primary-button form-action="submit">Submit</primary-button>
         </form>
-      `,
-    })
-  ]
-};
-
-export const Reset: Story = {
-  args: {
-    type: 'primary',
-    formAction: 'reset',
-    default: 'Reset',
-  },
-  decorators: [
-    (story) => ({
-      components: { story, TextInput },
-      template: `
-        <form style="display:flex;gap:1rem;max-width:500px">
-          <text-input name="reset" type="text" placeholder="Fill and reset me" />
-          <story />
+        <form style="display:flex;gap:.5rem;max-width:500px">
+          <text-input name="submit" type="text" placeholder="Fill and reset me" />
+          <primary-button form-action="reset">Reset</primary-button>
         </form>
-      `,
-    })
-  ]
-};
-
-export const Small: Story = {
-  args: {
-    type: 'primary',
-    size: 'small',
-  },
-  parameters: {
-    docs: {
-      source: { code: '<primary-button size="small">Click me!</primary-button>' },
-    },
-  },
-};
-
-export const WithIconLeft: Story = {
-  args: {
-    type: 'primary',
-    variant: 'filled',
-    default: 'Refresh',
-  },
-  render: (args) => ({
-    components: { BaseButton, RefreshIcon },
-    setup() {
-      return { args };
-    },
-    template: `
-      <BaseButton v-bind="args" @click="args.onClick">
-        <template #iconLeft>
-          <RefreshIcon />
-        </template>
-        {{ args.default }}
-      </BaseButton>
+        <form style="display:flex;gap:.5rem;max-width:500px">
+          <text-input name="submit" type="text" placeholder="Fill me" />
+          <primary-button form-action="none">None</primary-button>
+        </form>
+      </div>
     `,
   }),
   parameters: {
     docs: {
-      source: { code: '<primary-button variant="filled"><template #icon><RefreshIcon /></template>Refresh</primary-button>' },
+      source: { code: '<primary-button form-action="submit">Submit</primary-button>\n<primary-button form-action="reset">Reset</primary-button>\n<primary-button form-action="none">None</primary-button>' },
     },
   },
 };
 
-export const WithIconRight: Story = {
-  args: {
-    type: 'primary',
-    variant: 'filled',
-    default: 'Refresh',
-  },
+export const Size: Story = {
   render: (args) => ({
-    components: { BaseButton, RefreshIcon },
+    components: { PrimaryButton },
     setup() {
       return { args };
     },
     template: `
-      <BaseButton v-bind="args" @click="args.onClick">
-        {{ args.default }}
-
-        <template #iconRight>
-          <RefreshIcon />
-        </template>
-      </BaseButton>
+      <div style="display:flex;gap:.5rem;align-items:center;">
+        <primary-button size="default">Default</primary-button>
+        <primary-button size="small">Small</primary-button>
+      </div>
     `,
   }),
   parameters: {
     docs: {
-      source: { code: '<primary-button variant="filled"><template #iconRight><RefreshIcon /></template>Refresh</primary-button>' },
+      source: { code: '<primary-button size="default">Default</primary-button>\n<primary-button size="small">Small</primary-button>' },
     },
   },
 };
+
+export const WithIcon: Story = {
+  render: (args) => ({
+    components: { PrimaryButton, RefreshIcon },
+    setup() {
+      return { args };
+    },
+    template: `
+      <div style="display:flex;gap:.5rem;align-items:center;">
+        <primary-button>
+          <template #iconLeft>
+            <RefreshIcon />
+          </template>
+          Icon left
+        </primary-button>
+        <primary-button>
+          <template #iconRight>
+            <RefreshIcon />
+          </template>
+          Icon right
+        </primary-button>
+      </div>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: { code: '<primary-button><template #iconLeft><refresh-icon /></template>Icon left</primary-button>\n<primary-button><template #iconRight><refresh-icon /></template>Icon right</primary-button>' },
+    },
+  },
+};
+
 
 export const IconOnly: Story = {
   render: (args) => ({
