@@ -158,6 +158,7 @@ button:hover > .tooltip,
     }
 
     &:disabled {
+      --button-outline-border: transparent;
       background: var(--colour-neutral-base);
       border: 0.0625rem solid var(--colour-neutral-border);
       color: var(--colour-ti-muted);
