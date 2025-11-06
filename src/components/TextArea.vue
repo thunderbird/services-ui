@@ -6,7 +6,8 @@ import { useTextareaAutosize } from '@vueuse/core';
 
 const isInvalid = ref(false);
 const isDirty = ref(false);
-const { textarea, input: model } = useTextareaAutosize();
+const model = defineModel<string>();
+const { textarea } = useTextareaAutosize({ input: model });
 
 const charCount = computed(() => model.value?.length ?? 0);
 

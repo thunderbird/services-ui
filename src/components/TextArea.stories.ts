@@ -1,3 +1,4 @@
+import { ref } from 'vue';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import TextArea from '@/components/TextArea.vue';
 
@@ -21,14 +22,21 @@ export const Standard: Story = {
     name: 'name-standard',
     default: 'Blog Post',
   },
-};
-
-export const Disabled: Story = {
-  args: {
-    name: 'name-disabled',
-    default: 'Blog Post',
-    disabled: true,
-  },
+  render: (args) => ({
+    components: { TextArea },
+    setup() {
+      const value = ref('');
+      return { args, value };
+    },
+    template: `
+      <div>
+        <TextArea v-model="value" v-bind="args">{{ args.default }}</TextArea>
+        <p style="margin-block-start: 0.5rem; word-break: break-word;">
+          Current v-model value: {{ value }}
+        </p>
+      </div>
+    `,
+  }),
 };
 
 export const Required: Story = {
