@@ -7,6 +7,7 @@ interface Props {
   type?: 'primary' | 'brand' | 'danger' | 'link';
   size?: 'default' | 'small';
   variant?: 'filled' | 'outline';
+  href?: string;
   tooltip?: string;
   forceTooltip?: boolean;
   formAction?: 'none' | 'submit' | 'reset';
@@ -17,6 +18,7 @@ withDefaults(defineProps<Props>(), {
   type: 'primary',
   size: 'default',
   variant: 'filled',
+  href: '',
   tooltip: '',
   forceTooltip: false,
   formAction: 'none',
@@ -26,7 +28,35 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
+  <a
+    v-if="href"
+    :href="href"
+    class="base"
+    :class="{ [type]: type, small: size === 'small', [variant]: variant }"
+    :data-testid="dataTestid"
+    :disabled="disabled"
+  >
+    <span class="icon" v-if="$slots?.iconLeft">
+      <slot name="iconLeft" />
+    </span>
+    <span class="text">
+      <slot />
+    </span>
+    <span class="icon" v-if="$slots?.iconRight">
+      <slot name="iconRight" />
+    </span>
+    <tool-tip
+      v-if="tooltip"
+      class="tooltip"
+      :class="{ 'display-tooltip': forceTooltip }"
+      :position="TooltipPosition.Bottom"
+      @click.prevent
+    >
+      {{ tooltip }}
+    </tool-tip>
+  </a>
   <button
+    v-else
     class="base"
     :class="{ [type]: type, small: size === 'small', [variant]: variant }"
     :type="formAction === 'none' ? 'button' : formAction"
