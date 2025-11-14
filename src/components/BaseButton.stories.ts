@@ -81,6 +81,26 @@ export const Variant: Story = {
   },
 };
 
+export const Anchor: Story = {
+  render: (args) => ({
+    components: { PrimaryButton, LinkButton },
+    setup() {
+      return { args };
+    },
+    template: `
+      <div style="display:flex;gap:.5rem;align-items:center;">
+        <primary-button href="https://mozilla.org">mozilla.org</primary-button>
+        <link-button href="https://mozilla.org">mozilla.org</link-button>
+      </div>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: { code: '<primary-button href="https://mozilla.org">mozilla.org</primary-button>\n<link-button href="https://mozilla.org">mozilla.org</link-button>' },
+    },
+  },
+};
+
 export const Disabled: Story = {
   render: (args) => ({
     components: { PrimaryButton },
