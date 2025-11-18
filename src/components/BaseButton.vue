@@ -21,8 +21,6 @@ withDefaults(defineProps<Props>(), {
   type: 'primary',
   size: 'default',
   variant: 'filled',
-  href: '',
-  tooltip: '',
   forceTooltip: false,
   formAction: 'none',
   dataTestid: 'button',
@@ -31,35 +29,9 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <a
-    v-if="href"
+  <component
+    :is="href ? 'a' : 'button'"
     :href="href"
-    class="base"
-    :class="{ [type]: type, small: size === 'small', [variant]: variant }"
-    :data-testid="dataTestid"
-    :disabled="disabled"
-  >
-    <span class="icon" v-if="$slots?.iconLeft">
-      <slot name="iconLeft" />
-    </span>
-    <span class="text">
-      <slot />
-    </span>
-    <span class="icon" v-if="$slots?.iconRight">
-      <slot name="iconRight" />
-    </span>
-    <tool-tip
-      v-if="tooltip"
-      class="tooltip"
-      :class="{ 'display-tooltip': forceTooltip }"
-      :position="TooltipPosition.Bottom"
-      @click.prevent
-    >
-      {{ tooltip }}
-    </tool-tip>
-  </a>
-  <button
-    v-else
     class="base"
     :class="{ [type]: type, small: size === 'small', [variant]: variant }"
     :type="formAction === 'none' ? 'button' : formAction"
@@ -84,7 +56,7 @@ withDefaults(defineProps<Props>(), {
     >
       {{ tooltip }}
     </tool-tip>
-  </button>
+  </component>
 </template>
 
 <style>
