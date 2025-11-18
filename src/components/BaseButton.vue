@@ -7,6 +7,9 @@ interface Props {
   type?: 'primary' | 'brand' | 'danger' | 'link';
   size?: 'default' | 'small';
   variant?: 'filled' | 'outline';
+  /**
+   * Transform the button into an anchor tag. If null then the component will be rendered as a button tag.
+   */
   href?: string;
   tooltip?: string;
   forceTooltip?: boolean;
