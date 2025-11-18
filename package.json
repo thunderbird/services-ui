@@ -54,6 +54,7 @@
     "eslint-plugin-playwright": "^2.1.0",
     "eslint-plugin-storybook": "^10.0.7",
     "eslint-plugin-vue": "^10.3.0",
+    "glob": "^10.5.0",
     "jsdom": "^27.0.1",
     "npm-run-all2": "^8.0.4",
     "postcss": "^8.4.45",
