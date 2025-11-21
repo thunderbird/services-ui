@@ -7,7 +7,10 @@ import { useTextareaAutosize } from '@vueuse/core';
 const isInvalid = ref(false);
 const isDirty = ref(false);
 const model = defineModel<string>();
-const { textarea } = useTextareaAutosize({ input: model });
+const { textarea } = useTextareaAutosize({
+  input: model,
+  styleProp: 'minHeight', // Provides support for the rows attribute
+});
 
 const charCount = computed(() => model.value?.length ?? 0);
 
@@ -36,22 +39,13 @@ const reset = () => {
 interface Props {
   name: string;
   help?: string;
-  placeholder?: string;
-  required?: boolean;
-  autofocus?: boolean;
-  disabled?: boolean;
   smallText?: boolean;
   maxLength?: number | string;
-  rows?: number | string;
   dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
   help: null,
-  placeholder: null,
   prefix: null,
-  required: false,
-  autofocus: false,
-  disabled: false,
   smallText: false,
   maxLength: null,
   dataTestid: 'text-area',
@@ -77,7 +71,7 @@ const onChange = () => {
   <label class="wrapper" :for="name">
     <span class="label">
       <slot />
-      <span v-if="required && !model?.length" class="required">*</span>
+      <span v-if="$attrs['required'] && !model?.length" class="required">*</span>
     </span>
     <span class="tbpro-textarea" :class="{ 'small-text': props.smallText }">
       <textarea
@@ -87,13 +81,9 @@ const onChange = () => {
         :class="{ dirty: isDirty }"
         :id="name"
         :name="name"
-        :disabled="disabled"
-        :placeholder="placeholder"
-        :required="required"
-        :autofocus="autofocus"
         :maxLength="maxLength"
-        :rows="rows"
         :data-testid="dataTestid"
+        v-bind="$attrs"
         @invalid="onInvalid"
         @change="onChange"
       />
