@@ -34,7 +34,7 @@ export const Disabled: Story = {
       return { args };
     },
     template: `
-      <CheckboxInput disabled label="${args.label}" />
+      <checkbox-input name="disabled" disabled label="${args.label}" />
     `,
   }),
 };

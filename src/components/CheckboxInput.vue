@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, useAttrs } from 'vue';
 import { type HTMLInputElementEvent } from '@/models';
 import CheckboxCheckIcon from '@/foundation/CheckboxCheckIcon.vue';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
@@ -10,29 +10,24 @@ interface Props {
   label?: string;
   help?: string;
   error?: string;
-  checked?: boolean;
-  required?: boolean;
-  autofocus?: boolean;
   dataTestid?: string;
 }
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   label: null,
   help: null,
   error: null,
-  checked: false,
-  required: false,
-  autofocus: false,
   dataTestid: 'checkbox-input',
 });
 
 const model = defineModel<boolean>();
+const attrs = useAttrs();
 const isInvalid = ref(false);
 const validationMessage = ref('');
 const isDirty = ref(false);
 const inputRef = ref<HTMLInputElement>(null);
 
 onMounted(() => {
-  if (props.checked) {
+  if (attrs['checked']) {
     model.value = true;
   }
 });
@@ -53,7 +48,7 @@ const focus = () => {
  * This should be explicitly called when the parent form is reset.
  */
 const reset = () => {
-  model.value = props.checked ?? false;
+  model.value = (attrs['checked'] as boolean) ?? false;
   isInvalid.value = false;
   isDirty.value = false;
   validationMessage.value = '';
@@ -76,14 +71,6 @@ const onChange = (event: Event) => {
   isDirty.value = true;
   emit('change', event);
 };
-
-/**
- * Standard HTML attributes should be passed on to the input
- * through the v-bind and not to the wrapper div
- */
-defineOptions({
-  inheritAttrs: false
-});
 </script>
 
 <template>
@@ -93,13 +80,10 @@ defineOptions({
         type="checkbox"
         class="screen-reader-only"
         v-model="model"
-        v-bind="$attrs"
+        v-bind="attrs"
         :class="{ dirty: isDirty }"
         :id="name"
         :name="name"
-        :checked="checked"
-        :required="required"
-        :autofocus="autofocus"
         :data-testid="dataTestid"
         @invalid="onInvalid"
         @change="onChange"
@@ -112,7 +96,7 @@ defineOptions({
 
       <span v-if="label">
         {{ label }}
-        <span v-if="required && !model" class="required">*</span>
+        <span v-if="attrs['required'] && !model" class="required">*</span>
       </span>
     </label>
     <span v-if="isInvalid" class="help-label invalid">
