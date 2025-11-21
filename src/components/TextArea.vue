@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, useAttrs } from 'vue';
 import { t } from '@/composable/i18n';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
 import { useTextareaAutosize } from '@vueuse/core';
@@ -13,6 +13,7 @@ const { textarea } = useTextareaAutosize({
 });
 
 const charCount = computed(() => model.value?.length ?? 0);
+const attrs = useAttrs();
 
 /**
  * Forwards focus intent to the text input element.
@@ -71,13 +72,13 @@ const onChange = () => {
   <label class="wrapper" :for="name">
     <span class="label">
       <slot />
-      <span v-if="$attrs['required'] && !model?.length" class="required">*</span>
+      <span v-if="attrs['required'] && !model?.length" class="required">*</span>
     </span>
     <span class="tbpro-textarea" :class="{ 'small-text': props.smallText }">
       <textarea
         class="tbpro-textarea-element"
         ref="textarea"
-        v-bind="$attrs"
+        v-bind="attrs"
         v-model="model"
         :class="{ dirty: isDirty }"
         :id="name"

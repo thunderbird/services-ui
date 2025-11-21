@@ -107,14 +107,14 @@ const togglePasswordVisibility = () => {
   <label class="wrapper" :for="name">
     <span v-if="$slots.default" class="label">
       <slot />
-      <span v-if="$attrs['required'] && !model?.length" class="required">*</span>
+      <span v-if="attrs['required'] && !model?.length" class="required">*</span>
     </span>
     <span class="tbpro-input" :class="{ 'small-text': props.smallText }">
       <span v-if="outerPrefix" class="tbpro-input-outer-prefix">{{ outerPrefix }}</span>
       <span class="tbpro-input-wrapper">
         <span v-if="prefix" ref="inputPrefix" class="tbpro-input-prefix">{{ prefix }}</span>
         <input
-          v-bind="$attrs"
+          v-bind="attrs"
           v-model="model"
           class="tbpro-input-element"
           :class="{
