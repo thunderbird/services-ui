@@ -77,13 +77,13 @@ const onChange = () => {
       <textarea
         class="tbpro-textarea-element"
         ref="textarea"
+        v-bind="$attrs"
         v-model="model"
         :class="{ dirty: isDirty }"
         :id="name"
         :name="name"
         :maxLength="maxLength"
         :data-testid="dataTestid"
-        v-bind="$attrs"
         @invalid="onInvalid"
         @change="onChange"
       />
