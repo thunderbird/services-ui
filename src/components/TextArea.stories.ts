@@ -30,7 +30,7 @@ export const Standard: Story = {
     },
     template: `
       <div>
-        <TextArea v-model="value" v-bind="args">{{ args.default }}</TextArea>
+        <text-area v-model="value" v-bind="args">{{ args.default }}</text-area>
         <p style="margin-block-start: 0.5rem; word-break: break-word;">
           Current v-model value: {{ value }}
         </p>
