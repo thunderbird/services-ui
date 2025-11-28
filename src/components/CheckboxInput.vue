@@ -4,6 +4,10 @@ import { type HTMLInputElementEvent } from '@/models';
 import CheckboxCheckIcon from '@/foundation/CheckboxCheckIcon.vue';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
 
+defineOptions({
+  inheritAttrs: false, // Disable attributes going to the root element
+})
+
 // component properties
 interface Props {
   name: string;
@@ -21,6 +25,7 @@ withDefaults(defineProps<Props>(), {
 
 const model = defineModel<boolean>();
 const attrs = useAttrs();
+const customClass = attrs['class'] || '';
 const isInvalid = ref(false);
 const validationMessage = ref('');
 const isDirty = ref(false);
@@ -90,7 +95,7 @@ const onChange = (event: Event) => {
         ref="inputRef"
       />
 
-      <span class="checkbox-control" aria-hidden="true">
+      <span class="checkbox-control" :class="customClass" aria-hidden="true">
         <checkbox-check-icon v-if="model" class="checkbox-icon" />
       </span>
 
