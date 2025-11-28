@@ -133,3 +133,22 @@ export const Help: Story = {
     help: 'There is no catch here, we promise.',
   },
 };
+
+export const CustomClass: Story = {
+  render: (args) => ({
+    components: { CheckboxInput },
+    setup() {
+      return { args };
+    },
+    template: `
+      <checkbox-input name="custom-class" label="Red Dragon" class="red-dragon" help="The visual Checkbox element has a class .red-dragon applied" />
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<checkbox-input name="custom-class" label="Red Dragon" class="red-dragon" />'
+      },
+    },
+  },
+};
