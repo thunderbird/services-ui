@@ -14,6 +14,7 @@ const { textarea } = useTextareaAutosize({
 
 const charCount = computed(() => model.value?.length ?? 0);
 const attrs = useAttrs();
+const isRequired = attrs.hasOwnProperty('required');
 
 /**
  * Forwards focus intent to the text input element.
@@ -72,7 +73,7 @@ const onChange = () => {
   <label class="wrapper" :for="name">
     <span class="label">
       <slot />
-      <span v-if="attrs['required'] && !model?.length" class="required">*</span>
+      <span v-if="isRequired && !model?.length" class="required">*</span>
     </span>
     <span class="tbpro-textarea" :class="{ 'small-text': props.smallText }">
       <textarea
