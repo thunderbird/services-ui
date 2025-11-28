@@ -22,13 +22,14 @@ withDefaults(defineProps<Props>(), {
 const model = defineModel<boolean>();
 const attrs = useAttrs();
 const customClass = attrs['class'] || '';
+const isRequired = attrs.hasOwnProperty('required');
 const isInvalid = ref(false);
 const validationMessage = ref('');
 const isDirty = ref(false);
 const inputRef = ref<HTMLInputElement>(null);
 
 onMounted(() => {
-  if (attrs['checked']) {
+  if (attrs.hasOwnProperty('checked')) {
     model.value = true;
   }
 });
@@ -49,13 +50,13 @@ const focus = () => {
  * This should be explicitly called when the parent form is reset.
  */
 const reset = () => {
-  model.value = (attrs['checked'] as boolean) ?? false;
+  model.value = attrs.hasOwnProperty('checked');
   isInvalid.value = false;
   isDirty.value = false;
   validationMessage.value = '';
 };
 
-const emit = defineEmits(['submit', 'change']);
+const emit = defineEmits(['change']);
 defineExpose({ focus, reset });
 
 const onInvalid = (evt: HTMLInputElementEvent) => {
@@ -68,9 +69,11 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
  * this is so we can delay :invalid until
  * the user does something worth invalidating
  */
-const onChange = (event: Event) => {
+const onChange = () => {
   isDirty.value = true;
-  emit('change', event);
+  const newValue = !model.value;
+  model.value = newValue;
+  emit('change', newValue);
 };
 
 /**
@@ -83,8 +86,8 @@ defineOptions({
 </script>
 
 <template>
-  <div class="checkbox-wrapper">
-    <label class="label" :for="name">
+  <div class="checkbox-wrapper" :class="customClass">
+    <label class="label" :for="name" @click.prevent="onChange">
       <input
         type="checkbox"
         class="screen-reader-only"
@@ -95,17 +98,16 @@ defineOptions({
         :name="name"
         :data-testid="dataTestid"
         @invalid="onInvalid"
-        @change="onChange"
         ref="inputRef"
       />
 
-      <span class="checkbox-control" :class="customClass" aria-hidden="true">
+      <span class="checkbox-control" aria-hidden="true">
         <checkbox-check-icon v-if="model" class="checkbox-icon" />
       </span>
 
       <span v-if="label">
         {{ label }}
-        <span v-if="attrs['required'] && !model" class="required">*</span>
+        <span v-if="isRequired && !model" class="required">*</span>
       </span>
     </label>
     <span v-if="isInvalid" class="help-label invalid">
