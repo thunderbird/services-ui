@@ -11,6 +11,7 @@ const model = defineModel<string>();
 const isInvalid = ref(false);
 const validationMessage = ref('');
 const isDirty = ref(false);
+const isRequired = attrs.hasOwnProperty('required');
 const inputRef = ref<HTMLInputElement>(null);
 const inputPrefix = ref<HTMLSpanElement>(null);
 const { width: inputPrefixWidth } = useElementSize(inputPrefix); // Calculate the width of the prefix element
@@ -107,7 +108,7 @@ const togglePasswordVisibility = () => {
   <label class="wrapper" :for="name">
     <span v-if="$slots.default" class="label">
       <slot />
-      <span v-if="attrs['required'] && !model?.length" class="required">*</span>
+      <span v-if="isRequired && !model?.length" class="required">*</span>
     </span>
     <span class="tbpro-input" :class="{ 'small-text': props.smallText }">
       <span v-if="outerPrefix" class="tbpro-input-outer-prefix">{{ outerPrefix }}</span>

@@ -18,36 +18,48 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
-  args: {
-    name: 'standard-input',
-    default: 'Full Name',
-    placeholder: 'e.g. John Doe'
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input name="standard-input" placeholder="e.g. John Doe">Full Name</text-input>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input name="standard-input" placeholder="e.g. John Doe">
+          Full Name
+        </text-input>`
+      },
+    },
   },
 };
 
 export const Disabled: Story = {
-  args: {
-    name: 'disabled-input',
-    default: 'Full Name',
-    placeholder: 'e.g. John Doe',
-    disabled: true,
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input name="disabled-input" placeholder="e.g. John Doe" disabled>Full Name</text-input>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input name="disabled-input" placeholder="e.g. John Doe" disabled>
+          Full Name
+        </text-input>`
+      },
+    },
   },
 };
 
 export const Required: Story = {
-  args: {
-    name: 'required-input',
-    default: 'Favourite Food?',
-    placeholder: '(e.g. Pizza)',
-    required: true,
-    help: 'Choose wisely.',
-  },
   decorators: [
-    (story) => ({
-      components: { story },
+    () => ({
+      components: { TextInput },
       template: `
         <div>
-          <story />
+          <text-input name="required-input" placeholder="(e.g. Pizza)" help="Choose wisely." required>Favourite Food?</text-input>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;margin-top: 0.5rem;">
             <button @click="triggerInvalid">
               Trigger Invalid State
@@ -74,32 +86,42 @@ export const Required: Story = {
       },
     }),
   ],
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input name="required-input" placeholder="(e.g. Pizza)" help="Choose wisely." required>
+          Favourite Food?
+        </text-input>`
+      },
+    },
+  },
 };
 
 export const RequiredWithPlaceholder: Story = {
-  args: {
-    name: 'required-input-with-placeholder',
-    default: 'Favourite Food?',
-    placeholder: 'Pizza',
-    required: true,
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input name="required-input-with-placeholder" placeholder="Pizza" required>Favourite Food?</text-input>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input name="required-input-with-placeholder" placeholder="Pizza" required>
+          Favourite Food?
+        </text-input>`
+      },
+    },
   },
 };
 
 export const RequiredWithOuterPrefix: Story = {
-  args: {
-    name: 'required-input-with-outer-prefix',
-    default: 'Favourite Food?',
-    placeholder: '(e.g. Pizza)',
-    required: true,
-    help: 'Choose wisely.',
-    outerPrefix: 'https://test.org/',
-  },
   decorators: [
-    (story) => ({
-      components: { story },
+    () => ({
+      components: { TextInput },
       template: `
         <div>
-          <story />
+          <text-input name="required-input-with-outer-prefix" placeholder="(e.g. Pizza)" help="Choose wisely." outer-prefix="https://test.org/" required>Favourite Food?</text-input>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;margin-top: 0.5rem;">
             <button @click="triggerInvalid">
               Trigger Invalid State
@@ -126,14 +148,32 @@ export const RequiredWithOuterPrefix: Story = {
       },
     }),
   ],
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input name="required-input-with-outer-prefix" placeholder="(e.g. Pizza)" help="Choose wisely." outer-prefix="https://test.org/" required>
+          Favourite Food?
+        </text-input>`
+      },
+    },
+  },
 };
 
 export const Autofocus: Story = {
-  args: {
-    name: 'autofocus-input',
-    default: 'Give me my Focus',
-    placeholder: 'e.g. Aloy',
-    autofocus: true,
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input name="autofocus-input" placeholder="e.g. Aloy" autofocus>Give me my Focus</text-input>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input name="autofocus-input" placeholder="e.g. Aloy" autofocus>
+          Give me my Focus
+        </text-input>`
+      },
+    },
   },
 };
 
