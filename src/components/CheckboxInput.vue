@@ -4,10 +4,6 @@ import { type HTMLInputElementEvent } from '@/models';
 import CheckboxCheckIcon from '@/foundation/CheckboxCheckIcon.vue';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
 
-defineOptions({
-  inheritAttrs: false, // Disable attributes going to the root element
-})
-
 // component properties
 interface Props {
   name: string;
@@ -76,6 +72,14 @@ const onChange = (event: Event) => {
   isDirty.value = true;
   emit('change', event);
 };
+
+/**
+ * Standard HTML attributes should be passed on to the input
+ * through the v-bind and not to the root div
+ */
+defineOptions({
+  inheritAttrs: false,
+});
 </script>
 
 <template>
