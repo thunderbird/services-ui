@@ -22,14 +22,14 @@ withDefaults(defineProps<Props>(), {
 const model = defineModel<boolean>();
 const attrs = useAttrs();
 const customClass = attrs['class'] || '';
-const isRequired = attrs.hasOwnProperty('required');
+const isRequired = Object.hasOwn(attrs, 'required');
 const isInvalid = ref(false);
 const validationMessage = ref('');
 const isDirty = ref(false);
 const inputRef = ref<HTMLInputElement>(null);
 
 onMounted(() => {
-  if (attrs.hasOwnProperty('checked')) {
+  if (Object.hasOwn(attrs, 'checked')) {
     model.value = true;
   }
 });
@@ -50,7 +50,7 @@ const focus = () => {
  * This should be explicitly called when the parent form is reset.
  */
 const reset = () => {
-  model.value = attrs.hasOwnProperty('checked');
+  model.value = Object.hasOwn(attrs, 'checked');
   isInvalid.value = false;
   isDirty.value = false;
   validationMessage.value = '';
