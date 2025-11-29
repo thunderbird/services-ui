@@ -178,47 +178,92 @@ export const Autofocus: Story = {
 };
 
 export const Help: Story = {
-  args: {
-    name: 'help-input',
-    default: 'Favourite Beverage',
-    placeholder: 'e.g. Ginger ale',
-    help: 'When in doubt, go with water.',
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input name="help-input" placeholder="e.g. Ginger ale" help="When in doubt, go with water.">Favourite Beverage</text-input>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input name="help-input" placeholder="e.g. Ginger ale" help="When in doubt, go with water.">
+          Favourite Beverage
+        </text-input>`
+      },
+    },
   },
 };
 
 export const Time: Story = {
-  args: {
-    name: 'time-input',
-    default: 'Current Time',
-    type: 'time',
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input type="time" name="time-input">Current time</text-input>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input type="time" name="time-input">
+          Current time
+        </text-input>`
+      },
+    },
   },
 };
 
 export const Email: Story = {
-  args: {
-    name: 'email-input',
-    default: 'Email Address',
-    type: 'email',
-    required: true,
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input type="email" name="email-input" required>Email Address</text-input>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input type="email" name="email-input" required>
+          Email Address
+        </text-input>`
+      },
+    },
   },
 };
 
 export const Password: Story = {
-  args: {
-    name: 'password-input',
-    default: 'Password',
-    type: 'password',
-    required: true,
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input type="password" name="password-input" required>Password</text-input>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input type="password" name="password-input" required>
+          Password
+        </text-input>`
+      },
+    },
   },
 };
 
 export const InnerPrefix: Story = {
-  args: {
-    name: 'currency-input',
-    default: 'Currency',
-    placeholder: '100.00',
-    required: true,
-    prefix: '€',
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input type="number" name="currency-input" placeholder="100.00" prefix="€" required>Currency</text-input>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input type="number" name="currency-input" placeholder="100.00" prefix="€" required>
+          Currency
+        </text-input>`
+      },
+    },
   },
 };
 
