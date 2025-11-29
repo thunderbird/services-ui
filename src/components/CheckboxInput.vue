@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, useAttrs } from 'vue';
 import { type HTMLInputElementEvent } from '@/models';
 import CheckboxCheckIcon from '@/foundation/CheckboxCheckIcon.vue';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
@@ -10,29 +10,26 @@ interface Props {
   label?: string;
   help?: string;
   error?: string;
-  checked?: boolean;
-  required?: boolean;
-  autofocus?: boolean;
   dataTestid?: string;
 }
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   label: null,
   help: null,
   error: null,
-  checked: false,
-  required: false,
-  autofocus: false,
   dataTestid: 'checkbox-input',
 });
 
 const model = defineModel<boolean>();
+const attrs = useAttrs();
+const customClass = attrs['class'] || '';
+const isRequired = Object.hasOwn(attrs, 'required');
 const isInvalid = ref(false);
 const validationMessage = ref('');
 const isDirty = ref(false);
 const inputRef = ref<HTMLInputElement>(null);
 
 onMounted(() => {
-  if (props.checked) {
+  if (Object.hasOwn(attrs, 'checked')) {
     model.value = true;
   }
 });
@@ -53,13 +50,13 @@ const focus = () => {
  * This should be explicitly called when the parent form is reset.
  */
 const reset = () => {
-  model.value = props.checked ?? false;
+  model.value = Object.hasOwn(attrs, 'checked');
   isInvalid.value = false;
   isDirty.value = false;
   validationMessage.value = '';
 };
 
-const emit = defineEmits(['submit', 'change']);
+const emit = defineEmits(['change']);
 defineExpose({ focus, reset });
 
 const onInvalid = (evt: HTMLInputElementEvent) => {
@@ -72,37 +69,35 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
  * this is so we can delay :invalid until
  * the user does something worth invalidating
  */
-const onChange = (event: Event) => {
+const onChange = () => {
   isDirty.value = true;
-  emit('change', event);
+  const newValue = !model.value;
+  model.value = newValue;
+  emit('change', newValue);
 };
 
 /**
  * Standard HTML attributes should be passed on to the input
- * through the v-bind and not to the wrapper div
+ * through the v-bind and not to the root div
  */
 defineOptions({
-  inheritAttrs: false
+  inheritAttrs: false,
 });
 </script>
 
 <template>
-  <div class="checkbox-wrapper">
-    <label class="label" :for="name">
+  <div class="checkbox-wrapper" :class="customClass">
+    <label class="label" :for="name" @click.prevent="onChange">
       <input
         type="checkbox"
         class="screen-reader-only"
         v-model="model"
-        v-bind="$attrs"
+        v-bind="attrs"
         :class="{ dirty: isDirty }"
         :id="name"
         :name="name"
-        :checked="checked"
-        :required="required"
-        :autofocus="autofocus"
         :data-testid="dataTestid"
         @invalid="onInvalid"
-        @change="onChange"
         ref="inputRef"
       />
 
@@ -112,7 +107,7 @@ defineOptions({
 
       <span v-if="label">
         {{ label }}
-        <span v-if="required && !model" class="required">*</span>
+        <span v-if="isRequired && !model" class="required">*</span>
       </span>
     </label>
     <span v-if="isInvalid" class="help-label invalid">

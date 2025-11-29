@@ -34,16 +34,27 @@ export const Disabled: Story = {
       return { args };
     },
     template: `
-      <CheckboxInput disabled label="${args.label}" />
+      <checkbox-input name="disabled" disabled label="${args.label}" />
     `,
   }),
 };
 
 export const Checked: Story = {
-  args: {
-    name: 'checked',
-    label: 'I agree to the terms and conditions',
-    checked: true,
+  render: (args) => ({
+    components: { CheckboxInput },
+    setup() {
+      return { args };
+    },
+    template: `
+      <checkbox-input name="checked" label="I agree to the terms and conditions" checked />
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<checkbox-input name="checked" label="I agree to the terms and conditions" checked />'
+      },
+    },
   },
 };
 
@@ -67,8 +78,8 @@ export const OnChangeEvent: Story = {
         </div>
       `,
       methods: {
-        handleChange(event) {
-          this.checkboxState = event.target.checked ? 'checked' : 'unchecked';
+        handleChange(newValue: boolean) {
+          this.checkboxState = newValue ? 'checked' : 'unchecked';
         },
       },
     }),
@@ -76,53 +87,66 @@ export const OnChangeEvent: Story = {
 };
 
 export const Required: Story = {
-  args: {
-    name: 'required',
-    label: 'I agree to the terms and conditions',
-    help: 'All good. Nothing to see here',
-    required: true,
-  },
-  decorators: [
-    (story) => ({
-      components: { story },
-      template: `
-        <div>
-          <story />
-          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-block-start: 1rem;">
-            <button @click="triggerInvalid">
-              Trigger Invalid State
-            </button>
-            <button @click="manualReset">
-              Manual Reset
-            </button>
-          </div>
+  render: (args) => ({
+    components: { CheckboxInput },
+    setup() {
+      return { args };
+    },
+    template: `
+      <div>
+        <checkbox-input name="required-checkbox" label="I agree to the terms and conditions" help="All good. Nothing to see here" required />
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-block-start: 1rem;">
+          <button @click="triggerInvalid">
+            Trigger Invalid State
+          </button>
+          <button @click="manualReset">
+            Manual Reset
+          </button>
         </div>
-      `,
-      methods: {
-        triggerInvalid() {
-          const input = document.querySelector('#required');
-          if (input) {
-            const invalidEvent = new Event('invalid', { bubbles: true });
-            input.dispatchEvent(invalidEvent);
-          }
-        },
-        manualReset() {
-          const input = document.querySelector('#required');
-
-          // Access the exposed methods through the Vue component's public interface
-          const componentExposed = (input as any).__vueParentComponent?.exposed;
-          componentExposed.reset();
-        },
+      </div>
+    `,
+    methods: {
+      triggerInvalid() {
+        const input = document.querySelector('#required-checkbox');
+        if (input) {
+          const invalidEvent = new Event('invalid', { bubbles: true });
+          input.dispatchEvent(invalidEvent);
+        }
       },
-    }),
-  ],
+      manualReset() {
+        const input = document.querySelector('#required-checkbox');
+
+        // Access the exposed methods through the Vue component's public interface
+        const componentExposed = (input as any).__vueParentComponent?.exposed;
+        componentExposed?.reset();
+      },
+    },
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<checkbox-input name="required" label="I agree ..." help="All good..." required />'
+      },
+    },
+  },
 };
 
 export const Autofocus: Story = {
-  args: {
-    name: 'autofocus-input',
-    label: 'Get Focus',
-    autofocus: true,
+  render: (args) => ({
+    components: { CheckboxInput },
+    setup() {
+      return { args };
+    },
+    template: `
+      <checkbox-input name="autofocus-input" label="Get focus" autofocus />
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<checkbox-input name="autofocus-input" label="Get focus" autofocus />'
+      },
+    },
   },
 };
 
@@ -131,5 +155,24 @@ export const Help: Story = {
     name: 'help',
     label: 'I agree to the terms and conditions',
     help: 'There is no catch here, we promise.',
+  },
+};
+
+export const CustomClass: Story = {
+  render: (args) => ({
+    components: { CheckboxInput },
+    setup() {
+      return { args };
+    },
+    template: `
+      <checkbox-input name="custom-class" label="Red Dragon" class="red-dragon" help="The visual Checkbox element has a class .red-dragon applied" />
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<checkbox-input name="custom-class" label="Red Dragon" class="red-dragon" />'
+      },
+    },
   },
 };
