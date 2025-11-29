@@ -268,37 +268,73 @@ export const InnerPrefix: Story = {
 };
 
 export const OuterPrefix: Story = {
-  args: {
-    name: 'outer-prefix-input',
-    default: 'Username',
-    placeholder: 'handle',
-    outerPrefix: 'https://test.org/',
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input name="outer-prefix-input" placeholder="handle" outer-prefix="https://test.org/">Username</text-input>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input name="outer-prefix-input" placeholder="handle" outer-prefix="https://test.org/">
+          Username
+        </text-input>`
+      },
+    },
   },
 };
 
 export const OuterSuffix: Story = {
-  args: {
-    name: 'outer-suffix-input',
-    default: 'Username',
-    placeholder: 'handle',
-    outerSuffix: '@example.org',
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input name="outer-suffix-input" placeholder="handle" outer-suffix="https://test.org/">Username</text-input>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input name="outer-suffix-input" placeholder="handle" outer-suffix="https://test.org/">
+          Username
+        </text-input>`
+      },
+    },
   },
 };
 
 export const SmallText: Story = {
-  args: {
-    name: 'small-text',
-    default: 'Small text',
-    placeholder: 'What are you gonna do',
-    smallText: true,
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input name="small-text" placeholder="What are you gonna do" small-text>Small text</text-input>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input name="small-text" placeholder="What are you gonna do" small-text>
+          Small text
+        </text-input>`
+      },
+    },
   },
 };
 
 export const SmallInput: Story = {
-  args: {
-    name: 'small-input',
-    default: 'Small input',
-    placeholder: 'Save some space',
-    smallInput: true,
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input name="small-input" placeholder="Save some space" small-input>Small input</text-input>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input name="small-input" placeholder="Save some space" small-input>
+          Small input
+        </text-input>`
+      },
+    },
   },
 };
