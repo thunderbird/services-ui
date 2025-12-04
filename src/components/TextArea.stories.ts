@@ -50,14 +50,18 @@ export const Required: Story = {
   decorators: [
     () => ({
       components: { TextArea },
+      setup() {
+        const customRef = ref(null);
+        return { customRef };
+      },
       template: `
         <div>
-          <text-area name="fav-food-required" required>Why is a hot dog a sandwich?</text-area>
+          <text-area ref="customRef" name="fav-food-required" required>Why is a hot dog a sandwich?</text-area>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-block-start: 0.5rem;">
             <button @click="triggerInvalid">
               Force trigger invalid state
             </button>
-            <button @click="manualReset">
+            <button @click="customRef.reset()">
               Manual Reset
             </button>
           </div>
@@ -70,13 +74,6 @@ export const Required: Story = {
             const invalidEvent = new Event('invalid', { bubbles: true });
             textarea.dispatchEvent(invalidEvent);
           }
-        },
-        manualReset() {
-          const inputElement = document.querySelector('textarea[name="fav-food-required"]');
-
-          // Access the exposed methods through the Vue component's public interface
-          const componentExposed = (inputElement as any).__vueParentComponent?.exposed;
-          componentExposed.reset();
         },
       },
     }),

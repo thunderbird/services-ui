@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
 import TextInput from '@/components/TextInput.vue';
+import { ref } from 'vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof TextInput> = {
@@ -57,14 +58,18 @@ export const Required: Story = {
   decorators: [
     () => ({
       components: { TextInput },
+      setup() {
+        const customRef = ref(null);
+        return { customRef };
+      },
       template: `
         <div>
-          <text-input name="required-input" placeholder="(e.g. Pizza)" help="Choose wisely." required>Favourite Food?</text-input>
+          <text-input ref="customRef" name="required-input" placeholder="(e.g. Pizza)" help="Choose wisely." required>Favourite Food?</text-input>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;margin-top: 0.5rem;">
             <button @click="triggerInvalid">
               Trigger Invalid State
             </button>
-            <button @click="manualReset">
+            <button @click="customRef.reset()">
               Manual Reset
             </button>
           </div>
@@ -75,13 +80,6 @@ export const Required: Story = {
           const input = document.querySelector('input[name="required-input"]') as HTMLInputElement;
           const invalidEvent = new Event('invalid', { bubbles: true });
           input.dispatchEvent(invalidEvent);
-        },
-        manualReset() {
-          const inputElement = document.querySelector('input[name="required-input"]');
-
-          // Access the exposed methods through the Vue component's public interface
-          const componentExposed = (inputElement as any).__vueParentComponent?.exposed;
-          componentExposed.reset();
         },
       },
     }),
@@ -119,14 +117,18 @@ export const RequiredWithOuterPrefix: Story = {
   decorators: [
     () => ({
       components: { TextInput },
+      setup() {
+        const customRef = ref(null);
+        return { customRef };
+      },
       template: `
         <div>
-          <text-input name="required-input-with-outer-prefix" placeholder="(e.g. Pizza)" help="Choose wisely." outer-prefix="https://test.org/" required>Favourite Food?</text-input>
+          <text-input ref="customRef" name="required-input-with-outer-prefix" placeholder="(e.g. Pizza)" help="Choose wisely." outer-prefix="https://test.org/" required>Favourite Food?</text-input>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;margin-top: 0.5rem;">
             <button @click="triggerInvalid">
               Trigger Invalid State
             </button>
-            <button @click="manualReset">
+            <button @click="customRef.reset()">
               Manual Reset
             </button>
           </div>
