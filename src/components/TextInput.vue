@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, useAttrs, InputTypeHTMLAttribute } from 'vue';
+import { ref, computed, useAttrs, type InputTypeHTMLAttribute } from 'vue';
 import { useElementSize } from '@vueuse/core';
 import { type HTMLInputElementEvent } from '@/models';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';

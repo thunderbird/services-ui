@@ -37,15 +37,15 @@ const reset = () => {
   validationMessage.value = '';
 };
 
-const onInvalid = (evt: HTMLInputElementEvent) => {
+const onInvalid = (evt: InputEvent) => {
   isInvalid.value = true;
-  validationMessage.value = evt.target.validationMessage;
+  validationMessage.value = (evt.target as HTMLSelectElement).validationMessage;
 };
-const onInput = (evt: HTMLInputElementEvent) => {
+const onInput = (evt: InputEvent) => {
   isDirty.value = true;
 
   // Revalidate on input change
-  if (evt.target.checkValidity()) {
+  if ((evt.target as HTMLSelectElement).checkValidity()) {
     isInvalid.value = false;
     validationMessage.value = '';
   }
