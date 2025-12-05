@@ -1,7 +1,7 @@
 import { fn } from 'storybook/test';
 import { ref } from 'vue';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import type { SelectOption } from '@/models';
+import type { SelectOption } from '@/models.ts';
 import SegmentedControl from '@/components/SegmentedControl.vue';
 
 const selectOptions: SelectOption<number>[] = [
