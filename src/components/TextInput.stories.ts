@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
 import TextInput from '@/components/TextInput.vue';
-import { ref } from 'vue';
+import { useTemplateRef } from 'vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof TextInput> = {
@@ -59,17 +59,17 @@ export const Required: Story = {
     () => ({
       components: { TextInput },
       setup() {
-        const customRef = ref(null);
-        return { customRef };
+        const input = useTemplateRef('input');
+        return { input };
       },
       template: `
         <div>
-          <text-input ref="customRef" name="required-input" placeholder="(e.g. Pizza)" help="Choose wisely." required>Favourite Food?</text-input>
+          <text-input ref="input" name="required-input" placeholder="(e.g. Pizza)" help="Choose wisely." required>Favourite Food?</text-input>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;margin-top: 0.5rem;">
             <button @click="triggerInvalid">
               Trigger Invalid State
             </button>
-            <button @click="customRef.reset()">
+            <button @click="input.reset()">
               Manual Reset
             </button>
           </div>
@@ -118,17 +118,17 @@ export const RequiredWithOuterPrefix: Story = {
     () => ({
       components: { TextInput },
       setup() {
-        const customRef = ref(null);
-        return { customRef };
+        const input = useTemplateRef('input');
+        return { input };
       },
       template: `
         <div>
-          <text-input ref="customRef" name="required-input-with-outer-prefix" placeholder="(e.g. Pizza)" help="Choose wisely." outer-prefix="https://test.org/" required>Favourite Food?</text-input>
+          <text-input ref="input" name="required-input-with-outer-prefix" placeholder="(e.g. Pizza)" help="Choose wisely." outer-prefix="https://test.org/" required>Favourite Food?</text-input>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;margin-top: 0.5rem;">
             <button @click="triggerInvalid">
               Trigger Invalid State
             </button>
-            <button @click="customRef.reset()">
+            <button @click="input.reset()">
               Manual Reset
             </button>
           </div>

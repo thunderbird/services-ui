@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { ref, useTemplateRef } from 'vue';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import TextArea from '@/components/TextArea.vue';
 
@@ -51,17 +51,17 @@ export const Required: Story = {
     () => ({
       components: { TextArea },
       setup() {
-        const customRef = ref(null);
-        return { customRef };
+        const input = useTemplateRef('input');
+        return { input };
       },
       template: `
         <div>
-          <text-area ref="customRef" name="fav-food-required" required>Why is a hot dog a sandwich?</text-area>
+          <text-area ref="input" name="fav-food-required" required>Why is a hot dog a sandwich?</text-area>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-block-start: 0.5rem;">
             <button @click="triggerInvalid">
               Force trigger invalid state
             </button>
-            <button @click="customRef.reset()">
+            <button @click="input.reset()">
               Manual Reset
             </button>
           </div>
