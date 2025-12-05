@@ -8,7 +8,15 @@ html {
   /* Some elements are stubborn so we need to force the color there */
   --txt-colour: var(--colour-ti-base);
 
-  --transition: all 250ms ease-out;
-  --transition-transform: 0.15s transform ease-in-out;
-  --transition-opacity: 0.15s opacity ease-in-out;
+  --transition: none;
+  --transition-transform: none;
+  --transition-opacity: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    --transition: all 250ms ease-out;
+    --transition-transform: 0.15s transform ease-in-out;
+    --transition-opacity: 0.15s opacity ease-in-out;
+  }
 }
