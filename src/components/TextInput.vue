@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, useAttrs, type InputTypeHTMLAttribute } from 'vue';
 import { useElementSize } from '@vueuse/core';
 import { type HTMLInputElementEvent } from '@/models';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
 import EyeIcon from '@/foundation/EyeIcon.vue';
 import EyeOffIcon from '@/foundation/EyeOffIcon.vue';
 
+const attrs = useAttrs();
 const model = defineModel<string>();
 const isInvalid = ref(false);
 const validationMessage = ref('');
 const isDirty = ref(false);
+const isRequired = attrs.hasOwnProperty('required');
 const inputRef = ref<HTMLInputElement>(null);
 const inputPrefix = ref<HTMLSpanElement>(null);
 const { width: inputPrefixWidth } = useElementSize(inputPrefix); // Calculate the width of the prefix element
@@ -41,28 +43,18 @@ interface Props {
   name: string;
   help?: string;
   error?: string;
-  type?: string;
-  placeholder?: string;
   prefix?: string; // A prefix shows up at the start of the input field and moves the actual input to the right.
   outerPrefix?: string; // A prefix shows up outside the input field and moves the whole input to the right.
   outerSuffix?: string;
-  required?: boolean;
-  autofocus?: boolean;
-  disabled?: boolean;
   smallText?: boolean;
   smallInput?: boolean;
   maxLength?: number | string;
   dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
-  type: 'text',
   help: null,
   error: null,
-  placeholder: null,
   prefix: null,
-  required: false,
-  autofocus: false,
-  disabled: false,
   smallText: false,
   smallInput: false,
   maxLength: null,
@@ -103,8 +95,8 @@ const onBlur = (evt) => {
 }
 
 // null: no password input, false: hide password, true: show password
-const passwordIsVisible = ref(props.type === 'password' ? false : null);
-const inputType = ref(props.type);
+const passwordIsVisible = ref(attrs['type'] === 'password' ? false : null);
+const inputType = ref(attrs['type'] as InputTypeHTMLAttribute);
 
 const togglePasswordVisibility = () => {
   inputType.value = passwordIsVisible.value ? 'password' : 'text';
@@ -116,13 +108,14 @@ const togglePasswordVisibility = () => {
   <label class="wrapper" :for="name">
     <span v-if="$slots.default" class="label">
       <slot />
-      <span v-if="required && !model?.length" class="required">*</span>
+      <span v-if="isRequired && !model?.length" class="required">*</span>
     </span>
     <span class="tbpro-input" :class="{ 'small-text': props.smallText }">
       <span v-if="outerPrefix" class="tbpro-input-outer-prefix">{{ outerPrefix }}</span>
       <span class="tbpro-input-wrapper">
         <span v-if="prefix" ref="inputPrefix" class="tbpro-input-prefix">{{ prefix }}</span>
         <input
+          v-bind="attrs"
           v-model="model"
           class="tbpro-input-element"
           :class="{
@@ -133,10 +126,6 @@ const togglePasswordVisibility = () => {
           :type="inputType"
           :id="name"
           :name="name"
-          :disabled="disabled"
-          :placeholder="placeholder"
-          :required="required"
-          :autofocus="autofocus"
           :maxLength="maxLength"
           :style="{ paddingLeft: inputPaddingLeft }"
           :data-testid="dataTestid"

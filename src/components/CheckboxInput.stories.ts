@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import CheckboxInput from '@/components/CheckboxInput.vue';
+import { useTemplateRef } from 'vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof CheckboxInput> = {
@@ -87,19 +88,20 @@ export const OnChangeEvent: Story = {
 };
 
 export const Required: Story = {
-  render: (args) => ({
+  render: () => ({
     components: { CheckboxInput },
     setup() {
-      return { args };
+      const input = useTemplateRef('input');
+      return { input };
     },
     template: `
       <div>
-        <checkbox-input name="required-checkbox" label="I agree to the terms and conditions" help="All good. Nothing to see here" required />
+        <checkbox-input ref="input" name="required-checkbox" label="I agree to the terms and conditions" help="All good. Nothing to see here" required />
         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-block-start: 1rem;">
           <button @click="triggerInvalid">
             Trigger Invalid State
           </button>
-          <button @click="manualReset">
+          <button @click="input.reset()">
             Manual Reset
           </button>
         </div>
@@ -112,13 +114,6 @@ export const Required: Story = {
           const invalidEvent = new Event('invalid', { bubbles: true });
           input.dispatchEvent(invalidEvent);
         }
-      },
-      manualReset() {
-        const input = document.querySelector('#required-checkbox');
-
-        // Access the exposed methods through the Vue component's public interface
-        const componentExposed = (input as any).__vueParentComponent?.exposed;
-        componentExposed?.reset();
       },
     },
   }),

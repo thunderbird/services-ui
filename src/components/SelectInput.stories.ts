@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
 import SelectInput from '@/components/SelectInput.vue';
-import { ref, watch } from 'vue';
+import { ref, useTemplateRef, watch } from 'vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof SelectInput> = {
@@ -66,38 +66,33 @@ export const Required: Story = {
       { label: 'Some', value: 'some' },
     ],
   },
-  decorators: [
-    (story) => ({
-      components: { story },
-      template: `
-        <div>
-          <story />
-          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;margin-top: 0.5rem;">
-            <button @click="triggerInvalid">
-              Trigger Invalid State
-            </button>
-            <button @click="manualReset">
-              Manual Reset
-            </button>
-          </div>
+  render: (args) => ({
+    components: { SelectInput },
+    setup() {
+      const input = useTemplateRef('input');
+      return { args, input };
+    },
+    template: `
+      <div>
+        <select-input v-bind="args" ref="input">{{ args?.default }}</select-input>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;margin-top: 0.5rem;">
+          <button @click="triggerInvalid">
+            Trigger Invalid State
+          </button>
+          <button @click="input.reset()">
+            Manual Reset
+          </button>
         </div>
-      `,
-      methods: {
-        triggerInvalid() {
-          const input = document.querySelector('select[name="required"]') as HTMLInputElement;
-          const invalidEvent = new Event('invalid', { bubbles: true });
-          input.dispatchEvent(invalidEvent);
-        },
-        manualReset() {
-          const inputElement = document.querySelector('select[name="required"]');
-
-          // Access the exposed methods through the Vue component's public interface
-          const componentExposed = (inputElement as any).__vueParentComponent?.exposed;
-          componentExposed.reset();
-        },
+      </div>
+    `,
+    methods: {
+      triggerInvalid() {
+        const input = document.querySelector('select[name="required"]') as HTMLSelectElement;
+        const invalidEvent = new Event('invalid', { bubbles: true });
+        input.dispatchEvent(invalidEvent);
       },
-    }),
-  ],
+    },
+  }),
 };
 
 export const Autofocus: Story = {

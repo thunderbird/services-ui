@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { ref, useTemplateRef } from 'vue';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import TextArea from '@/components/TextArea.vue';
 
@@ -30,32 +30,38 @@ export const Standard: Story = {
     },
     template: `
       <div>
-        <TextArea v-model="value" v-bind="args">{{ args.default }}</TextArea>
+        <text-area v-model="value" v-bind="args">{{ args.default }}</text-area>
         <p style="margin-block-start: 0.5rem; word-break: break-word;">
           Current v-model value: {{ value }}
         </p>
       </div>
     `,
   }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-area v-model="value" name="name-standard">Blog Post</text-area>`
+      },
+    },
+  },
 };
 
 export const Required: Story = {
-  args: {
-    name: 'fav-food-required',
-    default: 'Why is a hot dog a sandwich?',
-    required: true,
-  },
   decorators: [
-    (story) => ({
-      components: { story },
+    () => ({
+      components: { TextArea },
+      setup() {
+        const input = useTemplateRef('input');
+        return { input };
+      },
       template: `
         <div>
-          <story />
+          <text-area ref="input" name="fav-food-required" required>Why is a hot dog a sandwich?</text-area>
           <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-block-start: 0.5rem;">
             <button @click="triggerInvalid">
               Force trigger invalid state
             </button>
-            <button @click="manualReset">
+            <button @click="input.reset()">
               Manual Reset
             </button>
           </div>
@@ -69,33 +75,51 @@ export const Required: Story = {
             textarea.dispatchEvent(invalidEvent);
           }
         },
-        manualReset() {
-          const inputElement = document.querySelector('textarea[name="fav-food-required"]');
-
-          // Access the exposed methods through the Vue component's public interface
-          const componentExposed = (inputElement as any).__vueParentComponent?.exposed;
-          componentExposed.reset();
-        },
       },
     }),
   ],
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-area name="fav-food-required" required>Why is a hot dog a sandwich?</text-area>`
+      },
+    },
+  },
 };
 
 export const RequiredWithPlaceholder: Story = {
-  args: {
-    name: 'fav-food-required-with-placeholder',
-    default: 'Why is a hot dog a sandwich?',
-    placeholder: 'Yes because it is food inside of bread.',
-    required: true,
+  render: () => ({
+    components: { TextArea },
+    template: `
+      <text-area name="fav-food-required-with-placeholder" placeholder="Yes because it is food inside of bread." required>Why is a hot dog a sandwich?</text-area>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-area name="fav-food-required-with-placeholder" placeholder="Yes because it is food inside of bread." required>
+          Why is a hot dog a sandwich?
+        </text-area>`
+      },
+    },
   },
 };
 
 export const Autofocus: Story = {
-  args: {
-    name: 'autofocus-input',
-    default: 'Give me my Focus',
-    placeholder: 'e.g. Aloy',
-    autofocus: true,
+  render: () => ({
+    components: { TextArea },
+    template: `
+      <text-area name="autofocus-input" placeholder="e.g. Aloy" autofocus>Give me my Focus</text-area>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-area name="autofocus-input" placeholder="e.g. Aloy" autofocus>
+          Give me my Focus
+        </text-area>`
+      },
+    },
   },
 };
 
@@ -105,21 +129,49 @@ export const Help: Story = {
     default: 'About your favourite beverage',
     help: 'When in doubt, go with water.',
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-area name="fav-beverage" help="When in doubt, go with water.">
+          About your favourite beverage
+        </text-area>`
+      },
+    },
+  },
 };
 
 export const NumRows: Story = {
-  args: {
-    name: 'num-rows',
-    default: 'Long Blog Post',
-    rows: 13,
+  render: () => ({
+    components: { TextArea },
+    template: `
+      <text-area name="num-rows" rows="13">Long Blog Post</text-area>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-area name="num-rows" rows="13">
+          Long Blog Post
+        </text-area>`
+      },
+    },
   },
 };
 
 export const MaxLength: Story = {
-  args: {
-    name: 'char-count',
-    default: 'Input with max length',
-    maxLength: 250,
-    rows: 3,
+  render: () => ({
+    components: { TextArea },
+    template: `
+      <text-area name="char-count" rows="3" max-length="250">Input with max length</text-area>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-area name="char-count" rows="3" max-length="250">
+          Input with max length
+        </text-area>`
+      },
+    },
   },
 };
