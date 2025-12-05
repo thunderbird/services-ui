@@ -2,7 +2,7 @@ import { fn } from 'storybook/test';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
 import BubbleSelect from '@/components/BubbleSelect.vue';
-import type { SelectOption } from '@/models';
+import type { SelectOption } from '@/models.ts';
 
 const scheduleDayOptions: SelectOption<string>[] = [
   {
