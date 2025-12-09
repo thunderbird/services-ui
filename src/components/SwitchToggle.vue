@@ -121,25 +121,29 @@ const toggleState = () => {
     display: none;
 
     &:checked ~ .toggle-handle {
-      background-color: var(--colour-neutral-base);
       transform: translateX(1.125rem);
+      background-color: var(--colour-neutral-base);
       border-color: var(--colour-primary-default);
       color: var(--colour-primary-default);
     }
   }
 
   .toggle-handle {
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-timing-function);
+    transition-property: transform, color, border-color, background-color;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     background-color: var(--colour-neutral-base);
     width: 1.125rem;
     height: 1.125rem;
     margin-left: 0.125rem;
     margin-right: 0.125rem;
     border-radius: 9999px;
-    transition: var(--transition);
     box-shadow: 0px 1px 2px 0px #0000001A;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: transparent;
 
     .toggle-icon-on {

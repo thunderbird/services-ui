@@ -91,12 +91,14 @@ const setOption = (option: SelectOption<string | number>) => {
 
   li {
     .segment {
-      transition: var(--transition);
-      
+      transition-duration: var(--transition-duration);
+      transition-timing-function: var(--transition-timing-function);
+      transition-property: color, border-color, background-color;
+
       display: flex;
       justify-content: center;
       align-items: center;
-    
+
       border: 1px solid rgba(0, 0, 0, 0.2);
       border-width: 1px 0 1px 1px;
       background-color: transparent;
@@ -107,11 +109,11 @@ const setOption = (option: SelectOption<string | number>) => {
       cursor: pointer;
       box-shadow: 0.125rem 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.05) inset;
       color: var(--colour-ti-secondary);
-    
+
       &.selected {
         background-color: var(--colour-ti-secondary);
         color: var(--colour-neutral-base);
-    
+
         &.disabled {
           background-color: var(--colour-ti-muted);
           color: var(--colour-neutral-base);

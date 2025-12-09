@@ -167,7 +167,9 @@ defineExpose({ reset });
 }
 
 .tbpro-bubble {
-  transition: var(--transition);
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+  transition-property: color, border-color, background-color;
 
   display: flex;
   justify-content: center;
