@@ -104,7 +104,7 @@ const setOption = (option: SelectOption<string | number>) => {
       background-color: transparent;
       padding: 0 1rem;
       height: 2.25rem;
-      gap: .5rem;
+      gap: 0.5rem;
       margin-left: -1px;
       cursor: pointer;
       box-shadow: 0.125rem 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.05) inset;
@@ -119,7 +119,7 @@ const setOption = (option: SelectOption<string | number>) => {
           color: var(--colour-neutral-base);
         }
       }
-      
+
       &.disabled {
         cursor: not-allowed;
       }
@@ -133,7 +133,7 @@ const setOption = (option: SelectOption<string | number>) => {
         min-width: 1.5rem;
         border-radius: 1.5rem;
         background-color: rgba(19, 115, 217, 0.4); /* TODO: One off color from Zeplin */
-        padding: 0 .5rem;
+        padding: 0 0.5rem;
         box-sizing: border-box;
 
         font-weight: 600;
@@ -151,5 +151,4 @@ const setOption = (option: SelectOption<string | number>) => {
     }
   }
 }
-
 </style>

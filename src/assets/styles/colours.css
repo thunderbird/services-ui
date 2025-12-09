@@ -3,14 +3,14 @@ html {
    * Bolt Colours
    * Reference: https://bolt.thunderbird.net/8b179dbfd/p/61e4c7-color
    */
-  --colour-user-red: #E53935;
-  --colour-user-orange: #FF8C00;
-  --colour-user-yellow: #F4C430;
-  --colour-user-graphite: #B0B0B0;
-  --colour-user-green: #34C759;
-  --colour-user-blue: #0A84FF;
-  --colour-user-purple: #7753CC;
-  --colour-user-pink: #E91E63;
+  --colour-user-red: #e53935;
+  --colour-user-orange: #ff8c00;
+  --colour-user-yellow: #f4c430;
+  --colour-user-graphite: #b0b0b0;
+  --colour-user-green: #34c759;
+  --colour-user-blue: #0a84ff;
+  --colour-user-purple: #7753cc;
+  --colour-user-pink: #e91e63;
 
   /*
    * Reference:  https://www.figma.com/design/3pWlMatoNdA2BT3BPVziFL/
@@ -103,7 +103,7 @@ html {
    * *Do not use with text
    */
   --colour-accent-teal: #25a6a0;
-  --colour-accent-blue: #37ADF9;
+  --colour-accent-blue: #37adf9;
   --colour-accent-purple: #ae55f7;
   --colour-accent-orange: #ea7308;
   --colour-accent-pink: #e247c4;

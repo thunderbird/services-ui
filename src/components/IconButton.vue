@@ -19,7 +19,7 @@ withDefaults(defineProps<Props>(), {
 
 <style>
 .link.icon-only {
-  padding: .5rem;
+  padding: 0.5rem;
 
   .icon,
   .icon svg {
@@ -29,8 +29,8 @@ withDefaults(defineProps<Props>(), {
 
   &.small .icon,
   &.small .icon svg {
-    width: .75rem;
-    height: .75rem;
+    width: 0.75rem;
+    height: 0.75rem;
   }
   &.medium .icon,
   &.medium .icon svg {

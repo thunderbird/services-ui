@@ -3,10 +3,10 @@
  * This could be a <hr/> but there's no <vr/> :(
  */
 interface PropTypes {
-  type?: 'horizontal' | 'vertical'
+  type?: 'horizontal' | 'vertical';
 }
 withDefaults(defineProps<PropTypes>(), {
-  type: 'horizontal'
+  type: 'horizontal',
 });
 </script>
 
@@ -19,7 +19,7 @@ html {
   --divider-background-colour: #e4e4e7; /* using old surface/border */
   --divider-border-colour: #fff;
   &.dark {
-    --divider-background-colour: #3D4D67;
+    --divider-background-colour: #3d4d67;
     --divider-border-colour: #242d3c; /* I made this one up */
   }
 }

@@ -24,11 +24,7 @@ const isError = computed(() => props.type === NoticeBarTypes.Critical);
 </script>
 
 <template>
-  <div
-    :class="{ [type]: type }"
-    class="notice notice-bar"
-    :data-testid="dataTestid"
-  >
+  <div :class="{ [type]: type }" class="notice notice-bar" :data-testid="dataTestid">
     <span class="icon">
       <notice-info-icon v-if="isInfo" />
       <notice-success-icon v-if="isSuccess" />

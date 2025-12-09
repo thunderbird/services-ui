@@ -10,7 +10,7 @@ const meta: Meta<typeof SwitchToggle> = {
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   args: {
-    // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
+    // Use `fn` to spy on the onChanged arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
     onChanged: fn(),
     // Spying on the update event breaks reactivity.
     // 'onUpdate:modelValue': fn(), // Spy on the update event for v-model

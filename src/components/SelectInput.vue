@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { type HTMLInputElementEvent, type SelectOption } from '@/models';
+import { type SelectOption } from '@/models';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
 import CaretDownIcon from '@/foundation/CaretDownIcon.vue';
 

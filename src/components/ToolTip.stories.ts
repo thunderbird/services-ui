@@ -21,8 +21,8 @@ export const Standard: Story = {
     (story) => ({
       components: { story },
       template: `<div style="min-height:60px;"><story /></div>`,
-    })
-  ]
+    }),
+  ],
 };
 
 export const PositionTop: Story = {
@@ -34,8 +34,8 @@ export const PositionTop: Story = {
     (story) => ({
       components: { story },
       template: `<div style="min-height:60px;"><story /></div>`,
-    })
-  ]
+    }),
+  ],
 };
 
 export const PositionLeft: Story = {
@@ -47,8 +47,8 @@ export const PositionLeft: Story = {
     (story) => ({
       components: { story },
       template: `<div style="min-height:60px;"><story /></div>`,
-    })
-  ]
+    }),
+  ],
 };
 
 export const PositionBottom: Story = {
@@ -60,8 +60,8 @@ export const PositionBottom: Story = {
     (story) => ({
       components: { story },
       template: `<div style="min-height:60px;"><story /></div>`,
-    })
-  ]
+    }),
+  ],
 };
 
 export const PositionRight: Story = {
@@ -73,8 +73,8 @@ export const PositionRight: Story = {
     (story) => ({
       components: { story },
       template: `<div style="min-height:60px;"><story /></div>`,
-    })
-  ]
+    }),
+  ],
 };
 
 export const PositionNone: Story = {
@@ -86,6 +86,6 @@ export const PositionNone: Story = {
     (story) => ({
       components: { story },
       template: `<div style="min-height:60px;"><story /></div>`,
-    })
-  ]
+    }),
+  ],
 };

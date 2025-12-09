@@ -289,7 +289,7 @@ export enum BaseBadgeTypes {
   Verified = 'verified',
   Emails = 'emails',
   Default = 'default',
-  Counter = 'counter'
+  Counter = 'counter',
 }
 
 export enum ExpiryUnitTypes {

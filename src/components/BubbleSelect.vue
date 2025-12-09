@@ -48,7 +48,7 @@ const toggleBubble = (option: SelectOption<string | number>) => {
     model.value = model.value.filter((value) => option.value !== value);
   } else if (props.singleSelection) {
     // We don't have the value but we should only ever have one selection
-    model.value = [option.value]
+    model.value = [option.value];
   } else {
     // We don't have the value, so mix it in
     model.value = [...model.value, option.value];

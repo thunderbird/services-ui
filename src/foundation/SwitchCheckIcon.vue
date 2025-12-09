@@ -3,12 +3,8 @@ import { t } from '@/composable/i18n';
 </script>
 
 <template>
-  <svg 
-    :aria-label="t('icons.check')"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 256 256"
-  >
-    <rect width="256" height="256" fill="none"/>
+  <svg :aria-label="t('icons.check')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+    <rect width="256" height="256" fill="none" />
     <polyline
       points="40 144 96 200 224 72"
       fill="none"

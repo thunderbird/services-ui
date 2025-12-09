@@ -53,7 +53,7 @@ export const Checked: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<checkbox-input name="checked" label="I agree to the terms and conditions" checked />'
+        code: '<checkbox-input name="checked" label="I agree to the terms and conditions" checked />',
       },
     },
   },
@@ -120,7 +120,7 @@ export const Required: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<checkbox-input name="required" label="I agree ..." help="All good..." required />'
+        code: '<checkbox-input name="required" label="I agree ..." help="All good..." required />',
       },
     },
   },
@@ -139,7 +139,7 @@ export const Autofocus: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<checkbox-input name="autofocus-input" label="Get focus" autofocus />'
+        code: '<checkbox-input name="autofocus-input" label="Get focus" autofocus />',
       },
     },
   },
@@ -166,7 +166,7 @@ export const CustomClass: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<checkbox-input name="custom-class" label="Red Dragon" class="red-dragon" />'
+        code: '<checkbox-input name="custom-class" label="Red Dragon" class="red-dragon" />',
       },
     },
   },

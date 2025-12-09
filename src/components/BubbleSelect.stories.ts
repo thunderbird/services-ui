@@ -83,6 +83,6 @@ export const WithHelp: Story = {
   args: {
     default: 'Select Days',
     required: true,
-    help: 'Select a desired day'
+    help: 'Select a desired day',
   },
 };
