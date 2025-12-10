@@ -68,7 +68,7 @@ export const DecimalPlaces: Story = {
   }),
   parameters: {
     docs: {
-      source: { code: '<expiry-badge :time-remaining="1.111" time-unit="minute" :decimal-places="0" />\n<expiry-badge :time-remaining="1.111" time-unit="minute" :decimal-places="1" />\n<expiry-badge :time-remaining="1.111" time-unit="minute" :decimal-places="2" />\n<expiry-badge :time-remaining="1.111" time-unit="minute" :decimal-places="3" />' },
+      source: { code: '<expiry-badge :time-remaining="5.111" time-unit="minute" :decimal-places="0" />\n<expiry-badge :time-remaining="5.111" time-unit="minute" :decimal-places="1" />\n<expiry-badge :time-remaining="5.111" time-unit="minute" :decimal-places="2" />\n<expiry-badge :time-remaining="5.111" time-unit="minute" :decimal-places="3" />' },
     },
   },
 };
