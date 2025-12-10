@@ -20,7 +20,15 @@
     "day": "Expired | Expires in {n} day | Expires in {n} days",
     "week": "Expired | Expires in {n} week | Expires in {n} weeks",
     "month": "Expired | Expires in {n} month | Expires in {n} months",
-    "year": "Expired | Expires in {n} year | Expires in {n} years"
+    "year": "Expired | Expires in {n} year | Expires in {n} years",
+    "and": {
+      "second": "and {n} seconds | and {n} second | and {n} seconds",
+      "minute": "and {n} minutes | and {n} minute | and {n} minutes",
+      "hour": "and {n} hours | and {n} hour | and {n} hours",
+      "day": "and {n} days | and {n} day | and {n} days",
+      "week": "and {n} weeks | and {n} week | and {n} weeks",
+      "month": "and {n} months | and {n} month | and {n} months"
+    }
   },
   "footer": {
     "privacyPolicy": "Privacy Policy",

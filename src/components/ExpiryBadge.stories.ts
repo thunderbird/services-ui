@@ -25,11 +25,25 @@ export const Default: Story = {
   },
 };
 
-export const DecimalUsage: Story = {
-  args: {
-    timeRemaining: 1.4,
-    warningThreshold: 1,
-    timeUnit: ExpiryUnitTypes.Minutes,
+export const DecimalPlaces: Story = {
+  render: (args) => ({
+    components: { ExpiryBadge },
+    setup() {
+      return { args };
+    },
+    template: `
+      <div style="display:flex;flex-direction:column;align-items:start;gap:0.5rem;">
+        <expiry-badge :time-remaining="1.111" time-unit="minute" :decimal-places="0" />
+        <expiry-badge :time-remaining="1.111" time-unit="minute" :decimal-places="1" />
+        <expiry-badge :time-remaining="1.111" time-unit="minute" :decimal-places="2" />
+        <expiry-badge :time-remaining="1.111" time-unit="minute" :decimal-places="3" />
+      </div>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: { code: '<expiry-badge :time-remaining="1.111" time-unit="minute" :decimal-places="0" />\n<expiry-badge :time-remaining="1.111" time-unit="minute" :decimal-places="1" />\n<expiry-badge :time-remaining="1.111" time-unit="minute" :decimal-places="2" />\n<expiry-badge :time-remaining="1.111" time-unit="minute" :decimal-places="3" />' },
+    },
   },
 };
 

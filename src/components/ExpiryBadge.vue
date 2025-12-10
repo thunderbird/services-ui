@@ -9,17 +9,58 @@ interface Props {
   timeRemaining?: number;
   warningThreshold?: number;
   timeUnit?: ExpiryUnitTypes;
+  decimalPlaces?: number;
   dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
   timeRemaining: 10,
   warningThreshold: 5,
   timeUnit: ExpiryUnitTypes.Days,
+  decimalPlaces: 0,
   dataTestid: 'expiry-badge',
 });
 
-const timeRemaining = computed(() => Math.ceil(props.timeRemaining));
+const roundUp = (num: number, precision: number) => {
+    const norm = Math.pow(10, precision);
+    return Math.ceil(num * norm) / norm;
+}
+
+const convertToSmallerUnit = (unit: ExpiryUnitTypes, value: number) => {
+  switch (unit) {
+    case ExpiryUnitTypes.Years:
+      return { unit: ExpiryUnitTypes.Months, value: Math.ceil(value*12)};
+    case ExpiryUnitTypes.Months:
+      return { unit: ExpiryUnitTypes.Weeks, value: Math.ceil(value*4.345) };
+    case ExpiryUnitTypes.Weeks:
+      return { unit: ExpiryUnitTypes.Days, value: Math.ceil(value*7) };
+    case ExpiryUnitTypes.Days:
+      return { unit: ExpiryUnitTypes.Hours, value: Math.ceil(value*24) };
+    case ExpiryUnitTypes.Hours:
+      return { unit: ExpiryUnitTypes.Minutes, value: Math.ceil(value*60) };
+    case ExpiryUnitTypes.Minutes:
+    default:
+      return { unit: ExpiryUnitTypes.Seconds, value: Math.ceil(value*60) };
+  }
+}
+
+const timeRemaining = computed(() => props.decimalPlaces > 0
+  ? roundUp(props.timeRemaining, props.decimalPlaces)
+  : Math.floor(props.timeRemaining)
+);
+
+const label = computed(() => {
+  let text = t(`expiryIndicator.${props.timeUnit}`, { n: timeRemaining.value.toString() }, Math.ceil(timeRemaining.value));
+  if (timeRemaining.value > 0 && props.decimalPlaces === 0 && props.timeUnit !== ExpiryUnitTypes.Seconds) {
+    const { unit, value } = convertToSmallerUnit(props.timeUnit, props.timeRemaining % 1);
+    if (value > 0) {
+      text += ' ' + t(`expiryIndicator.and.${unit}`, { n: value.toString() }, Math.ceil(value));
+    }
+  }
+  return text;
+});
+
 const warningThreshold = computed(() => props.warningThreshold);
+
 const status = computed(() => {
   if (timeRemaining.value <= 0) {
     return 'expired';
@@ -37,7 +78,7 @@ const status = computed(() => {
       <status-expiry-icon />
     </span>
     <span class="text">
-      {{ t(`expiryIndicator.${timeUnit}`, { n: timeRemaining }) }}
+      {{ label }}
     </span>
   </div>
 </template>
