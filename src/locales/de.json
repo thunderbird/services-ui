@@ -14,13 +14,14 @@
     "refreshLink": "Link ändern"
   },
   "expiryIndicator": {
-    "second": "Abgelaufen | Läuft ab in {n} Sekunde | Läuft ab in {n} Sekunden",
-    "minute": "Abgelaufen | Läuft ab in {n} Minute | Läuft ab in {n} Minuten",
-    "hour": "Abgelaufen | Läuft ab in {n} Stunde | Läuft ab in {n} Stunden",
-    "day": "Abgelaufen | Läuft ab in {n} Tag | Läuft ab in {n} Tagen",
-    "week": "Abgelaufen | Läuft ab in {n} Woche | Läuft ab in {n} Wochen",
-    "month": "Abgelaufen | Läuft ab in {n} Monat | Läuft ab in {n} Monaten",
-    "year": "Abgelaufen | Läuft ab in {n} Jahr | Läuft ab in {n} Jahren",
+    "expired": "Abgelaufen",
+    "second": "Läuft ab in {n} Sekunden | Läuft ab in {n} Sekunde | Läuft ab in {n} Sekunden",
+    "minute": "Läuft ab in {n} Minuten | Läuft ab in {n} Minute | Läuft ab in {n} Minuten",
+    "hour": "Läuft ab in {n} Stunden | Läuft ab in {n} Stunde | Läuft ab in {n} Stunden",
+    "day": "Läuft ab in {n} Tagen | Läuft ab in {n} Tag | Läuft ab in {n} Tagen",
+    "week": "Läuft ab in {n} Wochen | Läuft ab in {n} Woche | Läuft ab in {n} Wochen",
+    "month": "Läuft ab in {n} Monaten | Läuft ab in {n} Monat | Läuft ab in {n} Monaten",
+    "year": "Läuft ab in {n} Jahren | Läuft ab in {n} Jahr | Läuft ab in {n} Jahren",
     "and": {
       "second": "und {n} Sekunden | und {n} Sekunde | und {n} Sekunden",
       "minute": "und {n} Minuten | und {n} Minute | und {n} Minuten",

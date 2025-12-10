@@ -49,8 +49,10 @@ const timeRemaining = computed(() => props.decimalPlaces > 0
 );
 
 const label = computed(() => {
-  let text = t(`expiryIndicator.${props.timeUnit}`, { n: timeRemaining.value.toString() }, Math.ceil(timeRemaining.value));
-  if (timeRemaining.value > 0 && props.decimalPlaces === 0 && props.timeUnit !== ExpiryUnitTypes.Seconds) {
+  let text = props.timeRemaining > 0
+    ? t(`expiryIndicator.${props.timeUnit}`, { n: timeRemaining.value.toString() }, Math.ceil(timeRemaining.value))
+    : t('expiryIndicator.expired');
+  if (props.timeRemaining > 0 && props.decimalPlaces === 0 && props.timeUnit !== ExpiryUnitTypes.Seconds) {
     const { unit, value } = convertToSmallerUnit(props.timeUnit, props.timeRemaining % 1);
     if (value > 0) {
       text += ' ' + t(`expiryIndicator.and.${unit}`, { n: value.toString() }, Math.ceil(value));
@@ -59,12 +61,10 @@ const label = computed(() => {
   return text;
 });
 
-const warningThreshold = computed(() => props.warningThreshold);
-
 const status = computed(() => {
-  if (timeRemaining.value <= 0) {
+  if (props.timeRemaining <= 0) {
     return 'expired';
-  } else if (timeRemaining.value < warningThreshold.value) {
+  } else if (props.timeRemaining < props.warningThreshold) {
     return 'warning';
   } else {
     return 'notify';

@@ -14,13 +14,14 @@
     "refreshLink": "Refresh link"
   },
   "expiryIndicator": {
-    "second": "Expired | Expires in {n} second | Expires in {n} seconds",
-    "minute": "Expired | Expires in {n} minute | Expires in {n} minutes",
-    "hour": "Expired | Expires in {n} hour | Expires in {n} hours",
-    "day": "Expired | Expires in {n} day | Expires in {n} days",
-    "week": "Expired | Expires in {n} week | Expires in {n} weeks",
-    "month": "Expired | Expires in {n} month | Expires in {n} months",
-    "year": "Expired | Expires in {n} year | Expires in {n} years",
+    "expired": "Expired",
+    "second": "Expires in {n} seconds | Expires in {n} second | Expires in {n} seconds",
+    "minute": "Expires in {n} minutes | Expires in {n} minute | Expires in {n} minutes",
+    "hour": "Expires in {n} hours | Expires in {n} hour | Expires in {n} hours",
+    "day": "Expires in {n} days | Expires in {n} day | Expires in {n} days",
+    "week": "Expires in {n} weeks | Expires in {n} week | Expires in {n} weeks",
+    "month": "Expires in {n} months | Expires in {n} month | Expires in {n} months",
+    "year": "Expires in {n} years | Expires in {n} year | Expires in {n} years",
     "and": {
       "second": "and {n} seconds | and {n} second | and {n} seconds",
       "minute": "and {n} minutes | and {n} minute | and {n} minutes",
