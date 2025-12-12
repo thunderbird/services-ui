@@ -10,6 +10,7 @@ import BrandButton from '@/components/BrandButton.vue';
 import DangerButton from '@/components/DangerButton.vue';
 import LinkButton from '@/components/LinkButton.vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
+import IconButton from '@/components/IconButton.vue';
 
 // Inputs
 import BubbleSelect from '@/components/BubbleSelect.vue';
@@ -56,6 +57,7 @@ export {
   DangerButton,
   LinkButton,
   PrimaryButton,
+  IconButton,
   // Inputs
   BubbleSelect,
   CheckboxInput,
