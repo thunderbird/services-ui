@@ -40,7 +40,7 @@ export const Standard: Story = {
   parameters: {
     docs: {
       source: {
-        code: `<text-area v-model="value" name="name-standard">Blog Post</text-area>`
+        code: `<text-area v-model="value" name="name-standard">Blog Post</text-area>`,
       },
     },
   },
@@ -81,7 +81,7 @@ export const Required: Story = {
   parameters: {
     docs: {
       source: {
-        code: `<text-area name="fav-food-required" required>Why is a hot dog a sandwich?</text-area>`
+        code: `<text-area name="fav-food-required" required>Why is a hot dog a sandwich?</text-area>`,
       },
     },
   },
@@ -99,7 +99,7 @@ export const RequiredWithPlaceholder: Story = {
       source: {
         code: `<text-area name="fav-food-required-with-placeholder" placeholder="Yes because it is food inside of bread." required>
           Why is a hot dog a sandwich?
-        </text-area>`
+        </text-area>`,
       },
     },
   },
@@ -117,7 +117,7 @@ export const Autofocus: Story = {
       source: {
         code: `<text-area name="autofocus-input" placeholder="e.g. Aloy" autofocus>
           Give me my Focus
-        </text-area>`
+        </text-area>`,
       },
     },
   },
@@ -134,7 +134,7 @@ export const Help: Story = {
       source: {
         code: `<text-area name="fav-beverage" help="When in doubt, go with water.">
           About your favourite beverage
-        </text-area>`
+        </text-area>`,
       },
     },
   },
@@ -152,7 +152,7 @@ export const NumRows: Story = {
       source: {
         code: `<text-area name="num-rows" rows="13">
           Long Blog Post
-        </text-area>`
+        </text-area>`,
       },
     },
   },
@@ -170,7 +170,7 @@ export const MaxLength: Story = {
       source: {
         code: `<text-area name="char-count" rows="3" max-length="250">
           Input with max length
-        </text-area>`
+        </text-area>`,
       },
     },
   },

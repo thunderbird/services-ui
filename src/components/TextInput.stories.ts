@@ -30,7 +30,7 @@ export const Standard: Story = {
       source: {
         code: `<text-input name="standard-input" placeholder="e.g. John Doe">
           Full Name
-        </text-input>`
+        </text-input>`,
       },
     },
   },
@@ -48,7 +48,7 @@ export const Disabled: Story = {
       source: {
         code: `<text-input name="disabled-input" placeholder="e.g. John Doe" disabled>
           Full Name
-        </text-input>`
+        </text-input>`,
       },
     },
   },
@@ -89,7 +89,7 @@ export const Required: Story = {
       source: {
         code: `<text-input name="required-input" placeholder="(e.g. Pizza)" help="Choose wisely." required>
           Favourite Food?
-        </text-input>`
+        </text-input>`,
       },
     },
   },
@@ -107,7 +107,7 @@ export const RequiredWithPlaceholder: Story = {
       source: {
         code: `<text-input name="required-input-with-placeholder" placeholder="Pizza" required>
           Favourite Food?
-        </text-input>`
+        </text-input>`,
       },
     },
   },
@@ -155,7 +155,7 @@ export const RequiredWithOuterPrefix: Story = {
       source: {
         code: `<text-input name="required-input-with-outer-prefix" placeholder="(e.g. Pizza)" help="Choose wisely." outer-prefix="https://test.org/" required>
           Favourite Food?
-        </text-input>`
+        </text-input>`,
       },
     },
   },
@@ -173,7 +173,7 @@ export const Autofocus: Story = {
       source: {
         code: `<text-input name="autofocus-input" placeholder="e.g. Aloy" autofocus>
           Give me my Focus
-        </text-input>`
+        </text-input>`,
       },
     },
   },
@@ -191,7 +191,7 @@ export const Help: Story = {
       source: {
         code: `<text-input name="help-input" placeholder="e.g. Ginger ale" help="When in doubt, go with water.">
           Favourite Beverage
-        </text-input>`
+        </text-input>`,
       },
     },
   },
@@ -209,7 +209,7 @@ export const Time: Story = {
       source: {
         code: `<text-input type="time" name="time-input">
           Current time
-        </text-input>`
+        </text-input>`,
       },
     },
   },
@@ -227,7 +227,7 @@ export const Email: Story = {
       source: {
         code: `<text-input type="email" name="email-input" required>
           Email Address
-        </text-input>`
+        </text-input>`,
       },
     },
   },
@@ -245,7 +245,7 @@ export const Password: Story = {
       source: {
         code: `<text-input type="password" name="password-input" required>
           Password
-        </text-input>`
+        </text-input>`,
       },
     },
   },
@@ -263,7 +263,7 @@ export const InnerPrefix: Story = {
       source: {
         code: `<text-input type="number" name="currency-input" placeholder="100.00" prefix="€" required>
           Currency
-        </text-input>`
+        </text-input>`,
       },
     },
   },
@@ -281,7 +281,7 @@ export const OuterPrefix: Story = {
       source: {
         code: `<text-input name="outer-prefix-input" placeholder="handle" outer-prefix="https://test.org/">
           Username
-        </text-input>`
+        </text-input>`,
       },
     },
   },
@@ -299,7 +299,7 @@ export const OuterSuffix: Story = {
       source: {
         code: `<text-input name="outer-suffix-input" placeholder="handle" outer-suffix="https://test.org/">
           Username
-        </text-input>`
+        </text-input>`,
       },
     },
   },
@@ -317,7 +317,7 @@ export const SmallText: Story = {
       source: {
         code: `<text-input name="small-text" placeholder="What are you gonna do" small-text>
           Small text
-        </text-input>`
+        </text-input>`,
       },
     },
   },
@@ -335,7 +335,7 @@ export const SmallInput: Story = {
       source: {
         code: `<text-input name="small-input" placeholder="Save some space" small-input>
           Small input
-        </text-input>`
+        </text-input>`,
       },
     },
   },

@@ -143,7 +143,7 @@ const toggleState = () => {
     margin-left: 0.125rem;
     margin-right: 0.125rem;
     border-radius: 9999px;
-    box-shadow: 0px 1px 2px 0px #0000001A;
+    box-shadow: 0px 1px 2px 0px #0000001a;
     color: transparent;
 
     .toggle-icon-on {

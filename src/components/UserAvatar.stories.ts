@@ -35,7 +35,7 @@ export const InitialsWithEmptyString: Story = {
 export const AvatarUrl: Story = {
   args: {
     username: 'Beatrice',
-    avatarUrl: '/img/placeholder.png'
+    avatarUrl: '/img/placeholder.png',
   },
 };
 

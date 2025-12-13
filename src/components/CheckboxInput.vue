@@ -127,7 +127,7 @@ defineOptions({
 <style scoped>
 @import '@/assets/styles/mixins.pcss';
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   appearance: none;
 }
 

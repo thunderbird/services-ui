@@ -3,8 +3,8 @@ import { computed } from 'vue';
 import { t } from '@/composable/i18n';
 
 interface Props {
-  username: string,
-  avatarUrl?: string,
+  username: string;
+  avatarUrl?: string;
   size?: 'extra-small' | 'small' | 'regular' | 'large';
 }
 
@@ -14,12 +14,12 @@ const props = withDefaults(defineProps<Props>(), {
 
 const usernameInitial = computed(() => {
   return props.username?.charAt(0)?.toUpperCase() || '?';
-})
+});
 </script>
 
 <template>
   <aside class="avatar" :class="{ [size]: size }">
-    <img class="img" :src="avatarUrl" v-if="avatarUrl" :alt="t('userAvatar.altText', {'username': username})"/>
+    <img class="img" :src="avatarUrl" v-if="avatarUrl" :alt="t('userAvatar.altText', { username: username })" />
     <span class="initials" :title="username" v-else>{{ usernameInitial }}</span>
   </aside>
 </template>

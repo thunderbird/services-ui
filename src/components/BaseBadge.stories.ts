@@ -25,14 +25,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     type: BaseBadgeTypes.Default,
-    default: 'default'
+    default: 'default',
   },
 };
 
 export const DefaultWithIcon: Story = {
   args: {
     type: BaseBadgeTypes.Default,
-    default: 'default'
+    default: 'default',
   },
   render: (args) => ({
     components: { BaseBadge, CheckCircleFilledIcon },
@@ -53,14 +53,14 @@ export const DefaultWithIcon: Story = {
 export const Set: Story = {
   args: {
     type: BaseBadgeTypes.Set,
-    default: 'set'
+    default: 'set',
   },
 };
 
 export const SetWithIcon: Story = {
   args: {
     type: BaseBadgeTypes.Set,
-    default: 'set'
+    default: 'set',
   },
   render: (args) => ({
     components: { BaseBadge, CheckCircleFilledIcon },
@@ -81,14 +81,14 @@ export const SetWithIcon: Story = {
 export const Primary: Story = {
   args: {
     type: BaseBadgeTypes.Primary,
-    default: 'primary'
+    default: 'primary',
   },
 };
 
 export const PrimaryWithIcon: Story = {
   args: {
     type: BaseBadgeTypes.Primary,
-    default: 'primary'
+    default: 'primary',
   },
   render: (args) => ({
     components: { BaseBadge, CheckCircleFilledIcon },
@@ -109,14 +109,14 @@ export const PrimaryWithIcon: Story = {
 export const Subscription: Story = {
   args: {
     type: BaseBadgeTypes.Subscription,
-    default: 'subscription'
+    default: 'subscription',
   },
 };
 
 export const SubscriptionWithIcon: Story = {
   args: {
     type: BaseBadgeTypes.Subscription,
-    default: 'subscription'
+    default: 'subscription',
   },
   render: (args) => ({
     components: { BaseBadge, CheckCircleFilledIcon },
@@ -137,14 +137,14 @@ export const SubscriptionWithIcon: Story = {
 export const Pending: Story = {
   args: {
     type: BaseBadgeTypes.Pending,
-    default: 'pending'
+    default: 'pending',
   },
 };
 
 export const PendingWithIcon: Story = {
   args: {
     type: BaseBadgeTypes.Pending,
-    default: 'pending'
+    default: 'pending',
   },
   render: (args) => ({
     components: { BaseBadge, CheckCircleFilledIcon },
@@ -165,14 +165,14 @@ export const PendingWithIcon: Story = {
 export const NotSet: Story = {
   args: {
     type: BaseBadgeTypes.NotSet,
-    default: 'not set'
+    default: 'not set',
   },
 };
 
 export const NotSetWithIcon: Story = {
   args: {
     type: BaseBadgeTypes.NotSet,
-    default: 'not set'
+    default: 'not set',
   },
   render: (args) => ({
     components: { BaseBadge, CheckCircleFilledIcon },
@@ -193,14 +193,14 @@ export const NotSetWithIcon: Story = {
 export const Verified: Story = {
   args: {
     type: BaseBadgeTypes.Verified,
-    default: 'verified'
+    default: 'verified',
   },
 };
 
 export const VerifiedWithIcon: Story = {
   args: {
     type: BaseBadgeTypes.Verified,
-    default: 'verified'
+    default: 'verified',
   },
   render: (args) => ({
     components: { BaseBadge, CheckCircleFilledIcon },
@@ -221,14 +221,14 @@ export const VerifiedWithIcon: Story = {
 export const Emails: Story = {
   args: {
     type: BaseBadgeTypes.Emails,
-    default: '#emails'
+    default: '#emails',
   },
 };
 
 export const EmailsWithIcon: Story = {
   args: {
     type: BaseBadgeTypes.Emails,
-    default: '#emails'
+    default: '#emails',
   },
   render: (args) => ({
     components: { BaseBadge, CheckCircleFilledIcon },
@@ -249,6 +249,6 @@ export const EmailsWithIcon: Story = {
 export const Counter: Story = {
   args: {
     type: BaseBadgeTypes.Counter,
-    default: '2'
+    default: '2',
   },
 };

@@ -11,7 +11,7 @@ const model = defineModel<string>();
 const isInvalid = ref(false);
 const validationMessage = ref('');
 const isDirty = ref(false);
-const isRequired = attrs.hasOwnProperty('required');
+const isRequired = Object.hasOwn(attrs, 'required');
 const inputRef = ref<HTMLInputElement>(null);
 const inputPrefix = ref<HTMLSpanElement>(null);
 const { width: inputPrefixWidth } = useElementSize(inputPrefix); // Calculate the width of the prefix element
@@ -92,7 +92,7 @@ const onBlur = (evt) => {
   }
 
   emit('blur');
-}
+};
 
 // null: no password input, false: hide password, true: show password
 const passwordIsVisible = ref(attrs['type'] === 'password' ? false : null);

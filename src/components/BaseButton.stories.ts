@@ -26,6 +26,7 @@ const meta: Meta<typeof BaseButton> = {
   args: {
     tooltip: '',
     // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
+    /* @ts-ignore */
     onClick: fn(),
     default: 'Click me!',
   },
@@ -56,7 +57,9 @@ export const Type: Story = {
   }),
   parameters: {
     docs: {
-      source: { code: '<primary-button>Primary</primary-button>\n<brand-button>Brand</brand-button>\n<danger-button>Danger</danger-button>\n<link-button>Link</link-button>' },
+      source: {
+        code: '<primary-button>Primary</primary-button>\n<brand-button>Brand</brand-button>\n<danger-button>Danger</danger-button>\n<link-button>Link</link-button>',
+      },
     },
   },
 };
@@ -76,7 +79,9 @@ export const Variant: Story = {
   }),
   parameters: {
     docs: {
-      source: { code: '<primary-button variant="filled">Filled</primary-button>\n<primary-button variant="outline">Outline</primary-button>' },
+      source: {
+        code: '<primary-button variant="filled">Filled</primary-button>\n<primary-button variant="outline">Outline</primary-button>',
+      },
     },
   },
 };
@@ -96,7 +101,9 @@ export const Anchor: Story = {
   }),
   parameters: {
     docs: {
-      source: { code: '<primary-button href="https://mozilla.org">mozilla.org</primary-button>\n<link-button href="https://mozilla.org">mozilla.org</link-button>' },
+      source: {
+        code: '<primary-button href="https://mozilla.org">mozilla.org</primary-button>\n<link-button href="https://mozilla.org">mozilla.org</link-button>',
+      },
     },
   },
 };
@@ -116,7 +123,9 @@ export const Disabled: Story = {
   }),
   parameters: {
     docs: {
-      source: { code: '<primary-button variant="filled" disabled>Filled</primary-button>\n<primary-button variant="outline" disabled>Outline</primary-button>' },
+      source: {
+        code: '<primary-button variant="filled" disabled>Filled</primary-button>\n<primary-button variant="outline" disabled>Outline</primary-button>',
+      },
     },
   },
 };
@@ -146,7 +155,9 @@ export const FormAction: Story = {
   }),
   parameters: {
     docs: {
-      source: { code: '<primary-button form-action="submit">Submit</primary-button>\n<primary-button form-action="reset">Reset</primary-button>\n<primary-button form-action="none">None</primary-button>' },
+      source: {
+        code: '<primary-button form-action="submit">Submit</primary-button>\n<primary-button form-action="reset">Reset</primary-button>\n<primary-button form-action="none">None</primary-button>',
+      },
     },
   },
 };
@@ -166,7 +177,9 @@ export const Size: Story = {
   }),
   parameters: {
     docs: {
-      source: { code: '<primary-button size="default">Default</primary-button>\n<primary-button size="small">Small</primary-button>' },
+      source: {
+        code: '<primary-button size="default">Default</primary-button>\n<primary-button size="small">Small</primary-button>',
+      },
     },
   },
 };
@@ -196,11 +209,12 @@ export const WithIcon: Story = {
   }),
   parameters: {
     docs: {
-      source: { code: '<primary-button><template #iconLeft><refresh-icon /></template>Icon left</primary-button>\n<primary-button><template #iconRight><refresh-icon /></template>Icon right</primary-button>' },
+      source: {
+        code: '<primary-button><template #iconLeft><refresh-icon /></template>Icon left</primary-button>\n<primary-button><template #iconRight><refresh-icon /></template>Icon right</primary-button>',
+      },
     },
   },
 };
-
 
 export const IconOnly: Story = {
   render: (args) => ({
@@ -227,7 +241,9 @@ export const IconOnly: Story = {
   }),
   parameters: {
     docs: {
-      source: { code: '<icon-button size="small"><refresh-icon /></icon-button>\n<icon-button><refresh-icon /></icon-button>\n<icon-button size="medium"><refresh-icon /></icon-button>\n<icon-button size="large"><refresh-icon /></icon-button>' },
+      source: {
+        code: '<icon-button size="small"><refresh-icon /></icon-button>\n<icon-button><refresh-icon /></icon-button>\n<icon-button size="medium"><refresh-icon /></icon-button>\n<icon-button size="large"><refresh-icon /></icon-button>',
+      },
     },
   },
 };

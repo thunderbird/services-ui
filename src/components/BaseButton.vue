@@ -134,10 +134,11 @@ button:hover > .tooltip,
     }
   }
 
-  &.outline, &.brand.filled {
+  &.outline,
+  &.brand.filled {
     /* Gradient ring only */
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       inset: 0;
       border-radius: inherit;
@@ -151,11 +152,11 @@ button:hover > .tooltip,
 
       /* punch out the center on the pseudo-element only */
       -webkit-mask:
-          linear-gradient(#000 0 0) content-box,
-          linear-gradient(#000 0 0);
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
       mask:
-          linear-gradient(#000 0 0) content-box,
-          linear-gradient(#000 0 0);
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
       -webkit-mask-composite: xor; /* Chrome/Safari/Edge */
       mask-composite: exclude; /* Firefox */
 
@@ -174,7 +175,13 @@ button:hover > .tooltip,
 
 .primary {
   &.filled {
-    background: linear-gradient(180deg, var(--colour-accent-blue) -31.82%, var(--colour-primary-default) 8.74%, var(--colour-primary-hover) 100%) border-box;
+    background: linear-gradient(
+        180deg,
+        var(--colour-accent-blue) -31.82%,
+        var(--colour-primary-default) 8.74%,
+        var(--colour-primary-hover) 100%
+      )
+      border-box;
     color: var(--colour-neutral-base);
 
     &:hover:enabled {
@@ -218,7 +225,7 @@ button:hover > .tooltip,
 
   &.filled {
     /* For brand buttons, we are using one-off colours for light / dark mode */
-    --button-outline-border: linear-gradient(to bottom right, #7BC6F4 10%, #2B8CDC 60%) border-box;
+    --button-outline-border: linear-gradient(to bottom right, #7bc6f4 10%, #2b8cdc 60%) border-box;
 
     background: linear-gradient(329deg, var(--colour-primary-default) -21.06%, var(--colour-accent-blue) 64%);
     color: var(--colour-ti-base-light);
@@ -236,7 +243,8 @@ button:hover > .tooltip,
   }
 
   &.outline {
-    --button-outline-border: linear-gradient(99deg, var(--colour-accent-blue) 19.15%, var(--colour-accent-gray) 75.77%) border-box;
+    --button-outline-border: linear-gradient(99deg, var(--colour-accent-blue) 19.15%, var(--colour-accent-gray) 75.77%)
+      border-box;
 
     position: relative;
     background: transparent;
@@ -321,7 +329,8 @@ button:hover > .tooltip,
     box-shadow: none !important;
   }
 
-  &.outline:disabled, &.filled:disabled {
+  &.outline:disabled,
+  &.filled:disabled {
     background: none;
     color: var(--colour-ti-muted);
     cursor: not-allowed;
@@ -347,11 +356,12 @@ button:hover > .tooltip,
 
 @media (prefers-reduced-motion: no-preference) {
   .base {
-      transition: background-color 250ms ease-in-out,
-              background 250ms ease-in-out,
-              border 250ms ease-in-out,
-              color 250ms ease-in-out,
-              box-shadow 250ms ease-in-out;
+    transition:
+      background-color 250ms ease-in-out,
+      background 250ms ease-in-out,
+      border 250ms ease-in-out,
+      color 250ms ease-in-out,
+      box-shadow 250ms ease-in-out;
   }
 }
 </style>

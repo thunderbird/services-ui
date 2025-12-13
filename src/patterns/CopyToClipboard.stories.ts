@@ -13,7 +13,8 @@ const meta: Meta<typeof CopyToClipboard> = {
       control: 'text',
     },
     copyValue: {
-      description: 'Value to copy to clipboard. Required if iconOnly is true, optional otherwise. If not provided, displayText will be copied.',
+      description:
+        'Value to copy to clipboard. Required if iconOnly is true, optional otherwise. If not provided, displayText will be copied.',
       control: 'text',
     },
     iconOnly: {

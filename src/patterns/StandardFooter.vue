@@ -3,7 +3,7 @@ import { t } from '@/composable/i18n';
 import VisualDivider from '@/components/VisualDivider.vue';
 
 interface Props {
-  contributeToThisSiteUrl: string
+  contributeToThisSiteUrl: string;
 }
 
 const props = defineProps<Props>();
@@ -16,15 +16,15 @@ interface NavItem {
 const mozillaNavItems: NavItem[] = [
   {
     i18nKey: 'sendDMCANotice',
-    urlKey: 'dmcaNotice'
+    urlKey: 'dmcaNotice',
   },
   {
     i18nKey: 'reportFraud',
-    urlKey: 'reportFraud'
+    urlKey: 'reportFraud',
   },
   {
     i18nKey: 'participationGuidelines',
-    urlKey: 'participationGuidelines'
+    urlKey: 'participationGuidelines',
   },
 ];
 
@@ -61,10 +61,7 @@ const getUrl = (key: keyof typeof urlMap): string => urlMap[key];
           <slot name="legal" />
 
           <li v-for="navItem in mozillaNavItems" :key="navItem.i18nKey">
-            <a
-              :href="getUrl((navItem).urlKey as keyof typeof urlMap)"
-              target="_blank"
-            >
+            <a :href="getUrl(navItem.urlKey as keyof typeof urlMap)" target="_blank">
               {{ t(`footer.${navItem.i18nKey}`) }}
             </a>
           </li>
@@ -89,7 +86,7 @@ const getUrl = (key: keyof typeof urlMap): string => urlMap[key];
         </p>
 
         <a class="underline" :href="props.contributeToThisSiteUrl" target="_blank">
-          {{ t('footer.contributeToThisSite' )}}
+          {{ t('footer.contributeToThisSite') }}
         </a>
       </div>
     </div>
@@ -115,7 +112,8 @@ footer {
     text-decoration: none;
   }
 
-  .underline, :deep(a:hover) {
+  .underline,
+  :deep(a:hover) {
     text-decoration: underline;
   }
 

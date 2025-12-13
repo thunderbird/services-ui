@@ -56,13 +56,13 @@ const copyLink = async () => {
 <template>
   <link-button
     :data-testid="dataTestid"
-    :class="{ 'iconOnly': iconOnly }"
+    :class="{ iconOnly: iconOnly }"
     @click="copyLink"
     :tooltip="myLinkTooltip"
     :force-tooltip="myLinkShow"
   >
     <template #iconLeft>
-      <copy-icon/>
+      <copy-icon />
     </template>
 
     {{ !iconOnly ? displayText : '' }}
