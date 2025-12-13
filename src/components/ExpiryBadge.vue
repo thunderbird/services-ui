@@ -49,14 +49,18 @@ const timeRemaining = computed(() => props.decimalPlaces > 0
 );
 
 const label = computed(() => {
-  let text = props.timeRemaining > 0
-    ? t(`expiryIndicator.${props.timeUnit}`, { n: timeRemaining.value.toString() }, Math.ceil(timeRemaining.value))
-    : t('expiryIndicator.expired');
+  let text = t('expiryIndicator.expired');
+
   if (props.timeRemaining > 0 && props.decimalPlaces === 0 && props.timeUnit !== ExpiryUnitTypes.Seconds) {
+    // For no decimal places, we render the time with the next smaller unit
+    text = t(`expiryIndicator.${props.timeUnit}`, { n: timeRemaining.value.toString() }, Math.ceil(timeRemaining.value));
     const { unit, value } = convertToSmallerUnit(props.timeUnit, props.timeRemaining % 1);
     if (value > 0) {
       text += ' ' + t(`expiryIndicator.and.${unit}`, { n: value.toString() }, Math.ceil(value));
     }
+  } else if (props.timeRemaining > 0) {
+    // Otherwise we show the decimal places up to the given amount
+    text = t(`expiryIndicator.${props.timeUnit}`, { n: timeRemaining.value.toString() }, Math.ceil(timeRemaining.value));
   }
   return text;
 });
