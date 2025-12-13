@@ -9,21 +9,66 @@ interface Props {
   timeRemaining?: number;
   warningThreshold?: number;
   timeUnit?: ExpiryUnitTypes;
+  decimalPlaces?: number;
   dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
   timeRemaining: 10,
   warningThreshold: 5,
   timeUnit: ExpiryUnitTypes.Days,
+  decimalPlaces: 0,
   dataTestid: 'expiry-badge',
 });
 
-const timeRemaining = computed(() => Math.ceil(props.timeRemaining));
-const warningThreshold = computed(() => props.warningThreshold);
+const roundUp = (num: number, precision: number) => {
+    const norm = Math.pow(10, precision);
+    return Math.ceil(num * norm) / norm;
+}
+
+const convertToSmallerUnit = (unit: ExpiryUnitTypes, value: number) => {
+  switch (unit) {
+    case ExpiryUnitTypes.Years:
+      return { unit: ExpiryUnitTypes.Months, value: Math.ceil(value*12)};
+    case ExpiryUnitTypes.Months:
+      return { unit: ExpiryUnitTypes.Weeks, value: Math.ceil(value*4.345) };
+    case ExpiryUnitTypes.Weeks:
+      return { unit: ExpiryUnitTypes.Days, value: Math.ceil(value*7) };
+    case ExpiryUnitTypes.Days:
+      return { unit: ExpiryUnitTypes.Hours, value: Math.ceil(value*24) };
+    case ExpiryUnitTypes.Hours:
+      return { unit: ExpiryUnitTypes.Minutes, value: Math.ceil(value*60) };
+    case ExpiryUnitTypes.Minutes:
+    default:
+      return { unit: ExpiryUnitTypes.Seconds, value: Math.ceil(value*60) };
+  }
+}
+
+const timeRemaining = computed(() => props.decimalPlaces > 0
+  ? roundUp(props.timeRemaining, props.decimalPlaces)
+  : Math.floor(props.timeRemaining)
+);
+
+const label = computed(() => {
+  let text = t('expiryIndicator.expired');
+
+  if (props.timeRemaining > 0 && props.decimalPlaces === 0 && props.timeUnit !== ExpiryUnitTypes.Seconds) {
+    // For no decimal places, we render the time with the next smaller unit
+    text = t(`expiryIndicator.${props.timeUnit}`, { n: timeRemaining.value.toString() }, Math.ceil(timeRemaining.value));
+    const { unit, value } = convertToSmallerUnit(props.timeUnit, props.timeRemaining % 1);
+    if (value > 0) {
+      text += ' ' + t(`expiryIndicator.and.${unit}`, { n: value.toString() }, Math.ceil(value));
+    }
+  } else if (props.timeRemaining > 0) {
+    // Otherwise we show the decimal places up to the given amount
+    text = t(`expiryIndicator.${props.timeUnit}`, { n: timeRemaining.value.toString() }, Math.ceil(timeRemaining.value));
+  }
+  return text;
+});
+
 const status = computed(() => {
-  if (timeRemaining.value <= 0) {
+  if (props.timeRemaining <= 0) {
     return 'expired';
-  } else if (timeRemaining.value < warningThreshold.value) {
+  } else if (props.timeRemaining < props.warningThreshold) {
     return 'warning';
   } else {
     return 'notify';
@@ -37,7 +82,7 @@ const status = computed(() => {
       <status-expiry-icon />
     </span>
     <span class="text">
-      {{ t(`expiryIndicator.${timeUnit}`, { n: timeRemaining }) }}
+      {{ label }}
     </span>
   </div>
 </template>

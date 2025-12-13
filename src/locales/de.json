@@ -14,13 +14,22 @@
     "refreshLink": "Link ändern"
   },
   "expiryIndicator": {
-    "second": "Abgelaufen | Läuft in {n} Sekunde ab | Läuft in {n} Sekunden ab",
-    "minute": "Abgelaufen | Läuft in {n} Minute ab | Läuft in {n} Minuten ab",
-    "hour": "Abgelaufen | Läuft in {n} Stunde ab | Läuft in {n} Stunden ab",
-    "day": "Abgelaufen | Läuft in {n} Tag ab | Läuft in {n} Tagen ab",
-    "week": "Abgelaufen | Läuft in {n} Woche ab | Läuft in {n} Wochen ab",
-    "month": "Abgelaufen | Läuft in {n} Monat ab | Läuft in {n} Monaten ab",
-    "year": "Abgelaufen | Läuft in {n} Jahr ab | Läuft in {n} Jahren ab"
+    "expired": "Abgelaufen",
+    "second": "Läuft ab in {n} Sekunden | Läuft ab in {n} Sekunde | Läuft ab in {n} Sekunden",
+    "minute": "Läuft ab in {n} Minuten | Läuft ab in {n} Minute | Läuft ab in {n} Minuten",
+    "hour": "Läuft ab in {n} Stunden | Läuft ab in {n} Stunde | Läuft ab in {n} Stunden",
+    "day": "Läuft ab in {n} Tagen | Läuft ab in {n} Tag | Läuft ab in {n} Tagen",
+    "week": "Läuft ab in {n} Wochen | Läuft ab in {n} Woche | Läuft ab in {n} Wochen",
+    "month": "Läuft ab in {n} Monaten | Läuft ab in {n} Monat | Läuft ab in {n} Monaten",
+    "year": "Läuft ab in {n} Jahren | Läuft ab in {n} Jahr | Läuft ab in {n} Jahren",
+    "and": {
+      "second": "und {n} Sekunden | und {n} Sekunde | und {n} Sekunden",
+      "minute": "und {n} Minuten | und {n} Minute | und {n} Minuten",
+      "hour": "und {n} Stunden | und {n} Stunde | und {n} Stunden",
+      "day": "und {n} Tagen | und {n} Tag | und {n} Tagen",
+      "week": "und {n} Wochen | und {n} Woche | und {n} Wochen",
+      "month": "und {n} Monaten | und {n} Monat | und {n} Monaten"
+    }
   },
   "footer": {
     "privacyPolicy": "Datenschutzerklärung",

@@ -19,30 +19,88 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    timeRemaining: 10,
-    timeUnit: ExpiryUnitTypes.Years,
+  render: () => ({
+    components: { ExpiryBadge },
+    template: `
+      <expiry-badge :time-remaining="10" time-unit="year" />
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: { code: '<expiry-badge :time-remaining="10" time-unit="year" />' },
+    },
   },
 };
 
-export const DecimalUsage: Story = {
-  args: {
-    timeRemaining: 1.4,
-    warningThreshold: 1,
-    timeUnit: ExpiryUnitTypes.Minutes,
+export const Units: Story = {
+  render: () => ({
+    components: { ExpiryBadge },
+    template: `
+      <div style="display:flex;flex-direction:column;align-items:start;gap:0.5rem;">
+        <expiry-badge :time-remaining="5" time-unit="year" />
+        <expiry-badge :time-remaining="6" time-unit="month" />
+        <expiry-badge :time-remaining="7" time-unit="week" />
+        <expiry-badge :time-remaining="8" time-unit="day" />
+        <expiry-badge :time-remaining="9" time-unit="hour" />
+        <expiry-badge :time-remaining="10" time-unit="minute" />
+        <expiry-badge :time-remaining="11" time-unit="second" />
+      </div>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: { code: '<expiry-badge :time-remaining="5" time-unit="year" />\n<expiry-badge :time-remaining="6" time-unit="month" />\n<expiry-badge :time-remaining="7" time-unit="week" />\n<expiry-badge :time-remaining="8" time-unit="day" />\n<expiry-badge :time-remaining="9" time-unit="hour" />\n<expiry-badge :time-remaining="10" time-unit="minute" />\n<expiry-badge :time-remaining="11" time-unit="second" />' },
+    },
   },
 };
 
-export const Warning: Story = {
-  args: {
-    timeRemaining: 5,
-    warningThreshold: 15,
-    timeUnit: ExpiryUnitTypes.Minutes,
+export const DecimalPlaces: Story = {
+  render: () => ({
+    components: { ExpiryBadge },
+    template: `
+      <div style="display:flex;flex-direction:column;align-items:start;gap:0.5rem;">
+        <expiry-badge :time-remaining="5.111" time-unit="minute" :decimal-places="0" />
+        <expiry-badge :time-remaining="5.111" time-unit="minute" :decimal-places="1" />
+        <expiry-badge :time-remaining="5.111" time-unit="minute" :decimal-places="2" />
+        <expiry-badge :time-remaining="5.111" time-unit="minute" :decimal-places="3" />
+      </div>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: { code: '<expiry-badge :time-remaining="5.111" time-unit="minute" :decimal-places="0" />\n<expiry-badge :time-remaining="5.111" time-unit="minute" :decimal-places="1" />\n<expiry-badge :time-remaining="5.111" time-unit="minute" :decimal-places="2" />\n<expiry-badge :time-remaining="5.111" time-unit="minute" :decimal-places="3" />' },
+    },
   },
 };
+
+export const WarningThreshold: Story = {
+  render: () => ({
+    components: { ExpiryBadge },
+    template: `
+      <div style="display:flex;flex-direction:column;align-items:start;gap:0.5rem;">
+        <expiry-badge :time-remaining="7" warning-threshold="5" time-unit="minute" />
+        <expiry-badge :time-remaining="7" warning-threshold="10" time-unit="minute" />
+      </div>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: { code: '<expiry-badge :time-remaining="7" warning-threshold="5" time-unit="minute" />\n<expiry-badge :time-remaining="7" warning-threshold="10" time-unit="minute" />' },
+    },
+  },
+};
+
 
 export const Expired: Story = {
-  args: {
-    timeRemaining: 0,
+  render: () => ({
+    components: { ExpiryBadge },
+    template: `
+      <expiry-badge :time-remaining="0" time-unit="year" />
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: { code: '<expiry-badge :time-remaining="0" time-unit="year" />' },
+    },
   },
 };
