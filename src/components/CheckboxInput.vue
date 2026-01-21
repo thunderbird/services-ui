@@ -65,15 +65,17 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
   validationMessage.value = evt.target.validationMessage;
 };
 /**
- * On any change we mark the element as dirty
- * this is so we can delay :invalid until
- * the user does something worth invalidating
+ * On any change we mark the element as dirty this is so we can delay :invalid until
+ * the user does something worth invalidating. A change is only triggered if the
+ * element is not disabled.
  */
 const onChange = () => {
-  isDirty.value = true;
-  const newValue = !model.value;
-  model.value = newValue;
-  emit('change', newValue);
+  if (!Object.hasOwn(attrs, 'disabled')) {
+    isDirty.value = true;
+    const newValue = !model.value;
+    model.value = newValue;
+    emit('change', newValue);
+  }
 };
 
 /**
