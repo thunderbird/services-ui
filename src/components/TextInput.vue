@@ -135,10 +135,10 @@ const togglePasswordVisibility = () => {
           ref="inputRef"
         />
         <span v-if="passwordIsVisible === true" class="tbpro-input-suffix" @click="togglePasswordVisibility">
-          <eye-off-icon class="icon" />
+          <eye-icon class="icon" />
         </span>
         <span v-else-if="passwordIsVisible === false" class="tbpro-input-suffix" @click="togglePasswordVisibility">
-          <eye-icon class="icon" />
+          <eye-off-icon class="icon" />
         </span>
       </span>
       <span v-if="outerSuffix" class="tbpro-input-outer-suffix">{{ outerSuffix }}</span>
