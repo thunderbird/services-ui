@@ -1,4 +1,7 @@
 <script setup lang="ts">
+/**
+ * @deprecated The default slot is deprecated and will be removed in future releases
+ */
 import { computed, ref, useAttrs } from 'vue';
 import { t } from '@/composable/i18n';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
@@ -40,12 +43,14 @@ const reset = () => {
 // component properties
 interface Props {
   name: string;
+  label?: string;
   help?: string;
   smallText?: boolean;
   maxLength?: number | string;
   dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
+  label: null,
   help: null,
   prefix: null,
   smallText: false,
@@ -72,7 +77,8 @@ const onChange = () => {
 <template>
   <label class="wrapper" :for="name">
     <span class="label">
-      <slot />
+      <template v-if="label">{{ label }}</template>
+      <slot v-else />
       <span v-if="isRequired && !model?.length" class="required">*</span>
     </span>
     <span class="tbpro-textarea" :class="{ 'small-text': props.smallText }">
