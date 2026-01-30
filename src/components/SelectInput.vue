@@ -1,4 +1,7 @@
 <script setup lang="ts">
+/**
+ * @note The default slot is deprecated and will be removed in future releases
+ */
 import { ref } from 'vue';
 import { type SelectOption } from '@/models';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
@@ -7,6 +10,7 @@ import CaretDownIcon from '@/foundation/CaretDownIcon.vue';
 // component properties
 interface Props {
   name: string;
+  label?: string;
   options: SelectOption<number | string>[];
   help?: string;
   required?: boolean;
@@ -15,6 +19,7 @@ interface Props {
   dataTestid?: string;
 }
 withDefaults(defineProps<Props>(), {
+  label: null,
   required: false,
   autofocus: false,
   disabled: false,
@@ -57,8 +62,9 @@ defineExpose({ reset });
 
 <template>
   <label class="wrapper" :for="name">
-    <span v-if="$slots.default" class="label">
-      <slot />
+    <span v-if="label || $slots.default" class="label">
+      <template v-if="label">{{ label }}</template>
+      <slot v-else />
       <span v-if="required && (model === null || model === '')" class="required">*</span>
     </span>
     <div class="tbpro-select-container">

@@ -11,7 +11,7 @@ const meta: Meta<typeof SelectInput> = {
   tags: ['autodocs'],
   args: {
     name: 'example',
-    default: 'How many?',
+    label: 'How many?',
     modelValue: 'all',
     options: [
       { label: 'All', value: 'all' },
@@ -74,7 +74,7 @@ export const Required: Story = {
     },
     template: `
       <div>
-        <select-input v-bind="args" ref="input">{{ args?.default }}</select-input>
+        <select-input v-bind="args" ref="input" />
         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;margin-top: 0.5rem;">
           <button @click="triggerInvalid">
             Trigger Invalid State
@@ -98,7 +98,7 @@ export const Required: Story = {
 export const Autofocus: Story = {
   args: {
     name: 'autofocus-select',
-    default: 'Get Focus from',
+    label: 'Get Focus from',
     options: [
       { label: 'Aloy', value: 'aloy' },
       { label: 'Rost', value: 'rost' },
