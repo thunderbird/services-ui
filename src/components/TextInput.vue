@@ -41,6 +41,7 @@ const reset = () => {
 // component properties
 interface Props {
   name: string;
+  label?: string;
   help?: string;
   error?: string;
   prefix?: string; // A prefix shows up at the start of the input field and moves the actual input to the right.
@@ -52,6 +53,7 @@ interface Props {
   dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
+  label: null,
   help: null,
   error: null,
   prefix: null,
@@ -106,8 +108,9 @@ const togglePasswordVisibility = () => {
 
 <template>
   <label class="wrapper" :for="name">
-    <span v-if="$slots.default" class="label">
-      <slot />
+    <span v-if="label || $slots.default" class="label">
+      <template v-if="label">{{ label }}</template>
+      <slot v-else />
       <span v-if="isRequired && !model?.length" class="required">*</span>
     </span>
     <span class="tbpro-input" :class="{ 'small-text': props.smallText }">
