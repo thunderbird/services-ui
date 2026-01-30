@@ -13,7 +13,23 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const usernameInitial = computed(() => {
-  return props.username?.charAt(0)?.toUpperCase() || '?';
+  // Default to 
+  if (!props.username) {
+    return '?';
+  }
+
+  // Generate initials from whitespace separated words, e.g.:
+  // 'A' => 'A'
+  // 'Abcd' => 'AB'
+  // 'Ab cd' => 'AC'
+  // 'Ab cd ef' => 'AE'
+  return props.username
+    .match(/(^\S\S?|\s\S)?/g)
+    .map(v=>v.trim())
+    .join('')
+    .match(/(^\S|\S$)?/g)
+    .join('')
+    .toLocaleUpperCase();
 });
 </script>
 
@@ -48,7 +64,7 @@ const usernameInitial = computed(() => {
     font-stretch: normal;
     font-style: normal;
     line-height: 1.43;
-    color: var(--colour-ti-base-light);
+    color: var(--colour-ti-base);
   }
 
   &.extra-small {
