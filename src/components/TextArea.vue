@@ -76,7 +76,7 @@ const onChange = () => {
 
 <template>
   <label class="wrapper" :for="name">
-    <span class="label">
+    <span v-if="label || $slots.default" class="label">
       <template v-if="label">{{ label }}</template>
       <slot v-else />
       <span v-if="isRequired && !model?.length" class="required">*</span>
