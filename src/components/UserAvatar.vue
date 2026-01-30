@@ -64,7 +64,7 @@ const usernameInitial = computed(() => {
     font-stretch: normal;
     font-style: normal;
     line-height: 1.43;
-    color: var(--colour-ti-base-light);
+    color: var(--colour-ti-base);
   }
 
   &.extra-small {
