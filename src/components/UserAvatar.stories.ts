@@ -20,6 +20,12 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+export const Default: Story = {
+  args: {
+    username: 'Beatrice',
+  },
+};
+
 export const Initials: Story = {
   render: () => ({
     components: { UserAvatar },
@@ -39,7 +45,7 @@ export const Initials: Story = {
   },
 };
 
-export const InitialsWithEmptyString: Story = {
+export const EmptyInitials: Story = {
   render: () => ({
     components: { UserAvatar },
     template: `<user-avatar username="" />`,
