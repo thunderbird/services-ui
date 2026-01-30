@@ -1,7 +1,11 @@
 <script setup lang="ts">
+/**
+ * @note The default slot is deprecated and will be removed in future releases
+ */
 import type { SelectOptionBadges, SelectOption } from '@/models';
 
 interface Props {
+  label?: string;
   options: SelectOption<string | number>[];
   optionBadges?: SelectOptionBadges;
   required?: boolean;
@@ -10,6 +14,7 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
+  label: null,
   required: false,
   disabled: false,
   dataTestid: 'segmented-control',
@@ -33,8 +38,9 @@ const setOption = (option: SelectOption<string | number>) => {
 <template>
   <div class="segment-wrapper">
     <label>
-      <span class="label">
-        <slot />
+      <span v-if="label || $slots.default" class="label">
+        <template v-if="label">{{ label }}</template>
+        <slot v-else />
         <span v-if="required && model !== null" class="required">*</span>
       </span>
     </label>

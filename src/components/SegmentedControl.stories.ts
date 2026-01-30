@@ -44,7 +44,7 @@ const meta: Meta<typeof SegmentedControl> = {
   args: {
     // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
     onClick: fn(),
-    default: 'Select a minimum duration',
+    label: 'Select a minimum duration',
     options: selectOptions,
   },
 };
@@ -60,7 +60,7 @@ export const DurationSelection: Story = {
 
 export const Disabled: Story = {
   args: {
-    default: 'Disabled segmented control',
+    label: 'Disabled segmented control',
     disabled: true,
     modelValue: 48,
   },
@@ -82,10 +82,11 @@ export const WithVModel: Story = {
     template: `
       <div>
         <segmented-control
+          label="With external v-model"
           v-model="currentState"
           :label="'Click me to trigger events'"
           :options="options"
-        >With external v-model</segmented-control>
+        />
         <p><strong>Current State:</strong> {{ currentState }}</p>
       </div>
     `,
@@ -94,7 +95,7 @@ export const WithVModel: Story = {
 
 export const WithOptionBadges: Story = {
   args: {
-    default: 'Todo',
+    label: 'Todo',
     options: [
       {
         label: 'Backlog',
