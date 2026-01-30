@@ -1,4 +1,7 @@
 <script setup lang="ts">
+/**
+ * @note The default slot is deprecated and will be removed in future releases
+ */
 import { ref, computed, useAttrs, type InputTypeHTMLAttribute } from 'vue';
 import { useElementSize } from '@vueuse/core';
 import { type HTMLInputElementEvent } from '@/models';

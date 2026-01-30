@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * @deprecated The default slot is deprecated and will be removed in future releases
+ * @note The default slot is deprecated and will be removed in future releases
  */
 import { computed, ref, useAttrs } from 'vue';
 import { t } from '@/composable/i18n';
