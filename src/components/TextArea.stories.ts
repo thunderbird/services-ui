@@ -10,7 +10,7 @@ const meta: Meta<typeof TextArea> = {
   tags: ['autodocs'],
   args: {
     name: 'example',
-    default: 'Example TextArea',
+    label: 'Example TextArea',
   },
 };
 
@@ -20,7 +20,7 @@ type Story = StoryObj<typeof meta>;
 export const Standard: Story = {
   args: {
     name: 'name-standard',
-    default: 'Blog Post',
+    label: 'Blog Post',
   },
   render: (args) => ({
     components: { TextArea },
@@ -30,7 +30,7 @@ export const Standard: Story = {
     },
     template: `
       <div>
-        <text-area v-model="value" v-bind="args" label="Blog Post" />
+        <text-area v-model="value" v-bind="args" />
         <p style="margin-block-start: 0.5rem; word-break: break-word;">
           Current v-model value: {{ value }}
         </p>
@@ -122,7 +122,7 @@ export const Autofocus: Story = {
 export const Help: Story = {
   args: {
     name: 'fav-beverage',
-    default: 'About your favourite beverage',
+    label: 'About your favourite beverage',
     help: 'When in doubt, go with water.',
   },
   parameters: {

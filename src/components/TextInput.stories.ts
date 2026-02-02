@@ -1,7 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/vue3-vite';
-
-import TextInput from '@/components/TextInput.vue';
 import { useTemplateRef } from 'vue';
+import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import TextInput from '@/components/TextInput.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof TextInput> = {
@@ -11,7 +10,7 @@ const meta: Meta<typeof TextInput> = {
   tags: ['autodocs'],
   args: {
     name: 'example',
-    default: 'Example Input',
+    label: 'Example Input',
   },
 };
 
@@ -19,10 +18,17 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
-  render: () => ({
+  args: {
+    name: 'standard-input',
+    label: 'Full name',
+  },
+  render: (args) => ({
     components: { TextInput },
+    setup() {
+      return { args };
+    },
     template: `
-      <text-input name="standard-input" label="Full Name" placeholder="e.g. John Doe" />
+      <text-input v-bind="args" placeholder="e.g. John Doe" />
     `,
   }),
   parameters: {
