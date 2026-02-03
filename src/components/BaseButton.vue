@@ -83,6 +83,7 @@ html {
   transition: opacity 250ms ease-out;
 }
 
+a:hover > .tooltip,
 button:hover > .tooltip,
 .display-tooltip {
   opacity: 1;
