@@ -11,8 +11,8 @@ withDefaults(defineProps<Props>(), {
 
 <template>
   <base-button type="link" class="icon-only" :class="{ [size]: size }">
-    <template #iconLeft>
-      <slot />
+    <template #iconLeft="slotData">
+      <slot v-bind="slotData" />
     </template>
   </base-button>
 </template>
