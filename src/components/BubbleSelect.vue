@@ -6,6 +6,7 @@ import ErrorIcon from '@/foundation/ErrorIcon.vue';
 
 // component properties
 interface Props {
+  label?: string;
   options: SelectOption<string | number>[];
   required: boolean;
   bubbleGap?: 'default' | 'large';
@@ -17,6 +18,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  label: null,
   required: false,
   bubbleGap: 'default',
   help: null,
@@ -76,8 +78,9 @@ defineExpose({ reset });
 <template>
   <div class="wrapper">
     <label>
-      <span class="label">
-        <slot />
+      <span v-if="label || $slots.default" class="label">
+        <template v-if="label">{{ label }}</template>
+        <slot v-else />
         <span v-if="required && model?.length === 0" class="required">*</span>
       </span>
     </label>
