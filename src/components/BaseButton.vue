@@ -77,10 +77,10 @@ html {
 @import '@/assets/styles/mixins.pcss';
 
 .tooltip {
-  transform: translate(0, -100%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 250ms ease-out;
+  bottom: calc(100% + .5rem);
 }
 
 a:hover > .tooltip,
@@ -108,6 +108,8 @@ button:hover > .tooltip {
   padding: 1rem 1.12rem;
   cursor: pointer;
   user-select: none;
+
+  position: relative;
 
   .icon {
     display: flex;
