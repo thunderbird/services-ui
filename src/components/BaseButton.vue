@@ -88,6 +88,10 @@ button:hover > .tooltip,
 .display-tooltip {
   opacity: 1;
 }
+a:hover > .tooltip,
+button:hover > .tooltip {
+  z-index: 110; /* Make sure that current tooltip is on top of static (forced) tooltips */
+}
 
 .base {
   display: flex;
