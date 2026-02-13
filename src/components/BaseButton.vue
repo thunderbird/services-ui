@@ -77,15 +77,20 @@ html {
 @import '@/assets/styles/mixins.pcss';
 
 .tooltip {
-  transform: translate(0, -100%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 250ms ease-out;
+  bottom: calc(100% + .5rem);
 }
 
+a:hover > .tooltip,
 button:hover > .tooltip,
 .display-tooltip {
   opacity: 1;
+}
+a:hover > .tooltip,
+button:hover > .tooltip {
+  z-index: 110; /* Make sure that current tooltip is on top of static (forced) tooltips */
 }
 
 .base {
@@ -103,6 +108,8 @@ button:hover > .tooltip,
   padding: 1rem 1.12rem;
   cursor: pointer;
   user-select: none;
+
+  position: relative;
 
   .icon {
     display: flex;

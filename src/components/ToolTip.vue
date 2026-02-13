@@ -48,6 +48,7 @@ withDefaults(defineProps<Props>(), {
   font-family: var(--font-sans);
   color: var(--colour-ti-secondary);
   z-index: 100;
+  width: max-content;
   max-width: 15rem;
   box-shadow:
     0px 4px 8px 0px rgba(0, 0, 0, 0.14),

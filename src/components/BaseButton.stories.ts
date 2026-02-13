@@ -40,6 +40,23 @@ type Story = StoryObj<typeof meta>;
  * to learn how to use render functions.
  */
 
+export const Standard: Story = {
+  render: (args) => ({
+    components: { PrimaryButton },
+    setup() {
+      return { args };
+    },
+    template: `<primary-button v-bind="args">Primary</primary-button>`,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<primary-button>Primary</primary-button>',
+      },
+    },
+  },
+};
+
 export const Type: Story = {
   render: (args) => ({
     components: { PrimaryButton, BrandButton, DangerButton, LinkButton },
@@ -243,6 +260,38 @@ export const IconOnly: Story = {
     docs: {
       source: {
         code: '<icon-button size="small"><refresh-icon /></icon-button>\n<icon-button><refresh-icon /></icon-button>\n<icon-button size="medium"><refresh-icon /></icon-button>\n<icon-button size="large"><refresh-icon /></icon-button>',
+      },
+    },
+  },
+};
+
+export const WithTooltip: Story = {
+  render: (args) => ({
+    components: { PrimaryButton, LinkButton, IconButton, RefreshIcon },
+    setup() {
+      return { args };
+    },
+    template: `
+      <div style="display:flex;gap:2rem;align-items:center;margin-top:3rem;">
+        <primary-button tooltip="Reload everything">
+          Refresh
+        </primary-button>
+        <icon-button tooltip="Refresh">
+          <refresh-icon />
+        </icon-button>
+        <primary-button tooltip="Forced tooltip on a primary button" force-tooltip>
+          Refresh
+        </primary-button>
+        <link-button href="https://mozilla.org" tooltip="Tooltip on a link button">
+          Refresh
+        </link-button>
+      </div>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<primary-button tooltip="Reload everything">Refresh</primary-button>\n<icon-button tooltip="Refresh"><refresh-icon /></icon-button>\n<primary-button tooltip="Forced tooltip" force-tooltip>Refresh</primary-button>',
       },
     },
   },
