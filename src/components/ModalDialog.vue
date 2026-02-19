@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import LinkButton from '@/components/LinkButton.vue';
 import XIcon from '@/foundation/XIcon.vue';
 
 const emit = defineEmits(['opened', 'closed']);
@@ -25,9 +24,9 @@ defineExpose({ show, hide })
   <transition>
     <div v-if="isVisible" class="overlay" role="dialog" tabindex="-1" aria-labelledby="title" aria-modal="true">
       <div class="modal">
-        <link-button class="modal-close" @click="hide" aria-labelledby="modal-close-button">
+        <button class="modal-close" @click="hide" aria-labelledby="modal-close-button">
           <x-icon />
-        </link-button>
+        </button>
         <div v-if="$slots.header" class="modal-header">
           <slot name="header"></slot>
         </div>
@@ -98,7 +97,9 @@ body.modal-active {
   cursor: pointer;
   color: var(--colour-ti-muted);
   background-color: color-mix(in srgb, black 5%, transparent);;
+  border: 0;
   border-radius: 999px;
+  display: flex;
   padding: .5rem;
 }
 
