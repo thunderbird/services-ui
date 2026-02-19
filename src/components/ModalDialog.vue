@@ -1,15 +1,8 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
-import { t } from '@/composable/i18n';
 import LinkButton from '@/components/LinkButton.vue';
+import XIcon from '@/foundation/XIcon.vue';
 
-// component properties
-interface Props {
-  closable?: boolean,
-}
-const props = withDefaults(defineProps<Props>(), {
-  closable: true,
-});
 const emit = defineEmits(['opened', 'closed']);
 
 const isVisible = ref(false);
@@ -36,30 +29,41 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div v-show="isVisible" class="overlay" role="dialog" tabindex="-1" aria-labelledby="title" aria-modal="true">
-    <div class="modal">
-      <link-button class="modal-close" @click="hide" aria-labelledby="modal-close-button">
-        X
-        <!-- <img id="modal-close-button" src="@/assets/svg/icons/close.svg" :alt="t('label.close')" :title="t('label.close')"/> -->
-      </link-button>
-      <div v-if="$slots.header" class="modal-header">
-        <slot name="header"></slot>
-      </div>
-      <div class="modal-body">
-        <slot></slot>
-      </div>
-      <div v-if="$slots.actions" class="modal-actions">
-        <slot name="actions"></slot>
-      </div>
-      <div class="divider"></div>
-      <div v-if="$slots.footer" class="footer">
-        <slot name="footer"></slot>
+  <transition>
+    <div v-if="isVisible" class="overlay" role="dialog" tabindex="-1" aria-labelledby="title" aria-modal="true">
+      <div class="modal">
+        <link-button class="modal-close" @click="hide" aria-labelledby="modal-close-button">
+          <x-icon />
+        </link-button>
+        <div v-if="$slots.header" class="modal-header">
+          <slot name="header"></slot>
+        </div>
+        <div class="modal-body">
+          <slot></slot>
+        </div>
+        <div v-if="$slots.actions" class="modal-actions">
+          <slot name="actions"></slot>
+        </div>
+        <div v-if="$slots.footer" class="divider"></div>
+        <div v-if="$slots.footer" class="footer">
+          <slot name="footer"></slot>
+        </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 <style scoped>
 @import '@/assets/styles/custom-media.pcss';
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.125s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 
 body.modal-active {
   overflow: hidden;
@@ -67,22 +71,42 @@ body.modal-active {
 
 .overlay {
   position: fixed;
-  display: flex;
   left: 0;
   top: 0;
   z-index: 9999;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+
+  display: flex;
   align-items: center;
   justify-content: center;
+  background-color: color-mix(in srgb, var(--colour-ti-base-light) 65%, transparent);
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  padding-top: 5rem;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--colour-neutral-base);
 }
 
 .modal-close {
   position: absolute;
-  right: 1rem;
-  top: 1rem;
+  right: 1.75rem;
+  top: 1.75rem;
   cursor: pointer;
+  color: var(--colour-ti-muted);
+  background-color: color-mix(in srgb, black 5%, transparent);;
+  border-radius: 999px;
+  padding: .5rem;
 }
 
 /* Filter it for dark-mode B^) */
@@ -90,73 +114,60 @@ body.modal-active {
   filter: invert(0.75)
 }
 
-.modal-body {
-  display: flex;
+.modal-header {
   width: 100%;
-  height: 100%;
-  flex-direction: column;
-  align-items: center;
+  padding: 0 3rem;
+  box-sizing: border-box;
+  margin-block-end: 1.5rem;
+
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 120%;
+  color: var(--colour-ti-highlight);
+}
+
+.modal-body {
+  padding: 0 3rem;
+  box-sizing: border-box;
+  margin-block-end: 1.5rem;
+
+  font-size: 0.875rem;
+  line-height: 123%;
+  color: var(--colour-ti-secondary);
+
+  &:last-child {
+    margin-block-end: 3rem;
+  }
 }
 
 .modal-actions {
   display: flex;
-  width: 100%;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-.modal-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  width: 100%;
   gap: 1rem;
-  margin-block: 2rem;
-}
+  padding: 0 3rem;
+  box-sizing: border-box;
+  margin-block-end: 1.5rem;
 
-.modal {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 0.75rem;
-  padding: 1rem 1rem 0;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.divider {
-  width: 100%;
-  height: 0.0625rem;
-  padding-bottom: 1px;
-  border-radius: unset;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(
-    90deg,
-    rgba(21, 66, 124, 0) 20.5%,
-    rgba(21, 66, 124, 0.2) 50%,
-    rgba(21, 66, 124, 0) 79.5%
-  );
-}
-.dark {
-  .divider {
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.00) 0%,
-      rgba(255, 255, 255, 0.40) 50%,
-      rgba(255, 255, 255, 0.00) 100%
-    );
+  &:last-child {
+    margin-block-end: 3rem;
   }
 }
 
+.divider {
+  height: 0.0625rem;
+  border-radius: unset;
+  margin-top: auto;
+  margin-bottom: 1rem;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--colour-neutral-border) 50%,
+    transparent 100%
+  );
+}
+
 .footer {
-  bottom: 0;
   height: 4rem;
   width: 100%;
   display: flex;
@@ -165,10 +176,17 @@ body.modal-active {
   padding-bottom: 1rem;
   gap: 1rem;
 
+  color: var(--colour-service-primary-pressed);
+
   :deep(a) {
-    color: var(--colour-service-primary-pressed);
+    color: var(--colour-service-primary);
     font-size: 0.75rem;
     line-height: 1.5rem;
+    text-decoration-line: none;
+    
+    &:hover {
+      text-decoration-line: underline;
+    }
   }
 }
 
@@ -184,14 +202,10 @@ body.modal-active {
 @media (--md) {
   .modal {
     width: 48rem; /* 768px */
-    padding: 2rem 2rem 0;
-    overflow: hidden;
     height: min-content;
+    min-height: 20vh;
     max-height: 90vh;
-  }
-
-  .modal-header {
-    flex-shrink: 0;
+    border-radius: 1rem;
   }
 
   .modal-body {
@@ -199,14 +213,8 @@ body.modal-active {
     min-height: 0;
   }
 
-  .modal-actions {
-    justify-content: center;
-    margin-block: 2rem;
-    flex-shrink: 0;
-  }
-
   .divider {
-    width: 50rem;
+    width: 100%;
     margin: 0;
     flex-shrink: 0;
   }
