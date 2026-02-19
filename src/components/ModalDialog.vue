@@ -153,6 +153,7 @@ body.modal-active {
   border-radius: unset;
   margin-top: auto;
   margin-bottom: 1rem;
+  flex-shrink: 0;
   background: linear-gradient(
     to right,
     transparent 0%,
