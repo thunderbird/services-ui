@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
+import { ref } from 'vue';
 import LinkButton from '@/components/LinkButton.vue';
 import XIcon from '@/foundation/XIcon.vue';
 
@@ -9,23 +9,16 @@ const isVisible = ref(false);
 
 const show = () => {
   isVisible.value = true;
+  window.document.body.classList.add('modal-active');
   emit('opened');
 };
 const hide = () => {
   isVisible.value = false;
+  window.document.body.classList.remove('modal-active');
   emit('closed');
 };
 
 defineExpose({ show, hide })
-
-onMounted(async () => {
-  // Activate page scroll-lock
-  window.document.body.classList.add('modal-active');
-});
-onUnmounted(() => {
-  // Release page scroll-lock
-  window.document.body.classList.remove('modal-active');
-});
 </script>
 
 <template>
