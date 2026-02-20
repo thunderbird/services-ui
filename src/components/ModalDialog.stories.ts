@@ -32,8 +32,8 @@ export const Standard: Story = {
           Modal Title
         </template>
         
-        <strong>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</strong><br><br>
-        <span>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</span>
+        <strong>The druid circles of Mistward shaped oaks into halls. Over Highvale, dragons traced bright arcs above the thorn maze. Minstrels in Glimmerdeep still sing of the lost grimoire.</strong><br><br>
+        <span>The blessed trials awaited in the hollow temple of Silverfen. Legends in Dragon's Rest foretell a shadow child who will mend the crown. Knights of Redmarsh raised their lances to a pale sun. Each solstice, Oakshield honors the crimson sigil with fire and song. A hidden door opened within Nightveil's echoing caverns.</span>
 
         <template #actions>
           <primary-button name="cancel" variant="outline">Secondary</primary-button>
@@ -56,8 +56,8 @@ export const Standard: Story = {
           Modal Title
         </template>
         
-        <strong>Lorem ipsum dolor sit amet...</strong><br><br>
-        <span>At vero eos et accusam et ...</span>
+        <strong>The druid circles of Mistward...</strong><br><br>
+        <span>The blessed trials awaited in the hollow temple of Silverfen...</span>
 
         <template #actions>
           <primary-button name="cancel" variant="outline">Secondary</primary-button>
@@ -86,7 +86,7 @@ export const Simple: Story = {
       <notice-bar type="info">A modal with only a body section.</notice-bar>
       <primary-button @click="modal.show()">Open Modal</primary-button>
       <modal-dialog ref="modal">
-        <span>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</span>
+        <span>The blessed trials awaited in the hollow temple of Silverfen. Legends in Dragon's Rest foretell a shadow child who will mend the crown. Knights of Redmarsh raised their lances to a pale sun. Each solstice, Oakshield honors the crimson sigil with fire and song. A hidden door opened within Nightveil's echoing caverns.</span>
       </modal-dialog>
     </div>`,
   }),
@@ -94,7 +94,7 @@ export const Simple: Story = {
     docs: {
       source: {
         code: `<modal-dialog ref="modal">
-        <span>At vero eos et accusam et ...</span>
+        <span>The blessed trials awaited in the hollow temple of Silverfen...</span>
       </modal-dialog>`,
       },
     },
@@ -113,7 +113,7 @@ export const WithHeader: Story = {
       <primary-button @click="modal.show()">Open Modal</primary-button>
       <modal-dialog ref="modal">
         <template #header>Modal Title</template>
-        <span>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</span>
+        <span>The blessed trials awaited in the hollow temple of Silverfen. Legends in Dragon's Rest foretell a shadow child who will mend the crown. Knights of Redmarsh raised their lances to a pale sun. Each solstice, Oakshield honors the crimson sigil with fire and song. A hidden door opened within Nightveil's echoing caverns.</span>
       </modal-dialog>
     </div>`,
   }),
@@ -122,7 +122,7 @@ export const WithHeader: Story = {
       source: {
         code: `<modal-dialog ref="modal">
         <template #header>Modal Title</template>
-        <span>At vero eos et accusam et ...</span>
+        <span>The blessed trials awaited in the hollow temple of Silverfen...</span>
       </modal-dialog>`,
       },
     },
@@ -180,8 +180,8 @@ export const WithFooter: Story = {
       <notice-bar type="info">A modal with a footer section.</notice-bar>
       <primary-button @click="modal.show()">Open Modal</primary-button>
       <modal-dialog ref="modal">
-        <strong>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</strong><br><br>
-        <span>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</span>
+        <strong>The druid circles of Mistward shaped oaks into halls. Over Highvale, dragons traced bright arcs above the thorn maze. Minstrels in Glimmerdeep still sing of the lost grimoire.</strong><br><br>
+        <span>The blessed trials awaited in the hollow temple of Silverfen. Legends in Dragon's Rest foretell a shadow child who will mend the crown. Knights of Redmarsh raised their lances to a pale sun. Each solstice, Oakshield honors the crimson sigil with fire and song. A hidden door opened within Nightveil's echoing caverns.</span>
 
         <template #footer>
           <a href="#">Support</a>
@@ -196,8 +196,8 @@ export const WithFooter: Story = {
     docs: {
       source: {
         code: `<modal-dialog ref="modal">
-        <strong>Lorem ipsum dolor...</strong><br><br>
-        <span>At vero eos et ...</span>
+        <strong>The druid circles of Mistward...</strong><br><br>
+        <span>The blessed trials awaited in the hollow temple of Silverfen...</span>
 
         <template #footer>
           <a href="#">Support</a>
