@@ -302,8 +302,14 @@ export enum ExpiryUnitTypes {
   Years = 'year',
 }
 
+export enum AnimationTypes {
+  Scan = 'scan',
+  Pulse = 'pulse',
+}
+
 export default {
   AlertSchemes,
+  AnimationTypes,
   BookingCalendarView,
   BookingsTableColumns,
   BookingsTableFilterOptions,
