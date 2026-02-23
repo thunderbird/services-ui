@@ -2,10 +2,10 @@
 import { t } from '@/composable/i18n';
 
 interface Props {
-  borderRadius: string;
-  width: string;
-  height: string;
-  isLoading: boolean;
+  borderRadius?: string;
+  width?: string;
+  height?: string;
+  isLoading?: boolean;
 }
 
 withDefaults(defineProps<Props>(), {
