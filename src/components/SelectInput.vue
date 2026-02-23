@@ -6,6 +6,7 @@ import { ref } from 'vue';
 import { type SelectOption } from '@/models';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
 import CaretDownIcon from '@/foundation/CaretDownIcon.vue';
+import { InvalidEvent } from 'react';
 
 // component properties
 interface Props {
@@ -42,7 +43,7 @@ const reset = () => {
   validationMessage.value = '';
 };
 
-const onInvalid = (evt: InputEvent) => {
+const onInvalid = (evt: Event) => {
   isInvalid.value = true;
   validationMessage.value = (evt.target as HTMLSelectElement).validationMessage;
 };
@@ -157,6 +158,7 @@ defineExpose({ reset });
     right: 0.75rem;
     width: 1.25rem;
     height: 1.25rem;
+    pointer-events: none;
   }
 }
 
