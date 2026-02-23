@@ -6,7 +6,6 @@ import { ref } from 'vue';
 import { type SelectOption } from '@/models';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
 import CaretDownIcon from '@/foundation/CaretDownIcon.vue';
-import { InvalidEvent } from 'react';
 
 // component properties
 interface Props {
