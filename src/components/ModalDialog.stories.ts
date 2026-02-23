@@ -210,3 +210,31 @@ export const WithFooter: Story = {
     },
   },
 };
+
+export const WithoutClosingOnClickOutside: Story = {
+  render: (args) => ({
+    components: { ModalDialog, PrimaryButton, NoticeBar, LinkButton },
+    setup() {
+      const modal = ref(null);
+      return { args, modal };
+    },
+    template: `<div style="display:flex;flex-direction:column;gap:1rem;align-items:start;">
+      <notice-bar type="info">A modal that can't be closed by clicking outside.</notice-bar>
+      <primary-button @click="modal.show()">Open Modal</primary-button>
+      <modal-dialog ref="modal" :close-outside="false">
+        <strong>The druid circles of Mistward shaped oaks into halls. Over Highvale, dragons traced bright arcs above the thorn maze. Minstrels in Glimmerdeep still sing of the lost grimoire.</strong><br><br>
+        <span>The blessed trials awaited in the hollow temple of Silverfen. Legends in Dragon's Rest foretell a shadow child who will mend the crown. Knights of Redmarsh raised their lances to a pale sun. Each solstice, Oakshield honors the crimson sigil with fire and song. A hidden door opened within Nightveil's echoing caverns.</span>
+      </modal-dialog>
+    </div>`,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<modal-dialog ref="modal" :close-outside="false">
+        <strong>The druid circles of Mistward...</strong><br><br>
+        <span>The blessed trials awaited in the hollow temple of Silverfen...</span>
+      </modal-dialog>`,
+      },
+    },
+  },
+};

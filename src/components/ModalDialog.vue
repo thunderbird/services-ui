@@ -1,10 +1,28 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, useTemplateRef } from 'vue';
 import XIcon from '@/foundation/XIcon.vue';
+import { onClickOutside } from "@vueuse/core";
+
+// component properties
+interface Props {
+  closeOutside?: boolean;
+  dataTestid?: string;
+}
+const props = withDefaults(defineProps<Props>(), {
+  closeOutside: true,
+  dataTestid: 'modal',
+});
 
 const emit = defineEmits(['opened', 'closed']);
 
 const isVisible = ref(false);
+
+const modal = useTemplateRef('modal');
+onClickOutside(modal, () => {
+  if (props.closeOutside && isVisible.value) {
+    hide();
+  }
+})
 
 const show = () => {
   isVisible.value = true;
@@ -23,7 +41,7 @@ defineExpose({ show, hide })
 <template>
   <transition>
     <div v-if="isVisible" class="overlay" role="dialog" tabindex="-1" aria-labelledby="title" aria-modal="true">
-      <div class="modal">
+      <div class="modal" ref="modal">
         <button class="modal-close" @click="hide" aria-labelledby="modal-close-button">
           <x-icon />
         </button>
