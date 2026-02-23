@@ -3,6 +3,7 @@ import ModalDialog from '@/components/ModalDialog.vue';
 import PrimaryButton from './PrimaryButton.vue';
 import TextInput from './TextInput.vue';
 import NoticeBar from './NoticeBar.vue';
+import LinkButton from './LinkButton.vue';
 import { ref } from 'vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
@@ -171,7 +172,7 @@ export const WithActions: Story = {
 
 export const WithFooter: Story = {
   render: (args) => ({
-    components: { ModalDialog, PrimaryButton, NoticeBar },
+    components: { ModalDialog, PrimaryButton, NoticeBar, LinkButton },
     setup() {
       const modal = ref(null);
       return { args, modal };
@@ -184,9 +185,9 @@ export const WithFooter: Story = {
         <span>The blessed trials awaited in the hollow temple of Silverfen. Legends in Dragon's Rest foretell a shadow child who will mend the crown. Knights of Redmarsh raised their lances to a pale sun. Each solstice, Oakshield honors the crimson sigil with fire and song. A hidden door opened within Nightveil's echoing caverns.</span>
 
         <template #footer>
-          <a href="#">Support</a>
+          <link-button href="#">Support</link-button>
           <span>•</span>
-          <a href="#">Privacy Policy</a>
+          <link-button href="#">Privacy Policy</link-button>
         </template>
 
       </modal-dialog>
@@ -200,9 +201,9 @@ export const WithFooter: Story = {
         <span>The blessed trials awaited in the hollow temple of Silverfen...</span>
 
         <template #footer>
-          <a href="#">Support</a>
+          <link-button href="#">Support</link-button>
           <span>•</span>
-          <a href="#">Privacy Policy</a>
+          <link-button href="#">Privacy Policy</link-button>
         </template>
       </modal-dialog>`,
       },

@@ -164,21 +164,23 @@ body.modal-active {
 }
 
 .footer {
-  height: 4rem;
+  height: 2.8125rem;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-bottom: 1rem;
-  gap: 1rem;
+  gap: 2rem;
 
-  color: var(--colour-service-primary-pressed);
+  color: var(--colour-primary-pressed);
 
   :deep(a) {
-    color: var(--colour-service-primary);
-    font-size: 0.75rem;
+    color: var(--colour-primary-default);
+    font-size: 0.8125rem;
     line-height: 1.5rem;
     text-decoration-line: none;
+    padding-left: 0;
+    padding-right: 0;
     
     &:hover {
       text-decoration-line: underline;
@@ -201,7 +203,7 @@ body.modal-active {
     height: min-content;
     min-height: 20vh;
     max-height: 90vh;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
   }
 
   .modal-body {
