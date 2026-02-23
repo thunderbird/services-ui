@@ -114,6 +114,7 @@ body.modal-active {
   box-sizing: border-box;
   margin-block-end: 1.5rem;
 
+  font-family: Metropolis, sans-serif;
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 120%;
