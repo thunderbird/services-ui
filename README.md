@@ -12,7 +12,7 @@ Install the library:
 npm i @thunderbirdops/services-ui
 ```
 
-Include the stylesheet into your top-level component (we recommend you pull in the `Inter` font separately):
+Include the stylesheet into your top-level component:
 
 ```ts
 import '@thunderbirdops/services-ui/style.css';
