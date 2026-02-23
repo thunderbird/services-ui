@@ -40,7 +40,15 @@ defineExpose({ show, hide })
 
 <template>
   <transition>
-    <div v-if="isVisible" class="overlay" role="dialog" tabindex="-1" aria-labelledby="title" aria-modal="true">
+    <div
+      v-if="isVisible"
+      class="overlay"
+      role="dialog"
+      tabindex="-1"
+      aria-labelledby="title"
+      aria-modal="true"
+      :data-testid="dataTestid"
+    >
       <div class="modal" ref="modal">
         <button class="modal-close" @click="hide" aria-labelledby="modal-close-button">
           <x-icon />
