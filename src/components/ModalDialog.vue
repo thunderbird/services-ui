@@ -80,7 +80,7 @@ body.modal-active {
   position: relative;
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-top: 5rem;
   box-sizing: border-box;
 
