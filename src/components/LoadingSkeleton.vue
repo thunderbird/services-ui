@@ -72,7 +72,7 @@ const props = withDefaults(defineProps<Props>(), {
       background-color: var(--colour-ti-base-dark);
       
       @media (prefers-reduced-motion: no-preference) {
-        animation: pulse-animation 6s ease infinite;
+        animation: pulse-animation 3s ease infinite;
       }
     }
   }
