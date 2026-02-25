@@ -25,6 +25,7 @@ import SegmentedControl from '@/components/SegmentedControl.vue';
 // Misc
 import LoadingSkeleton from '@/components/LoadingSkeleton.vue';
 import NoticeBar from '@/components/NoticeBar.vue';
+import ModalDialog from '@/components/ModalDialog.vue';
 import ToolTip from '@/components/ToolTip.vue';
 import UserAvatar from '@/components/UserAvatar.vue';
 import VisualDivider from '@/components/VisualDivider.vue';
@@ -41,7 +42,7 @@ import StatusInfoIcon from '@/foundation/StatusInfoIcon.vue';
 import StatusWarningIcon from '@/foundation/StatusWarningIcon.vue';
 
 // Types
-import { ExpiryUnitTypes, NoticeBarTypes, BaseBadgeTypes } from '@/definitions';
+import { ExpiryUnitTypes, NoticeBarTypes, BaseBadgeTypes, AnimationTypes } from '@/definitions';
 
 // Patterns
 import StandardFooter from '@/patterns/StandardFooter.vue';
@@ -69,6 +70,7 @@ export {
   TextInput,
   // Misc
   LoadingSkeleton,
+  ModalDialog,
   NoticeBar,
   ToolTip,
   UserAvatar,
@@ -84,6 +86,7 @@ export {
   StatusInfoIcon,
   StatusWarningIcon,
   // Types
+  AnimationTypes,
   ExpiryUnitTypes,
   NoticeBarTypes,
   BaseBadgeTypes,
