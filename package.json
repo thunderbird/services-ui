@@ -43,7 +43,6 @@
     "@types/jsdom": "^27.0.0",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/eslint-config-typescript": "^14.3.0",
-    "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.8.1",
     "@vueuse/core": "^14.0.0",
     "autoprefixer": "^10.4.20",
