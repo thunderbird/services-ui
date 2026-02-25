@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
 import LoadingSkeleton from '@/components/LoadingSkeleton.vue';
 import UserAvatar from '@/components/UserAvatar.vue';
+import { AnimationTypes } from "@/definitions";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof LoadingSkeleton> = {
@@ -52,11 +53,12 @@ export const Orb: Story = {
     components: { LoadingSkeleton, UserAvatar },
     setup() {
       args.borderRadius = '100%';
+      args.animationType = AnimationTypes.Pulse;
       return { args };
     },
     template: `
       <loading-skeleton :is-loading="args.isLoading" :width="args.width" :height="args.height"
-                        :border-radius="args.borderRadius">
+                        :border-radius="args.borderRadius" :animation-type="args.animationType">
         <user-avatar username="Beatrice" avatar-url="/img/placeholder.png"/>
       </loading-skeleton>
     `,
@@ -65,7 +67,7 @@ export const Orb: Story = {
     docs: {
       source: {
         code: `
-        <loading-skeleton :is-loading="true" :border-radius="100%">
+        <loading-skeleton :is-loading="true" :border-radius="100%" :animation-type="AnimationTypes.Pulse">
           <user-avatar username="Beatrice" avatar-url="/img/placeholder.png"/>
         </loading-skeleton>
         `,
