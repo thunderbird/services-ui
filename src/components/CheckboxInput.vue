@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, useAttrs } from 'vue';
-import { type HTMLInputElementEvent } from '@/models';
+import { onMounted, ref, useAttrs, useTemplateRef } from 'vue';
 import CheckboxCheckIcon from '@/foundation/CheckboxCheckIcon.vue';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
 
@@ -22,14 +21,14 @@ withDefaults(defineProps<Props>(), {
 const model = defineModel<boolean>();
 const attrs = useAttrs();
 const customClass = attrs['class'] || '';
-const isRequired = Object.hasOwn(attrs, 'required');
+const isRequired = Object.hasOwn(attrs, 'required') && attrs.required === true;
 const isInvalid = ref(false);
 const validationMessage = ref('');
 const isDirty = ref(false);
-const inputRef = ref<HTMLInputElement>(null);
+const input = useTemplateRef<HTMLInputElement>('inputRef');
 
 onMounted(() => {
-  if (Object.hasOwn(attrs, 'checked')) {
+  if (Object.hasOwn(attrs, 'checked') && attrs.checked === true) {
     model.value = true;
   }
 });
@@ -39,10 +38,10 @@ onMounted(() => {
  * Unlike HTMLElement.focus() this does not take any parameters.
  */
 const focus = () => {
-  if (!inputRef.value) {
+  if (!input.value) {
     return;
   }
-  inputRef.value.focus();
+  input.value.focus();
 };
 
 /**
@@ -50,7 +49,7 @@ const focus = () => {
  * This should be explicitly called when the parent form is reset.
  */
 const reset = () => {
-  model.value = Object.hasOwn(attrs, 'checked');
+  model.value = Object.hasOwn(attrs, 'checked') && attrs.checked === true;
   isInvalid.value = false;
   isDirty.value = false;
   validationMessage.value = '';
@@ -59,10 +58,10 @@ const reset = () => {
 const emit = defineEmits(['change']);
 defineExpose({ focus, reset });
 
-const onInvalid = (evt: HTMLInputElementEvent) => {
+const onInvalid = (evt: Event) => {
   isInvalid.value = true;
   isDirty.value = true;
-  validationMessage.value = evt.target.validationMessage;
+  validationMessage.value = (evt.target as HTMLInputElement).validationMessage;
 };
 /**
  * On any change we mark the element as dirty this is so we can delay :invalid until
@@ -70,7 +69,7 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
  * element is not disabled.
  */
 const onChange = () => {
-  if (!Object.hasOwn(attrs, 'disabled')) {
+  if (!Object.hasOwn(attrs, 'disabled') || attrs.disabled === false) {
     isDirty.value = true;
     const newValue = !model.value;
     model.value = newValue;
@@ -187,6 +186,7 @@ input[type='checkbox'] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 0.25rem;
