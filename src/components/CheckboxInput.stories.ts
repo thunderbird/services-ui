@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import CheckboxInput from '@/components/CheckboxInput.vue';
-import { useTemplateRef } from 'vue';
+import { ref, useTemplateRef } from 'vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof CheckboxInput> = {
@@ -85,6 +85,39 @@ export const OnChangeEvent: Story = {
       },
     }),
   ],
+};
+
+export const ExternalStateChange: Story = {
+  render: () => ({
+    components: { CheckboxInput },
+    setup() {
+      const state = ref(false);
+      const disabled = ref(false);
+      return {
+        state,
+        disabled,
+      };
+    },
+    template: `
+      <div>
+        <checkbox-input
+          name="external-model-change"
+          label="I agree to the terms and conditions"
+          help="All good. Nothing to see here"
+          v-model="state"
+          :disabled="disabled"
+        />
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-block-start: 1rem;">
+          <button @click="state = !state">
+            Toggle checked state
+          </button>
+          <button @click="disabled = !disabled">
+            Toggle disabled state
+          </button>
+        </div>
+      </div>
+    `,
+  }),
 };
 
 export const Required: Story = {
