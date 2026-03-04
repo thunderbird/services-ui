@@ -83,6 +83,10 @@ html {
   bottom: calc(100% + .5rem);
 }
 
+a {
+  text-decoration: none;
+}
+
 a:hover > .tooltip,
 button:hover > .tooltip,
 .display-tooltip {
