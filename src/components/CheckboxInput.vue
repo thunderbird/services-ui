@@ -192,7 +192,7 @@ input[type='checkbox'] {
   border-radius: 0.25rem;
   border: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.05) inset;
-  background-color: var(--colour-surface-raised, #fff);
+  background-color: var(--colour-neutral-raised, #fff);
   color: var(--colour-ti-base-dark);
 
   .checkbox-icon {
@@ -221,12 +221,16 @@ input:checked:focus-visible + .checkbox-control {
   border-color: var(--colour-primary-hover-light);
 }
 
+input:disabled + .checkbox-control:hover,
 input:disabled + .checkbox-control {
   cursor: not-allowed;
-  opacity: 0.5;
+  border-color: var(--colour-neutral-border);
+}
+input:disabled:checked + .checkbox-control {
+  background-color: var(--colour-ti-muted);
 }
 
 input:disabled + .checkbox-control ~ span {
-  color: var(--colour-ti-muted);
+  color: var(--colour-ti-secondary);
 }
 </style>
