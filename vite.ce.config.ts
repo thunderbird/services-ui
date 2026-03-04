@@ -17,7 +17,10 @@ export default defineConfig({
     }),
   ],
   define: {
-    'process.env.NODE_ENV': 'production',
+    // JSON.stringify() is necessary.
+    // Without it, you'll get the following error:
+    // "Uncaught ReferenceError: production is not defined"
+    'process.env.NODE_ENV': JSON.stringify('production'),
   },
   resolve: {
     alias: {
