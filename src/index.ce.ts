@@ -3,12 +3,14 @@ if (typeof (window as any).process === 'undefined') {
 }
 import { defineCustomElement } from 'vue';
 
+// Import the Components to convert.
 import { PrimaryButton } from './main';
 
-// Convert Vue components to Web Components
+// Convert each to a Web Component.
 const BoltPrimaryButton = defineCustomElement(PrimaryButton);
 
-// Register them globally
+// Register globally.
 customElements.define('bolt-primary-button', BoltPrimaryButton);
 
+// Provide components for use.
 export { BoltPrimaryButton };
