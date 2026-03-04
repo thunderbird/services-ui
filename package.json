@@ -11,11 +11,13 @@
       "import": "./index.js",
       "require": "./index.umd.cjs"
     },
+    "./bolt": "./bolt.js",
     "./style.css": "./style.css"
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build --",
+    "build:ce": "vite build --config vite.ce.config.ts",
     "preview": "vite preview",
     "watch": "vite build --watch",
     "test:unit": "vitest",

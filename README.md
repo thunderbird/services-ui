@@ -55,3 +55,71 @@ Once a release is deemed either a major update, minor update or patch update go 
 Once that's done commit it with the version number (i.e. if the new version is 0.6.1, commit just package.json and package-lock.json with the message "0.6.1".)
 
 After that create a tag for that commit as v$versionNumber (i.e. v0.6.1 from our previous example.) and draft and publish a new release based off that tag. The npm automation should kick in, and it should publish that new version soon.
+
+## Exporting as Web Components
+
+Using Vite, you can create Web Components (also known as "Custom Elements") from Vue components.
+
+Running `npm run build:ce` ("ce" for "Custom Elements") produces two files that can be included in a static website:
+
+* `dist/boltweb.iife.js`
+* `dist/boltweb.css`
+
+Example usage:
+
+```html
+<bolt-primary-button variant="outline" href="{{ url('roadmaps.desktop') }}">
+  Visit Desktop Roadmap
+</bolt-primary-button>
+```
+
+### Specifying which components to export
+
+In `/src/index.ce.ts`, there are 4 steps for specifying the Vue components that will be exported as Web Components:
+
+1. Import the components.
+2. Call `defineCustomElement`.
+3. Register a tag name.
+4. Add the converted element to the `export` object.
+
+For reference, here's the code that performs those steps for `PrimaryButton`:
+```
+// Import the Components to convert.
+import { PrimaryButton } from './main';
+
+// Convert each to a Web Component.
+const BoltPrimaryButton = defineCustomElement(PrimaryButton);
+
+// Register globally.
+customElements.define('bolt-primary-button', BoltPrimaryButton);
+
+// Provide components for use.
+export { BoltPrimaryButton };
+```
+
+### Displaying the text content of a Web Component
+
+
+When you use one of the Web Components in your markup, you will likely want to specify the text content:
+
+```html
+<bolt-primary-button variant="outline" href="{{ url('roadmaps.desktop') }}">
+  Visit Desktop Roadmap
+</bolt-primary-button>
+```
+
+In this example, "Visit Desktop Roadmap" is rendered via the default `slot` of the Vue component.
+
+If the component you want to use does not have a default slot, add it:
+```diff
+ <template>
+   <base-button type="primary">
+     <template v-for="(_, name) in $slots" v-slot:[name]="slotData">
+       <slot :name="name" v-bind="slotData" />
+     </template>
++    <slot />
+   </base-button>
+ </template>
+```
+
+If you do not want to modify the component, you can also use named slots (which requires wrapping your text in an additional HTML element). See [[https://vuejs.org/guide/extras/web-components.html#slots][the Vue docs]] for more information.
