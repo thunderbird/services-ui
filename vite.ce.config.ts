@@ -18,8 +18,9 @@ export default defineConfig({
   ],
   define: {
     // JSON.stringify() is necessary.
-    // Without it, you'll get the following error:
-    // "Uncaught ReferenceError: production is not defined"
+    // Without it, vite replaces instances of
+    // `process.env.NODE_ENV` with `production` (without quotes).
+    // https://vite.dev/config/shared-options#define
     'process.env.NODE_ENV': JSON.stringify('production'),
   },
   resolve: {
