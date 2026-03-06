@@ -21,6 +21,7 @@
     "preview": "vite preview",
     "watch": "vite build --watch",
     "test:unit": "vitest",
+    "test:components": "vitest test/components",
     "test:e2e": "playwright test",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
@@ -31,7 +32,8 @@
   },
   "dependencies": {
     "vue": "^3.4.29",
-    "vue-i18n": "^11.1.2"
+    "vue-i18n": "^11.1.2",
+    "@vue/test-utils": "^2.4.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.44.1",
