@@ -48,6 +48,15 @@ You can build the library by running:
 npm run build
 ```
 
+### Testing
+
+You can run the vue.js components tests by running:
+
+```bash
+npm install
+npm run test:components
+```
+
 ### Publishing a new version
 
 Once a release is deemed either a major update, minor update or patch update go ahead and update the version in package.json. Don't forget to run `npm i` to update the package version number in the lockfile too.
