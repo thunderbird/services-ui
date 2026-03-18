@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, afterAll, afterEach, vi } from 'vitest';
+import { describe, it, expect, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import BaseButton from '@/components/BaseButton.vue';
 import CheckCircleFilledIcon from '@/foundation/CheckCircleFilledIcon.vue';
