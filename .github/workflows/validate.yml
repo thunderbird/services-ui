@@ -1,0 +1,52 @@
+# Simple workflow for running vue.js mounted component tests
+name: Run Component Tests
+
+on:
+  # Runs on all branches except main
+  push:
+    branches:
+      - '**'
+      - '!main'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      validate-src: ${{ steps.check.outputs.validate-src }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: dorny/paths-filter@v3
+      id: check
+      with:
+        filters: |
+          validate-src:
+            - 'src/**'
+            - 'tests/**'
+            - '.github/workflows/validate.yml'
+
+  component-tests:
+      needs: detect-changes
+      runs-on: ubuntu-latest
+      if: needs.detect-changes.outputs.validate-src == 'true'
+
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4.0.3
+        with:
+          cache: npm
+
+      - name: Install Deps
+        run: npm install
+
+      - name: Run Component Tests
+        run: npm run test:components
