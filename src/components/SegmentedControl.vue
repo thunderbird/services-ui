@@ -74,7 +74,7 @@ const setOption = (option: SelectOption<string | number>) => {
   flex-direction: column;
   gap: 0.5rem;
   color: var(--colour-ti-secondary);
-  font-family: 'Inter', 'sans-serif';
+  font-family: 'Inter', sans-serif;
   font-size: 1rem;
   line-height: var(--line-height-input);
   font-weight: 400;

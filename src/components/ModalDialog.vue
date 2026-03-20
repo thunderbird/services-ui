@@ -207,7 +207,7 @@ body.modal-active {
     text-decoration-line: none;
     padding-left: 0;
     padding-right: 0;
-    
+
     &:hover {
       text-decoration-line: underline;
     }
@@ -217,7 +217,7 @@ body.modal-active {
 /* Default styling for #title */
 :deep(#title) {
   color: var(--colour-ti-base);
-  font-family: 'Inter', 'sans-serif';
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 1.375rem;
   line-height: 1.664rem;

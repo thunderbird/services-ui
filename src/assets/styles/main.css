@@ -8,7 +8,7 @@
 
 /* Apply this to your body or wrapper class for use with services-ui elements (temp) */
 .services-ui-base {
-  font-family: 'Inter', 'sans-serif';
+  font-family: 'Inter', sans-serif;
   font-size: 0.8125rem;
 }
 
