@@ -105,7 +105,7 @@ button:hover > .tooltip {
 
   border: 0;
   border-radius: var(--border-radius);
-  font-family: 'Inter', 'sans-serif';
+  font-family: 'Inter', sans-serif';
   font-size: var(--txt-input); /* 14px */
   font-weight: 400;
   line-height: 1;

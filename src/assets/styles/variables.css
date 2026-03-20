@@ -3,7 +3,7 @@ html {
   --txt-default: 0.875rem; /* 14px */
   --txt-input: var(--txt-default); /* 14px */
   --line-height-input: 1.25rem; /* 20px */
-  --font-sans: 'Inter', 'sans-serif';
+  --font-sans: 'Inter', sans-serif;
 
   /* Some elements are stubborn so we need to force the color there */
   --txt-colour: var(--colour-ti-base);

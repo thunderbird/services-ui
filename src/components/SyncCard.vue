@@ -64,7 +64,7 @@ withDefaults(defineProps<Props>(), {
   border-radius: 0.5625rem;
   border: 0.0625rem solid var(--colour-neutral-border);
   background: var(--colour-neutral-base);
-  font-family: 'Inter', 'sans-serif';
+  font-family: 'Inter', sans-serif;
   font-size: var(--txt-input);
   color: var(--colour-ti-base);
 }
