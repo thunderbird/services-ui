@@ -195,11 +195,11 @@ button:hover > .tooltip {
       border-box;
     color: var(--colour-neutral-base);
 
-    &:hover:enabled {
+    &:hover:not(:disabled) {
       background: linear-gradient(180deg, var(--colour-primary-hover) 0%, var(--colour-primary-hover) 100%);
     }
 
-    &:active:enabled {
+    &:active:not(:disabled) {
       background: linear-gradient(180deg, var(--colour-primary-pressed) 0%, var(--colour-primary-pressed) 100%);
     }
   }
@@ -211,13 +211,13 @@ button:hover > .tooltip {
     background: transparent;
     color: var(--colour-primary-hover);
 
-    &:hover:enabled {
+    &:hover:not(:disabled) {
       &::before {
         padding: 0.125rem; /* Controls border-width */
       }
     }
 
-    &:active:enabled {
+    &:active:not(:disabled) {
       background: color-mix(in srgb, var(--colour-accent-blue), transparent 90%);
       transition: none;
 
@@ -242,12 +242,12 @@ button:hover > .tooltip {
     color: var(--colour-ti-base-light);
     position: relative;
 
-    &:hover:enabled {
+    &:hover:not(:disabled) {
       background: linear-gradient(var(--colour-primary-hover), var(--colour-primary-hover));
       color: var(--colour-neutral-base);
     }
 
-    &:active:enabled {
+    &:active:not(:disabled) {
       background: linear-gradient(var(--colour-primary-pressed), var(--colour-primary-pressed));
       color: var(--colour-neutral-base);
     }
@@ -261,12 +261,12 @@ button:hover > .tooltip {
     background: transparent;
     color: var(--colour-ti-base);
 
-    &:hover:enabled {
+    &:hover:not(:disabled) {
       background: #f2f2f2;
       color: var(--colour-ti-base-light);
     }
 
-    &:active:enabled {
+    &:active:not(:disabled) {
       background: #e3e3e3;
       color: var(--colour-ti-base-light);
     }
@@ -278,11 +278,11 @@ button:hover > .tooltip {
     background-color: var(--button-destructive-color);
     color: var(--colour-neutral-base);
 
-    &:hover:enabled {
+    &:hover:not(:disabled) {
       background-color: var(--button-destructive-color-hover);
     }
 
-    &:active:enabled {
+    &:active:not(:disabled) {
       background-color: var(--button-destructive-color-active);
     }
   }
@@ -294,7 +294,7 @@ button:hover > .tooltip {
     background: transparent;
     color: var(--button-destructive-color);
 
-    &:hover:enabled {
+    &:hover:not(:disabled) {
       --button-outline-border: var(--button-destructive-color-hover);
 
       color: var(--button-destructive-color-hover);
@@ -304,7 +304,7 @@ button:hover > .tooltip {
       }
     }
 
-    &:active:enabled {
+    &:active:not(:disabled) {
       --button-outline-border: var(--button-destructive-color-active);
 
       color: var(--button-destructive-color-active);
