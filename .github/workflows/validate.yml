@@ -28,7 +28,7 @@ jobs:
         filters: |
           validate-src:
             - 'src/**'
-            - 'tests/**'
+            - 'test/**'
             - '.github/workflows/validate.yml'
 
   component-tests:

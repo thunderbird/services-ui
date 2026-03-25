@@ -148,6 +148,7 @@ describe('BaseButton', () => {
         } else {
           // link type buttons can still be clicked (to navigate the to the link) even if disabled
           expect(wrapper.emitted().click, 'expected click event to have been emitted').toBeTruthy();
+          expect(wrapper.emitted()['click'].length).toBe(1);
         }
       }
     });

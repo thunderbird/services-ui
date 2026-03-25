@@ -123,6 +123,7 @@ describe('CheckboxInput', () => {
     // click on checkbox, verify received click event
     await cboxInput.trigger('click');
     expect(wrapper.emitted().click, 'expected click event to have been emitted').toBeTruthy();
+    expect(wrapper.emitted()['click'].length).toBe(1);
 
     // checkbox should now be checked
     expect(cboxInput.element.checked).toBe(true);
@@ -148,6 +149,7 @@ describe('CheckboxInput', () => {
     // click on checkbox, verify received click event
     await cboxInput.trigger('click');
     expect(wrapper.emitted().click, 'expected click event to have been emitted').toBeTruthy();
+    expect(wrapper.emitted()['click'].length).toBe(1);
 
     // checkbox should now be UNchecked
     expect(cboxInput.element.checked).toBe(false);
