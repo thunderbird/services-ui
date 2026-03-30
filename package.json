@@ -1,6 +1,6 @@
 {
   "name": "@thunderbirdops/services-ui",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "author": "Thunderbird",
   "type": "module",
   "license": "MPL-2.0",
@@ -56,7 +56,7 @@
     "eslint-plugin-storybook": "^10.1.2",
     "eslint-plugin-vue": "^10.3.0",
     "glob": "^13.0.0",
-    "happy-dom": "^20.8.3",
+    "happy-dom": "^20.8.9",
     "npm-run-all2": "^8.0.4",
     "postcss": "^8.4.45",
     "postcss-custom-media": "^12.0.0",
