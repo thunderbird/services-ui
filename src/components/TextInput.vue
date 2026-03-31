@@ -54,6 +54,7 @@ interface Props {
   smallInput?: boolean;
   maxLength?: number | string;
   dataTestid?: string;
+  type?: InputTypeHTMLAttribute;
 }
 const props = withDefaults(defineProps<Props>(), {
   label: null,
@@ -64,6 +65,7 @@ const props = withDefaults(defineProps<Props>(), {
   smallInput: false,
   maxLength: null,
   dataTestid: 'text-input',
+  type: 'text',
 });
 
 const emit = defineEmits(['submit', 'blur']);
@@ -96,15 +98,17 @@ const onBlur = (evt) => {
   emit('blur');
 };
 
-// null: no password input, false: hide password, true: show password
-const passwordIsVisible = ref(attrs['type'] === 'password' ? false : null);
-const inputType = ref(attrs['type'] as InputTypeHTMLAttribute);
+// not computed, we want this only on the initial load
+const isPasswordField = props.type === 'password';  
+// The current inputType, this will swap between text and password.
+const inputType = ref(props.type);
+// false: hide password, true: show password
+const passwordIsVisible = ref(isPasswordField ? false : null);
 
 const togglePasswordVisibility = () => {
   inputType.value = passwordIsVisible.value ? 'password' : 'text';
   passwordIsVisible.value = !passwordIsVisible.value;
 };
-
 
 const charCount = computed(() => model.value?.length ?? 0);
 
@@ -118,9 +122,9 @@ const inputPaddingLeft = computed(() => (props.prefix ? `${inputPrefixWidth.valu
  * We prefer password visibility indicator over maxLength if password and maxLength are both set.
  */
 const inputPaddingRight = computed(() => {
-  if (!props.maxLength && !passwordIsVisible.value) {
+  if (!props.maxLength && !isPasswordField) {
     return '0';
-  } else if (passwordIsVisible.value) {
+  } else if (isPasswordField) {
     return '2.75rem';
   }
   // We'll use `ch` units (width of `0` in the font used.) 
@@ -354,6 +358,7 @@ const inputPaddingRight = computed(() => {
       }
     }
     .character-count {
+      top: 0.75rem;
       pointer-events: none;
       font-weight: 600;
     }
