@@ -54,6 +54,7 @@ interface Props {
   smallInput?: boolean;
   maxLength?: number | string;
   dataTestid?: string;
+  type?: InputTypeHTMLAttribute;
 }
 const props = withDefaults(defineProps<Props>(), {
   label: null,
@@ -64,13 +65,11 @@ const props = withDefaults(defineProps<Props>(), {
   smallInput: false,
   maxLength: null,
   dataTestid: 'text-input',
+  type: 'text',
 });
 
 const emit = defineEmits(['submit', 'blur']);
 defineExpose({ focus, reset });
-
-// Calculate padding left for the actual input considering prefix width and existing padding
-const inputPaddingLeft = computed(() => (props.prefix ? `${inputPrefixWidth.value + 12}px` : null));
 
 const onInvalid = (evt: HTMLInputElementEvent) => {
   isInvalid.value = true;
@@ -99,14 +98,39 @@ const onBlur = (evt) => {
   emit('blur');
 };
 
-// null: no password input, false: hide password, true: show password
-const passwordIsVisible = ref(attrs['type'] === 'password' ? false : null);
-const inputType = ref(attrs['type'] as InputTypeHTMLAttribute);
+// not computed, we want this only on the initial load
+const isPasswordField = props.type === 'password';  
+// The current inputType, this will swap between text and password.
+const inputType = ref(props.type);
+// false: hide password, true: show password
+const passwordIsVisible = ref(isPasswordField ? false : null);
 
 const togglePasswordVisibility = () => {
   inputType.value = passwordIsVisible.value ? 'password' : 'text';
   passwordIsVisible.value = !passwordIsVisible.value;
 };
+
+const charCount = computed(() => model.value?.length ?? 0);
+
+// Calculate padding left for the actual input considering prefix width and existing padding
+const inputPaddingLeft = computed(() => (props.prefix ? `${inputPrefixWidth.value + 12}px` : null));
+/**
+ * Calculate the padding right for the actual text considering our two incompatible suffixes.
+ * We have two different types of inputSuffixes at the moment as they both want to take up
+ * valuable space on the right side of the input. 
+ * 
+ * We prefer password visibility indicator over maxLength if password and maxLength are both set.
+ */
+const inputPaddingRight = computed(() => {
+  if (!props.maxLength && !isPasswordField) {
+    return '0';
+  } else if (isPasswordField) {
+    return '2.75rem';
+  }
+  // We'll use `ch` units (width of `0` in the font used.) 
+  // Double it (for max maxLength) and add the slash and space for good measure.
+  return `${(props.maxLength?.length * 2) + 4}ch`; 
+});
 </script>
 
 <template>
@@ -133,7 +157,7 @@ const togglePasswordVisibility = () => {
           :id="name"
           :name="name"
           :maxLength="maxLength"
-          :style="{ paddingLeft: inputPaddingLeft }"
+          :style="{ paddingLeft: inputPaddingLeft, paddingRight: inputPaddingRight }"
           :data-testid="dataTestid"
           @invalid="onInvalid"
           @change="onChange"
@@ -146,6 +170,7 @@ const togglePasswordVisibility = () => {
         <span v-else-if="passwordIsVisible === false" class="tbpro-input-suffix" @click="togglePasswordVisibility">
           <eye-off-icon class="icon" />
         </span>
+        <span v-else-if="maxLength !== null" class="character-count tbpro-input-suffix"> {{ charCount }}/{{ maxLength }}</span>
       </span>
       <span v-if="outerSuffix" class="tbpro-input-outer-suffix">{{ outerSuffix }}</span>
     </span>
@@ -331,6 +356,11 @@ const togglePasswordVisibility = () => {
       .icon {
         stroke-width: 1.25;
       }
+    }
+    .character-count {
+      top: 0.75rem;
+      pointer-events: none;
+      font-weight: 600;
     }
   }
 }

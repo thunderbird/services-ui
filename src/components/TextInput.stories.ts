@@ -316,3 +316,19 @@ export const SmallInput: Story = {
     },
   },
 };
+
+export const MaxLength: Story = {
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input name="char-count" label="Input with max length" max-length="250" />
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input name="char-count" label="Input with max length" max-length="250" />`,
+      },
+    },
+  },
+};
