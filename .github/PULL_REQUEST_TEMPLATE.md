@@ -19,6 +19,10 @@
 
 <!-- What things are intentionally left as is? -->
 
+## Automated tests
+
+<!-- If existing components were updated or new components were added, please update existing or add new [mounted component tests](../test/components/) accordingly -->
+
 ## Related tickets
 
 <!-- Enter any applicable issues here -->
