@@ -3,7 +3,6 @@
  * @note The default slot is deprecated and will be removed in future releases
  */
 import { ref, computed, useAttrs, type InputTypeHTMLAttribute } from 'vue';
-import { useElementSize } from '@vueuse/core';
 import { type HTMLInputElementEvent } from '@/models';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
 import EyeIcon from '@/foundation/EyeIcon.vue';
@@ -17,7 +16,6 @@ const isDirty = ref(false);
 const isRequired = Object.hasOwn(attrs, 'required');
 const inputRef = ref<HTMLInputElement>(null);
 const inputPrefix = ref<HTMLSpanElement>(null);
-const { width: inputPrefixWidth } = useElementSize(inputPrefix); // Calculate the width of the prefix element
 
 /**
  * Forwards focus intent to the text input element.
@@ -111,26 +109,6 @@ const togglePasswordVisibility = () => {
 };
 
 const charCount = computed(() => model.value?.length ?? 0);
-
-// Calculate padding left for the actual input considering prefix width and existing padding
-const inputPaddingLeft = computed(() => (props.prefix ? `${inputPrefixWidth.value + 12}px` : null));
-/**
- * Calculate the padding right for the actual text considering our two incompatible suffixes.
- * We have two different types of inputSuffixes at the moment as they both want to take up
- * valuable space on the right side of the input. 
- * 
- * We prefer password visibility indicator over maxLength if password and maxLength are both set.
- */
-const inputPaddingRight = computed(() => {
-  if (!props.maxLength && !isPasswordField) {
-    return '0';
-  } else if (isPasswordField) {
-    return '2.75rem';
-  }
-  // We'll use `ch` units (width of `0` in the font used.) 
-  // Double it (for max maxLength) and add the slash and space for good measure.
-  return `${(props.maxLength?.length * 2) + 4}ch`; 
-});
 </script>
 
 <template>
@@ -142,14 +120,13 @@ const inputPaddingRight = computed(() => {
     </span>
     <span class="tbpro-input" :class="{ 'small-text': props.smallText }">
       <span v-if="outerPrefix" class="tbpro-input-outer-prefix">{{ outerPrefix }}</span>
-      <span class="tbpro-input-wrapper">
+      <span class="tbpro-input-wrapper" :class="{'small-input': props.smallInput}">
         <span v-if="prefix" ref="inputPrefix" class="tbpro-input-prefix">{{ prefix }}</span>
         <input
           v-bind="attrs"
           v-model="model"
           class="tbpro-input-element"
           :class="{
-            'small-input': props.smallInput,
             dirty: isDirty,
             error: error !== null,
           }"
@@ -157,7 +134,6 @@ const inputPaddingRight = computed(() => {
           :id="name"
           :name="name"
           :maxLength="maxLength"
-          :style="{ paddingLeft: inputPaddingLeft, paddingRight: inputPaddingRight }"
           :data-testid="dataTestid"
           @invalid="onInvalid"
           @change="onChange"
@@ -286,41 +262,46 @@ const inputPaddingRight = computed(() => {
   }
 
   .tbpro-input-wrapper {
+    --outer-padding: 0.7rem;
     position: relative;
     width: 100%;
+    display: flex;
+    padding: var(--outer-padding);
+    gap: calc(var(--outer-padding) * 0.25);
+    box-sizing: border-box;
+
+    &.small-input {
+      --outer-padding: 0.125rem;
+      --txt-input: 0.7384375rem;
+    }
 
     .tbpro-input-prefix {
-      position: absolute;
-      top: 0.7rem;
-      left: 12px;
+      align-self: center;
       font-size: var(--txt-input);
       line-height: var(--line-height-input);
       color: var(--colour-ti-muted);
       user-select: none;
       text-overflow: '.../';
       overflow: hidden;
-      max-width: 40%;
       text-wrap: nowrap;
       z-index: 1;
+      flex-shrink: 0;
+      max-width: 40%;
     }
 
     .tbpro-input-element {
       width: 100%;
       transition-property: none;
       font-size: var(--txt-input);
-
-      padding: 0.75rem;
+      font-family: var(--font-sans);
       box-sizing: border-box;
+      line-height: var(--line-height-input);
 
       color: var(--colour-ti-secondary);
       background-color: var(--colour-neutral-base);
       border: none;
       border-radius: var(--border-radius);
-
-      &.small-input {
-        padding: 0.125rem;
-        --txt-input: 0.7384375rem;
-      }
+      padding: 0 0.125rem; /* Recreate browser applied padding but remove the top and bottom padding */
 
       &:disabled {
         filter: grayscale(50%);
@@ -339,29 +320,28 @@ const inputPaddingRight = computed(() => {
         margin-right: -0.5rem;
         background: none;
       }
-
-      &:has(~ .tbpro-input-suffix) {
-        padding-right: 2.75rem;
-      }
     }
 
     .tbpro-input-suffix {
-      position: absolute;
-      top: 0.625rem;
-      right: 0.75rem;
+      position: relative;
+      display: flex;
+      flex-shrink: 0;
+      line-height: var(--line-height-input);
       color: var(--colour-ti-muted);
       z-index: 1;
       cursor: pointer;
-
+      align-self: center;
       .icon {
         stroke-width: 1.25;
+        /* Undo the outer padding for top/bottom so we don't adjust the input size */
+        margin: calc(-1 * var(--outer-padding)) 0;
+      }
+      &.character-count {
+        pointer-events: none;
+        font-weight: 600;
       }
     }
-    .character-count {
-      top: 0.75rem;
-      pointer-events: none;
-      font-weight: 600;
-    }
+
   }
 }
 
