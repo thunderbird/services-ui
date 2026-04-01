@@ -332,3 +332,19 @@ export const MaxLength: Story = {
     },
   },
 };
+
+export const PrefixAndMaxLength: Story = {
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input name="prefix-and-char-count" prefix="Hello World!" label="Input with a prefix and max length" max-length="32" />
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input name="prefix-and-char-count" prefix="Hello World!" label="Input with a prefix and max length" max-length="32" />`,
+      },
+    },
+  },
+};
