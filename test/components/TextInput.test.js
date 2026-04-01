@@ -206,6 +206,12 @@ describe('TextInput', () => {
 
     expect(wrapper.props()).toEqual(ourProps);
 
+    if (ourProps['smallInput']) {
+      const textInputWrapper = wrapper.find('.tbpro-input-wrapper');
+      expect(textInputWrapper.exists()).toBe(true);    
+      expect(textInputWrapper.attributes().class).contains('small-input');
+    }
+
     // verify text input element found, is visible, correct attributes and label
     const textInputSel = `[data-testid=${ourProps['dataTestid']}]`;
     const textInput = wrapper.find(textInputSel);
@@ -213,9 +219,6 @@ describe('TextInput', () => {
     expect(textInput.isVisible()).toBe(true);
 
     var expClass = 'tbpro-input-element';
-    if (ourProps['smallInput']) {
-      expClass += ' small-input';
-    }
     if (ourProps['error']) {
       expClass += ' error';
     }
