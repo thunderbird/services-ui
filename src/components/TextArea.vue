@@ -95,7 +95,7 @@ const onChange = () => {
         @invalid="onInvalid"
         @change="onChange"
       />
-      <span v-if="maxLength !== null" class="character-count"> {{ charCount }}/{{ maxLength }} </span>
+      <span v-if="maxLength !== null" class="character-count" aria-live="polite" :aria-label="$t('textInput.maxLengthAlt', {currentCount: charCount, maxCount: maxLength})"> {{ charCount }}/{{ maxLength }} </span>
     </span>
     <span v-if="isInvalid" class="help-label invalid">
       <error-icon />

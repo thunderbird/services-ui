@@ -64,6 +64,13 @@
   "textArea": {
     "invalidInput": "Invalid input"
   },
+  "textInput": {
+    "passwordIndicator": {
+      "show": "Show password",
+      "hide": "Hide password"
+    },
+    "maxLengthAlt": "{currentCount} out of {maxCount} characters remaining."
+  },
   "userAvatar": {
     "altText": "{username}'s avatar."
   },
