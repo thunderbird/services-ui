@@ -16,10 +16,11 @@ const validationMessage = ref('');
 const isDirty = ref(false);
 const isRequired = Object.hasOwn(attrs, 'required');
 const inputRef = ref<HTMLInputElement>(null);
-const inputPrefix = ref<HTMLSpanElement>(null);
 const showPasswordText = t('textInput.passwordIndicator.show');
 const hidePasswordText = t('textInput.passwordIndicator.hide');
 const passwordIndicatorText = ref(showPasswordText);
+
+const charCount = computed(() => model.value?.length ?? 0);
 
 /**
  * Forwards focus intent to the text input element.
@@ -77,6 +78,7 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
   isInvalid.value = true;
   validationMessage.value = evt.target.validationMessage;
 };
+
 /**
  * On any change we mark the element as dirty
  * this is so we can delay :invalid until
@@ -89,7 +91,7 @@ const onChange = () => {
   inputRef.value.setCustomValidity('');
 };
 
-const onBlur = (evt) => {
+const onBlur = (evt: HTMLInputElementEvent) => {
   if (isDirty.value && evt.target.checkValidity()) {
     isInvalid.value = false;
     validationMessage.value = '';
@@ -114,8 +116,6 @@ const togglePasswordVisibility = () => {
     passwordIndicatorText.value = showPasswordText;
   }
 };
-
-const charCount = computed(() => model.value?.length ?? 0);
 </script>
 
 <template>
@@ -128,7 +128,7 @@ const charCount = computed(() => model.value?.length ?? 0);
     <span class="tbpro-input" :class="{ 'small-text': props.smallText }">
       <span v-if="outerPrefix" class="tbpro-input-outer-prefix">{{ outerPrefix }}</span>
       <span class="tbpro-input-wrapper" :class="{'small-input': props.smallInput}">
-        <span v-if="prefix" ref="inputPrefix" class="tbpro-input-prefix">{{ prefix }}</span>
+        <span v-if="prefix" class="tbpro-input-prefix">{{ prefix }}</span>
         <input
           v-bind="attrs"
           v-model="model"
@@ -140,7 +140,7 @@ const charCount = computed(() => model.value?.length ?? 0);
           :type="inputType"
           :id="name"
           :name="name"
-          :maxLength="maxLength"
+          :maxlength="maxLength"
           :data-testid="dataTestid"
           @invalid="onInvalid"
           @change="onChange"
@@ -159,7 +159,12 @@ const charCount = computed(() => model.value?.length ?? 0);
           <eye-icon class="icon" alt="" v-if="passwordIsVisible === true" />
           <eye-off-icon class="icon" alt="" v-else-if="passwordIsVisible === false" />
         </span>
-        <span v-else-if="maxLength !== null" class="character-count tbpro-input-suffix" aria-live="polite" :aria-label="t('textInput.maxLengthAlt', {currentCount: charCount, maxCount: maxLength})"> {{ charCount }}/{{ maxLength }}</span>
+        <span
+          v-else-if="maxLength !== null"
+          class="character-count tbpro-input-suffix"
+          aria-live="polite"
+          :aria-label="t('textInput.maxLengthAlt', {currentCount: charCount, maxCount: maxLength})"
+        > {{ charCount }}/{{ maxLength }}</span>
       </span>
       <span v-if="outerSuffix" class="tbpro-input-outer-suffix">{{ outerSuffix }}</span>
     </span>

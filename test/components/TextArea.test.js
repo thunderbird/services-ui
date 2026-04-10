@@ -10,6 +10,7 @@ describe('TextArea', () => {
   const testCases = [
     { 
       label: 'This is the TextArea label!',
+      error: null,
       help: null,
       smallText: false,
       maxLength: null,
@@ -18,6 +19,7 @@ describe('TextArea', () => {
     },
     { 
       label: 'This is the TextArea label!',
+      error: null,
       help: 'Please type in some text',
       smallText: false,
       maxLength: null,
@@ -26,6 +28,7 @@ describe('TextArea', () => {
     },
     { 
       label: 'This is the TextArea label!',
+      error: null,
       help: null,
       smallText: true,
       maxLength: null,
@@ -34,6 +37,7 @@ describe('TextArea', () => {
     },
     { 
       label: 'This is the TextArea label!',
+      error: null,
       help: null,
       smallText: false,
       maxLength: 25,
@@ -42,6 +46,7 @@ describe('TextArea', () => {
     },
     { 
       label: 'This is the TextArea label!',
+      error: null,
       help: null,
       smallText: false,
       maxLength: null,
@@ -50,6 +55,7 @@ describe('TextArea', () => {
     },
     { 
       label: 'This is the TextArea label!',
+      error: null,
       help: null,
       smallText: false,
       maxLength: 25,
@@ -58,6 +64,7 @@ describe('TextArea', () => {
     },    
     { 
       label: 'This is the TextArea label!',
+      error: null,
       help: null,
       smallText: false,
       maxLength: null,
@@ -66,6 +73,7 @@ describe('TextArea', () => {
     },
     { 
       label: 'This is the TextArea label!',
+      error: null,
       help: null,
       smallText: false,
       maxLength: null,
@@ -79,10 +87,11 @@ describe('TextArea', () => {
   });
 
   it.each(testCases)('renders correctly with the given options',
-    async ({ label, help, smallText, maxLength, modelValue, dataTestid}) => {
+    async ({ label, error, help, smallText, maxLength, modelValue, dataTestid}) => {
     const ourProps = {
       name: 'text-area-test',
       label: label,
+      error: error,
       help: help,
       smallText: smallText,
       maxLength: maxLength,

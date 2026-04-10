@@ -34,3 +34,7 @@ export type HTMLInputElementEvent = Event & {
   target: HTMLInputElement;
   currentTarget: HTMLInputElement;
 };
+export type HTMLTextareaElementEvent = Event & {
+  target: HTMLTextAreaElement;
+  currentTarget: HTMLTextAreaElement;
+};
