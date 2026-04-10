@@ -4,20 +4,23 @@
  */
 import { computed, ref, useAttrs } from 'vue';
 import { t } from '@/composable/i18n';
-import ErrorIcon from '@/foundation/ErrorIcon.vue';
 import { useTextareaAutosize } from '@vueuse/core';
+import { HTMLTextareaElementEvent } from '@/models';
+import ErrorIcon from '@/foundation/ErrorIcon.vue';
 
-const isInvalid = ref(false);
-const isDirty = ref(false);
+const attrs = useAttrs();
 const model = defineModel<string>();
+const isInvalid = ref(false);
+const validationMessage = ref('');
+const isDirty = ref(false);
+const isRequired = Object.hasOwn(attrs, 'required');
+
 const { textarea } = useTextareaAutosize({
   input: model,
   styleProp: 'minHeight', // Provides support for the rows attribute
 });
 
 const charCount = computed(() => model.value?.length ?? 0);
-const attrs = useAttrs();
-const isRequired = Object.hasOwn(attrs, 'required');
 
 /**
  * Forwards focus intent to the text input element.
@@ -38,6 +41,7 @@ const reset = () => {
   model.value = '';
   isInvalid.value = false;
   isDirty.value = false;
+  validationMessage.value = '';
 };
 
 // component properties
@@ -45,6 +49,7 @@ interface Props {
   name: string;
   label?: string;
   help?: string;
+  error?: string;
   smallText?: boolean;
   maxLength?: number | string;
   dataTestid?: string;
@@ -52,18 +57,21 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   label: null,
   help: null,
+  error: null,
   prefix: null,
   smallText: false,
   maxLength: null,
   dataTestid: 'text-area',
 });
 
+const emit = defineEmits(['submit', 'blur']);
 defineExpose({ focus, reset });
 
-const onInvalid = () => {
+const onInvalid = (evt: HTMLTextareaElementEvent) => {
   isInvalid.value = true;
-  isDirty.value = true;
+  validationMessage.value = evt.target.validationMessage;
 };
+
 /**
  * On any change we mark the element as dirty
  * this is so we can delay :invalid until
@@ -71,6 +79,18 @@ const onInvalid = () => {
  */
 const onChange = () => {
   isDirty.value = true;
+  isInvalid.value = false;
+  validationMessage.value = '';
+  textarea.value.setCustomValidity('');
+};
+
+const onBlur = (evt: HTMLTextareaElementEvent) => {
+  if (isDirty.value && evt.target.checkValidity()) {
+    isInvalid.value = false;
+    validationMessage.value = '';
+  }
+
+  emit('blur');
 };
 </script>
 
@@ -83,25 +103,38 @@ const onChange = () => {
     </span>
     <span class="tbpro-textarea" :class="{ 'small-text': props.smallText }">
       <textarea
-        class="tbpro-textarea-element"
-        ref="textarea"
         v-bind="attrs"
         v-model="model"
-        :class="{ dirty: isDirty }"
+        class="tbpro-textarea-element"
+        :class="{
+          dirty: isDirty,
+          error: error !== null,
+        }"
         :id="name"
         :name="name"
-        :maxLength="maxLength"
+        :maxlength="maxLength"
         :data-testid="dataTestid"
         @invalid="onInvalid"
         @change="onChange"
+        @blur="onBlur"
+        ref="textarea"
       />
-      <span v-if="maxLength !== null" class="character-count" aria-live="polite" :aria-label="t('textInput.maxLengthAlt', {currentCount: charCount, maxCount: maxLength})"> {{ charCount }}/{{ maxLength }} </span>
+      <span
+        v-if="maxLength !== null"
+        class="character-count"
+        aria-live="polite"
+        :aria-label="t('textInput.maxLengthAlt', {currentCount: charCount, maxCount: maxLength})"
+      > {{ charCount }}/{{ maxLength }} </span>
     </span>
     <span v-if="isInvalid" class="help-label invalid">
       <error-icon />
-      {{ t('textArea.invalidInput') }}
+      {{ validationMessage }}
     </span>
-    <span v-else-if="help" class="help-label">
+    <span v-else-if="error" class="help-label invalid">
+      <error-icon />
+      {{ error }}
+    </span>
+    <span v-if="help" class="help-label">
       {{ help }}
     </span>
   </label>
