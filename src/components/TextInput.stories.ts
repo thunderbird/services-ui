@@ -56,6 +56,22 @@ export const Disabled: Story = {
   },
 };
 
+export const ReadOnly: Story = {
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input name="readonly-input" label="Preferred Name" modelValue="Frank, Son Of Frank" readonly />
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input name="disabled-input" label="Preferred Name" modelValue="Frank, Son Of Frank" readonly />`,
+      },
+    },
+  },
+};
+
 export const Required: Story = {
   decorators: [
     () => ({
