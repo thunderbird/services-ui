@@ -5,8 +5,9 @@
 import { ref, computed, useAttrs, type InputTypeHTMLAttribute } from 'vue';
 import { type HTMLInputElementEvent } from '@/models';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
-import EyeIcon from '@/foundation/EyeIcon.vue';
 import EyeOffIcon from '@/foundation/EyeOffIcon.vue';
+import EyeIcon from '@/foundation/EyeIcon.vue';
+import { t } from '@/composable/i18n';
 
 const attrs = useAttrs();
 const model = defineModel<string>();
@@ -16,6 +17,9 @@ const isDirty = ref(false);
 const isRequired = Object.hasOwn(attrs, 'required');
 const inputRef = ref<HTMLInputElement>(null);
 const inputPrefix = ref<HTMLSpanElement>(null);
+const showPasswordText = t('textInput.passwordIndicator.show');
+const hidePasswordText = t('textInput.passwordIndicator.hide');
+const passwordIndicatorText = ref(showPasswordText);
 
 /**
  * Forwards focus intent to the text input element.
@@ -104,6 +108,11 @@ const passwordIsVisible = ref(isPasswordField ? false : null);
 const togglePasswordVisibility = () => {
   inputType.value = passwordIsVisible.value ? 'password' : 'text';
   passwordIsVisible.value = !passwordIsVisible.value;
+  if (passwordIsVisible.value === true) {
+    passwordIndicatorText.value = hidePasswordText;
+  } else if (passwordIsVisible.value === false) {
+    passwordIndicatorText.value = showPasswordText;
+  }
 };
 
 const charCount = computed(() => model.value?.length ?? 0);
@@ -138,13 +147,19 @@ const charCount = computed(() => model.value?.length ?? 0);
           @blur="onBlur"
           ref="inputRef"
         />
-        <span v-if="passwordIsVisible === true" class="tbpro-input-suffix" @click="togglePasswordVisibility">
-          <eye-icon class="icon" />
+        <span 
+          class="tbpro-input-suffix" 
+          aria-live="polite" 
+          tabindex="0" 
+          :title="passwordIndicatorText"
+          @keyup.space="togglePasswordVisibility" 
+          @click="togglePasswordVisibility"
+          v-if="passwordIsVisible !== null" 
+        >
+          <eye-icon class="icon" alt="" v-if="passwordIsVisible === true" />
+          <eye-off-icon class="icon" alt="" v-else-if="passwordIsVisible === false" />
         </span>
-        <span v-else-if="passwordIsVisible === false" class="tbpro-input-suffix" @click="togglePasswordVisibility">
-          <eye-off-icon class="icon" />
-        </span>
-        <span v-else-if="maxLength !== null" class="character-count tbpro-input-suffix"> {{ charCount }}/{{ maxLength }}</span>
+        <span v-else-if="maxLength !== null" class="character-count tbpro-input-suffix" aria-live="polite" :aria-label="t('textInput.maxLengthAlt', {currentCount: charCount, maxCount: maxLength})"> {{ charCount }}/{{ maxLength }}</span>
       </span>
       <span v-if="outerSuffix" class="tbpro-input-outer-suffix">{{ outerSuffix }}</span>
     </span>

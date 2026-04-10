@@ -64,6 +64,16 @@
   "textArea": {
     "invalidInput": "Ungültige Eingabe"
   },
+  "textInput": {
+    "passwordIndicator": {
+      "show": "Passwort anzeigen",
+      "hide": "Passwort ausblenden"
+    },
+    "maxLengthAlt": "{currentCount} von {maxCount} Zeichen verbleiben."
+  },
+  "userAvatar": {
+    "altText": "Avatar von {username}"
+  },
   "loadingSkeleton": {
     "loadingMessage": "Laden."
   }
