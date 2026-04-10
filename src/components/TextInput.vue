@@ -161,7 +161,7 @@ const charCount = computed(() => model.value?.length ?? 0);
           <eye-icon class="icon" alt="" v-if="passwordIsVisible === true" />
           <eye-off-icon class="icon" alt="" v-else-if="passwordIsVisible === false" />
         </span>
-        <span v-else-if="maxLength !== null" class="character-count tbpro-input-suffix" aria-live="polite" :aria-label="$t('textInput.maxLengthAlt', {currentCount: charCount, maxCount: maxLength})"> {{ charCount }}/{{ maxLength }}</span>
+        <span v-else-if="maxLength !== null" class="character-count tbpro-input-suffix" aria-live="polite" :aria-label="t('textInput.maxLengthAlt', {currentCount: charCount, maxCount: maxLength})"> {{ charCount }}/{{ maxLength }}</span>
       </span>
       <span v-if="outerSuffix" class="tbpro-input-outer-suffix">{{ outerSuffix }}</span>
     </span>
