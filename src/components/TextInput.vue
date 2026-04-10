@@ -71,7 +71,6 @@ defineExpose({ focus, reset });
 
 const onInvalid = (evt: HTMLInputElementEvent) => {
   isInvalid.value = true;
-  isDirty.value = true;
   validationMessage.value = evt.target.validationMessage;
 };
 /**
@@ -80,16 +79,15 @@ const onInvalid = (evt: HTMLInputElementEvent) => {
  * the user does something worth invalidating
  */
 const onChange = () => {
-  inputRef.value.setCustomValidity('');
-  isInvalid.value = false;
   isDirty.value = true;
+  isInvalid.value = false;
   validationMessage.value = '';
+  inputRef.value.setCustomValidity('');
 };
 
 const onBlur = (evt) => {
-  if (evt.target.checkValidity()) {
+  if (isDirty.value && evt.target.checkValidity()) {
     isInvalid.value = false;
-    isDirty.value = true;
     validationMessage.value = '';
   }
 
