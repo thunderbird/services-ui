@@ -3,11 +3,11 @@
  * @note The default slot is deprecated and will be removed in future releases
  */
 import { ref, computed, useAttrs, type InputTypeHTMLAttribute } from 'vue';
-import { type HTMLInputElementEvent } from '@/models';
+import { type ElementEvent } from '@/models';
+import { t } from '@/composable/i18n';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
 import EyeOffIcon from '@/foundation/EyeOffIcon.vue';
 import EyeIcon from '@/foundation/EyeIcon.vue';
-import { t } from '@/composable/i18n';
 
 const attrs = useAttrs();
 const model = defineModel<string>();
@@ -74,7 +74,7 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits(['submit', 'blur']);
 defineExpose({ focus, reset });
 
-const onInvalid = (evt: HTMLInputElementEvent) => {
+const onInvalid = (evt: ElementEvent<HTMLInputElement>) => {
   isInvalid.value = true;
   validationMessage.value = evt.target.validationMessage;
 };
@@ -91,7 +91,7 @@ const onChange = () => {
   inputRef.value.setCustomValidity('');
 };
 
-const onBlur = (evt: HTMLInputElementEvent) => {
+const onBlur = (evt: ElementEvent<HTMLInputElement>) => {
   if (isDirty.value && evt.target.checkValidity()) {
     isInvalid.value = false;
     validationMessage.value = '';

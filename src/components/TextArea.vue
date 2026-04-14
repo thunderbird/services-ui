@@ -5,7 +5,7 @@
 import { computed, ref, useAttrs } from 'vue';
 import { t } from '@/composable/i18n';
 import { useTextareaAutosize } from '@vueuse/core';
-import { HTMLTextareaElementEvent } from '@/models';
+import type { ElementEvent } from '@/models';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
 
 const attrs = useAttrs();
@@ -67,7 +67,7 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits(['submit', 'blur']);
 defineExpose({ focus, reset });
 
-const onInvalid = (evt: HTMLTextareaElementEvent) => {
+const onInvalid = (evt: ElementEvent<HTMLTextAreaElement>) => {
   isInvalid.value = true;
   validationMessage.value = evt.target.validationMessage;
 };
@@ -84,7 +84,7 @@ const onChange = () => {
   textarea.value.setCustomValidity('');
 };
 
-const onBlur = (evt: HTMLTextareaElementEvent) => {
+const onBlur = (evt: ElementEvent<HTMLTextAreaElement>) => {
   if (isDirty.value && evt.target.checkValidity()) {
     isInvalid.value = false;
     validationMessage.value = '';
