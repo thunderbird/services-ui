@@ -33,56 +33,23 @@ describe('SelectInput', () => {
     { 
       options: options,
       defaultSelected: options[2]['value'],
+      error: null,
       helpText: null,
-      required: false,
-      autoFocus: false,
-      disabled: false,
       dataTestid: 'standard-select-input',
     },
     { 
       options: options,
       defaultSelected: null,
+      error: null,
       helpText: null,
-      required: false,
-      autoFocus: false,
-      disabled: false,
       dataTestid: 'select-input-no-default',
     },
     { 
       options: options,
       defaultSelected: options[0]['value'],
+      error: null,
       helpText: 'This is the help text!',
-      required: false,
-      autoFocus: false,
-      disabled: false,
       dataTestid: 'select-input-help-text',
-    },
-    { 
-      options: options,
-      defaultSelected: null,
-      helpText: null,
-      required: true,
-      autoFocus: false,
-      disabled: false,
-      dataTestid: 'select-input-required',
-    },
-    { 
-      options: options,
-      defaultSelected: options[0]['value'],
-      helpText: null,
-      required: false,
-      autoFocus: true,
-      disabled: false,
-      dataTestid: 'select-input-autofocus',
-    },
-    { 
-      options: options,
-      defaultSelected: options[0]['value'],
-      helpText: null,
-      required: false,
-      autoFocus: false,
-      disabled: true,
-      dataTestid: 'select-input-disabled',
     },
   ];
 
@@ -91,16 +58,14 @@ describe('SelectInput', () => {
   });
 
   it.each(testCases)('renders correctly with the given options',
-    async ({ options, defaultSelected, helpText, required, autoFocus, disabled, dataTestid }) => {
+    async ({ options, defaultSelected, error, helpText, dataTestid }) => {
     const ourProps = {
       name: 'standard',
       label: 'Will your favourite MLB team win the world series this year?',
       options: options,
       modelValue: defaultSelected,
+      error: error,
       help: helpText,
-      required: required,
-      autofocus: autoFocus,
-      disabled: disabled,
       dataTestid: dataTestid,
     };
 
