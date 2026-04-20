@@ -208,7 +208,7 @@ const onBlur = (evt: ElementEvent<HTMLTextAreaElement>) => {
     border-radius: var(--border-radius);
     border: 0.0625rem solid var(--colour-neutral-border);
 
-    &:hover:enabled {
+    &:hover:enabled:not(:focus) {
       border-color: var(--colour-neutral-border-intense);
     }
 
@@ -221,7 +221,8 @@ const onBlur = (evt: ElementEvent<HTMLTextAreaElement>) => {
       outline: 0.0625rem solid var(--colour-primary-default);
     }
 
-    &.dirty:invalid {
+    &.dirty:invalid:not(:focus),
+    &.error:not(:focus) {
       border-color: var(--colour-ti-critical);
     }
 

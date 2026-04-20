@@ -109,6 +109,10 @@ defineExpose({ focus, reset });
       <error-icon />
       {{ validationMessage }}
     </span>
+    <span v-else-if="error" class="help-label invalid">
+      <error-icon />
+      {{ error }}
+    </span>
     <span v-if="help" class="help-label">
       {{ help }}
     </span>
@@ -217,8 +221,8 @@ defineExpose({ focus, reset });
   }
 
   &.invalid,
-  &:has(.dirty:invalid):not(:focus-within),
-  &:has(.error):not(:focus-within) {
+  &.dirty:invalid:not(:focus),
+  &.error:not(:focus) {
     border-color: var(--colour-ti-critical);
   }
 }

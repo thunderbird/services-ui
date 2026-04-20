@@ -80,6 +80,15 @@ describe('TextArea', () => {
       modelValue: 'This is the default text',
       dataTestid: 'standard-text-area-required',
     },
+    { 
+      label: 'This is the TextArea label!',
+      error: 'This is the error text!',
+      help: null,
+      smallText: false,
+      maxLength: null,
+      modelValue: 'This is the default text',
+      dataTestid: 'standard-text-area-error',
+    },
   ];
 
   afterEach(() => {
@@ -111,7 +120,11 @@ describe('TextArea', () => {
     expect(textArea.exists()).toBe(true);
     expect(textArea.isVisible()).toBe(true);
 
-    expect(textArea.attributes().class).toBe('tbpro-textarea-element');
+    let expClass = 'tbpro-textarea-element';
+    if (ourProps['error']) {
+      expClass += ' error';
+    }
+    expect(textArea.attributes().class).toBe(expClass);
     expect(textArea.attributes().name).toBe(ourProps['name']);
     expect(textArea.attributes().id).toBe(ourProps['name']);
 
@@ -119,6 +132,14 @@ describe('TextArea', () => {
     expect(textAreaLbl.exists()).toBe(true);
     expect(textAreaLbl.isVisible()).toBe(true);
     expect(textAreaLbl.text()).toBe(ourProps['label']);
+
+    // verify error text is there if was provided  
+    if (ourProps['error']) {  
+      const textAreaError = wrapper.find('span.help-label.invalid');  
+      expect(textAreaError.exists()).toBe(true);  
+      expect(textAreaError.isVisible()).toBe(true);  
+      expect(textAreaError.text()).toBe(ourProps['error']);  
+    }  
 
     // verify help text is there if was provided
     if (ourProps['help']) {
