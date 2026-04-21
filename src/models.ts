@@ -26,11 +26,7 @@ export type Coloring = {
   background?: string;
 };
 
-export type HTMLElementEvent = Event & {
-  target: HTMLElement;
-  currentTarget: HTMLElement;
-};
-export type HTMLInputElementEvent = Event & {
-  target: HTMLInputElement;
-  currentTarget: HTMLInputElement;
+export type ElementEvent<T> = Event & {
+  target: T;
+  currentTarget: T;
 };

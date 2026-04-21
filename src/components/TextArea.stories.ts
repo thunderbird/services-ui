@@ -46,6 +46,39 @@ export const Standard: Story = {
   },
 };
 
+export const Disabled: Story = {
+  render: () => ({
+    components: { TextArea },
+    template: `
+      <text-area name="disabled-input" label="Full Name" placeholder="e.g. John Doe" disabled />
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-area name="disabled-input" label="Full Name" placeholder="e.g. John Doe" disabled />`,
+      },
+    },
+  },
+};
+
+
+export const ReadOnly: Story = {
+  render: () => ({
+    components: { TextArea },
+    template: `
+      <text-area name="readonly-input" label="Preferred Name" modelValue="Frank, Son Of Frank" readonly />
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-area name="disabled-input" label="Preferred Name" modelValue="Frank, Son Of Frank" readonly />`,
+      },
+    },
+  },
+};
+
 export const Required: Story = {
   decorators: [
     () => ({

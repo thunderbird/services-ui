@@ -33,56 +33,30 @@ describe('SelectInput', () => {
     { 
       options: options,
       defaultSelected: options[2]['value'],
+      error: null,
       helpText: null,
-      required: false,
-      autoFocus: false,
-      disabled: false,
       dataTestid: 'standard-select-input',
     },
     { 
       options: options,
       defaultSelected: null,
+      error: null,
       helpText: null,
-      required: false,
-      autoFocus: false,
-      disabled: false,
       dataTestid: 'select-input-no-default',
     },
     { 
       options: options,
       defaultSelected: options[0]['value'],
+      error: null,
       helpText: 'This is the help text!',
-      required: false,
-      autoFocus: false,
-      disabled: false,
       dataTestid: 'select-input-help-text',
     },
     { 
       options: options,
       defaultSelected: null,
+      error: 'This is the error text!',
       helpText: null,
-      required: true,
-      autoFocus: false,
-      disabled: false,
-      dataTestid: 'select-input-required',
-    },
-    { 
-      options: options,
-      defaultSelected: options[0]['value'],
-      helpText: null,
-      required: false,
-      autoFocus: true,
-      disabled: false,
-      dataTestid: 'select-input-autofocus',
-    },
-    { 
-      options: options,
-      defaultSelected: options[0]['value'],
-      helpText: null,
-      required: false,
-      autoFocus: false,
-      disabled: true,
-      dataTestid: 'select-input-disabled',
+      dataTestid: 'select-input-no-default',
     },
   ];
 
@@ -91,16 +65,14 @@ describe('SelectInput', () => {
   });
 
   it.each(testCases)('renders correctly with the given options',
-    async ({ options, defaultSelected, helpText, required, autoFocus, disabled, dataTestid }) => {
+    async ({ options, defaultSelected, error, helpText, dataTestid }) => {
     const ourProps = {
       name: 'standard',
       label: 'Will your favourite MLB team win the world series this year?',
       options: options,
       modelValue: defaultSelected,
+      error: error,
       help: helpText,
-      required: required,
-      autofocus: autoFocus,
-      disabled: disabled,
       dataTestid: dataTestid,
     };
 
@@ -117,6 +89,12 @@ describe('SelectInput', () => {
     expect(selInput.isVisible()).toBe(true);
     expect(selInput.attributes().name).toBe(ourProps['name']);
 
+    let expClass = 'tbpro-select';
+    if (ourProps['error']) {
+      expClass += ' error';
+    }
+    expect(selInput.attributes().class).toBe(expClass);
+
     const selInputLabel = wrapper.find('.label');
     expect(selInputLabel.exists()).toBe(true);
     expect(selInputLabel.isVisible()).toBe(true);
@@ -126,6 +104,14 @@ describe('SelectInput', () => {
     if (ourProps['required'] == true && !ourProps['modelValue']) {
       expect(selInputLabel.text()).toContain('*');
     }
+
+    // verify error text is there if was provided  
+    if (ourProps['error']) {  
+      const selectInputError = wrapper.find('span.help-label.invalid');  
+      expect(selectInputError.exists()).toBe(true);  
+      expect(selectInputError.isVisible()).toBe(true);  
+      expect(selectInputError.text()).toBe(ourProps['error']);  
+    }  
 
     // if help text set, ensure it is displayed
     if (ourProps['help']) {

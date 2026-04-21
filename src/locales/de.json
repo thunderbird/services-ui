@@ -61,9 +61,6 @@
     "off": "Aus",
     "on": "An"
   },
-  "textArea": {
-    "invalidInput": "Ungültige Eingabe"
-  },
   "textInput": {
     "passwordIndicator": {
       "show": "Passwort anzeigen",

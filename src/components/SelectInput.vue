@@ -2,10 +2,20 @@
 /**
  * @note The default slot is deprecated and will be removed in future releases
  */
-import { ref } from 'vue';
-import { type SelectOption } from '@/models';
+import { ref, useAttrs } from 'vue';
+import type { ElementEvent, SelectOption } from '@/models';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
 import CaretDownIcon from '@/foundation/CaretDownIcon.vue';
+
+const attrs = useAttrs();
+const model = defineModel<number | string>();
+const isInvalid = ref(false);
+const isDirty = ref(false);
+const isRequired = Object.hasOwn(attrs, 'required') && attrs.required !== false;
+const inputRef = ref<HTMLSelectElement>(null);
+const validationMessage = ref('');
+
+const emit = defineEmits(['submit', 'blur']);
 
 // component properties
 interface Props {
@@ -13,23 +23,26 @@ interface Props {
   label?: string;
   options: SelectOption<number | string>[];
   help?: string;
-  required?: boolean;
-  autofocus?: boolean;
-  disabled?: boolean;
+  error?: string;
   dataTestid?: string;
 }
 withDefaults(defineProps<Props>(), {
   label: null,
-  required: false,
-  autofocus: false,
-  disabled: false,
   dataTestid: 'select-input',
 });
 
-const model = defineModel<number | string>();
-const isInvalid = ref(false);
-const isDirty = ref(false);
-const validationMessage = ref('');
+defineOptions({ inheritAttrs: false });
+
+/**
+ * Forwards focus intent to the select element.
+ * Unlike HTMLElement.focus() this does not take any parameters.
+ */
+const focus = () => {
+  if (!inputRef.value) {
+    return;
+  }
+  inputRef.value.focus();
+};
 
 /**
  * Resets the component's internal validation state and clears the input value.
@@ -42,22 +55,27 @@ const reset = () => {
   validationMessage.value = '';
 };
 
-const onInvalid = (evt: Event) => {
+const onInvalid = (evt: ElementEvent<HTMLSelectElement>) => {
   isInvalid.value = true;
-  validationMessage.value = (evt.target as HTMLSelectElement).validationMessage;
+  validationMessage.value = evt.target.validationMessage;
 };
-const onInput = (evt: InputEvent) => {
+const onInput = () => {
   isDirty.value = true;
+  isInvalid.value = false;
+  validationMessage.value = '';
+  inputRef.value.setCustomValidity('');
+};
 
-  // Revalidate on input change
-  if ((evt.target as HTMLSelectElement).checkValidity()) {
+const onBlur = (evt: ElementEvent<HTMLSelectElement>) => {
+  if (isDirty.value && evt.target.checkValidity()) {
     isInvalid.value = false;
     validationMessage.value = '';
   }
+
+  emit('blur');
 };
 
-defineEmits(['submit']);
-defineExpose({ reset });
+defineExpose({ focus, reset });
 </script>
 
 <template>
@@ -65,21 +83,21 @@ defineExpose({ reset });
     <span v-if="label || $slots.default" class="label">
       <template v-if="label">{{ label }}</template>
       <slot v-else />
-      <span v-if="required && (model === null || model === '')" class="required">*</span>
+      <span v-if="isRequired && (model === null || model === '')" class="required">*</span>
     </span>
     <div class="tbpro-select-container">
       <select
-        class="tbpro-select"
-        :class="{ dirty: isDirty, invalid: isInvalid }"
+        v-bind="attrs"
         v-model="model"
+        class="tbpro-select"
+        :class="{ dirty: isDirty, error: error }"
         :id="name"
         :name="name"
-        :required="required"
-        :autofocus="autofocus"
-        :disabled="disabled"
         @invalid="onInvalid"
         @input="onInput"
+        @blur="onBlur"
         :data-testid="dataTestid"
+        ref="inputRef"
       >
         <option v-for="option in options" :value="option.value" :key="option.value">
           {{ option.label }}
@@ -90,6 +108,10 @@ defineExpose({ reset });
     <span v-if="isInvalid" class="help-label invalid">
       <error-icon />
       {{ validationMessage }}
+    </span>
+    <span v-else-if="error" class="help-label invalid">
+      <error-icon />
+      {{ error }}
     </span>
     <span v-if="help" class="help-label">
       {{ help }}
@@ -180,7 +202,7 @@ defineExpose({ reset });
     color: var(--colour-ti-muted);
   }
 
-  &:hover {
+  &:hover:not(:disabled) {
     border-color: var(--colour-neutral-border-intense);
   }
 
@@ -198,7 +220,9 @@ defineExpose({ reset });
     cursor: not-allowed;
   }
 
-  &.invalid {
+  &.invalid,
+  &.dirty:invalid:not(:focus),
+  &.error:not(:focus) {
     border-color: var(--colour-ti-critical);
   }
 }

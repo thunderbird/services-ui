@@ -47,16 +47,22 @@ export const Standard: Story = {
 };
 
 export const Disabled: Story = {
-  args: {
-    name: 'disabled',
-    disabled: true,
+  render: () => ({
+    components: { SelectInput },
+    template: `
+      <select-input name="select-disabled" disabled />
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: { code: '<select-input name="select-disabled" :options="[...]" disabled />' },
+    },
   },
 };
 
 export const Required: Story = {
   args: {
     name: 'required',
-    required: true,
     modelValue: '',
     help: 'Choose wisely.',
     options: [
@@ -74,7 +80,7 @@ export const Required: Story = {
     },
     template: `
       <div>
-        <select-input v-bind="args" ref="input" />
+        <select-input v-bind="args" ref="input" required />
         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;margin-top: 0.5rem;">
           <button @click="triggerInvalid">
             Trigger Invalid State
@@ -104,6 +110,19 @@ export const Autofocus: Story = {
       { label: 'Rost', value: 'rost' },
       { label: 'Sylens', value: 'sylens' },
     ],
-    autofocus: true,
+  },
+  render: (args) => ({
+    components: { SelectInput },
+    setup() {
+      return { args };
+    },
+    template: `
+      <select-input v-bind="args" autofocus />
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: { code: '<select-input name="select-autofocus" :options="[...]" disabled />' },
+    },
   },
 };
