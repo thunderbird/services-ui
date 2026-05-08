@@ -2,7 +2,7 @@
 /**
  * @note The default slot is deprecated and will be removed in future releases
  */
-import { ref, useAttrs, type SelectHTMLAttributes } from 'vue';
+import { ref, useAttrs } from 'vue';
 import type { ElementEvent, SelectOption } from '@/models';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
 import CaretDownIcon from '@/foundation/CaretDownIcon.vue';
