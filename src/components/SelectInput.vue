@@ -2,7 +2,7 @@
 /**
  * @note The default slot is deprecated and will be removed in future releases
  */
-import { ref, useAttrs } from 'vue';
+import { ref, useAttrs, type SelectHTMLAttributes } from 'vue';
 import type { ElementEvent, SelectOption } from '@/models';
 import ErrorIcon from '@/foundation/ErrorIcon.vue';
 import CaretDownIcon from '@/foundation/CaretDownIcon.vue';
@@ -12,7 +12,7 @@ const model = defineModel<number | string>();
 const isInvalid = ref(false);
 const isDirty = ref(false);
 const isRequired = Object.hasOwn(attrs, 'required') && attrs.required !== false;
-const inputRef = ref<HTMLSelectElement>(null);
+const inputRef = ref<HTMLSelectElement>();
 const validationMessage = ref('');
 
 const emit = defineEmits(['submit', 'blur']);
@@ -27,7 +27,7 @@ interface Props {
   dataTestid?: string;
 }
 withDefaults(defineProps<Props>(), {
-  label: null,
+  label: '',
   dataTestid: 'select-input',
 });
 
@@ -55,19 +55,19 @@ const reset = () => {
   validationMessage.value = '';
 };
 
-const onInvalid = (evt: ElementEvent<HTMLSelectElement>) => {
+const onInvalid = (evt: Event) => {
   isInvalid.value = true;
-  validationMessage.value = evt.target.validationMessage;
+  validationMessage.value = (evt as ElementEvent<HTMLSelectElement>).target.validationMessage;
 };
 const onInput = () => {
   isDirty.value = true;
   isInvalid.value = false;
   validationMessage.value = '';
-  inputRef.value.setCustomValidity('');
+  inputRef.value?.setCustomValidity('');
 };
 
-const onBlur = (evt: ElementEvent<HTMLSelectElement>) => {
-  if (isDirty.value && evt.target.checkValidity()) {
+const onBlur = (evt: Event) => {
+  if (isDirty.value && (evt as ElementEvent<HTMLSelectElement>).target.checkValidity()) {
     isInvalid.value = false;
     validationMessage.value = '';
   }

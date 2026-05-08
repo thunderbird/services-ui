@@ -19,7 +19,7 @@ interface Props {
 }
 const props = withDefaults(defineProps<Props>(), {
   disabled: false,
-  label: null,
+  label: '',
   noLegend: true,
   dataTestid: 'switch-toggle',
 });
