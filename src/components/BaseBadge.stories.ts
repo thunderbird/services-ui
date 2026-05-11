@@ -22,233 +22,72 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    type: BaseBadgeTypes.Default,
-    default: 'default',
+export const Standard: Story = {
+  decorators: [
+    (story) => ({
+      components: { story },
+      template: `<story />`,
+    }),
+  ],
+  parameters: {
+    docs: {
+      source: {
+        code: '<base-badge>Primary</base-badge>',
+      },
+    },
   },
 };
 
-export const DefaultWithIcon: Story = {
-  args: {
-    type: BaseBadgeTypes.Default,
-    default: 'default',
-  },
-  render: (args) => ({
-    components: { BaseBadge, CheckCircleFilledIcon },
-    setup() {
-      return { args };
-    },
+
+export const Type: Story = {
+  render: () => ({
+    components: { BaseBadge },
     template: `
-      <BaseBadge type="default">
-        <template #icon>
-          <CheckCircleFilledIcon />
-        </template>
-        {{ args.default }}
-      </BaseBadge>
+      <div style="display:flex;gap:.5rem;align-items:center;">
+        <base-badge type="default">Default</base-badge>
+        <base-badge type="not-set">Not Set</base-badge>
+        <base-badge type="primary">Primary</base-badge>
+        <base-badge type="subscription">Subscription</base-badge>
+        <base-badge type="verified">Verified</base-badge>
+        <base-badge type="set">Set</base-badge>
+        <base-badge type="pending">Pending</base-badge>
+        <base-badge type="emails">Emails</base-badge>
+        <base-badge type="counter">Counter</base-badge>
+      </div>
     `,
   }),
-};
-
-export const Set: Story = {
-  args: {
-    type: BaseBadgeTypes.Set,
-    default: 'set',
-  },
-};
-
-export const SetWithIcon: Story = {
-  args: {
-    type: BaseBadgeTypes.Set,
-    default: 'set',
-  },
-  render: (args) => ({
-    components: { BaseBadge, CheckCircleFilledIcon },
-    setup() {
-      return { args };
+  parameters: {
+    docs: {
+      source: {
+        code: '<base-badge type="default">Default</base-badge>\n<base-badge type="not-set">Not Set</base-badge>\n<base-badge type="primary">Primary</base-badge>\n<base-badge type="subscription">Subscription</base-badge>\n<base-badge type="verified">Verified</base-badge>\n<base-badge type="set">Set</base-badge>\n<base-badge type="pending">Pending</base-badge>\n<base-badge type="emails">Emails</base-badge>\n<base-badge type="counter">Counter</base-badge>',
+      },
     },
+  },
+};
+
+
+export const Icon: Story = {
+  render: () => ({
+    components: { BaseBadge, CheckCircleFilledIcon },
     template: `
-      <BaseBadge type="set">
-        <template #icon>
-          <CheckCircleFilledIcon />
-        </template>
-        {{ args.default }}
-      </BaseBadge>
+      <div style="display:flex;gap:.5rem;align-items:center;">
+        <base-badge type="default"><template #icon><check-circle-filled-icon /></template>Default</base-badge>
+        <base-badge type="not-set"><template #icon><check-circle-filled-icon /></template>Not Set</base-badge>
+        <base-badge type="primary"><template #icon><check-circle-filled-icon /></template>Primary</base-badge>
+        <base-badge type="subscription"><template #icon><check-circle-filled-icon /></template>Subscription</base-badge>
+        <base-badge type="verified"><template #icon><check-circle-filled-icon /></template>Verified</base-badge>
+        <base-badge type="set"><template #icon><check-circle-filled-icon /></template>Set</base-badge>
+        <base-badge type="pending"><template #icon><check-circle-filled-icon /></template>Pending</base-badge>
+        <base-badge type="emails"><template #icon><check-circle-filled-icon /></template>#Emails</base-badge>
+        <base-badge type="counter"><template #icon><check-circle-filled-icon /></template>16</base-badge>
+      </div>
     `,
   }),
-};
-
-export const Primary: Story = {
-  args: {
-    type: BaseBadgeTypes.Primary,
-    default: 'primary',
-  },
-};
-
-export const PrimaryWithIcon: Story = {
-  args: {
-    type: BaseBadgeTypes.Primary,
-    default: 'primary',
-  },
-  render: (args) => ({
-    components: { BaseBadge, CheckCircleFilledIcon },
-    setup() {
-      return { args };
+  parameters: {
+    docs: {
+      source: {
+        code: '<base-badge type="default">\n  <template #icon>\n    <check-circle-filled-icon />\n  </template>\n  Default\n</base-badge>\n...',
+      },
     },
-    template: `
-      <BaseBadge>
-        <template #icon>
-          <CheckCircleFilledIcon />
-        </template>
-        {{ args.default }}
-      </BaseBadge>
-    `,
-  }),
-};
-
-export const Subscription: Story = {
-  args: {
-    type: BaseBadgeTypes.Subscription,
-    default: 'subscription',
-  },
-};
-
-export const SubscriptionWithIcon: Story = {
-  args: {
-    type: BaseBadgeTypes.Subscription,
-    default: 'subscription',
-  },
-  render: (args) => ({
-    components: { BaseBadge, CheckCircleFilledIcon },
-    setup() {
-      return { args };
-    },
-    template: `
-      <BaseBadge type="subscription">
-        <template #icon>
-          <CheckCircleFilledIcon />
-        </template>
-        {{ args.default }}
-      </BaseBadge>
-    `,
-  }),
-};
-
-export const Pending: Story = {
-  args: {
-    type: BaseBadgeTypes.Pending,
-    default: 'pending',
-  },
-};
-
-export const PendingWithIcon: Story = {
-  args: {
-    type: BaseBadgeTypes.Pending,
-    default: 'pending',
-  },
-  render: (args) => ({
-    components: { BaseBadge, CheckCircleFilledIcon },
-    setup() {
-      return { args };
-    },
-    template: `
-      <BaseBadge type="pending">
-        <template #icon>
-          <CheckCircleFilledIcon />
-        </template>
-        {{ args.default }}
-      </BaseBadge>
-    `,
-  }),
-};
-
-export const NotSet: Story = {
-  args: {
-    type: BaseBadgeTypes.NotSet,
-    default: 'not set',
-  },
-};
-
-export const NotSetWithIcon: Story = {
-  args: {
-    type: BaseBadgeTypes.NotSet,
-    default: 'not set',
-  },
-  render: (args) => ({
-    components: { BaseBadge, CheckCircleFilledIcon },
-    setup() {
-      return { args };
-    },
-    template: `
-      <BaseBadge type="not-set">
-        <template #icon>
-          <CheckCircleFilledIcon />
-        </template>
-        {{ args.default }}
-      </BaseBadge>
-    `,
-  }),
-};
-
-export const Verified: Story = {
-  args: {
-    type: BaseBadgeTypes.Verified,
-    default: 'verified',
-  },
-};
-
-export const VerifiedWithIcon: Story = {
-  args: {
-    type: BaseBadgeTypes.Verified,
-    default: 'verified',
-  },
-  render: (args) => ({
-    components: { BaseBadge, CheckCircleFilledIcon },
-    setup() {
-      return { args };
-    },
-    template: `
-      <BaseBadge type="verified">
-        <template #icon>
-          <CheckCircleFilledIcon />
-        </template>
-        {{ args.default }}
-      </BaseBadge>
-    `,
-  }),
-};
-
-export const Emails: Story = {
-  args: {
-    type: BaseBadgeTypes.Emails,
-    default: '#emails',
-  },
-};
-
-export const EmailsWithIcon: Story = {
-  args: {
-    type: BaseBadgeTypes.Emails,
-    default: '#emails',
-  },
-  render: (args) => ({
-    components: { BaseBadge, CheckCircleFilledIcon },
-    setup() {
-      return { args };
-    },
-    template: `
-      <BaseBadge type="emails">
-        <template #icon>
-          <CheckCircleFilledIcon />
-        </template>
-        {{ args.default }}
-      </BaseBadge>
-    `,
-  }),
-};
-
-export const Counter: Story = {
-  args: {
-    type: BaseBadgeTypes.Counter,
-    default: '2',
   },
 };
