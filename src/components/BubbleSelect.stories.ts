@@ -45,42 +45,96 @@ const meta: Meta<typeof BubbleSelect> = {
     // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
     onClick: fn(),
     label: 'Select Days',
+    required: false,
     disabled: false,
+    singleSelection: false,
+    bubbleGap: 'default',
     options: scheduleDayOptions,
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-/*
- *👇 Render functions are a framework specific feature to allow you control on how the component renders.
- * See https://storybook.js.org/docs/api/csf
- * to learn how to use render functions.
- */
-export const Weekdays: Story = {
+
+export const Standard: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: '<bubble-select\n  label="Select Days"\n  :options="[{ label: \'Sun\', value: \'Sunday\'}, ...]"\n/>',
+      },
+    },
+  },
+};
+
+export const Required: Story = {
   args: {
     required: true,
   },
+  parameters: {
+    docs: {
+      source: {
+        code: '<bubble-select\n  label="Select Days"\n  :options="[{ label: \'Sun\', value: \'Sunday\'}, ...]"\n  required\n/>',
+      },
+    },
+  },
 };
+
 export const Disabled: Story = {
   args: {
     disabled: true,
-    required: false,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<bubble-select\n  label="Select Days"\n  :options="[{ label: \'Sun\', value: \'Sunday\'}, ...]"\n  disabled\n/>',
+      },
+    },
   },
 };
+
 export const SingleSelection: Story = {
   args: {
     singleSelection: true,
   },
-};
-export const LargeGap: Story = {
-  args: {
-    bubbleGap: 'large',
+  parameters: {
+    docs: {
+      source: {
+        code: '<bubble-select\n  label="Select Days"\n  :options="[{ label: \'Sun\', value: \'Sunday\'}, ...]"\n  single-selection\n/>',
+      },
+    },
   },
 };
-export const WithHelp: Story = {
+
+export const Gap: Story = {
+  render: (args) => ({
+    components: { BubbleSelect },
+    setup() {
+      return { args };
+    },
+    template: `<div style="display:flex;flex-direction:column;gap:1rem;">
+      <bubble-select bubble-gap="default" label="Default" :options="args.options" />
+      <bubble-select bubble-gap="large" label="Large" :options="args.options" />
+    </div>`,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<bubble-select\n  label="Default"\n  :options="[{ label: \'Sun\', value: \'Sunday\'}, ...]"\n  bubble-gap="default"\n/>\n\n<bubble-select\n  label="Large"\n  :options="[{ label: \'Sun\', value: \'Sunday\'}, ...]"\n  bubble-gap="large"\n/>',
+      },
+    },
+  },
+};
+
+export const Help: Story = {
   args: {
     required: true,
     help: 'Select a desired day',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<bubble-select\n  label="Select Days"\n  :options="[{ label: \'Sun\', value: \'Sunday\'}, ...]"\n  help="Select a desired day"\n  required\n/>',
+      },
+    },
   },
 };
