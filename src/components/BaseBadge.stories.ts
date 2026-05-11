@@ -23,10 +23,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
-  render: () => ({
-    components: { BaseBadge },
-    template: `<base-badge>Primary</base-badge>`,
-  }),
+  decorators: [
+    (story) => ({
+      components: { story },
+      template: `<story />`,
+    }),
+  ],
   parameters: {
     docs: {
       source: {
