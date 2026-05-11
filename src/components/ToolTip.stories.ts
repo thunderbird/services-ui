@@ -8,84 +8,50 @@ const meta: Meta<typeof ToolTip> = {
   component: ToolTip,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
+  argTypes: {
+    position: { control: 'select', options: Object.values(TooltipPosition) },
+    default: { control: 'text' },
+  },
+  args: {
+    default: 'Primary',
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
-  args: {
-    default: 'Important note',
-  },
   decorators: [
     (story) => ({
       components: { story },
       template: `<div style="min-height:60px;"><story /></div>`,
     }),
   ],
+  parameters: {
+    docs: {
+      source: {
+        code: '<tool-tip>Primary</tool-tip>',
+      },
+    },
+  },
 };
 
-export const PositionTop: Story = {
-  args: {
-    default: 'Pointing upwards',
-    position: TooltipPosition.Top,
+export const Position: Story = {
+  render: () => ({
+    components: { ToolTip },
+    template: `<div style="display:flex;flex-direction:column;gap:1rem;">
+      <div style="position:relative;height:3rem;"><tool-tip position="pos-top">Pointing upwards</tool-tip></div>
+      <div style="position:relative;height:3rem;"><tool-tip position="pos-left">Pointing left</tool-tip></div>
+      <div style="position:relative;height:3rem;"><tool-tip position="pos-bottom">Pointing downwards</tool-tip></div>
+      <div style="position:relative;height:3rem;"><tool-tip position="pos-right">Pointing right</tool-tip></div>
+      <div style="position:relative;height:3rem;"><tool-tip position="pos-none">Pointing nowhere</tool-tip></div>
+    </div>`,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<tool-tip position="pos-top">Pointing upwards</tool-tip>\n<tool-tip position="pos-left">Pointing left</tool-tip>\n<tool-tip position="pos-bottom">Pointing downwards</tool-tip>\n<tool-tip position="pos-right">Pointing right</tool-tip>\n<tool-tip position="pos-none">Pointing nowhere</tool-tip>',
+      },
+    },
   },
-  decorators: [
-    (story) => ({
-      components: { story },
-      template: `<div style="min-height:60px;"><story /></div>`,
-    }),
-  ],
-};
-
-export const PositionLeft: Story = {
-  args: {
-    default: 'Pointing left',
-    position: TooltipPosition.Left,
-  },
-  decorators: [
-    (story) => ({
-      components: { story },
-      template: `<div style="min-height:60px;"><story /></div>`,
-    }),
-  ],
-};
-
-export const PositionBottom: Story = {
-  args: {
-    default: 'Pointing downwards',
-    position: TooltipPosition.Bottom,
-  },
-  decorators: [
-    (story) => ({
-      components: { story },
-      template: `<div style="min-height:60px;"><story /></div>`,
-    }),
-  ],
-};
-
-export const PositionRight: Story = {
-  args: {
-    default: 'Pointing right',
-    position: TooltipPosition.Right,
-  },
-  decorators: [
-    (story) => ({
-      components: { story },
-      template: `<div style="min-height:60px;"><story /></div>`,
-    }),
-  ],
-};
-
-export const PositionNone: Story = {
-  args: {
-    default: 'Pointing nowhere',
-    position: TooltipPosition.None,
-  },
-  decorators: [
-    (story) => ({
-      components: { story },
-      template: `<div style="min-height:60px;"><story /></div>`,
-    }),
-  ],
 };
