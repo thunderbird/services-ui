@@ -15,37 +15,72 @@ const meta: Meta<typeof SwitchToggle> = {
     // Spying on the update event breaks reactivity.
     // 'onUpdate:modelValue': fn(), // Spy on the update event for v-model
     disabled: false,
-    label: 'Label text',
-    noLegend: false,
+    label: null,
+    noLegend: true,
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Legend: Story = {
-  args: {
-    name: 'legend',
-    noLegend: false,
-    modelValue: false,
-  },
-};
-export const NoLegend: Story = {
-  args: {
-    name: 'nolegend',
-    noLegend: true,
-    modelValue: false,
-  },
-};
-export const Disabled: Story = {
-  args: {
-    name: 'disabled',
-    disabled: true,
-    modelValue: false,
+export const Standard: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: '<switch-toggle name="toggle" />',
+      },
+    },
   },
 };
 
-export const WithVModel: Story = {
+export const Label: Story = {
+  args: {
+    name: 'retro_mode',
+    label: 'Activate retro mode',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<switch-toggle name="retro_mode" label="Activate retro mode" />',
+      },
+    },
+  },
+};
+
+export const Legend: Story = {
+  args: {
+    name: 'retro_mode',
+    noLegend: false,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<switch-toggle name="retro_mode" :no-legend="false" />',
+      },
+    },
+  },
+};
+
+export const Disabled: Story = {
+  render: () => ({
+    components: { SwitchToggle },
+    template: `
+      <div style="display:flex;gap:1rem;align-items:center;">
+        <switch-toggle name="toggle" :active="true" disabled />
+        <switch-toggle name="toggle" disabled />
+      </div>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<switch-toggle name="toggle" :active="true" disabled />\n<switch-toggle name="toggle" disabled />',
+      },
+    },
+  },
+};
+
+export const VModel: Story = {
   render: (args) => ({
     components: { SwitchToggle },
     setup() {
@@ -58,18 +93,21 @@ export const WithVModel: Story = {
     },
     template: `
       <div>
-        <SwitchToggle
-          name="with-vmodel"
-          v-model="currentState"
-          :label="'Click me to trigger events'"
-        />
+        <switch-toggle name="v-model" v-model="currentState" />
         <p><strong>Current State:</strong> {{ currentState ? 'ON' : 'OFF' }}</p>
       </div>
     `,
   }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<switch-toggle name="toggle" v-model="currentState" />\n\nCurrent State: {{ currentState ? "ON" : "OFF" }}',
+      },
+    },
+  },
 };
 
-export const WithoutVModel: Story = {
+export const Events: Story = {
   render: (args) => ({
     components: { SwitchToggle },
     setup() {
@@ -87,13 +125,16 @@ export const WithoutVModel: Story = {
     },
     template: `
       <div>
-        <SwitchToggle
-          name="without-vmodel"
-          @changed="handleChanged"
-          :label="'Click me to trigger events'"
-        />
+        <switch-toggle name="changed-event" @changed="handleChanged" />
         <p><strong>Current State:</strong> {{ currentState ? 'ON' : 'OFF' }}</p>
       </div>
     `,
   }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<switch-toggle name="toggle" @changed="(newState) => currentState = newState;" />\n\nCurrent State: {{ currentState ? "ON" : "OFF" }}',
+      },
+    },
+  },
 };
