@@ -41,7 +41,7 @@ const setOption = (option: SelectOption<string | number>) => {
       <span v-if="label || $slots.default" class="label">
         <template v-if="label">{{ label }}</template>
         <slot v-else />
-        <span v-if="required && model !== null" class="required">*</span>
+        <span v-if="required && model === null" class="required">*</span>
       </span>
     </label>
     <ul class="segment-list">
