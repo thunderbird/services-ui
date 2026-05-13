@@ -6,9 +6,9 @@ import PrimaryButton from '@/components/PrimaryButton.vue';
 
 const model = defineModel<CalendarItem[]>();
 
-const selected = computed(() => model.value.filter((item) => item.checked).length);
+const selected = computed(() => model.value?.filter((item) => item.checked).length);
 const selectAll = () => {
-  model.value = model.value.map((item) => ({
+  model.value = model.value?.map((item) => ({
     ...item,
     checked: true,
   }));
@@ -43,7 +43,7 @@ withDefaults(defineProps<Props>(), {
     <ul class="rows">
       <li class="row" v-for="(item, index) in model" :key="item.key">
         <label>
-          <input class="tbpro-checkbox" type="checkbox" v-model="model[index].checked" />
+          <input v-if="model && model[index]" class="tbpro-checkbox" type="checkbox" v-model="model[index].checked" />
           {{ item.label }}
         </label>
       </li>

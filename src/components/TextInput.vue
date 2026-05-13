@@ -15,7 +15,7 @@ const isInvalid = ref(false);
 const validationMessage = ref('');
 const isDirty = ref(false);
 const isRequired = Object.hasOwn(attrs, 'required');
-const inputRef = ref<HTMLInputElement>(null);
+const inputRef = ref<HTMLInputElement>();
 const showPasswordText = t('textInput.passwordIndicator.show');
 const hidePasswordText = t('textInput.passwordIndicator.hide');
 const passwordIndicatorText = ref(showPasswordText);
@@ -55,15 +55,15 @@ interface Props {
   outerSuffix?: string;
   smallText?: boolean;
   smallInput?: boolean;
-  maxLength?: number | string;
+  maxLength?: number | string | null;
   dataTestid?: string;
   type?: InputTypeHTMLAttribute;
 }
 const props = withDefaults(defineProps<Props>(), {
-  label: null,
-  help: null,
-  error: null,
-  prefix: null,
+  label: '',
+  help: '',
+  error: '',
+  prefix: '',
   smallText: false,
   smallInput: false,
   maxLength: null,
@@ -74,9 +74,9 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits(['submit', 'blur']);
 defineExpose({ focus, reset });
 
-const onInvalid = (evt: ElementEvent<HTMLInputElement>) => {
+const onInvalid = (evt: Event) => {
   isInvalid.value = true;
-  validationMessage.value = evt.target.validationMessage;
+  validationMessage.value = (evt as ElementEvent<HTMLInputElement>).target.validationMessage;
 };
 
 /**
@@ -88,11 +88,11 @@ const onChange = () => {
   isDirty.value = true;
   isInvalid.value = false;
   validationMessage.value = '';
-  inputRef.value.setCustomValidity('');
+  inputRef.value?.setCustomValidity('');
 };
 
-const onBlur = (evt: ElementEvent<HTMLInputElement>) => {
-  if (isDirty.value && evt.target.checkValidity()) {
+const onBlur = (evt: Event) => {
+  if (isDirty.value && (evt as ElementEvent<HTMLInputElement>).target.checkValidity()) {
     isInvalid.value = false;
     validationMessage.value = '';
   }
@@ -140,7 +140,7 @@ const togglePasswordVisibility = () => {
           :type="inputType"
           :id="name"
           :name="name"
-          :maxlength="maxLength"
+          :maxlength="maxLength ?? undefined"
           :data-testid="dataTestid"
           @invalid="onInvalid"
           @change="onChange"
