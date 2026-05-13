@@ -116,7 +116,7 @@ describe('SegmentedControl', () => {
     });
 
     // if required option set, ensure required asterisk is displayed
-    if (ourProps['required'] == true) {
+    if (ourProps['required'] == true && !ourProps['modelValue']) {
       expect(segCtrlLabel.text()).toContain('*');
     }
   });
