@@ -204,7 +204,7 @@ describe('TextArea', () => {
     await textArea.trigger('blur');
     expect(wrapper.emitted().blur, 'expected blur event to have been emitted').toBeTruthy();
     expect(wrapper.emitted()['blur'].length).toBe(1);
-    expect(wrapper.emitted()['blur'][0][0]).toBe(inputText);
+    expect(wrapper.emitted()['blur'][0][0].target.value).toBe(inputText);
   });
 
   it('able to reset the text area using exposed reset method', async () => {

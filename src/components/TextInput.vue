@@ -97,7 +97,7 @@ const onBlur = (evt: ElementEvent<HTMLInputElement>) => {
     validationMessage.value = '';
   }
 
-  emit('blur', model.value);
+  emit('blur', evt);
 };
 
 // not computed, we want this only on the initial load

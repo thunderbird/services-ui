@@ -90,7 +90,7 @@ const onBlur = (evt: ElementEvent<HTMLTextAreaElement>) => {
     validationMessage.value = '';
   }
 
-  emit('blur', model.value);
+  emit('blur', evt);
 };
 </script>
 
