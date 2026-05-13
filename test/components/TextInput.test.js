@@ -338,6 +338,12 @@ describe('TextInput', () => {
     expect(wrapper.emitted().change, 'expected change event to have been emitted').toBeTruthy();
     expect(wrapper.emitted()['change'].length).toBe(1);
     expect(textInput.element.value).toBe(inputText);
+
+    // now blur and verify
+    await textInput.trigger('blur');
+    expect(wrapper.emitted().blur, 'expected blur event to have been emitted').toBeTruthy();
+    expect(wrapper.emitted()['blur'].length).toBe(1);
+    expect(wrapper.emitted()['blur'][0][0].target.value).toBe(inputText);
   });
 
   it('able to reset the text input using exposed reset method', async () => {

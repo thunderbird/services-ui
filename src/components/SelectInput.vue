@@ -72,7 +72,7 @@ const onBlur = (evt: ElementEvent<HTMLSelectElement>) => {
     validationMessage.value = '';
   }
 
-  emit('blur');
+  emit('blur', evt);
 };
 
 defineExpose({ focus, reset });
