@@ -56,7 +56,7 @@ export const Standard: Story = {
   parameters: {
     docs: {
       source: {
-        code: 'const model = ref([\n    { key: 0, label: \'Option 1\', checked: false },\n    { key: 1, label: \'Option 2\', checked: true },\n    { key: 2, label: \'Option 3\', checked: false },\n  ]);\n<sync-card\n  title="Title"\n  v-model="model"\n/>',
+        code: 'const model = ref([\n  { key: 0, label: \'Option 1\', checked: false },\n  { key: 1, label: \'Option 2\', checked: true },\n  { key: 2, label: \'Option 3\', checked: false },\n]);\n\n<sync-card title="Title" v-model="model" />',
       },
     },
   },
@@ -114,7 +114,7 @@ export const Icon: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<sync-card\n  title="Title"\n  v-model="[\n    { key: 0, label: \'My calendar\', checked: true },\n    { key: 1, label: \'Test Calendar\', checked: false },\n    { key: 2, label: \'Where all the spam events go\', checked: false },\n    { key: 3, label: \'Work PTO\', checked: true },\n  ]"\n>\n  <template v-slot:icon>\n    <img src="/assets/svg/icons/calendar.svg" alt="Calendar Icon"/>\n  </template>\n</sync-card>',
+        code: 'const model = ref([\n  { key: 0, label: \'My calendar\', checked: true },\n  { key: 1, label: \'Test Calendar\', checked: false },\n  { key: 2, label: \'Where all the spam events go\', checked: false },\n  { key: 3, label: \'Work PTO\', checked: true },\n]);\n\n<sync-card title="Title" v-model="model">\n  <template v-slot:icon>\n    <img src="/assets/svg/icons/calendar.svg" alt="Calendar Icon"/>\n  </template>\n</sync-card>',
       },
     },
   },
