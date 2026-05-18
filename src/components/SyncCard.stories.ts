@@ -56,7 +56,7 @@ export const Standard: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<sync-card\n  title="Title"\n  v-model="[\n    { key: 0, label: \'Option 1\', checked: false },\n    { key: 1, label: \'Option 2\', checked: true },\n    { key: 2, label: \'Option 3\', checked: false },\n  ]"\n/>',
+        code: 'const model = ref([\n    { key: 0, label: \'Option 1\', checked: false },\n    { key: 1, label: \'Option 2\', checked: true },\n    { key: 2, label: \'Option 3\', checked: false },\n  ]);\n<sync-card\n  title="Title"\n  v-model="model"\n/>',
       },
     },
   },
