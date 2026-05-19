@@ -22,20 +22,18 @@ export const Standard: Story = {
     setup() {
       return { args };
     },
-    template: `
-      <StandardFooter v-bind="args">
-        <template #privacyPolicy>
-          <li><a href="#privacy">Privacy Policy</a></li>
-        </template>
-        <template #legal>
-          <li><a href="#legal">Legal</a></li>
-        </template>
-      </StandardFooter>
-    `,
+    template: `<standard-footer v-bind="args" />`,
   }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<standard-footer contribute-to-this-site-url="https://github.com/mozilla/services-ui" />',
+      },
+    },
+  },
 };
 
-export const WithTBProServiceFooter: Story = {
+export const DefaultSlot: Story = {
   args: {
     contributeToThisSiteUrl: 'https://github.com/mozilla/services-ui',
   },
@@ -45,7 +43,7 @@ export const WithTBProServiceFooter: Story = {
       return { args };
     },
     template: `
-      <StandardFooter v-bind="args">
+      <standard-footer v-bind="args">
         <template #default>
           <nav style="display: flex; justify-content: space-between; align-items: center;">
             <img src="${AppointmentLogo}" alt="Appointment Logo" />
@@ -55,13 +53,43 @@ export const WithTBProServiceFooter: Story = {
             </ul>
           </nav>
         </template>
+      </standard-footer>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<standard-footer contribute-to-this-site-url="https://github.com/mozilla/services-ui">\n  <template #default>\n    <nav>\n      <img src="/assets/svg/appointment-logo.svg" alt="Appointment Logo" />\n\n      <ul>\n        <li><a href="#">LOGIN</a></li>\n      </ul>\n    </nav>\n  </template>\n</standard-footer>`,
+      },
+    },
+  },
+};
+
+export const PrivacyAndLegal: Story = {
+  args: {
+    contributeToThisSiteUrl: 'https://github.com/mozilla/services-ui',
+  },
+  render: (args) => ({
+    components: { StandardFooter },
+    setup() {
+      return { args };
+    },
+    template: `
+      <standard-footer v-bind="args">
         <template #privacyPolicy>
           <li><a href="#privacy">Privacy Policy</a></li>
         </template>
         <template #legal>
           <li><a href="#legal">Legal</a></li>
         </template>
-      </StandardFooter>
+      </standard-footer>
     `,
   }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<standard-footer contribute-to-this-site-url="https://github.com/mozilla/services-ui">\n  <template #privacyPolicy>\n    <li><a href="#privacy">Privacy Policy</a></li>\n  </template>\n  <template #legal>\n    <li><a href="#legal">Legal</a></li>\n  </template>\n</standard-footer>`,
+      },
+    },
+  },
 };
