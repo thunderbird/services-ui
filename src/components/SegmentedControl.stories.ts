@@ -46,15 +46,35 @@ const meta: Meta<typeof SegmentedControl> = {
     onClick: fn(),
     label: 'Select a minimum duration',
     options: selectOptions,
+    required: false,
+    disabled: false,
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const DurationSelection: Story = {
+export const Standard: Story = {
+  parameters: {
+    docs: {
+      source: {
+        code: "const options = [\n  { label: 'Instant', value: 0 },\n  { label: '12 hours', value: 12 },\n  { label: 'a day', value: 24 },\n  { label: '2 days', value: 48 },\n  { label: '3 days', value: 72 },\n  { label: '4 days', value: 96 },\n  { label: '5 days', value: 120 },\n];\n\n<segmented-control\n  label=\"Select a minimum duration\"\n  :options=\"options\"\n/>",
+      },
+    },
+  },
+};
+
+export const Required: Story = {
   args: {
-    modelValue: 24,
+    label: 'Required segmented control',
+    required: true,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<segmented-control\n  label="Select a minimum duration"\n  :options="[{ label: \'Instant\', value: 0 }, ...]"\n  required\n/>',
+      },
+    },
   },
 };
 
@@ -64,9 +84,16 @@ export const Disabled: Story = {
     disabled: true,
     modelValue: 48,
   },
+  parameters: {
+    docs: {
+      source: {
+        code: '<segmented-control\n  label="Select a minimum duration"\n  :options="[{ label: \'Instant\', value: 0 }, ...]"\n  disabled\n/>',
+      },
+    },
+  },
 };
 
-export const WithVModel: Story = {
+export const VModel: Story = {
   render: (args) => ({
     components: { SegmentedControl },
     setup() {
@@ -91,9 +118,16 @@ export const WithVModel: Story = {
       </div>
     `,
   }),
+  parameters: {
+    docs: {
+      source: {
+        code: 'const model = ref(24);\n\n<segmented-control\n  label="With external v-model"\n  v-model="model"\n  :options="[{ label: \'Instant\', value: 0 }, ...]"\n/>',
+      },
+    },
+  },
 };
 
-export const WithOptionBadges: Story = {
+export const OptionBadges: Story = {
   args: {
     label: 'Todo',
     options: [
@@ -120,5 +154,12 @@ export const WithOptionBadges: Story = {
       2: '14',
     },
     modelValue: 0,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: '<segmented-control\n  label="Todo"\n  :options="[\n    { label: \'Backlog\', value: 0 },\n    { label: \'In progress\', value: 1 },\n    { label: \'Done\', value: 2 },\n    { label: \'Blocked\', value: 3 },\n  ]"\n  :option-badges="{ 0: \'256\', 1: \'2\', 2: \'14\' }"\n/>',
+      },
+    },
   },
 };
