@@ -28,6 +28,7 @@ html {
 .divider {
   box-shadow: 1px 0 0 0 var(--divider-border-colour);
   background-color: var(--divider-background-colour);
+  flex-shrink: 0;
 }
 
 .horizontal {
