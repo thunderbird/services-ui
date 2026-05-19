@@ -11,7 +11,6 @@ export default defineConfig({
     vue(),
     dts({
       tsconfigPath: './tsconfig.app.json',
-      bundleTypes: true,
     }),
   ],
   resolve: {
