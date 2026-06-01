@@ -18,11 +18,11 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  label: '',
+  label: null,
   required: false,
   bubbleGap: 'default',
-  help: '',
-  error: '',
+  help: null,
+  error: null,
   disabled: false,
   singleSelection: false,
   dataTestid: 'bubble-select',

@@ -55,9 +55,9 @@ interface Props {
   dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
-  label: '',
-  help: '',
-  error: '',
+  label: null,
+  help: null,
+  error: null,
   prefix: null,
   smallText: false,
   maxLength: null,
@@ -112,7 +112,7 @@ const onBlur = (evt: Event) => {
         }"
         :id="name"
         :name="name"
-        :maxlength="maxLength ?? undefined"
+        :maxlength="maxLength"
         :data-testid="dataTestid"
         @invalid="onInvalid"
         @change="onChange"

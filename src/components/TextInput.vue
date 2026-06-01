@@ -55,15 +55,15 @@ interface Props {
   outerSuffix?: string;
   smallText?: boolean;
   smallInput?: boolean;
-  maxLength?: number | string | null;
+  maxLength?: number | string;
   dataTestid?: string;
   type?: InputTypeHTMLAttribute;
 }
 const props = withDefaults(defineProps<Props>(), {
-  label: '',
-  help: '',
-  error: '',
-  prefix: '',
+  label: null,
+  help: null,
+  error: null,
+  prefix: null,
   smallText: false,
   smallInput: false,
   maxLength: null,
@@ -140,7 +140,7 @@ const togglePasswordVisibility = () => {
           :type="inputType"
           :id="name"
           :name="name"
-          :maxlength="maxLength ?? undefined"
+          :maxlength="maxLength"
           :data-testid="dataTestid"
           @invalid="onInvalid"
           @change="onChange"
