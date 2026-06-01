@@ -14,7 +14,7 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-  label: null,
+  label: '',
   required: false,
   disabled: false,
   dataTestid: 'segmented-control',

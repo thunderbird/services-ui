@@ -60,13 +60,13 @@ interface Props {
   type?: InputTypeHTMLAttribute;
 }
 const props = withDefaults(defineProps<Props>(), {
-  label: null,
-  help: null,
-  error: null,
-  prefix: null,
+  label: '',
+  help: '',
+  error: '',
+  prefix: '',
   smallText: false,
   smallInput: false,
-  maxLength: null,
+  maxLength: undefined,
   dataTestid: 'text-input',
   type: 'text',
 });

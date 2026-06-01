@@ -27,7 +27,7 @@ interface Props {
   dataTestid?: string;
 }
 withDefaults(defineProps<Props>(), {
-  label: null,
+  label: '',
   dataTestid: 'select-input',
 });
 

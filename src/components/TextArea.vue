@@ -55,12 +55,11 @@ interface Props {
   dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
-  label: null,
-  help: null,
-  error: null,
-  prefix: null,
+  label: '',
+  help: '',
+  error: '',
   smallText: false,
-  maxLength: null,
+  maxLength: undefined,
   dataTestid: 'text-area',
 });
 
