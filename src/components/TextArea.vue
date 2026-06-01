@@ -51,7 +51,7 @@ interface Props {
   help?: string;
   error?: string;
   smallText?: boolean;
-  maxLength?: number | string | null;
+  maxLength?: number | string;
   dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
