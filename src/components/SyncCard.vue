@@ -114,6 +114,7 @@ withDefaults(defineProps<Props>(), {
   background-color: var(--colour-neutral-base);
   padding: 0.375rem 0.75rem;
   font-size: var(--txt-input);
+  box-sizing: border-box;
 
   &:nth-child(even) {
     background-color: var(--colour-neutral-lower);

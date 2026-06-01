@@ -25,7 +25,7 @@ jobs:
           cache: npm
 
       - name: Install Deps
-        run: npm install
+        run: npm ci
 
       - name: Build Storybook
         run: npm run build-storybook

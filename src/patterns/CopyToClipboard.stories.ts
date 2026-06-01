@@ -7,6 +7,11 @@ const meta: Meta<typeof CopyToClipboard> = {
   component: CopyToClipboard,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
+  args: {
+    displayText: 'Copy to clipboard',
+    copyValue: '',
+    iconOnly: false,
+  },
   argTypes: {
     displayText: {
       description: 'Text to display in the button. Required unless iconOnly is true.',
@@ -46,9 +51,16 @@ export const Standard: Story = {
       </div>
     `,
   }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<copy-to-clipboard display-text="Copy to clipboard" />',
+      },
+    },
+  },
 };
 
-export const WithCopyValue: Story = {
+export const CopyValue: Story = {
   args: {
     displayText: 'Copy to clipboard',
     copyValue: 'https://github.com/mozilla/services-ui',
@@ -64,6 +76,13 @@ export const WithCopyValue: Story = {
       </div>
     `,
   }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<copy-to-clipboard display-text="Copy to clipboard" copy-value="https://github.com/mozilla/services-ui" />',
+      },
+    },
+  },
 };
 
 export const IconOnly: Story = {
@@ -82,4 +101,11 @@ export const IconOnly: Story = {
       </div>
     `,
   }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<copy-to-clipboard copy-value="https://github.com/mozilla/services-ui" icon-only />',
+      },
+    },
+  },
 };

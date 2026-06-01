@@ -58,11 +58,6 @@ withDefaults(defineProps<Props>(), {
 
 /* Types / Variants */
 
-.set {
-  background-color: var(--colour-ti-secondary);
-  color: var(--colour-neutral-base);
-}
-
 .primary {
   background-color: var(--colour-accent-blue);
   color: var(--colour-ti-base);
@@ -87,16 +82,7 @@ withDefaults(defineProps<Props>(), {
   }
 }
 
-.not-set {
-  background-color: var(--colour-danger-soft);
-  border-color: var(--colour-ti-critical);
-  color: var(--colour-ti-secondary);
-
-  .icon {
-    color: var(--colour-danger-default);
-  }
-}
-
+.set,
 .verified {
   background-color: var(--colour-success-soft);
   border-color: var(--colour-ti-success);
@@ -116,6 +102,7 @@ withDefaults(defineProps<Props>(), {
   }
 }
 
+.not-set,
 .default {
   background-color: var(--colour-neutral-lower);
   color: var(--colour-ti-base);

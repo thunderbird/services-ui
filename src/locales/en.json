@@ -41,7 +41,7 @@
     "contributeToThisSite": "Contribute to this site",
     "mzlaLinkText": "MZLA Technologies Corporation",
     "creativeCommonsLinkText": "Creative Commons license",
-    "copywrite": "Thunderbird is part of {mzlaLink}, a wholly owned subsidiary of Mozilla Foundation. Portions of this content are ©1998–{currentYear} by individual contributors. Content available under a {creativeCommonsLink}."
+    "copywrite": "Thunderbird is part of {mzlaLink}, a wholly owned subsidiary of the not-for-profit Mozilla.org. Portions of this content are ©1998–{currentYear} by individual contributors. Content available under a {creativeCommonsLink}."
   },
   "icons": {
     "calendar": "Calendar",

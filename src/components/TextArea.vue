@@ -90,7 +90,7 @@ const onBlur = (evt: Event) => {
     validationMessage.value = '';
   }
 
-  emit('blur');
+  emit('blur', evt);
 };
 </script>
 

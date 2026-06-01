@@ -11,13 +11,6 @@ const meta: Meta<typeof VisualDivider> = {
   argTypes: {
     type: { control: 'select', options: ['horizontal', 'vertical'] },
   },
-  decorators:
-    // Make it a little more obvious what we're looking at by framing the divider
-    (_, {}) => {
-      return {
-        template: `<section style="width: 256px; height: 256px; padding: 32px; border: 1px lightgrey solid; display: flex; justify-content: center; align-items: center;"><story/></section>`,
-      };
-    },
 };
 export default meta;
 
@@ -27,10 +20,44 @@ export const HorziontalDivider: Story = {
   args: {
     type: 'horizontal',
   },
+  decorators: [
+    (story) => ({
+      components: { story },
+      template: `<section style="width: 50%;">
+        <p>While in recent findings, the interdisciplinary cohort clarifies a contested framework across multiple cohorts, at present, a comparative historian outlines the institutional context through comparative analysis.</p>
+        <story />
+        <p>Because in the study, a peer-reviewed study contextualizes an emergent hypothesis within a broader discourse, at the institutional level, the principal investigator examines a longitudinal dataset across multiple cohorts.</p>
+      </section>`,
+    }),
+  ],
+  parameters: {
+    docs: {
+      source: {
+        code: '<p>While in recent findings...</p>\n<visual-divider type="horizontal" />\n<p>Because in the study...</p>',
+      },
+    },
+  },
 };
 
 export const VerticalDivider: Story = {
   args: {
     type: 'vertical',
+  },
+  decorators: [
+    (story) => ({
+      components: { story },
+      template: `<section style="height: 100px; display: flex; gap: 1rem;">
+        <p>While in recent findings, the interdisciplinary cohort clarifies a contested framework across multiple cohorts, at present, a comparative historian outlines the institutional context through comparative analysis.</p>
+        <story />
+        <p>Because in the study, a peer-reviewed study contextualizes an emergent hypothesis within a broader discourse, at the institutional level, the principal investigator examines a longitudinal dataset across multiple cohorts.</p>
+      </section>`,
+    }),
+  ],
+  parameters: {
+    docs: {
+      source: {
+        code: `<section style="height: 100px; display: flex; gap: 1rem;">\n  <p>While in recent findings...</p>\n  <visual-divider type="vertical" />\n  <p>Because in the study...</p>\n</section>`,
+      },
+    },
   },
 };
