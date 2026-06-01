@@ -20,16 +20,6 @@ export default defineConfigWithVueTs(
     },
     rules: {
       ...playwright.configs['flat/recommended'].rules,
-      'import/extensions': [
-        'error',
-        'ignorePackages',
-        {
-          '': 'never',
-          ts: 'never',
-          js: 'never',
-          vue: 'off',
-        },
-      ],
       'import/prefer-default-export': 'off',
       radix: 'off',
       'dot-notation': 'off',
