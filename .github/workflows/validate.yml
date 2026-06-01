@@ -46,7 +46,7 @@ jobs:
           cache: npm
 
       - name: Install Deps
-        run: npm install
+        run: npm ci
 
       - name: Run Component Tests
         run: npm run test:components
