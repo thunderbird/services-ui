@@ -12,9 +12,9 @@ interface Props {
   dataTestid?: string;
 }
 withDefaults(defineProps<Props>(), {
-  label: null,
-  help: null,
-  error: null,
+  label: '',
+  help: '',
+  error: '',
   dataTestid: 'checkbox-input',
 });
 

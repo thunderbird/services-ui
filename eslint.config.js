@@ -1,6 +1,5 @@
 import jsLint from '@eslint/js';
 import tsLint from 'typescript-eslint';
-import importPlugin from 'eslint-plugin-import';
 import playwright from 'eslint-plugin-playwright';
 import storybook from 'eslint-plugin-storybook';
 import vueLint from 'eslint-plugin-vue';
@@ -9,7 +8,6 @@ import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescri
 export default defineConfigWithVueTs(
   jsLint.configs.recommended,
   ...tsLint.configs.recommended,
-  importPlugin.flatConfigs.recommended,
   ...vueLint.configs['flat/essential'],
   vueTsConfigs.recommended,
   ...storybook.configs['flat/recommended'],
@@ -22,16 +20,6 @@ export default defineConfigWithVueTs(
     },
     rules: {
       ...playwright.configs['flat/recommended'].rules,
-      'import/extensions': [
-        'error',
-        'ignorePackages',
-        {
-          '': 'never',
-          ts: 'never',
-          js: 'never',
-          vue: 'off',
-        },
-      ],
       'import/prefer-default-export': 'off',
       radix: 'off',
       'dot-notation': 'off',

@@ -13,7 +13,6 @@ export default defineConfig({
     }),
     dts({
       tsconfigPath: './tsconfig.app.json',
-      rollupTypes: true,
     }),
   ],
   define: {

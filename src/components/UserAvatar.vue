@@ -25,10 +25,10 @@ const usernameInitial = computed(() => {
   // 'Ab cd ef' => 'AE'
   return props.username
     .match(/(^\S\S?|\s\S)?/g)
-    .map(v=>v.trim())
+    ?.map(v=>v.trim())
     .join('')
     .match(/(^\S|\S$)?/g)
-    .join('')
+    ?.join('')
     .toLocaleUpperCase();
 });
 </script>

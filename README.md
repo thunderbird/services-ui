@@ -92,7 +92,8 @@ In `/src/index.ce.ts`, there are 4 steps for specifying the Vue components that 
 4. Add the converted element to the `export` object.
 
 For reference, here's the code that performs those steps for `PrimaryButton`:
-```
+
+```ts
 // Import the Components to convert.
 import { PrimaryButton } from './main';
 
@@ -108,7 +109,6 @@ export { BoltPrimaryButton };
 
 ### Displaying the text content of a Web Component
 
-
 When you use one of the Web Components in your markup, you will likely want to specify the text content:
 
 ```html
@@ -120,6 +120,7 @@ When you use one of the Web Components in your markup, you will likely want to s
 In this example, "Visit Desktop Roadmap" is rendered via the default `slot` of the Vue component.
 
 If the component you want to use does not have a default slot, add it:
+
 ```diff
  <template>
    <base-button type="primary">
@@ -131,4 +132,4 @@ If the component you want to use does not have a default slot, add it:
  </template>
 ```
 
-If you do not want to modify the component, you can also use named slots (which requires wrapping your text in an additional HTML element). See [[https://vuejs.org/guide/extras/web-components.html#slots][the Vue docs]] for more information.
+If you do not want to modify the component, you can also use named slots (which requires wrapping your text in an additional HTML element). See [the Vue docs](https://vuejs.org/guide/extras/web-components.html#slots) for more information.

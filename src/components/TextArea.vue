@@ -2,7 +2,7 @@
 /**
  * @note The default slot is deprecated and will be removed in future releases
  */
-import { computed, ref, useAttrs } from 'vue';
+import { computed, ref, useAttrs, type MaybeRef } from 'vue';
 import { t } from '@/composable/i18n';
 import { useTextareaAutosize } from '@vueuse/core';
 import type { ElementEvent } from '@/models';
@@ -16,7 +16,7 @@ const isDirty = ref(false);
 const isRequired = Object.hasOwn(attrs, 'required');
 
 const { textarea } = useTextareaAutosize({
-  input: model,
+  input: model as MaybeRef<string>,
   styleProp: 'minHeight', // Provides support for the rows attribute
 });
 
@@ -55,21 +55,20 @@ interface Props {
   dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
-  label: null,
-  help: null,
-  error: null,
-  prefix: null,
+  label: '',
+  help: '',
+  error: '',
   smallText: false,
-  maxLength: null,
+  maxLength: undefined,
   dataTestid: 'text-area',
 });
 
 const emit = defineEmits(['submit', 'blur']);
 defineExpose({ focus, reset });
 
-const onInvalid = (evt: ElementEvent<HTMLTextAreaElement>) => {
+const onInvalid = (evt: Event) => {
   isInvalid.value = true;
-  validationMessage.value = evt.target.validationMessage;
+  validationMessage.value = (evt as ElementEvent<HTMLTextAreaElement>).target.validationMessage;
 };
 
 /**
@@ -81,11 +80,11 @@ const onChange = () => {
   isDirty.value = true;
   isInvalid.value = false;
   validationMessage.value = '';
-  textarea.value.setCustomValidity('');
+  textarea.value?.setCustomValidity('');
 };
 
-const onBlur = (evt: ElementEvent<HTMLTextAreaElement>) => {
-  if (isDirty.value && evt.target.checkValidity()) {
+const onBlur = (evt: Event) => {
+  if (isDirty.value && (evt as ElementEvent<HTMLTextAreaElement>).target.checkValidity()) {
     isInvalid.value = false;
     validationMessage.value = '';
   }

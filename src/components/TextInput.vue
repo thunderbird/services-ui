@@ -15,7 +15,7 @@ const isInvalid = ref(false);
 const validationMessage = ref('');
 const isDirty = ref(false);
 const isRequired = Object.hasOwn(attrs, 'required');
-const inputRef = ref<HTMLInputElement>(null);
+const inputRef = ref<HTMLInputElement>();
 const showPasswordText = t('textInput.passwordIndicator.show');
 const hidePasswordText = t('textInput.passwordIndicator.hide');
 const passwordIndicatorText = ref(showPasswordText);
@@ -60,13 +60,13 @@ interface Props {
   type?: InputTypeHTMLAttribute;
 }
 const props = withDefaults(defineProps<Props>(), {
-  label: null,
-  help: null,
-  error: null,
-  prefix: null,
+  label: '',
+  help: '',
+  error: '',
+  prefix: '',
   smallText: false,
   smallInput: false,
-  maxLength: null,
+  maxLength: undefined,
   dataTestid: 'text-input',
   type: 'text',
 });
@@ -74,9 +74,9 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits(['submit', 'blur']);
 defineExpose({ focus, reset });
 
-const onInvalid = (evt: ElementEvent<HTMLInputElement>) => {
+const onInvalid = (evt: Event) => {
   isInvalid.value = true;
-  validationMessage.value = evt.target.validationMessage;
+  validationMessage.value = (evt as ElementEvent<HTMLInputElement>).target.validationMessage;
 };
 
 /**
@@ -88,11 +88,11 @@ const onChange = () => {
   isDirty.value = true;
   isInvalid.value = false;
   validationMessage.value = '';
-  inputRef.value.setCustomValidity('');
+  inputRef.value?.setCustomValidity('');
 };
 
-const onBlur = (evt: ElementEvent<HTMLInputElement>) => {
-  if (isDirty.value && evt.target.checkValidity()) {
+const onBlur = (evt: Event) => {
+  if (isDirty.value && (evt as ElementEvent<HTMLInputElement>).target.checkValidity()) {
     isInvalid.value = false;
     validationMessage.value = '';
   }
