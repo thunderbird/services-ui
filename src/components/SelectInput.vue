@@ -55,9 +55,9 @@ const reset = () => {
   validationMessage.value = '';
 };
 
-const onInvalid = (evt: ElementEvent<HTMLSelectElement>) => {
+const onInvalid = (evt: Event) => {
   isInvalid.value = true;
-  validationMessage.value = evt.target.validationMessage;
+  validationMessage.value = (evt as ElementEvent<HTMLSelectElement>).target.validationMessage;
 };
 const onInput = () => {
   isDirty.value = true;
@@ -66,8 +66,8 @@ const onInput = () => {
   inputRef.value.setCustomValidity('');
 };
 
-const onBlur = (evt: ElementEvent<HTMLSelectElement>) => {
-  if (isDirty.value && evt.target.checkValidity()) {
+const onBlur = (evt: Event) => {
+  if (isDirty.value && (evt as ElementEvent<HTMLSelectElement>).target.checkValidity()) {
     isInvalid.value = false;
     validationMessage.value = '';
   }

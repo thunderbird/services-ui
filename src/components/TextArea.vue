@@ -67,9 +67,9 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits(['submit', 'blur']);
 defineExpose({ focus, reset });
 
-const onInvalid = (evt: ElementEvent<HTMLTextAreaElement>) => {
+const onInvalid = (evt: Event) => {
   isInvalid.value = true;
-  validationMessage.value = evt.target.validationMessage;
+  validationMessage.value = (evt as ElementEvent<HTMLTextAreaElement>).target.validationMessage;
 };
 
 /**
@@ -81,11 +81,11 @@ const onChange = () => {
   isDirty.value = true;
   isInvalid.value = false;
   validationMessage.value = '';
-  textarea.value.setCustomValidity('');
+  textarea.value?.setCustomValidity('');
 };
 
-const onBlur = (evt: ElementEvent<HTMLTextAreaElement>) => {
-  if (isDirty.value && evt.target.checkValidity()) {
+const onBlur = (evt: Event) => {
+  if (isDirty.value && (evt as ElementEvent<HTMLTextAreaElement>).target.checkValidity()) {
     isInvalid.value = false;
     validationMessage.value = '';
   }
