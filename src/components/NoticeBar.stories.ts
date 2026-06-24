@@ -41,8 +41,8 @@ export const CTAControls: Story = {
   render: () => ({
     components: { NoticeBar, PrimaryButton, LinkButton },
     template: `
-      <notice-bar>
-        This form is dirty.
+      <notice-bar type="warning">
+        You have unsaved changes.
 
         <template #cta>
           <link-button>Revert changes</link-button>
@@ -54,7 +54,7 @@ export const CTAControls: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<notice-bar>\n  This form is dirty.\n\n  <template #cta>\n    <link-button>Revert changes</link-button>\n    <primary-button size="small">Save changes</primary-button>\n  </template>\n</notice-bar>',
+        code: '<notice-bar type="warning">\n  You have unsaved changes.\n\n  <template #cta>\n    <link-button>Revert changes</link-button>\n    <primary-button size="small">Save changes</primary-button>\n  </template>\n</notice-bar>',
       },
     },
   },
