@@ -325,6 +325,7 @@ button:hover > .tooltip {
   box-shadow: none !important;
   border: none !important;
   min-width: 0;
+  padding: 0.5rem 0.75rem;
 
   .text {
     padding: 0;

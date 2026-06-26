@@ -25,15 +25,17 @@ const isError = computed(() => props.type === NoticeBarTypes.Critical);
 
 <template>
   <div :class="{ [type]: type }" class="notice notice-bar" :data-testid="dataTestid">
-    <span class="icon">
-      <notice-info-icon v-if="isInfo" />
-      <notice-success-icon v-if="isSuccess" />
-      <notice-warning-icon v-if="isWarning" />
-      <notice-critical-icon v-if="isError" />
-    </span>
-    <span class="body">
-      <slot />
-    </span>
+    <div class="notice-bar-content">
+      <span class="icon">
+        <notice-info-icon v-if="isInfo" />
+        <notice-success-icon v-if="isSuccess" />
+        <notice-warning-icon v-if="isWarning" />
+        <notice-critical-icon v-if="isError" />
+      </span>
+      <span class="body">
+        <slot />
+      </span>
+    </div>
     <div class="cta" v-if="$slots?.cta">
       <slot name="cta" />
     </div>
@@ -43,18 +45,41 @@ const isError = computed(() => props.type === NoticeBarTypes.Critical);
 <style scoped>
 @import '@/assets/styles/custom-media.pcss';
 
-.icon {
+.notice {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  border-radius: 1rem;
+  border: 0.0625rem solid;
+  padding: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  &:has(.cta) {
+    padding: 0.75rem 0.75rem 0.75rem 1rem;
+  }
 }
 
-.body {
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 132%;
-  color: var(--colour-ti-secondary);
-  flex-grow: 1;
+.notice-bar-content {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .body {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 132%;
+    color: var(--colour-ti-secondary);
+    flex-grow: 1;
+  }
 }
 
 .cta {
@@ -62,21 +87,7 @@ const isError = computed(() => props.type === NoticeBarTypes.Critical);
   align-items: center;
   justify-content: center;
   gap: 1rem;
-}
-
-.notice {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  justify-content: start;
-  align-items: center;
-  border-radius: 1rem;
-  gap: 0.5rem;
-  border: 0.0625rem solid;
-  padding: 1rem;
-
-  &:has(.cta) {
-    padding: 0.75rem 0.75rem 0.75rem 1rem;
-  }
+  flex-wrap: wrap;
 }
 
 .info {
