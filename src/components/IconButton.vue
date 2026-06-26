@@ -20,6 +20,7 @@ withDefaults(defineProps<Props>(), {
 <style>
 .link.icon-only {
   padding: 0.5rem;
+  height: auto;
 
   .icon,
   .icon svg {

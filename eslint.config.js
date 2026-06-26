@@ -4,6 +4,7 @@ import importPlugin from 'eslint-plugin-import';
 import playwright from 'eslint-plugin-playwright';
 import storybook from 'eslint-plugin-storybook';
 import vueLint from 'eslint-plugin-vue';
+import globals from 'globals';
 import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript';
 
 export default defineConfigWithVueTs(
@@ -14,14 +15,12 @@ export default defineConfigWithVueTs(
   vueTsConfigs.recommended,
   ...storybook.configs['flat/recommended'],
   {
-    ...playwright.configs['flat/recommended'],
     files: ['**/*.vue', '**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs', '**/*.ts', '**/*.tsx', '**/*.cts', '**/*.mts'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
     },
     rules: {
-      ...playwright.configs['flat/recommended'].rules,
       'import/extensions': [
         'error',
         'ignorePackages',
@@ -57,5 +56,17 @@ export default defineConfigWithVueTs(
         node: true,
       },
     },
+  },
+  {
+    files: ['test/**/*.js', 'test/**/*.ts'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+      },
+    },
+  },
+  {
+    ...playwright.configs['flat/recommended'],
+    files: ['e2e/**'],
   }
 );
