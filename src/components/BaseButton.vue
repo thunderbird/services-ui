@@ -103,13 +103,15 @@ button:hover > .tooltip {
   align-items: center;
   gap: 0.5rem;
 
+  height: 2.875rem;
+
   border: 0;
   border-radius: var(--border-radius);
   font-family: 'Inter', sans-serif;
   font-size: var(--txt-input); /* 14px */
   font-weight: 400;
   line-height: 1;
-  padding: 1rem 1.12rem;
+  padding: 0 1.12rem;
   cursor: pointer;
   user-select: none;
 
@@ -350,7 +352,8 @@ button:hover > .tooltip {
 }
 
 .small {
-  padding: 0.38rem 0.75rem;
+  height: 1.75rem;
+  padding: 0 0.75rem;
 
   &.brand .text {
     font-size: 0.6875rem;
@@ -360,7 +363,7 @@ button:hover > .tooltip {
     font-size: 0.875rem;
   }
 
-  &button {
+  & button {
     min-width: initial;
     height: 2rem;
   }
