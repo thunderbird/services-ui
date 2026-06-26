@@ -29,6 +29,8 @@ const meta: Meta<typeof BaseButton> = {
     /* @ts-ignore */
     onClick: fn(),
     default: 'Click me!',
+    disabled: false,
+    forceTooltip: false,
   },
 };
 
