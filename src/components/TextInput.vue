@@ -149,7 +149,7 @@ const togglePasswordVisibility = () => {
           tabindex="0" 
           :title="passwordIndicatorText"
           @keyup.space="togglePasswordVisibility" 
-          @click="togglePasswordVisibility"
+          @click.prevent="togglePasswordVisibility"
           v-if="isPasswordField" 
         >
           <eye-icon class="icon" alt="" v-if="passwordIsVisible" />
