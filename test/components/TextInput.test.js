@@ -304,7 +304,7 @@ describe('TextInput', () => {
     }
   });
 
-  it('able to enter text', async () => {
+  it('renders text inputs', async () => {
     const ourProps = {
       name: 'text-input-test',
       label: 'This is the TextInput label!',
@@ -382,7 +382,7 @@ describe('TextInput', () => {
     expect(passwordToggle.attributes().title).toBe(t('textInput.passwordIndicator.hide'));
   });
 
-  it('able to reset the text input using exposed reset method', async () => {
+  it('resets the text input using exposed reset method', async () => {
     const ourProps = {
       name: 'text-input-test',
       label: 'This is the TextInput label!',
