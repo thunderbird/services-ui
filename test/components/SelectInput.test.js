@@ -142,7 +142,7 @@ describe('SelectInput', () => {
     });
   });
 
-  it('able to select an option', async () => {
+  it('can select an option', async () => {
     const ourProps = {
       name: 'standard',
       label: 'Please select an option',
@@ -170,7 +170,7 @@ describe('SelectInput', () => {
     expect(selInput.element.value).toBe(options[0]['value']);
   });
 
-  it('unable to select an option when disabled', async () => {
+  it('cannot select an option when disabled', async () => {
     const ourProps = {
       name: 'standard',
       label: 'Please select an option',
@@ -198,7 +198,7 @@ describe('SelectInput', () => {
     expect(wrapper.emitted().click, 'expected click event to have been emitted').toBeFalsy();
   });
 
-  it('able to reset the selected input using exposed reset method', async () => {
+  it('resets the selected input using exposed reset method', async () => {
     const ourProps = {
       name: 'standard',
       label: 'Please select an option',

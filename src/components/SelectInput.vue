@@ -180,6 +180,7 @@ defineExpose({ focus, reset });
     width: 1.25rem;
     height: 1.25rem;
     pointer-events: none;
+    transition: transform 250ms ease-in-out;
   }
 }
 
@@ -224,6 +225,10 @@ defineExpose({ focus, reset });
   &.dirty:invalid:not(:focus),
   &.error:not(:focus) {
     border-color: var(--colour-ti-critical);
+  }
+
+  &:open ~ .dropdown-caret {
+    transform: rotate(180deg);
   }
 }
 
