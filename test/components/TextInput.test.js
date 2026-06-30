@@ -1,5 +1,6 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
+import { t } from '@/composable/i18n';
 import TextInput from '@/components/TextInput.vue';
 
 
@@ -303,7 +304,7 @@ describe('TextInput', () => {
     }
   });
 
-  it('able to enter text', async () => {
+  it('renders text inputs', async () => {
     const ourProps = {
       name: 'text-input-test',
       label: 'This is the TextInput label!',
@@ -346,7 +347,42 @@ describe('TextInput', () => {
     expect(wrapper.emitted()['blur'][0][0].target.value).toBe(inputText);
   });
 
-  it('able to reset the text input using exposed reset method', async () => {
+  it('renders password inputs and toggles visibility', async () => {
+    const ourProps = {
+      name: 'password-input-test',
+      label: 'The Password input label',
+      help: null,
+      error: null,
+      prefix: null,
+      outerPrefix: null,
+      smallText: false,
+      smallInput: false,
+      maxLength: null,
+      modelValue: null,
+      dataTestid: 'password-input-test',
+      type: 'password',
+    };
+
+    wrapper = mount(TextInput, {
+      propsData: ourProps,
+    });
+
+    const textInputSel = `[data-testid=${ourProps['dataTestid']}]`;
+    const textInput = wrapper.find(textInputSel);
+    expect(textInput.exists()).toBe(true);
+    expect(textInput.attributes().type).toBe('password');
+
+    const passwordToggle = wrapper.find('span.tbpro-input-suffix');
+    expect(passwordToggle.exists()).toBe(true);
+    expect(passwordToggle.isVisible()).toBe(true);
+    expect(passwordToggle.attributes().title).toBe(t('textInput.passwordIndicator.show'));
+
+    await passwordToggle.trigger('click');
+    expect(textInput.attributes().type).toBe('text');
+    expect(passwordToggle.attributes().title).toBe(t('textInput.passwordIndicator.hide'));
+  });
+
+  it('resets the text input using exposed reset method', async () => {
     const ourProps = {
       name: 'text-input-test',
       label: 'This is the TextInput label!',

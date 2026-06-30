@@ -105,16 +105,12 @@ const isPasswordField = props.type === 'password';
 // The current inputType, this will swap between text and password.
 const inputType = ref(props.type);
 // false: hide password, true: show password
-const passwordIsVisible = ref(isPasswordField ? false : null);
+const passwordIsVisible = ref(false);
 
 const togglePasswordVisibility = () => {
   inputType.value = passwordIsVisible.value ? 'password' : 'text';
   passwordIsVisible.value = !passwordIsVisible.value;
-  if (passwordIsVisible.value === true) {
-    passwordIndicatorText.value = hidePasswordText;
-  } else if (passwordIsVisible.value === false) {
-    passwordIndicatorText.value = showPasswordText;
-  }
+  passwordIndicatorText.value = passwordIsVisible.value ? hidePasswordText : showPasswordText
 };
 </script>
 
@@ -153,11 +149,11 @@ const togglePasswordVisibility = () => {
           tabindex="0" 
           :title="passwordIndicatorText"
           @keyup.space="togglePasswordVisibility" 
-          @click="togglePasswordVisibility"
-          v-if="passwordIsVisible !== null" 
+          @click.prevent="togglePasswordVisibility"
+          v-if="isPasswordField" 
         >
-          <eye-icon class="icon" alt="" v-if="passwordIsVisible === true" />
-          <eye-off-icon class="icon" alt="" v-else-if="passwordIsVisible === false" />
+          <eye-icon class="icon" alt="" v-if="passwordIsVisible" />
+          <eye-off-icon class="icon" alt="" v-else />
         </span>
         <span
           v-else-if="maxLength !== null"
