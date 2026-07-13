@@ -59,7 +59,7 @@ const onInvalid = (evt: Event) => {
   isInvalid.value = true;
   validationMessage.value = (evt as ElementEvent<HTMLSelectElement>).target.validationMessage;
 };
-const onInput = () => {
+const onChange = () => {
   isDirty.value = true;
   isInvalid.value = false;
   validationMessage.value = '';
@@ -94,7 +94,7 @@ defineExpose({ focus, reset });
         :id="name"
         :name="name"
         @invalid="onInvalid"
-        @input="onInput"
+        @change="onChange"
         @blur="onBlur"
         :data-testid="dataTestid"
         ref="inputRef"
