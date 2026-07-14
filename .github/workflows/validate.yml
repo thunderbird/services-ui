@@ -56,7 +56,6 @@ jobs:
       needs: detect-changes
       runs-on: ubuntu-latest
       if: needs.detect-changes.outputs.validate-src == 'true'
-      continue-on-error: true
       # Keep this tag's version in lockstep with the `playwright` version in package.json.
       # Using containers instead of installing playwright all the time:
       # https://playwright.dev/docs/ci#via-containers
