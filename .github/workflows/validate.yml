@@ -51,3 +51,31 @@ jobs:
 
       - name: Run Component Tests
         run: npm run test:components
+
+  a11y-tests:
+      needs: detect-changes
+      runs-on: ubuntu-latest
+      if: needs.detect-changes.outputs.validate-src == 'true'
+      continue-on-error: true
+      # Keep this tag's version in lockstep with the `playwright` version in package.json.
+      # Using containers instead of installing playwright all the time:
+      # https://playwright.dev/docs/ci#via-containers
+      container:
+        image: mcr.microsoft.com/playwright:v1.61.1-noble
+        options: --ipc=host
+
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4.0.3
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Install Deps
+        run: npm ci
+
+      - name: Run Accessibility Tests
+        run: npm run test:a11y
