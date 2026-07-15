@@ -22,6 +22,7 @@
     "watch": "vite build --watch",
     "test:unit": "vitest",
     "test:components": "vitest run test/components",
+    "test:a11y:setup": "playwright install chromium",
     "test:a11y": "vitest run --project=storybook",
     "test:e2e": "playwright test",
     "build-only": "vite build",
