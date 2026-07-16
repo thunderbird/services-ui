@@ -34,10 +34,10 @@ const usernameInitial = computed(() => {
 </script>
 
 <template>
-  <aside class="avatar" :class="{ [size]: size }">
+  <div class="avatar" :class="{ [size]: size }">
     <img class="img" :src="avatarUrl" v-if="avatarUrl" :alt="t('userAvatar.altText', { username: username })" />
     <span class="initials" :title="username" v-else>{{ usernameInitial }}</span>
-  </aside>
+  </div>
 </template>
 
 <style scoped>

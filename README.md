@@ -57,6 +57,18 @@ npm install
 npm run test:components
 ```
 
+Accessibility tests run against Storybook stories in a real browser via Playwright. The first time you run them, install the Playwright browser binaries:
+
+```bash
+npm run test:a11y:setup
+```
+
+Then run the tests:
+
+```bash
+npm run test:a11y
+```
+
 ### Publishing a new version
 
 Once a release is deemed either a major update, minor update or patch update go ahead and update the version in package.json. Don't forget to run `npm i` to update the package version number in the lockfile too.

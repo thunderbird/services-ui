@@ -98,7 +98,8 @@ withDefaults(defineProps<Props>(), {
 .selected {
   font-size: 0.5625rem;
   line-height: var(--txt-default);
-  color: var(--colour-highlight);
+  /* color-mix darkens the text just enough to meet 4.5:1 contrast */
+  color: color-mix(in srgb, var(--colour-highlight) 92%, black);
 }
 
 .rows {

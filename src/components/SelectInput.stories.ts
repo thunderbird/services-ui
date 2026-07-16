@@ -50,12 +50,12 @@ export const Disabled: Story = {
   render: () => ({
     components: { SelectInput },
     template: `
-      <select-input name="select-disabled" disabled />
+      <select-input name="select-disabled" label="How many?" disabled />
     `,
   }),
   parameters: {
     docs: {
-      source: { code: '<select-input name="select-disabled" :options="[...]" disabled />' },
+      source: { code: '<select-input name="select-disabled" label="How many?" :options="[...]" disabled />' },
     },
   },
 };
