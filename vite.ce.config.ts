@@ -32,7 +32,7 @@ export default defineConfig({
   build: {
     emptyOutDir: false, // Keep standard build files
     lib: {
-      entry: resolve(__dirname, 'src/index.ce.ts'),
+      entry: resolve(import.meta.dirname, 'src/index.ce.ts'),
       name: 'BoltWeb',
       fileName: 'boltweb',
       formats: ['iife'], // Serve Web Components as ES modules

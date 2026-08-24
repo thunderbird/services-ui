@@ -21,7 +21,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/main.ts'),
+      entry: resolve(import.meta.dirname, 'src/main.ts'),
       name: 'ServicesUI',
       fileName: 'index',
       cssFileName: 'style',
