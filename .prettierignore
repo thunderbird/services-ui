@@ -24,4 +24,4 @@ logs
 .env.*
 
 /.pnpm-store/
-.pnpm-lock.yaml
+pnpm-lock.yaml
