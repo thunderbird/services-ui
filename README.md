@@ -37,7 +37,7 @@ We have the following structure for Vue components:
 You can access storybook by running:
 
 ```bash
-npm run storybook
+pnpm run storybook
 ```
 
 ### Building
@@ -45,7 +45,7 @@ npm run storybook
 You can build the library by running:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ### Testing
@@ -53,27 +53,27 @@ npm run build
 You can run the vue.js components tests by running:
 
 ```bash
-npm install
-npm run test:components
+pnpm install
+pnpm run test:components
 ```
 
 Accessibility tests run against Storybook stories in a real browser via Playwright. The first time you run them, install the Playwright browser binaries:
 
 ```bash
-npm run test:a11y:setup
+pnpm run test:a11y:setup
 ```
 
 Then run the tests:
 
 ```bash
-npm run test:a11y
+pnpm run test:a11y
 ```
 
 ### Publishing a new version
 
-Once a release is deemed either a major update, minor update or patch update go ahead and update the version in package.json. Don't forget to run `npm i` to update the package version number in the lockfile too.
+Once a release is deemed either a major update, minor update or patch update go ahead and update the version in package.json. Don't forget to run `pnpm install` to update the package version number in the lockfile too.
 
-Once that's done commit it with the version number (i.e. if the new version is 0.6.1, commit just package.json and package-lock.json with the message "0.6.1".)
+Once that's done commit it with the version number (i.e. if the new version is 0.6.1, commit just package.json and pnpm-lock.yaml with the message "0.6.1".)
 
 After that create a tag for that commit as v$versionNumber (i.e. v0.6.1 from our previous example.) and draft and publish a new release based off that tag. The npm automation should kick in, and it should publish that new version soon.
 
@@ -81,7 +81,7 @@ After that create a tag for that commit as v$versionNumber (i.e. v0.6.1 from our
 
 Using Vite, you can create Web Components (also known as "Custom Elements") from Vue components.
 
-Running `npm run build:ce` ("ce" for "Custom Elements") produces two files that can be included in a static website:
+Running `pnpm run build:ce` ("ce" for "Custom Elements") produces two files that can be included in a static website:
 
 * `dist/boltweb.iife.js`
 * `dist/boltweb.css`
