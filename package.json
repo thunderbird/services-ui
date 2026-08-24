@@ -64,7 +64,7 @@
     "happy-dom": "20.8.9",
     "npm-run-all2": "8.0.4",
     "playwright": "1.61.1",
-    "postcss": "8.5.18",
+    "postcss": "8.5.23",
     "postcss-custom-media": "12.0.1",
     "postcss-mixins": "12.1.2",
     "postcss-nesting": "14.0.0",
