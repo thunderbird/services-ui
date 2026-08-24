@@ -19,17 +19,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup NodeJS
         uses: actions/setup-node@v4.0.3
         with:
           node-version: '24'
-          cache: npm
+          cache: pnpm
 
       - name: Install Deps
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build Storybook
-        run: npm run build-storybook
+        run: pnpm run build-storybook
 
       - name: Set short commit SHA
         run: echo "SHORT_COMMIT_SHA=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
