@@ -63,7 +63,7 @@ jobs:
       # Using containers instead of installing playwright all the time:
       # https://playwright.dev/docs/ci#via-containers
       container:
-        image: mcr.microsoft.com/playwright:v1.61.1-noble
+        image: mcr.microsoft.com/playwright:v1.62.1-noble
         options: --ipc=host
 
       steps:
