@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<Props>(), {
   dataTestid: 'bubble-select',
 });
 
-const model = defineModel<(string | number)[]>({ default: [] });
+const model = defineModel<(string | number)[]>({ default: () => [] });
 const emit = defineEmits(['click']);
 
 const isDirty = ref(false);

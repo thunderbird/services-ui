@@ -1,5 +1,5 @@
 // init localization
-import { createI18n } from 'vue-i18n';
+import { createI18n, type Composer, type I18n } from 'vue-i18n';
 
 // language source files
 import de from '@/locales/de.json';
@@ -10,7 +10,7 @@ const messages = {
   en, // English
 };
 const loc = localStorage?.getItem('locale') ?? navigator.language.split('-')[0];
-const instance = createI18n<false>({
+const instance: I18n<typeof messages, Record<string, never>, Record<string, never>, string, false> = createI18n({
   legacy: false,
   globalInjection: true,
   locale: loc,
@@ -19,5 +19,5 @@ const instance = createI18n<false>({
 });
 
 export default instance;
-export const i18n = instance.global;
-export const t = i18n.t;
+export const i18n: Composer<typeof messages, Record<string, never>, Record<string, never>, string> = instance.global;
+export const t: Composer<typeof messages, Record<string, never>, Record<string, never>, string>['t'] = i18n.t;

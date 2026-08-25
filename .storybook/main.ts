@@ -12,5 +12,13 @@ const config: StorybookConfig = {
   core: {
     disableTelemetry: true,
   },
+  // The root vite config's dts plugin only makes sense for the library build, not for storybook-static.
+  // It fails there since api-extractor can't resolve an entry file under storybook's own outDir.
+  viteFinal: async (config) => {
+    config.plugins = config.plugins?.filter(
+      (plugin) => !(plugin && 'name' in plugin && plugin.name === 'unplugin-dts'),
+    );
+    return config;
+  },
 };
 export default config;
