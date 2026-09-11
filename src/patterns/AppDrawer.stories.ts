@@ -80,10 +80,10 @@ export const InTopNav: Story = {
 };
 
 // An app without an `href` emits `select` instead of navigating, so it can be wired up to a router.
-// Check this story by clicking on "Send" and checking the "Actions" tab for the emitted event.
+// Check this story by clicking on "Send" or "Appointment" and checking the "Actions" tab for the emitted event.
 export const WithoutHref: Story = {
   args: {
-    apps: apps.map((app) => (app.id === 'send' ? { ...app, href: undefined } : app)),
+    apps: apps.map((app) => (app.id === 'send' || app.id === 'appointment' ? { ...app, href: undefined } : app)),
   },
   render: (args) => ({
     components: { AppDrawer },
