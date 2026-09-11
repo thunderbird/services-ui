@@ -1,4 +1,8 @@
 {
+  "appDrawer": {
+    "openLabel": "App-Schublade öffnen",
+    "menuLabel": "Apps"
+  },
   "bubbleSelect": {
     "error": "Bitte mindestens eine Option wählen."
   },
