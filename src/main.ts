@@ -31,7 +31,11 @@ import UserAvatar from '@/components/UserAvatar.vue';
 import VisualDivider from '@/components/VisualDivider.vue';
 
 // Foundational items
+import AppointmentIcon from '@/foundation/AppointmentIcon.vue';
 import CopyIcon from '@/foundation/CopyIcon.vue';
+import GripIcon from '@/foundation/GripIcon.vue';
+import MailIcon from '@/foundation/MailIcon.vue';
+import SendIcon from '@/foundation/SendIcon.vue';
 import NoticeCriticalIcon from '@/foundation/NoticeCriticalIcon.vue';
 import NoticeInfoIcon from '@/foundation/NoticeInfoIcon.vue';
 import NoticeSuccessIcon from '@/foundation/NoticeSuccessIcon.vue';
@@ -53,6 +57,8 @@ import {
 // Patterns
 import StandardFooter from '@/patterns/StandardFooter.vue';
 import CopyToClipboard from './patterns/CopyToClipboard.vue';
+import AppDrawer from '@/patterns/AppDrawer.vue';
+export type { AppDrawerApp } from '@/patterns/AppDrawer.vue';
 
 export {
   // Badges
@@ -82,7 +88,11 @@ export {
   UserAvatar,
   VisualDivider,
   // Foundational items
+  AppointmentIcon,
   CopyIcon,
+  GripIcon,
+  MailIcon,
+  SendIcon,
   NoticeCriticalIcon,
   NoticeInfoIcon,
   NoticeSuccessIcon,
@@ -98,6 +108,7 @@ export {
   BaseBadgeTypes,
   TooltipPosition,
   // Patterns
+  AppDrawer,
   CopyToClipboard,
   StandardFooter,
 };

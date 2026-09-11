@@ -1,4 +1,8 @@
 {
+  "appDrawer": {
+    "openLabel": "Open app drawer",
+    "menuLabel": "Apps"
+  },
   "bubbleSelect": {
     "error": "Please select at least one option."
   },
