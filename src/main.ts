@@ -41,6 +41,7 @@ import NoticeInfoIcon from '@/foundation/NoticeInfoIcon.vue';
 import NoticeSuccessIcon from '@/foundation/NoticeSuccessIcon.vue';
 import NoticeWarningIcon from '@/foundation/NoticeWarningIcon.vue';
 import RefreshIcon from '@/foundation/RefreshIcon.vue';
+import SettingsIcon from '@/foundation/SettingsIcon.vue';
 import StatusExpiryIcon from '@/foundation/StatusExpiryIcon.vue';
 import StatusInfoIcon from '@/foundation/StatusInfoIcon.vue';
 import StatusWarningIcon from '@/foundation/StatusWarningIcon.vue';
@@ -98,6 +99,7 @@ export {
   NoticeSuccessIcon,
   NoticeWarningIcon,
   RefreshIcon,
+  SettingsIcon,
   StatusExpiryIcon,
   StatusInfoIcon,
   StatusWarningIcon,
