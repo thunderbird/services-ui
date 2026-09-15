@@ -230,7 +230,7 @@ export const Error: Story = {
       <text-input name="error-input" label="Username" placeholder="e.g. jdoe" error="This username is already taken." /><br />
       <text-input name="error-with-link-input" label="Username (with slotted error content)" placeholder="e.g. jdoe">
         <template #error>
-          Your session has expired. <a href="#">Log in again</a>.
+          <span>Your session has expired. <a href="#">Log in again</a>.</span>
         </template>
       </text-input>
     `,

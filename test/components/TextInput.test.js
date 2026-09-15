@@ -248,7 +248,7 @@ describe('TextInput', () => {
 
     // verify error text is there if was provided
     if (ourProps['error']) {
-      const textInputErr = wrapper.find('span.help-label.invalid');
+      const textInputErr = wrapper.find('span.error-label');
       expect(textInputErr.exists()).toBe(true);
       expect(textInputErr.isVisible()).toBe(true);
       expect(textInputErr.text()).toBe(ourProps['error']);
@@ -444,7 +444,7 @@ describe('TextInput', () => {
       },
     });
 
-    const textInputErr = wrapper.find('span.help-label.invalid');
+    const textInputErr = wrapper.find('span.error-label');
     expect(textInputErr.exists()).toBe(true);
     expect(textInputErr.find('a').exists()).toBe(true);
     expect(textInputErr.text()).toBe('Log in again');
@@ -461,7 +461,7 @@ describe('TextInput', () => {
       },
     });
 
-    const textInputErr = wrapper.find('span.help-label.invalid');
+    const textInputErr = wrapper.find('span.error-label');
     expect(textInputErr.exists()).toBe(true);
 
     const textInput = wrapper.find('input');
