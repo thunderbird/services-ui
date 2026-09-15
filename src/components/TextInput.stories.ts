@@ -1,4 +1,4 @@
-import { useTemplateRef } from 'vue';
+import { ref, useTemplateRef } from 'vue';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import TextInput from '@/components/TextInput.vue';
 
@@ -192,14 +192,32 @@ export const Autofocus: Story = {
 export const Help: Story = {
   render: () => ({
     components: { TextInput },
+    setup() {
+      const email = ref('jane@emxapel.com');
+      const suggestion = 'jane@example.com';
+      const useSuggestion = () => {
+        email.value = suggestion;
+      };
+      return { email, suggestion, useSuggestion };
+    },
     template: `
-      <text-input name="help-input" label="Favourite Beverage" placeholder="e.g. Ginger ale" help="When in doubt, go with water." />
+      <text-input name="help-input" label="Favourite Beverage" placeholder="e.g. Ginger ale" help="When in doubt, go with water." /><br />
+      <text-input name="help-with-link-input" label="Email Address" v-model="email">
+        <template #help>
+          Did you mean <a href="#" @click.prevent="useSuggestion">{{ suggestion }}</a>?
+        </template>
+      </text-input>
     `,
   }),
   parameters: {
     docs: {
       source: {
-        code: `<text-input name="help-input" label="Favourite Beverage" placeholder="e.g. Ginger ale" help="When in doubt, go with water." />`,
+        code: `<text-input name="help-input" label="Favourite Beverage" placeholder="e.g. Ginger ale" help="When in doubt, go with water." />
+<text-input name="help-with-button-input" label="Email address" v-model="email">
+  <template #help>
+    Did you mean <a href="#" @click.prevent="useSuggestion">{{ suggestion }}</a>?
+  </template>
+</text-input>`,
       },
     },
   },

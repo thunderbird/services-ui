@@ -413,4 +413,22 @@ describe('TextInput', () => {
     await wrapper.vm.reset();
     expect(textInput.element.value).toBe('');
   });
+
+  it('renders the help slot content instead of the help prop when provided', () => {
+    wrapper = mount(TextInput, {
+      props: {
+        name: 'text-input-help-slot-test',
+        label: 'Email Address',
+        help: 'This should not be rendered.',
+      },
+      slots: {
+        help: '<button type="button">Use suggestion</button>',
+      },
+    });
+
+    const textInputHelp = wrapper.find('span.help-label');
+    expect(textInputHelp.exists()).toBe(true);
+    expect(textInputHelp.find('button').exists()).toBe(true);
+    expect(textInputHelp.text()).toBe('Use suggestion');
+  });
 });

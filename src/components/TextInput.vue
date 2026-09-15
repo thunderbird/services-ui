@@ -172,8 +172,8 @@ const togglePasswordVisibility = () => {
       <error-icon />
       {{ error }}
     </span>
-    <span v-if="help" class="help-label">
-      {{ help }}
+    <span v-if="help || $slots.help" class="help-label">
+      <slot name="help">{{ help }}</slot>
     </span>
   </label>
 </template>
@@ -204,8 +204,7 @@ const togglePasswordVisibility = () => {
 }
 
 .help-label {
-  display: flex;
-  align-items: center;
+  display: inline-block;
   color: var(--colour-ti-muted);
   box-sizing: border-box;
 
