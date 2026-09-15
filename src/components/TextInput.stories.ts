@@ -223,6 +223,32 @@ export const Help: Story = {
   },
 };
 
+export const Error: Story = {
+  render: () => ({
+    components: { TextInput },
+    template: `
+      <text-input name="error-input" label="Username" placeholder="e.g. jdoe" error="This username is already taken." /><br />
+      <text-input name="error-with-link-input" label="Username (with slotted error content)" placeholder="e.g. jdoe">
+        <template #error>
+          Your session has expired. <a href="#">Log in again</a>.
+        </template>
+      </text-input>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<text-input name="error-input" label="Username" placeholder="e.g. jdoe" error="This username is already taken." />
+<text-input name="error-with-link-input" label="Username" placeholder="e.g. jdoe">
+  <template #error>
+    <span>Your session has expired. <a href="#">Log in again</a>.</span>
+  </template>
+</text-input>`,
+      },
+    },
+  },
+};
+
 export const Time: Story = {
   render: () => ({
     components: { TextInput },

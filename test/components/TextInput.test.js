@@ -431,4 +431,40 @@ describe('TextInput', () => {
     expect(textInputHelp.find('button').exists()).toBe(true);
     expect(textInputHelp.text()).toBe('Use suggestion');
   });
+
+  it('renders the error slot content instead of the error prop when provided', () => {
+    wrapper = mount(TextInput, {
+      props: {
+        name: 'text-input-error-slot-test',
+        label: 'Username',
+        error: 'This should not be rendered.',
+      },
+      slots: {
+        error: '<a href="#">Log in again</a>',
+      },
+    });
+
+    const textInputErr = wrapper.find('span.help-label.invalid');
+    expect(textInputErr.exists()).toBe(true);
+    expect(textInputErr.find('a').exists()).toBe(true);
+    expect(textInputErr.text()).toBe('Log in again');
+  });
+
+  it('triggers the invalid styling from the error slot alone, with no error prop set', () => {
+    wrapper = mount(TextInput, {
+      props: {
+        name: 'text-input-error-slot-only-test',
+        label: 'Username',
+      },
+      slots: {
+        error: '<a href="#">Log in again</a>',
+      },
+    });
+
+    const textInputErr = wrapper.find('span.help-label.invalid');
+    expect(textInputErr.exists()).toBe(true);
+
+    const textInput = wrapper.find('input');
+    expect(textInput.attributes().class).toContain('error');
+  });
 });
