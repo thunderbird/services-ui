@@ -36,6 +36,8 @@ import CopyIcon from '@/foundation/CopyIcon.vue';
 import GripIcon from '@/foundation/GripIcon.vue';
 import MailIcon from '@/foundation/MailIcon.vue';
 import SendIcon from '@/foundation/SendIcon.vue';
+import SunIcon from '@/foundation/SunIcon.vue';
+import MoonIcon from '@/foundation/MoonIcon.vue';
 import NoticeCriticalIcon from '@/foundation/NoticeCriticalIcon.vue';
 import NoticeInfoIcon from '@/foundation/NoticeInfoIcon.vue';
 import NoticeSuccessIcon from '@/foundation/NoticeSuccessIcon.vue';
@@ -94,6 +96,8 @@ export {
   GripIcon,
   MailIcon,
   SendIcon,
+  SunIcon,
+  MoonIcon,
   NoticeCriticalIcon,
   NoticeInfoIcon,
   NoticeSuccessIcon,
