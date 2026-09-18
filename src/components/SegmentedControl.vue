@@ -138,7 +138,8 @@ const setOption = (option: SelectOption<string | number>) => {
         height: 1.5rem;
         min-width: 1.5rem;
         border-radius: 1.5rem;
-        background-color: rgba(19, 115, 217, 0.4); /* TODO: One off color from Zeplin */
+        background-color: var(--colour-surface-subtle);
+        color: var(--colour-ti-secondary);
         padding: 0 0.5rem;
         box-sizing: border-box;
 
