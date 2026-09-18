@@ -1,30 +1,18 @@
 import type { Preview } from '@storybook/vue3-vite';
 import '@/assets/styles/fonts.css';
 import '@/assets/styles/main.css';
-import { withThemeByClassName, withThemeByDataAttribute } from '@storybook/addon-themes';
+import { withThemeByClassName } from '@storybook/addon-themes';
 import { setup } from '@storybook/vue3-vite';
 import i18ninstance from '@/composable/i18n';
 
 export const decorators = [
   withThemeByClassName({
     themes: {
-      lightApmt: '',
-      darkApmt: 'dark',
-      lightSend: '',
-      darkSend: 'dark',
+      light: '',
+      dark: 'dark',
     },
-    defaultTheme: 'lightApmt',
+    defaultTheme: 'light',
     parentSelector: 'html',
-  }),
-  withThemeByDataAttribute({
-    themes: {
-      lightApmt: 'apmt',
-      darkApmt: 'apmt',
-      lightSend: 'send',
-      darkSend: 'send',
-    },
-    defaultTheme: 'lightApmt',
-    attributeName: 'data-tbpro-service',
   }),
 ];
 

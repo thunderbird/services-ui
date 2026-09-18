@@ -1,29 +1,10 @@
 html {
   /*
-   * Bolt Colours
    * Reference: https://bolt.thunderbird.net/8b179dbfd/p/61e4c7-color
    */
-  --colour-user-red: #e53935;
-  --colour-user-orange: #ff8c00;
-  --colour-user-yellow: #f4c430;
-  --colour-user-graphite: #b0b0b0;
-  --colour-user-green: #34c759;
-  --colour-user-blue: #0a84ff;
-  --colour-user-purple: #7753cc;
-  --colour-user-pink: #e91e63;
 
   /*
-   * Reference:  https://www.figma.com/design/3pWlMatoNdA2BT3BPVziFL/
-   */
-
-  /*
-   * Generic Colours
-   * Prefer the named colours over these!
-   */
-  --colour-neutral-900: #26272a;
-
-  /*
-   * Neutral
+   * Neutral (DEPRECATED, superseeded by Surface) – Delete me once we're sure no one else is using it.
    * Applied frequently for backgrounds, surfaces, dividers, and outlines.
    */
   --colour-neutral-base: #feffff;
@@ -32,6 +13,18 @@ html {
   --colour-neutral-subtle: var(--colour-neutral-lower);
   --colour-neutral-border: #e4e4e7;
   --colour-neutral-border-intense: #777580;
+
+  /*
+   * Surface
+   * Applied frequently for backgrounds, surfaces, dividers, and outlines.
+   */
+  --colour-surface-base: #fcfcfd;
+  --colour-surface-raised: #ffffff;
+  --colour-surface-lower: #f7f7f8;
+  --colour-surface-subtle: #efeff1;
+  --colour-surface-deep: #e4e4e7;
+  --colour-surface-border: #d9d9de;
+  --colour-surface-border-intense: #a1a1aa;
 
   /*
    * Primary
@@ -44,15 +37,6 @@ html {
   --colour-primary-hover: #175fb6;
   --colour-primary-hover-light: #175fb6; /* No override */
   --colour-primary-pressed: #19518f;
-
-  /*
-   * Secondary
-   * Applied sparingly to highlight information.
-   */
-  --colour-secondary-soft: #faf5ff;
-  --colour-secondary-default: #6b21a8;
-  --colour-secondary-hover: #571c87;
-  --colour-secondary-pressed: #3a0764;
 
   /*
    * Success
@@ -74,7 +58,7 @@ html {
   --colour-warning-pressed: #caa204;
 
   /*
-   * Danger
+   * Danger (DEPRECATED, superseeded by Critical) – Delete me once we're sure no one else is using it.
    * Applied sparingly to show negative feedback/status or dangerous actions.
    * Errors
    */
@@ -84,18 +68,31 @@ html {
   --colour-danger-pressed: #450a0a;
 
   /*
+   * Critical
+   * Applied sparingly to show negative feedback/status or dangerous actions.
+   * Errors
+   */
+  --colour-critical-soft: #fef2f2;
+  --colour-critical-default: #991b1b;
+  --colour-critical-hover: #7f1d1d;
+  --colour-critical-pressed: #450a0a;
+
+  /*
    * Text+Icon
    * Applied frequently for text and icons.
    */
-  --colour-ti-base: #1a202c;
-  --colour-ti-base-light: #1a202c; /* No override */
+  --colour-ti-base: #18181b;
+  --colour-ti-base-light: #18181b; /* No override */
   --colour-ti-base-dark: #eeeef0; /* No override */
-  --colour-ti-secondary: #4c4d58;
-  --colour-ti-muted: #737584;
+  --colour-ti-base-inverted: #fcfcfd;
+  --colour-ti-secondary: #52525b;
+  --colour-ti-muted: #71717a;
+  --colour-ti-disabled: #a1a1aa;
+  --colour-ti-brand: #0b5cbd;
   --colour-ti-highlight: #1373d9;
   --colour-ti-warning: #713f12;
-  --colour-ti-critical: #dc2626;
-  --colour-ti-success: #1d783b;
+  --colour-ti-critical: #b91c1c;
+  --colour-ti-success: #1c5f32;
 
   /*
    * Accent Colours
@@ -103,47 +100,36 @@ html {
    * *Do not use with text
    */
   --colour-accent-teal: #25a6a0;
-  --colour-accent-blue: #37adf9;
+  --colour-accent-blue: #58c9ff;
   --colour-accent-purple: #ae55f7;
   --colour-accent-orange: #ea7308;
   --colour-accent-pink: #e247c4;
   --colour-accent-gray: #6e6f9b;
 
-  /*
-   * Brand Colours
-   * Appointment
-   */
-  --colour-apmt-soft: #f3f9fc;
-  --colour-apmt-primary: #008080;
-  --colour-apmt-primary-hover: #066769;
-  --colour-apmt-primary-pressed: #0a5757;
-  --colour-apmt-secondary: #81d4b5;
-  --colour-apmt-accent-1: #a3ece3;
-  --colour-apmt-accent-2: #03afd7;
-
-  /*
-   * Brand Colours
-   * Send
-   */
-  --colour-send-soft: #fef7ec;
-  --colour-send-primary: #f09d38;
-  --colour-send-primary-hover: #f09d38;
-  --colour-send-primary-pressed: #f09d38;
-  --colour-send-primary-secondary: #aa6000;
-  --colour-send-primary-accent-1: #1f8ddb;
-  --colour-send-primary-accent-2: #1f8ddb;
-
   &.dark {
     /*
-     * Neutral
+     * Neutral (DEPRECATED, superseeded by Surface) – Delete me once we're sure no one else is using it.
      * Applied frequently for backgrounds, surfaces, dividers, and outlines.
      */
-    --colour-neutral-base: #1a202c;
-    --colour-neutral-lower: #18181b;
-    --colour-neutral-raised: #262d3b;
-    --colour-neutral-subtle: var(--colour-neutral-raised);
-    --colour-neutral-border: #303a4a;
-    --colour-neutral-border-intense: #3d4d67;
+    --colour-neutral-base: #18181b;
+    --colour-neutral-raised: #2b2b2f;
+    --colour-neutral-lower: #111113;
+    --colour-neutral-subtle: #232326;
+    --colour-neutral-deep: #3f3f46;
+    --colour-neutral-border: #52525b;
+    --colour-neutral-border-intense: #71717a;
+
+    /*
+     * Surface
+     * Applied frequently for backgrounds, surfaces, dividers, and outlines.
+     */
+    --colour-surface-base: #18181b;
+    --colour-surface-raised: #2b2b2f;
+    --colour-surface-lower: #111113;
+    --colour-surface-subtle: #232326;
+    --colour-surface-deep: #3f3f46;
+    --colour-surface-border: #52525b;
+    --colour-surface-border-intense: #71717a;
 
     /*
      * Primary
@@ -156,22 +142,13 @@ html {
     /*--primary-text: #1A202C; // No matching light-mode variable! */
 
     /*
-     * Secondary
-     * Applied sparingly to highlight information.
-     */
-    --colour-secondary-soft: #3a0764;
-    --colour-secondary-default: #f5e8ff;
-    --colour-secondary-hover: #ecd5ff;
-    --colour-secondary-pressed: #ddb4fe;
-
-    /*
      * Success
      * Applied sparingly to show positive feedback/status.
      */
     --colour-success-soft: #082b16;
     --colour-success-default: #defae7;
     --colour-success-hover: #c0f2cf;
-    --colour-success-pressed: #8ee7aa;
+    --colour-success-pressed: #81d4b5;
 
     /*
      * Warning
@@ -184,25 +161,37 @@ html {
     --colour-warning-pressed: #fdd847;
 
     /*
-     * Danger
+     * Danger (DEPRECATED, superseeded by Critical) – Delete me once we're sure no one else is using it.
      * Applied sparingly to show negative feedback/status or dangerous actions.
      * Errors
      */
     --colour-danger-soft: #7f1d1d;
-    --colour-danger-default: #fee2e2;
-    --colour-danger-hover: #fecaca;
-    --colour-danger-pressed: #fca5a5;
+    --colour-danger-default: #fca5a5;
+    --colour-danger-hover: #f87171;
+    --colour-danger-pressed: #f05252;
+
+    /*
+     * Critical
+     * Applied sparingly to show negative feedback/status or dangerous actions.
+     * Errors
+    */
+   --colour-critical-soft: #7f1d1d;
+   --colour-critical-default: #fca5a5;
+   --colour-critical-hover: #f87171;
+   --colour-critical-pressed: #f05252;
 
     /*
      * Text+Icon
      * Applied frequently for text and icons.
      */
-    --colour-ti-base: #eeeef0;
-    --colour-ti-secondary: #d9d9de;
-    --colour-ti-muted: #7f94ac;
+    --colour-ti-base: #f7f7f8;
+    --colour-ti-secondary: #d4d4d8;
+    --colour-ti-muted: #a1a1aa;
+    --colour-ti-disabled: #71717a;
+    --colour-ti-brand: #5fa6e8;
     --colour-ti-highlight: #58c9ff;
     --colour-ti-warning: #fee78a;
-    --colour-ti-critical: #ef4444;
+    --colour-ti-critical: #f87171;
     --colour-ti-success: #55d37e;
 
     /*
@@ -216,72 +205,5 @@ html {
     --colour-accent-orange: #fec18a;
     --colour-accent-pink: #fbd3f6;
     --colour-accent-gray: #c3cade;
-
-    /*
-     * Brand Colours
-     * Appointment
-     */
-    --colour-apmt-soft: #152f3c;
-    --colour-apmt-primary: #a3ece3;
-    --colour-apmt-primary-hover: #6ddbd1;
-    --colour-apmt-primary-pressed: #3ec3ba;
-    --colour-apmt-secondary: #25a6a0;
-    --colour-apmt-accent-1: #a3ece3;
-    --colour-apmt-accent-2: #58c9ff;
-
-    /*
-     * Brand Colours
-     * Send
-     */
-    --colour-send-soft: #411107;
-    --colour-send-primary: #f09d38;
-    --colour-send-primary-hover: #f09d38;
-    --colour-send-primary-pressed: #f09d38;
-    --colour-send-primary-secondary: #aa6000;
-    --colour-send-primary-accent-1: #1f8ddb;
-    --colour-send-primary-accent-2: #1f8ddb;
   }
-
-  /*
-  * Brand Colours
-  * Thunderbird
-  * The fallback if no service is set.
-  */
-  --colour-service-soft: var(--colour-primary-soft);
-  --colour-service-primary: var(--colour-primary-default);
-  --colour-service-primary-hover: var(--colour-primary-hover);
-  --colour-service-primary-pressed: var(--colour-primary-pressed);
-  --colour-service-secondary: var(--colour-secondary-default);
-  --colour-service-accent-1: var(--colour-accent-purple);
-  --colour-service-accent-2: var(--colour-accent-teal);
-
-  &[data-tbpro-service='apmt'] {
-    --colour-service-soft: var(--colour-apmt-soft);
-    --colour-service-primary: var(--colour-apmt-primary);
-    --colour-service-primary-hover: var(--colour-apmt-primary-hover);
-    --colour-service-primary-pressed: var(--colour-apmt-primary-pressed);
-    --colour-service-secondary: var(--colour-apmt-secondary);
-    --colour-service-accent-1: var(--colour-apmt-accent-1);
-    --colour-service-accent-2: var(--colour-apmt-accent-2);
-  }
-  &[data-tbpro-service='send'] {
-    --colour-service-soft: var(--colour-primary-soft);
-    --colour-service-primary: var(--colour-primary-default);
-    --colour-service-primary-hover: var(--colour-primary-hover);
-    --colour-service-primary-pressed: var(--colour-primary-pressed);
-    --colour-service-secondary: var(--colour-neutral-subtle);
-    --colour-service-accent-1: var(--colour-send-primary-accent-1);
-    --colour-service-accent-2: var(--colour-send-primary-accent-2);
-  }
-  /*
-  &[data-tbpro-service='send'] {
-    --colour-service-soft: var(--colour-send-soft);
-    --colour-service-primary: var(--colour-send-primary);
-    --colour-service-primary-hover: var(--colour-send-primary-hover);
-    --colour-service-primary-pressed: var(--colour-send-primary-pressed);
-    --colour-service-secondary: var(--colour-send-primary-secondary);
-    --colour-service-accent-1: var(--colour-send-primary-accent-1);
-    --colour-service-accent-2: var(--colour-send-primary-accent-2);
-  }
-  */
 }
