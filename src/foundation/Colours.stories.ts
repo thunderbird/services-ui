@@ -80,6 +80,9 @@ const meta: Meta<typeof ColourPalette> = {
   title: 'Foundational Items/Colours',
   component: ColourPalette,
   tags: ['autodocs'],
+  parameters: {
+    docs: { canvas: { sourceState: 'none' } },
+  },
 };
 
 export default meta;
