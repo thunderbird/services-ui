@@ -49,9 +49,9 @@ const usernameInitial = computed(() => {
   justify-content: center;
   align-items: center;
 
-  border: solid 1px var(--colour-user-blue);
+  border: solid 1px var(--colour-primary-default);
   border-radius: 100%;
-  background-color: rgba(10, 132, 255, 0.15);
+  background-color: color-mix(in srgb, var(--colour-primary-default) 15%, transparent);
 
   .img {
     width: 100%;
