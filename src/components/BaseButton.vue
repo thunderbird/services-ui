@@ -322,7 +322,7 @@ button:hover > .tooltip {
 
   background-color: transparent;
   /* color-mix darkens the text just enough to meet 4.5:1 contrast */
-  color: color-mix(in srgb, var(--colour-service-primary) 92%, black);
+  color: color-mix(in srgb, var(--colour-primary-default) 92%, black);
   text-decoration: underline;
   box-shadow: none !important;
   border: none !important;

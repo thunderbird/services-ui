@@ -60,7 +60,7 @@ withDefaults(defineProps<Props>(), {
 }
 
 .wrapper {
-  --colour-highlight: var(--colour-service-primary);
+  --colour-highlight: var(--colour-primary-default);
   border-radius: 0.5625rem;
   border: 0.0625rem solid var(--colour-neutral-border);
   background: var(--colour-neutral-base);
@@ -71,7 +71,7 @@ withDefaults(defineProps<Props>(), {
 
 .dark {
   .wrapper {
-    --colour-highlight: var(--colour-service-secondary);
+    --colour-highlight: var(--colour-primary-default-dark);
   }
 }
 

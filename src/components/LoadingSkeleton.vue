@@ -47,7 +47,7 @@ const props = withDefaults(defineProps<Props>(), {
 
   &.scan {
     background: var(--colour-ti-base-dark)
-      linear-gradient(90deg, transparent 25%, var(--colour-user-graphite) 50%, transparent 75%);
+      linear-gradient(90deg, transparent 25%, var(--colour-surface-border-intense) 50%, transparent 75%);
     background-size: 1000% 1000%;
 
     @media (prefers-reduced-motion: no-preference) {
@@ -89,7 +89,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 @keyframes pulse-animation {
   50% {
-    box-shadow: 0 0 0 0 var(--colour-user-graphite);
+    box-shadow: 0 0 0 0 var(--colour-surface-border-intense);
   }
   100% {
     box-shadow: 0 0 0 20px transparent;
