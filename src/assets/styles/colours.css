@@ -3,6 +3,8 @@ html {
    * Reference: https://bolt.thunderbird.net/8b179dbfd/p/61e4c7-color
    */
 
+  --bolt-design-synced: "2026-09";
+
   /*
    * Neutral (DEPRECATED, superseded by Surface) – Delete me once we're sure no one else is using it.
    * Applied frequently for backgrounds, surfaces, dividers, and outlines.
