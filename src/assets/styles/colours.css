@@ -7,12 +7,12 @@ html {
    * Neutral (DEPRECATED, superseded by Surface) – Delete me once we're sure no one else is using it.
    * Applied frequently for backgrounds, surfaces, dividers, and outlines.
    */
-  --colour-neutral-base: #feffff;
-  --colour-neutral-lower: #f7f7f7;
-  --colour-neutral-raised: var(--colour-neutral-base);
-  --colour-neutral-subtle: var(--colour-neutral-lower);
-  --colour-neutral-border: #e4e4e7;
-  --colour-neutral-border-intense: #777580;
+  --colour-neutral-base: #fcfcfd;
+  --colour-neutral-raised: #ffffff;
+  --colour-neutral-lower: #f7f7f8;
+  --colour-neutral-subtle: #efeff1;
+  --colour-neutral-border: #d9d9de;
+  --colour-neutral-border-intense: #a1a1aa;
 
   /*
    * Surface
