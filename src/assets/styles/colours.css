@@ -4,7 +4,7 @@ html {
    */
 
   /*
-   * Neutral (DEPRECATED, superseeded by Surface) – Delete me once we're sure no one else is using it.
+   * Neutral (DEPRECATED, superseded by Surface) – Delete me once we're sure no one else is using it.
    * Applied frequently for backgrounds, surfaces, dividers, and outlines.
    */
   --colour-neutral-base: #feffff;
@@ -58,7 +58,7 @@ html {
   --colour-warning-pressed: #caa204;
 
   /*
-   * Danger (DEPRECATED, superseeded by Critical) – Delete me once we're sure no one else is using it.
+   * Danger (DEPRECATED, superseded by Critical) – Delete me once we're sure no one else is using it.
    * Applied sparingly to show negative feedback/status or dangerous actions.
    * Errors
    */
@@ -108,7 +108,7 @@ html {
 
   &.dark {
     /*
-     * Neutral (DEPRECATED, superseeded by Surface) – Delete me once we're sure no one else is using it.
+     * Neutral (DEPRECATED, superseded by Surface) – Delete me once we're sure no one else is using it.
      * Applied frequently for backgrounds, surfaces, dividers, and outlines.
      */
     --colour-neutral-base: #18181b;
@@ -160,7 +160,7 @@ html {
     --colour-warning-pressed: #fdd847;
 
     /*
-     * Danger (DEPRECATED, superseeded by Critical) – Delete me once we're sure no one else is using it.
+     * Danger (DEPRECATED, superseded by Critical) – Delete me once we're sure no one else is using it.
      * Applied sparingly to show negative feedback/status or dangerous actions.
      * Errors
      */
