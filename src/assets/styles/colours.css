@@ -174,11 +174,11 @@ html {
      * Critical
      * Applied sparingly to show negative feedback/status or dangerous actions.
      * Errors
-    */
-   --colour-critical-soft: #7f1d1d;
-   --colour-critical-default: #fca5a5;
-   --colour-critical-hover: #f87171;
-   --colour-critical-pressed: #f05252;
+     */
+    --colour-critical-soft: #7f1d1d;
+    --colour-critical-default: #fca5a5;
+    --colour-critical-hover: #f87171;
+    --colour-critical-pressed: #f05252;
 
     /*
      * Text+Icon
