@@ -131,7 +131,7 @@ const togglePasswordVisibility = () => {
           class="tbpro-input-element"
           :class="{
             dirty: isDirty,
-            error: error !== null,
+            error: error !== null || $slots.error,
           }"
           :type="inputType"
           :id="name"
@@ -164,13 +164,13 @@ const togglePasswordVisibility = () => {
       </span>
       <span v-if="outerSuffix" class="tbpro-input-outer-suffix">{{ outerSuffix }}</span>
     </span>
-    <span v-if="isInvalid" class="help-label invalid">
+    <span v-if="isInvalid" class="error-label">
       <error-icon />
       {{ validationMessage }}
     </span>
-    <span v-else-if="error" class="help-label invalid">
+    <span v-else-if="error || $slots.error" class="error-label">
       <error-icon />
-      {{ error }}
+      <slot name="error">{{ error }}</slot>
     </span>
     <span v-if="help || $slots.help" class="help-label">
       <slot name="help">{{ help }}</slot>
@@ -211,15 +211,24 @@ const togglePasswordVisibility = () => {
   width: 100%;
   font-size: 0.6875rem;
   line-height: 0.9375rem;
+}
 
-  &.invalid {
-    gap: 0.25rem;
-    border-radius: 0.25rem;
-    padding: 0.25rem;
-    font-size: 0.75rem;
-    background-color: var(--colour-danger-soft);
-    color: var(--colour-danger-default);
-  }
+.error-label {
+  display: flex;
+  align-items: center;
+  color: var(--colour-ti-muted);
+  box-sizing: border-box;
+
+  width: 100%;
+  font-size: 0.6875rem;
+  line-height: 0.9375rem;
+
+  gap: 0.25rem;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  font-size: 0.75rem;
+  background-color: var(--colour-danger-soft);
+  color: var(--colour-danger-default);
 }
 
 .required {
