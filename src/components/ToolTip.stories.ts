@@ -24,13 +24,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
   render: (args) => ({
-    components: { ToolTip },
+    components: { ToolTip, PrimaryButton },
     setup() {
       return { args };
     },
     template: `<div style="min-height:60px;">
       <tool-tip v-bind="args">
-        <button>Hover me</button>
+        <primary-button>Hover me</primary-button>
         <template #content>{{ args.content }}</template>
       </tool-tip>
     </div>`,
@@ -38,7 +38,7 @@ export const Standard: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<tool-tip>\n  <button>Hover me</button>\n  <template #content>Primary</template>\n</tool-tip>',
+        code: '<tool-tip>\n  <primary-button>Hover me</primary-button>\n  <template #content>Primary</template>\n</tool-tip>',
       },
     },
   },
@@ -46,18 +46,18 @@ export const Standard: Story = {
 
 export const Position: Story = {
   render: () => ({
-    components: { ToolTip },
+    components: { ToolTip, PrimaryButton },
     template: `<div style="display:flex;gap:2rem;padding:3rem;">
-      <tool-tip position="pos-top"><button>Top</button><template #content>Appears above</template></tool-tip>
-      <tool-tip position="pos-left"><button>Left</button><template #content>Appears to the left</template></tool-tip>
-      <tool-tip position="pos-bottom"><button>Bottom</button><template #content>Appears below</template></tool-tip>
-      <tool-tip position="pos-right"><button>Right</button><template #content>Appears to the right</template></tool-tip>
+      <tool-tip position="pos-top"><primary-button>Top</primary-button><template #content>Appears above</template></tool-tip>
+      <tool-tip position="pos-left"><primary-button>Left</primary-button><template #content>Appears to the left</template></tool-tip>
+      <tool-tip position="pos-bottom"><primary-button>Bottom</primary-button><template #content>Appears below</template></tool-tip>
+      <tool-tip position="pos-right"><primary-button>Right</primary-button><template #content>Appears to the right</template></tool-tip>
     </div>`,
   }),
   parameters: {
     docs: {
       source: {
-        code: '<tool-tip position="pos-top"><button>Top</button><template #content>Appears above</template></tool-tip>\n<tool-tip position="pos-left"><button>Left</button><template #content>Appears to the left</template></tool-tip>\n<tool-tip position="pos-bottom"><button>Bottom</button><template #content>Appears below</template></tool-tip>\n<tool-tip position="pos-right"><button>Right</button><template #content>Appears to the right</template></tool-tip>',
+        code: '<tool-tip position="pos-top"><primary-button>Top</primary-button><template #content>Appears above</template></tool-tip>\n<tool-tip position="pos-left"><primary-button>Left</primary-button><template #content>Appears to the left</template></tool-tip>\n<tool-tip position="pos-bottom"><primary-button>Bottom</primary-button><template #content>Appears below</template></tool-tip>\n<tool-tip position="pos-right"><primary-button>Right</primary-button><template #content>Appears to the right</template></tool-tip>',
       },
     },
   },
@@ -65,28 +65,28 @@ export const Position: Story = {
 
 export const NoBeak: Story = {
   render: () => ({
-    components: { ToolTip },
+    components: { ToolTip, PrimaryButton },
     template: `<div style="display:flex;gap:2rem;padding:3rem;">
-      <tool-tip position="pos-top" :beak="false"><button>Top</button><template #content>Appears above</template></tool-tip>
-      <tool-tip position="pos-left" :beak="false"><button>Left</button><template #content>Appears to the left</template></tool-tip>
-      <tool-tip position="pos-bottom" :beak="false"><button>Bottom</button><template #content>Appears below</template></tool-tip>
-      <tool-tip position="pos-right" :beak="false"><button>Right</button><template #content>Appears to the right</template></tool-tip>
+      <tool-tip position="pos-top" :beak="false"><primary-button>Top</primary-button><template #content>Appears above</template></tool-tip>
+      <tool-tip position="pos-left" :beak="false"><primary-button>Left</primary-button><template #content>Appears to the left</template></tool-tip>
+      <tool-tip position="pos-bottom" :beak="false"><primary-button>Bottom</primary-button><template #content>Appears below</template></tool-tip>
+      <tool-tip position="pos-right" :beak="false"><primary-button>Right</primary-button><template #content>Appears to the right</template></tool-tip>
     </div>`,
   }),
   parameters: {
     docs: {
       source: {
-        code: '<tool-tip position="pos-top" :beak="false"><button>Top</button><template #content>Appears above</template></tool-tip>\n<tool-tip position="pos-left" :beak="false"><button>Left</button><template #content>Appears to the left</template></tool-tip>\n<tool-tip position="pos-bottom" :beak="false"><button>Bottom</button><template #content>Appears below</template></tool-tip>\n<tool-tip position="pos-right" :beak="false"><button>Right</button><template #content>Appears to the right</template></tool-tip>',
+        code: '<tool-tip position="pos-top" :beak="false"><primary-button>Top</primary-button><template #content>Appears above</template></tool-tip>\n<tool-tip position="pos-left" :beak="false"><primary-button>Left</primary-button><template #content>Appears to the left</template></tool-tip>\n<tool-tip position="pos-bottom" :beak="false"><primary-button>Bottom</primary-button><template #content>Appears below</template></tool-tip>\n<tool-tip position="pos-right" :beak="false"><primary-button>Right</primary-button><template #content>Appears to the right</template></tool-tip>',
       },
     },
   },
 };
 
-export const Context: Story = {
+export const AlwaysVisible: Story = {
   render: () => ({
     components: { ToolTip, PrimaryButton },
-    template: `<div style="padding-bottom:3rem;">
-      <tool-tip>
+    template: `<div style="padding-top:3rem;">
+      <tool-tip visible position="pos-top">
         <primary-button>
           Copy the booking link
         </primary-button>
@@ -99,7 +99,7 @@ export const Context: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<tool-tip>\n  <primary-button>\n    Copy the booking link\n  </primary-button>\n  <template #content>\n    This button copies to clipboard\n  </template>\n</tool-tip>',
+        code: '<tool-tip visible position="pos-top">\n  <primary-button>\n    Copy the booking link\n  </primary-button>\n  <template #content>\n    This button copies to clipboard\n  </template>\n</tool-tip>',
       },
     },
   },
