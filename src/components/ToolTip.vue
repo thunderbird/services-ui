@@ -7,11 +7,13 @@ import { TooltipPosition } from '@/definitions';
 interface Props {
   position?: TooltipPosition;
   visible?: boolean;
+  beak?: boolean;
   dataTestid?: string;
 }
 withDefaults(defineProps<Props>(), {
   position: TooltipPosition.Bottom,
   visible: undefined, // Explicit undefined default so Vue doesn't auto-cast an absent boolean prop to false.
+  beak: true,
   dataTestid: 'tool-tip',
 });
 
@@ -24,7 +26,7 @@ const tooltipId = useId();
     <slot :tooltip-id="tooltipId"></slot>
     <div
       class="tooltip"
-      :class="[position, { 'force-visible': visible === true, 'force-hidden': visible === false }]"
+      :class="[position, { 'force-visible': visible === true, 'force-hidden': visible === false, 'no-beak': !beak }]"
       role="tooltip"
       :id="tooltipId"
       :data-testid="dataTestid"
@@ -33,14 +35,7 @@ const tooltipId = useId();
         <div class="tooltip-body">
           <slot name="content"></slot>
         </div>
-        <svg
-          class="beak"
-          width="29"
-          height="6"
-          viewBox="0 0 29 6"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg class="beak" width="29" height="6" viewBox="0 0 29 6" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M15.9142 4.58579C15.1332 5.36683 13.8668 5.36683 13.0858 4.58579L8.5 0L20.5 0L15.9142 4.58579Z"
             fill="currentColor"
@@ -103,8 +98,7 @@ const tooltipId = useId();
   transform: translateX(-50%);
 }
 
-.tooltip.pos-bottom,
-.tooltip.pos-none {
+.tooltip.pos-bottom {
   top: calc(100% + var(--tooltip-gap));
   left: 50%;
   transform: translateX(-50%);
@@ -142,7 +136,7 @@ const tooltipId = useId();
   transform: rotateZ(90deg);
 }
 
-.tooltip.pos-none .beak {
+.tooltip.no-beak .beak {
   display: none;
 }
 

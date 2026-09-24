@@ -233,7 +233,6 @@ export enum FtueStep {
 }
 
 export enum TooltipPosition {
-  None = 'pos-none',
   Top = 'pos-top',
   Bottom = 'pos-bottom',
   Left = 'pos-left',
