@@ -29,7 +29,32 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
+  <tool-tip v-if="tooltip" :position="TooltipPosition.Top" :visible="forceTooltip || undefined">
+    <template #default>
+      <component
+        :is="href ? 'a' : 'button'"
+        :href="href"
+        class="base"
+        :class="{ [type]: type, small: size === 'small', [variant]: variant }"
+        :type="formAction === 'none' ? 'button' : formAction"
+        :data-testid="dataTestid"
+        :disabled="disabled"
+      >
+        <span class="icon" v-if="$slots?.iconLeft">
+          <slot name="iconLeft" />
+        </span>
+        <span class="text">
+          <slot />
+        </span>
+        <span class="icon" v-if="$slots?.iconRight">
+          <slot name="iconRight" />
+        </span>
+      </component>
+    </template>
+    <template #content>{{ tooltip }}</template>
+  </tool-tip>
   <component
+    v-else
     :is="href ? 'a' : 'button'"
     :href="href"
     class="base"
@@ -47,15 +72,6 @@ withDefaults(defineProps<Props>(), {
     <span class="icon" v-if="$slots?.iconRight">
       <slot name="iconRight" />
     </span>
-    <tool-tip
-      v-if="tooltip"
-      class="tooltip"
-      :class="{ 'display-tooltip': forceTooltip }"
-      :position="TooltipPosition.Bottom"
-      @click.prevent
-    >
-      {{ tooltip }}
-    </tool-tip>
   </component>
 </template>
 
@@ -76,25 +92,8 @@ html {
 <style scoped>
 @import '@/assets/styles/mixins.pcss';
 
-.tooltip {
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 250ms ease-out;
-  bottom: calc(100% + .5rem);
-}
-
 a {
   text-decoration: none;
-}
-
-a:hover > .tooltip,
-button:hover > .tooltip,
-.display-tooltip {
-  opacity: 1;
-}
-a:hover > .tooltip,
-button:hover > .tooltip {
-  z-index: 110; /* Make sure that current tooltip is on top of static (forced) tooltips */
 }
 
 .base {

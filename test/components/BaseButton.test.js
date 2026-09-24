@@ -79,7 +79,7 @@ describe('BaseButton', () => {
       expect(btn.isVisible()).toBe(true);
       expect(btn.attributes().class).toContain(ourProps['type']);
       expect(btn.attributes().class).toContain(ourProps['variant']);
-      expect(btn.text()).toContain(text); // btn text contains all dom text including btn label and tooltip
+      expect(btn.text()).toBe(text); // tooltip now lives outside the button, so btn text is just its own label
       expect(wrapper.find(tooltipSelector).text()).toBe(ourProps['tooltip']);
 
       // icon displayed or not depending on option
@@ -98,7 +98,7 @@ describe('BaseButton', () => {
 
       // force tooltip causes tooltip to display even when not hovering over button
       if (forceToolTip) {
-        expect(wrapper.find(tooltipSelector).isVisible()).toBeTruthy();
+        expect(wrapper.find(tooltipSelector).classes()).toContain('force-visible');
       }
 
       // providing href turns button into an anchor tag
