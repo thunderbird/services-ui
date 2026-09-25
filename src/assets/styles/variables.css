@@ -10,6 +10,8 @@ html {
 
   --transition-timing-function: initial;
   --transition-duration: 0;
+
+  --shadow-elevation-2: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
 }
 
 @media (prefers-reduced-motion: no-preference) {
