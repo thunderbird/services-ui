@@ -68,7 +68,6 @@ const tooltipId = useId();
     0px 0px 2px 0px rgba(0, 0, 0, 0.12);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 250ms ease-out;
 }
 
 .tooltip-body {
@@ -151,5 +150,11 @@ const tooltipId = useId();
 .tooltip.force-hidden {
   opacity: 0 !important;
   pointer-events: none !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .tooltip {
+    transition: opacity 250ms ease-out;
+  }
 }
 </style>
