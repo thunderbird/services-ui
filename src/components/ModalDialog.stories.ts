@@ -37,7 +37,7 @@ export const Standard: Story = {
         <span>The blessed trials awaited in the hollow temple of Silverfen. Legends in Dragon's Rest foretell a shadow child who will mend the crown. Knights of Redmarsh raised their lances to a pale sun. Each solstice, Oakshield honors the crimson sigil with fire and song. A hidden door opened within Nightveil's echoing caverns.</span>
 
         <template #actions>
-          <primary-button name="cancel" variant="outline">Secondary</primary-button>
+          <primary-button name="cancel" outline>Secondary</primary-button>
           <primary-button name="go">Primary</primary-button>
         </template>
 
@@ -61,7 +61,7 @@ export const Standard: Story = {
         <span>The blessed trials awaited in the hollow temple of Silverfen...</span>
 
         <template #actions>
-          <primary-button name="cancel" variant="outline">Secondary</primary-button>
+          <primary-button name="cancel" outline>Secondary</primary-button>
           <primary-button name="go">Primary</primary-button>
         </template>
 
@@ -146,7 +146,7 @@ export const WithActions: Story = {
           <text-input name="two" label="Another field" />
         </form>
         <template #actions>
-          <primary-button name="cancel" variant="outline">Cancel</primary-button>
+          <primary-button name="cancel" outline>Cancel</primary-button>
           <primary-button name="save">Save</primary-button>
         </template>
       </modal-dialog>
@@ -161,7 +161,7 @@ export const WithActions: Story = {
           <text-input name="two" label="Another field" />
         </form>
         <template #actions>
-          <primary-button name="cancel" variant="outline">Cancel</primary-button>
+          <primary-button name="cancel" outline>Cancel</primary-button>
           <primary-button name="save">Save</primary-button>
         </template>
       </modal-dialog>`,
