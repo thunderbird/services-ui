@@ -67,6 +67,7 @@ const tooltipId = useId();
     0px 4px 8px 0px rgba(0, 0, 0, 0.14),
     0px 0px 2px 0px rgba(0, 0, 0, 0.12);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
 }
 
@@ -143,18 +144,30 @@ const tooltipId = useId();
 .tooltip-anchor:focus-within .tooltip,
 .tooltip.force-visible {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
   z-index: 110;
 }
 
 .tooltip.force-hidden {
   opacity: 0 !important;
+  visibility: hidden !important;
   pointer-events: none !important;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .tooltip {
-    transition: opacity 250ms ease-out;
+    transition:
+      opacity 250ms ease-out,
+      visibility 0s linear 250ms; /* Delay hiding until the fade-out finishes */
+  }
+
+  .tooltip-anchor:hover .tooltip,
+  .tooltip-anchor:focus-within .tooltip,
+  .tooltip.force-visible {
+    transition:
+      opacity 250ms ease-out,
+      visibility 0s linear 0s;
   }
 }
 </style>
