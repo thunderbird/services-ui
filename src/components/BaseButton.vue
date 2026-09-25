@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { TooltipPosition } from '@/definitions';
-import ToolTip from '@/components/ToolTip.vue';
-
 // component properties
 interface Props {
   type?: 'primary' | 'brand' | 'danger' | 'link';
@@ -11,8 +8,6 @@ interface Props {
    * Transform the button into an anchor tag. If null then the component will be rendered as a button tag.
    */
   href?: string;
-  tooltip?: string;
-  forceTooltip?: boolean;
   formAction?: 'none' | 'submit' | 'reset';
   dataTestid?: string;
   disabled?: boolean;
@@ -21,7 +16,6 @@ withDefaults(defineProps<Props>(), {
   type: 'primary',
   size: 'default',
   variant: 'filled',
-  forceTooltip: false,
   formAction: 'none',
   dataTestid: 'button',
   disabled: false,
@@ -29,32 +23,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <tool-tip v-if="tooltip" :position="TooltipPosition.Top" :visible="forceTooltip || undefined">
-    <template #default>
-      <component
-        :is="href ? 'a' : 'button'"
-        :href="href"
-        class="base"
-        :class="{ [type]: type, small: size === 'small', [variant]: variant }"
-        :type="formAction === 'none' ? 'button' : formAction"
-        :data-testid="dataTestid"
-        :disabled="disabled"
-      >
-        <span class="icon" v-if="$slots?.iconLeft">
-          <slot name="iconLeft" />
-        </span>
-        <span class="text">
-          <slot />
-        </span>
-        <span class="icon" v-if="$slots?.iconRight">
-          <slot name="iconRight" />
-        </span>
-      </component>
-    </template>
-    <template #content>{{ tooltip }}</template>
-  </tool-tip>
   <component
-    v-else
     :is="href ? 'a' : 'button'"
     :href="href"
     class="base"

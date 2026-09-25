@@ -13,27 +13,25 @@ describe('BaseButton', () => {
     // build out test cases for variants/options
     const testCases = [
       { type: type, size: 'default', variant: 'filled', iconLeft: false, iconRight: false, formAction: 'none',
-        forceToolTip: false, disabled: false, href: null, text: `${type} button` },
+        disabled: false, href: null, text: `${type} button` },
       { type: type, size: 'default', variant: 'filled', iconLeft: true, iconRight: false, formAction: 'none',
-        forceToolTip: false, disabled: false, href: null, text: `${type} button with icon left` },
+        disabled: false, href: null, text: `${type} button with icon left` },
       { type: type, size: 'default', variant: 'filled', iconLeft: false, iconRight: true, formAction: 'none',
-        forceToolTip: false, disabled: false, href: null, text: `${type} button with icon right` },
+        disabled: false, href: null, text: `${type} button with icon right` },
       { type: type, size: 'default', variant: 'filled', iconLeft: true, iconRight: true, formAction: 'none',
-        forceToolTip: false, disabled: false, href: null, text: `${type} button with icon left and right` },
+        disabled: false, href: null, text: `${type} button with icon left and right` },
       { type: type, size: 'small', variant: 'filled', iconLeft: false, iconRight: false, formAction: 'none',
-        forceToolTip: false, disabled: false, href: null, text: `small ${type} button` },
+        disabled: false, href: null, text: `small ${type} button` },
       { type: type, size: 'default', variant: 'outline', iconLeft: false, iconRight: false, formAction: 'none',
-        forceToolTip: false, disabled: false, href: null, text: `${type} outlined` },
+        disabled: false, href: null, text: `${type} outlined` },
       { type: type, size: 'default', variant: 'filled', iconLeft: false, iconRight: false, formAction: 'none',
-        forceToolTip: true, disabled: false, href: null, text: `${type} forced tt` },
-      { type: type, size: 'default', variant: 'filled', iconLeft: false, iconRight: false, formAction: 'none',
-        forceToolTip: false, disabled: false, href: 'http://tb.pro', text: `${type} HREF` },
+        disabled: false, href: 'http://tb.pro', text: `${type} HREF` },
       { type: type, size: 'default', variant: 'filled', iconLeft: false, iconRight: false, formAction: 'submit',
-        forceToolTip: false, disabled: false, href: null, text: `${type} submit` },
+        disabled: false, href: null, text: `${type} submit` },
       { type: type, size: 'default', variant: 'filled', iconLeft: false, iconRight: false, formAction: 'reset',
-        forceToolTip: false, disabled: false, href: null, text: `${type} reset` },
+        disabled: false, href: null, text: `${type} reset` },
       { type: type, size: 'default', variant: 'filled', iconLeft: false, iconRight: false, formAction: 'none',
-        forceToolTip: false, disabled: true, href: null, text: `${type} disabled` },
+        disabled: true, href: null, text: `${type} disabled` },
     ];
 
     afterEach(() => {
@@ -41,14 +39,12 @@ describe('BaseButton', () => {
     });
 
     it.each(testCases)('$type button renders correctly with the given options',
-      async ({ type, size, variant, iconLeft, iconRight, formAction, forceToolTip, disabled, href, text }) => {
+      async ({ type, size, variant, iconLeft, iconRight, formAction, disabled, href, text }) => {
       const ourProps = {
         type: type,
         size: size,
         variant: variant,
         formAction: formAction,
-        tooltip: 'Button tooltip!',
-        forceTooltip: forceToolTip,
         disabled: disabled,
         href: type == 'link'? 'http://tb.pro' : href, // we want our link type buttons to always have an href
         dataTestid: `${type}-data-test-id`,
@@ -66,7 +62,6 @@ describe('BaseButton', () => {
       }
 
       const btnSelector = `[data-testid=${ourProps['dataTestid']}]`;
-      const tooltipSelector = `[data-testid=tool-tip]`;
 
       wrapper = mount(BaseButton, {
         propsData: ourProps,
@@ -79,8 +74,7 @@ describe('BaseButton', () => {
       expect(btn.isVisible()).toBe(true);
       expect(btn.attributes().class).toContain(ourProps['type']);
       expect(btn.attributes().class).toContain(ourProps['variant']);
-      expect(btn.text()).toBe(text); // tooltip now lives outside the button, so btn text is just its own label
-      expect(wrapper.find(tooltipSelector).text()).toBe(ourProps['tooltip']);
+      expect(btn.text()).toBe(text);
 
       // icon displayed or not depending on option
       if (iconLeft || iconRight) {
@@ -96,11 +90,6 @@ describe('BaseButton', () => {
         expect(btn.attributes().type).toBe(ourProps['formAction']);
       }
 
-      // force tooltip causes tooltip to display even when not hovering over button
-      if (forceToolTip) {
-        expect(wrapper.find(tooltipSelector).classes()).toContain('force-visible');
-      }
-
       // providing href turns button into an anchor tag
       if (href) {
         expect(btn.attributes().href).toBe(ourProps['href']);
@@ -108,14 +97,12 @@ describe('BaseButton', () => {
     });
 
     it.each(testCases)('able to click $type button with the given options',
-      async ({ type, size, variant, formAction, forceToolTip, disabled, href, text }) => {
+      async ({ type, size, variant, formAction, disabled, href, text }) => {
       const ourProps = {
         type: type,
         size: size,
         variant: variant,
         formAction: formAction,
-        tooltip: 'Button tooltip!',
-        forceTooltip: forceToolTip,
         disabled: disabled,
         href: type == 'link'? 'http://tb.pro' : href, // we want our link type buttons to always have an href
         dataTestid: `${type}-data-test-id`,
