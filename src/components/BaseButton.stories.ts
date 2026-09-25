@@ -57,7 +57,7 @@ export const Standard: Story = {
   },
 };
 
-export const Type: Story = {
+export const Variant: Story = {
   render: (args) => ({
     components: { PrimaryButton, BrandButton, DangerButton, LinkButton },
     setup() {
@@ -81,7 +81,7 @@ export const Type: Story = {
   },
 };
 
-export const Variant: Story = {
+export const Outline: Story = {
   render: (args) => ({
     components: { PrimaryButton },
     setup() {
@@ -147,7 +147,7 @@ export const Disabled: Story = {
   },
 };
 
-export const FormAction: Story = {
+export const Type: Story = {
   render: (args) => ({
     components: { PrimaryButton, TextInput },
     setup() {
