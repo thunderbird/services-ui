@@ -57,15 +57,14 @@ const tooltipId = useId();
   position: absolute;
   text-wrap: wrap;
   border-radius: 0.5rem;
-  background-color: var(--colour-neutral-base);
+  border: 1px solid var(--colour-surface-border, #D9D9DE);
+  background-color: var(--colour-surface-raised);
   font-family: var(--font-sans);
   color: var(--colour-ti-secondary);
   z-index: 100;
   width: max-content;
   max-width: 15rem;
-  box-shadow:
-    0px 4px 8px 0px rgba(0, 0, 0, 0.14),
-    0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-elevation-2);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -87,8 +86,8 @@ const tooltipId = useId();
 
 .beak {
   position: absolute;
-  color: var(--colour-neutral-base);
-  filter: drop-shadow(0px 1px 0px #00000010);
+  color: var(--colour-surface-raised);
+  filter: drop-shadow(0px 1px 0px var(--colour-surface-border));
 }
 
 /* Box placement: position names the side the tooltip appears on */
@@ -123,7 +122,7 @@ const tooltipId = useId();
 .tooltip.pos-bottom .beak {
   top: -6px;
   transform: scaleY(-1);
-  filter: drop-shadow(0px -1px 0px #00000010);
+  filter: drop-shadow(0px -1px 0px var(--colour-surface-border));
 }
 
 .tooltip.pos-left .beak {
