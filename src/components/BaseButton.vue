@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { TooltipPosition } from '@/definitions';
-import ToolTip from '@/components/ToolTip.vue';
-
 // component properties
 interface Props {
   type?: 'primary' | 'brand' | 'danger' | 'link';
@@ -11,8 +8,6 @@ interface Props {
    * Transform the button into an anchor tag. If null then the component will be rendered as a button tag.
    */
   href?: string;
-  tooltip?: string;
-  forceTooltip?: boolean;
   formAction?: 'none' | 'submit' | 'reset';
   dataTestid?: string;
   disabled?: boolean;
@@ -21,7 +16,6 @@ withDefaults(defineProps<Props>(), {
   type: 'primary',
   size: 'default',
   variant: 'filled',
-  forceTooltip: false,
   formAction: 'none',
   dataTestid: 'button',
   disabled: false,
@@ -47,15 +41,6 @@ withDefaults(defineProps<Props>(), {
     <span class="icon" v-if="$slots?.iconRight">
       <slot name="iconRight" />
     </span>
-    <tool-tip
-      v-if="tooltip"
-      class="tooltip"
-      :class="{ 'display-tooltip': forceTooltip }"
-      :position="TooltipPosition.Bottom"
-      @click.prevent
-    >
-      {{ tooltip }}
-    </tool-tip>
   </component>
 </template>
 
@@ -76,25 +61,8 @@ html {
 <style scoped>
 @import '@/assets/styles/mixins.pcss';
 
-.tooltip {
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 250ms ease-out;
-  bottom: calc(100% + .5rem);
-}
-
 a {
   text-decoration: none;
-}
-
-a:hover > .tooltip,
-button:hover > .tooltip,
-.display-tooltip {
-  opacity: 1;
-}
-a:hover > .tooltip,
-button:hover > .tooltip {
-  z-index: 110; /* Make sure that current tooltip is on top of static (forced) tooltips */
 }
 
 .base {

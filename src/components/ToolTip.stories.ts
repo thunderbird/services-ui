@@ -11,10 +11,11 @@ const meta: Meta<typeof ToolTip> = {
   tags: ['autodocs'],
   argTypes: {
     position: { control: 'select', options: Object.values(TooltipPosition) },
-    default: { control: 'text' },
+    beak: { control: 'boolean' },
+    content: { control: 'text' },
   },
   args: {
-    default: 'Primary',
+    content: 'Primary',
   },
 };
 
@@ -22,16 +23,22 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Standard: Story = {
-  decorators: [
-    (story) => ({
-      components: { story },
-      template: `<div style="min-height:60px;"><story /></div>`,
-    }),
-  ],
+  render: (args) => ({
+    components: { ToolTip, PrimaryButton },
+    setup() {
+      return { args };
+    },
+    template: `<div style="min-height:60px;">
+      <tool-tip v-bind="args">
+        <primary-button>Hover me</primary-button>
+        <template #content>{{ args.content }}</template>
+      </tool-tip>
+    </div>`,
+  }),
   parameters: {
     docs: {
       source: {
-        code: '<tool-tip>Primary</tool-tip>',
+        code: '<tool-tip>\n  <primary-button>Hover me</primary-button>\n  <template #content>Primary</template>\n</tool-tip>',
       },
     },
   },
@@ -39,41 +46,60 @@ export const Standard: Story = {
 
 export const Position: Story = {
   render: () => ({
-    components: { ToolTip },
-    template: `<div style="display:flex;flex-direction:column;gap:1rem;">
-      <div style="position:relative;height:3rem;"><tool-tip position="pos-top">Pointing upwards</tool-tip></div>
-      <div style="position:relative;height:3rem;"><tool-tip position="pos-left">Pointing left</tool-tip></div>
-      <div style="position:relative;height:3rem;"><tool-tip position="pos-bottom">Pointing downwards</tool-tip></div>
-      <div style="position:relative;height:3rem;"><tool-tip position="pos-right">Pointing right</tool-tip></div>
-      <div style="position:relative;height:3rem;"><tool-tip position="pos-none">Pointing nowhere</tool-tip></div>
+    components: { ToolTip, PrimaryButton },
+    template: `<div style="display:flex;gap:2rem;padding:3rem;">
+      <tool-tip position="pos-top"><primary-button>Top</primary-button><template #content>Appears above</template></tool-tip>
+      <tool-tip position="pos-left"><primary-button>Left</primary-button><template #content>Appears to the left</template></tool-tip>
+      <tool-tip position="pos-bottom"><primary-button>Bottom</primary-button><template #content>Appears below</template></tool-tip>
+      <tool-tip position="pos-right"><primary-button>Right</primary-button><template #content>Appears to the right</template></tool-tip>
     </div>`,
   }),
   parameters: {
     docs: {
       source: {
-        code: '<tool-tip position="pos-top">Pointing upwards</tool-tip>\n<tool-tip position="pos-left">Pointing left</tool-tip>\n<tool-tip position="pos-bottom">Pointing downwards</tool-tip>\n<tool-tip position="pos-right">Pointing right</tool-tip>\n<tool-tip position="pos-none">Pointing nowhere</tool-tip>',
+        code: '<tool-tip position="pos-top"><primary-button>Top</primary-button><template #content>Appears above</template></tool-tip>\n<tool-tip position="pos-left"><primary-button>Left</primary-button><template #content>Appears to the left</template></tool-tip>\n<tool-tip position="pos-bottom"><primary-button>Bottom</primary-button><template #content>Appears below</template></tool-tip>\n<tool-tip position="pos-right"><primary-button>Right</primary-button><template #content>Appears to the right</template></tool-tip>',
       },
     },
   },
 };
 
-export const Context: Story = {
+export const NoBeak: Story = {
   render: () => ({
     components: { ToolTip, PrimaryButton },
-    template: `<div style="position:relative; padding-top:3rem;">
-      <primary-button>
-        Copy the booking link
-      </primary-button>
-      <tool-tip style="top:0;">
-        This button copies to clipboard
-      </tool-tip>
-      <p>Tooltips are currently not assigned to a specific element, but placed and positioned separately. This will be improved in the future.</p>
+    template: `<div style="display:flex;gap:2rem;padding:3rem;">
+      <tool-tip position="pos-top" :beak="false"><primary-button>Top</primary-button><template #content>Appears above</template></tool-tip>
+      <tool-tip position="pos-left" :beak="false"><primary-button>Left</primary-button><template #content>Appears to the left</template></tool-tip>
+      <tool-tip position="pos-bottom" :beak="false"><primary-button>Bottom</primary-button><template #content>Appears below</template></tool-tip>
+      <tool-tip position="pos-right" :beak="false"><primary-button>Right</primary-button><template #content>Appears to the right</template></tool-tip>
     </div>`,
   }),
   parameters: {
     docs: {
       source: {
-        code: '<div style="position: relative; padding-top: 3rem;">\n  <primary-button>\n    Copy the booking link\n  </primary-button>\n  <tool-tip style="top: 0;">\n    This button copies to clipboard\n  </tool-tip>\n</div>',
+        code: '<tool-tip position="pos-top" :beak="false"><primary-button>Top</primary-button><template #content>Appears above</template></tool-tip>\n<tool-tip position="pos-left" :beak="false"><primary-button>Left</primary-button><template #content>Appears to the left</template></tool-tip>\n<tool-tip position="pos-bottom" :beak="false"><primary-button>Bottom</primary-button><template #content>Appears below</template></tool-tip>\n<tool-tip position="pos-right" :beak="false"><primary-button>Right</primary-button><template #content>Appears to the right</template></tool-tip>',
+      },
+    },
+  },
+};
+
+export const AlwaysVisible: Story = {
+  render: () => ({
+    components: { ToolTip, PrimaryButton },
+    template: `<div style="padding-top:3rem;">
+      <tool-tip visible position="pos-top">
+        <primary-button>
+          Copy the booking link
+        </primary-button>
+        <template #content>
+          This button copies to clipboard
+        </template>
+      </tool-tip>
+    </div>`,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<tool-tip visible position="pos-top">\n  <primary-button>\n    Copy the booking link\n  </primary-button>\n  <template #content>\n    This button copies to clipboard\n  </template>\n</tool-tip>',
       },
     },
   },

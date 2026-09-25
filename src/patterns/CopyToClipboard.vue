@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { t } from '@/composable/i18n';
+import { TooltipPosition } from '@/definitions';
 import CopyIcon from '@/foundation/CopyIcon.vue';
 import LinkButton from '@/components/LinkButton.vue';
+import ToolTip from '@/components/ToolTip.vue';
 
 type BaseProps = {
   dataTestid?: string;
@@ -54,19 +56,16 @@ const copyLink = async () => {
 </script>
 
 <template>
-  <link-button
-    :data-testid="dataTestid"
-    :class="{ iconOnly: iconOnly }"
-    @click="copyLink"
-    :tooltip="myLinkTooltip"
-    :force-tooltip="myLinkShow"
-  >
-    <template #iconLeft>
-      <copy-icon />
-    </template>
+  <tool-tip :position="TooltipPosition.Top" :visible="myLinkShow || undefined">
+    <link-button :data-testid="dataTestid" :class="{ iconOnly: iconOnly }" @click="copyLink">
+      <template #iconLeft>
+        <copy-icon />
+      </template>
 
-    {{ !iconOnly ? displayText : '' }}
-  </link-button>
+      {{ !iconOnly ? displayText : '' }}
+    </link-button>
+    <template #content>{{ myLinkTooltip }}</template>
+  </tool-tip>
 </template>
 
 <style scoped>

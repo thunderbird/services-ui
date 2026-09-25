@@ -20,17 +20,14 @@ const meta: Meta<typeof BaseButton> = {
     size: { control: 'select', options: ['regular', 'small'] },
     variant: { control: 'select', options: ['filled', 'outline'] },
     type: { control: 'select', options: ['primary', 'brand', 'danger', 'link'] },
-    tooltip: { control: 'text' },
     disabled: { control: 'boolean' },
   },
   args: {
-    tooltip: '',
     // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
     /* @ts-ignore */
     onClick: fn(),
     default: 'Click me!',
     disabled: false,
-    forceTooltip: false,
   },
 };
 
@@ -262,38 +259,6 @@ export const IconOnly: Story = {
     docs: {
       source: {
         code: '<icon-button size="small"><refresh-icon /></icon-button>\n<icon-button><refresh-icon /></icon-button>\n<icon-button size="medium"><refresh-icon /></icon-button>\n<icon-button size="large"><refresh-icon /></icon-button>',
-      },
-    },
-  },
-};
-
-export const WithTooltip: Story = {
-  render: (args) => ({
-    components: { PrimaryButton, LinkButton, IconButton, RefreshIcon },
-    setup() {
-      return { args };
-    },
-    template: `
-      <div style="display:flex;gap:2rem;align-items:center;margin-top:3rem;">
-        <primary-button tooltip="Reload everything">
-          Refresh
-        </primary-button>
-        <icon-button tooltip="Refresh">
-          <refresh-icon />
-        </icon-button>
-        <primary-button tooltip="Forced tooltip on a primary button" force-tooltip>
-          Refresh
-        </primary-button>
-        <link-button href="https://mozilla.org" tooltip="Tooltip on a link button">
-          Refresh
-        </link-button>
-      </div>
-    `,
-  }),
-  parameters: {
-    docs: {
-      source: {
-        code: '<primary-button tooltip="Reload everything">Refresh</primary-button>\n<icon-button tooltip="Refresh"><refresh-icon /></icon-button>\n<primary-button tooltip="Forced tooltip" force-tooltip>Refresh</primary-button>',
       },
     },
   },
