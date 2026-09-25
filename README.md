@@ -89,7 +89,7 @@ Running `pnpm run build:ce` ("ce" for "Custom Elements") produces two files that
 Example usage:
 
 ```html
-<bolt-primary-button variant="outline" href="{{ url('roadmaps.desktop') }}">
+<bolt-primary-button outline href="{{ url('roadmaps.desktop') }}">
   Visit Desktop Roadmap
 </bolt-primary-button>
 ```
@@ -124,7 +124,7 @@ export { BoltPrimaryButton };
 When you use one of the Web Components in your markup, you will likely want to specify the text content:
 
 ```html
-<bolt-primary-button variant="outline" href="{{ url('roadmaps.desktop') }}">
+<bolt-primary-button outline href="{{ url('roadmaps.desktop') }}">
   Visit Desktop Roadmap
 </bolt-primary-button>
 ```
@@ -135,7 +135,7 @@ If the component you want to use does not have a default slot, add it:
 
 ```diff
  <template>
-   <base-button type="primary">
+   <base-button variant="primary">
      <template v-for="(_, name) in $slots" v-slot:[name]="slotData">
        <slot :name="name" v-bind="slotData" />
      </template>
