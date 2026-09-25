@@ -1,22 +1,22 @@
 <script setup lang="ts">
 // component properties
 interface Props {
-  type?: 'primary' | 'brand' | 'danger' | 'link';
+  variant?: 'primary' | 'brand' | 'danger' | 'link';
   size?: 'default' | 'small';
-  variant?: 'filled' | 'outline';
+  outline?: boolean;
   /**
    * Transform the button into an anchor tag. If null then the component will be rendered as a button tag.
    */
   href?: string;
-  formAction?: 'none' | 'submit' | 'reset';
+  type?: 'button' | 'submit' | 'reset';
   dataTestid?: string;
   disabled?: boolean;
 }
 withDefaults(defineProps<Props>(), {
-  type: 'primary',
+  variant: 'primary',
   size: 'default',
-  variant: 'filled',
-  formAction: 'none',
+  outline: false,
+  type: 'button',
   dataTestid: 'button',
   disabled: false,
 });
@@ -27,8 +27,8 @@ withDefaults(defineProps<Props>(), {
     :is="href ? 'a' : 'button'"
     :href="href"
     class="base"
-    :class="{ [type]: type, small: size === 'small', [variant]: variant }"
-    :type="formAction === 'none' ? 'button' : formAction"
+    :class="{ [variant]: variant, small: size === 'small', [outline ? 'outline' : 'filled']: true }"
+    :type="type"
     :data-testid="dataTestid"
     :disabled="disabled"
   >

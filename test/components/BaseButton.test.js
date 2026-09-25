@@ -7,47 +7,47 @@ import CheckCircleFilledIcon from '@/foundation/CheckCircleFilledIcon.vue';
 describe('BaseButton', () => {
   var wrapper;
 
-  // repeat all tests for each availble BaseButton type
-  describe.each([ 'primary', 'brand', 'danger', 'link'])('Type: %s', (type) => {
+  // repeat all tests for each availble BaseButton variant
+  describe.each([ 'primary', 'brand', 'danger', 'link'])('Variant: %s', (variant) => {
 
     // build out test cases for variants/options
     const testCases = [
-      { type: type, size: 'default', variant: 'filled', iconLeft: false, iconRight: false, formAction: 'none',
-        disabled: false, href: null, text: `${type} button` },
-      { type: type, size: 'default', variant: 'filled', iconLeft: true, iconRight: false, formAction: 'none',
-        disabled: false, href: null, text: `${type} button with icon left` },
-      { type: type, size: 'default', variant: 'filled', iconLeft: false, iconRight: true, formAction: 'none',
-        disabled: false, href: null, text: `${type} button with icon right` },
-      { type: type, size: 'default', variant: 'filled', iconLeft: true, iconRight: true, formAction: 'none',
-        disabled: false, href: null, text: `${type} button with icon left and right` },
-      { type: type, size: 'small', variant: 'filled', iconLeft: false, iconRight: false, formAction: 'none',
-        disabled: false, href: null, text: `small ${type} button` },
-      { type: type, size: 'default', variant: 'outline', iconLeft: false, iconRight: false, formAction: 'none',
-        disabled: false, href: null, text: `${type} outlined` },
-      { type: type, size: 'default', variant: 'filled', iconLeft: false, iconRight: false, formAction: 'none',
-        disabled: false, href: 'http://tb.pro', text: `${type} HREF` },
-      { type: type, size: 'default', variant: 'filled', iconLeft: false, iconRight: false, formAction: 'submit',
-        disabled: false, href: null, text: `${type} submit` },
-      { type: type, size: 'default', variant: 'filled', iconLeft: false, iconRight: false, formAction: 'reset',
-        disabled: false, href: null, text: `${type} reset` },
-      { type: type, size: 'default', variant: 'filled', iconLeft: false, iconRight: false, formAction: 'none',
-        disabled: true, href: null, text: `${type} disabled` },
+      { variant: variant, size: 'default', outline: false, iconLeft: false, iconRight: false, type: 'button',
+        disabled: false, href: null, text: `${variant} button` },
+      { variant: variant, size: 'default', outline: false, iconLeft: true, iconRight: false, type: 'button',
+        disabled: false, href: null, text: `${variant} button with icon left` },
+      { variant: variant, size: 'default', outline: false, iconLeft: false, iconRight: true, type: 'button',
+        disabled: false, href: null, text: `${variant} button with icon right` },
+      { variant: variant, size: 'default', outline: false, iconLeft: true, iconRight: true, type: 'button',
+        disabled: false, href: null, text: `${variant} button with icon left and right` },
+      { variant: variant, size: 'small', outline: false, iconLeft: false, iconRight: false, type: 'button',
+        disabled: false, href: null, text: `small ${variant} button` },
+      { variant: variant, size: 'default', outline: true, iconLeft: false, iconRight: false, type: 'button',
+        disabled: false, href: null, text: `${variant} outlined` },
+      { variant: variant, size: 'default', outline: false, iconLeft: false, iconRight: false, type: 'button',
+        disabled: false, href: 'http://tb.pro', text: `${variant} HREF` },
+      { variant: variant, size: 'default', outline: false, iconLeft: false, iconRight: false, type: 'submit',
+        disabled: false, href: null, text: `${variant} submit` },
+      { variant: variant, size: 'default', outline: false, iconLeft: false, iconRight: false, type: 'reset',
+        disabled: false, href: null, text: `${variant} reset` },
+      { variant: variant, size: 'default', outline: false, iconLeft: false, iconRight: false, type: 'button',
+        disabled: true, href: null, text: `${variant} disabled` },
     ];
 
     afterEach(() => {
       wrapper.unmount();
     });
 
-    it.each(testCases)('$type button renders correctly with the given options',
-      async ({ type, size, variant, iconLeft, iconRight, formAction, disabled, href, text }) => {
+    it.each(testCases)('$variant button renders correctly with the given options',
+      async ({ variant, size, outline, iconLeft, iconRight, type, disabled, href, text }) => {
       const ourProps = {
-        type: type,
-        size: size,
         variant: variant,
-        formAction: formAction,
+        size: size,
+        outline: outline,
+        type: type,
         disabled: disabled,
-        href: type == 'link'? 'http://tb.pro' : href, // we want our link type buttons to always have an href
-        dataTestid: `${type}-data-test-id`,
+        href: variant == 'link'? 'http://tb.pro' : href, // we want our link variant buttons to always have an href
+        dataTestid: `${variant}-data-test-id`,
       };
       const ourSlots = {
           default: text,
@@ -72,8 +72,8 @@ describe('BaseButton', () => {
 
       const btn = wrapper.find(btnSelector);
       expect(btn.isVisible()).toBe(true);
-      expect(btn.attributes().class).toContain(ourProps['type']);
       expect(btn.attributes().class).toContain(ourProps['variant']);
+      expect(btn.attributes().class).toContain(ourProps['outline'] ? 'outline' : 'filled');
       expect(btn.text()).toBe(text);
 
       // icon displayed or not depending on option
@@ -83,12 +83,8 @@ describe('BaseButton', () => {
         expect(wrapper.find('.icon').exists()).toBe(false);
       }
 
-      // button is of type 'button' unless formAction provided
-      if (ourProps['formAction'] == 'none') {
-        expect(btn.attributes().type).toBe('button');
-      } else {
-        expect(btn.attributes().type).toBe(ourProps['formAction']);
-      }
+      // native button type attribute always matches the type prop
+      expect(btn.attributes().type).toBe(ourProps['type']);
 
       // providing href turns button into an anchor tag
       if (href) {
@@ -96,16 +92,16 @@ describe('BaseButton', () => {
       }
     });
 
-    it.each(testCases)('able to click $type button with the given options',
-      async ({ type, size, variant, formAction, disabled, href, text }) => {
+    it.each(testCases)('able to click $variant button with the given options',
+      async ({ variant, size, outline, type, disabled, href, text }) => {
       const ourProps = {
-        type: type,
-        size: size,
         variant: variant,
-        formAction: formAction,
+        size: size,
+        outline: outline,
+        type: type,
         disabled: disabled,
-        href: type == 'link'? 'http://tb.pro' : href, // we want our link type buttons to always have an href
-        dataTestid: `${type}-data-test-id`,
+        href: variant == 'link'? 'http://tb.pro' : href, // we want our link variant buttons to always have an href
+        dataTestid: `${variant}-data-test-id`,
       };
       const ourSlots = {
           default: text,
@@ -130,10 +126,10 @@ describe('BaseButton', () => {
         }
       } else {
         expect(btn.attributes().disabled).not.toBeNull();
-        if (type !== 'link') {
+        if (variant !== 'link') {
           expect(wrapper.emitted().click, 'expected click event not to have been emitted because button is disabled').toBeFalsy();
         } else {
-          // link type buttons can still be clicked (to navigate the to the link) even if disabled
+          // link variant buttons can still be clicked (to navigate the to the link) even if disabled
           expect(wrapper.emitted().click, 'expected click event to have been emitted').toBeTruthy();
           expect(wrapper.emitted()['click'].length).toBe(1);
         }

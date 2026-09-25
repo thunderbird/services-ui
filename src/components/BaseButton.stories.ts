@@ -18,8 +18,9 @@ const meta: Meta<typeof BaseButton> = {
   tags: ['autodocs'],
   argTypes: {
     size: { control: 'select', options: ['regular', 'small'] },
-    variant: { control: 'select', options: ['filled', 'outline'] },
-    type: { control: 'select', options: ['primary', 'brand', 'danger', 'link'] },
+    outline: { control: 'boolean' },
+    variant: { control: 'select', options: ['primary', 'brand', 'danger', 'link'] },
+    type: { control: 'select', options: ['button', 'submit', 'reset'] },
     disabled: { control: 'boolean' },
   },
   args: {
@@ -56,7 +57,7 @@ export const Standard: Story = {
   },
 };
 
-export const Type: Story = {
+export const Variant: Story = {
   render: (args) => ({
     components: { PrimaryButton, BrandButton, DangerButton, LinkButton },
     setup() {
@@ -80,7 +81,7 @@ export const Type: Story = {
   },
 };
 
-export const Variant: Story = {
+export const Outline: Story = {
   render: (args) => ({
     components: { PrimaryButton },
     setup() {
@@ -88,15 +89,15 @@ export const Variant: Story = {
     },
     template: `
       <div style="display:flex;gap:.5rem;align-items:center;">
-        <primary-button variant="filled">Filled</primary-button>
-        <primary-button variant="outline">Outline</primary-button>
+        <primary-button>Filled</primary-button>
+        <primary-button outline>Outline</primary-button>
       </div>
     `,
   }),
   parameters: {
     docs: {
       source: {
-        code: '<primary-button variant="filled">Filled</primary-button>\n<primary-button variant="outline">Outline</primary-button>',
+        code: '<primary-button>Filled</primary-button>\n<primary-button outline>Outline</primary-button>',
       },
     },
   },
@@ -132,21 +133,21 @@ export const Disabled: Story = {
     },
     template: `
       <div style="display:flex;gap:.5rem;align-items:center;">
-        <primary-button variant="filled" disabled>Disabled</primary-button>
-        <primary-button variant="outline" disabled>Disabled</primary-button>
+        <primary-button disabled>Disabled</primary-button>
+        <primary-button outline disabled>Disabled</primary-button>
       </div>
     `,
   }),
   parameters: {
     docs: {
       source: {
-        code: '<primary-button variant="filled" disabled>Filled</primary-button>\n<primary-button variant="outline" disabled>Outline</primary-button>',
+        code: '<primary-button disabled>Filled</primary-button>\n<primary-button outline disabled>Outline</primary-button>',
       },
     },
   },
 };
 
-export const FormAction: Story = {
+export const Type: Story = {
   render: (args) => ({
     components: { PrimaryButton, TextInput },
     setup() {
@@ -156,15 +157,15 @@ export const FormAction: Story = {
       <div style="display:flex;flex-direction:column;gap:1rem;">
         <form style="display:flex;gap:.5rem;max-width:500px">
           <text-input name="submit" type="text" placeholder="Fill and submit me" />
-          <primary-button form-action="submit">Submit</primary-button>
+          <primary-button type="submit">Submit</primary-button>
         </form>
         <form style="display:flex;gap:.5rem;max-width:500px">
           <text-input name="submit" type="text" placeholder="Fill and reset me" />
-          <primary-button form-action="reset">Reset</primary-button>
+          <primary-button type="reset">Reset</primary-button>
         </form>
         <form style="display:flex;gap:.5rem;max-width:500px">
           <text-input name="submit" type="text" placeholder="Fill me" />
-          <primary-button form-action="none">None</primary-button>
+          <primary-button type="button">None</primary-button>
         </form>
       </div>
     `,
@@ -172,7 +173,7 @@ export const FormAction: Story = {
   parameters: {
     docs: {
       source: {
-        code: '<primary-button form-action="submit">Submit</primary-button>\n<primary-button form-action="reset">Reset</primary-button>\n<primary-button form-action="none">None</primary-button>',
+        code: '<primary-button type="submit">Submit</primary-button>\n<primary-button type="reset">Reset</primary-button>\n<primary-button type="button">None</primary-button>',
       },
     },
   },
