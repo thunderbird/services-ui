@@ -119,11 +119,11 @@ const status = computed(() => {
 .notify {
   background-color: var(--colour-primary-soft);
   border-color: var(--colour-primary-hover);
-  color: var(--colour-primary-hover);
+  color: var(--colour-ti-highlight);
 }
 
 .expired {
-  background-color: var(--colour-neutral-subtle);
+  background-color: var(--colour-surface-subtle);
   border-color: var(--colour-ti-secondary);
   color: var(--colour-ti-secondary);
 }
