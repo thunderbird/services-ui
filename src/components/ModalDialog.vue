@@ -140,19 +140,18 @@ body.modal-active {
   width: 100%;
   padding: 0 3rem;
   box-sizing: border-box;
-  margin-block-end: 1.5rem;
+  margin-block-end: 0.75rem;
 
-  font-family: Metropolis, sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 1.5rem;
-  font-weight: 500;
-  line-height: 120%;
+  font-weight: 400;
   color: var(--colour-ti-highlight);
 }
 
 .modal-notification {
   padding: 0 3rem;
   box-sizing: border-box;
-  margin-block-end: 1.5rem;
+  margin-block-end: .75rem;
 }
 
 .modal-body {
@@ -160,9 +159,9 @@ body.modal-active {
   box-sizing: border-box;
   margin-block-end: 1.5rem;
 
-  font-size: 0.875rem;
-  line-height: 123%;
-  color: var(--colour-ti-secondary);
+  font-size: 1rem;
+  line-height: 1.32;
+  color: var(--colour-ti-base);
 
   &:last-child {
     margin-block-end: 3rem;

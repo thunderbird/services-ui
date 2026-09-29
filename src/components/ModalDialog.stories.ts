@@ -175,19 +175,15 @@ export const WithNotification: Story = {
     components: { ModalDialog, PrimaryButton, TextInput, NoticeBar },
     setup() {
       const modal = ref(null);
-      const showError = ref(false);
-      const submit = () => {
-        showError.value = true;
-      };
-      return { args, modal, showError, submit };
+      return { args, modal };
     },
     template: `<div style="display:flex;flex-direction:column;gap:1rem;align-items:start;">
-      <notice-bar type="info">A modal with a notification slot, shown here after a failed form submission.</notice-bar>
+      <notice-bar type="info">A modal with a notification slot, used here as a hint about required fields.</notice-bar>
       <primary-button @click="modal.show()">Open Modal</primary-button>
       <modal-dialog ref="modal">
         <template #header>Modal Title</template>
-        <template #notification v-if="showError">
-          <notice-bar type="critical">Something went wrong. Please try again.</notice-bar>
+        <template #notification>
+          <notice-bar type="info">Please fill out all required fields.</notice-bar>
         </template>
         <form style="display:flex;flex-direction:column;gap:1rem;">
           <text-input name="one" label="Important field" required />
@@ -195,7 +191,7 @@ export const WithNotification: Story = {
         </form>
         <template #actions>
           <primary-button name="cancel" variant="outline">Cancel</primary-button>
-          <primary-button name="save" @click="submit">Save</primary-button>
+          <primary-button name="save">Save</primary-button>
         </template>
       </modal-dialog>
     </div>`,
@@ -205,8 +201,8 @@ export const WithNotification: Story = {
       source: {
         code: `<modal-dialog ref="modal">
         <template #header>Modal Title</template>
-        <template #notification v-if="showError">
-          <notice-bar type="critical">Something went wrong. Please try again.</notice-bar>
+        <template #notification>
+          <notice-bar type="info">Please fill out all required fields.</notice-bar>
         </template>
         <form>
           <text-input name="one" label="Important field" required />
@@ -214,7 +210,7 @@ export const WithNotification: Story = {
         </form>
         <template #actions>
           <primary-button name="cancel" variant="outline">Cancel</primary-button>
-          <primary-button name="save" @click="submit">Save</primary-button>
+          <primary-button name="save">Save</primary-button>
         </template>
       </modal-dialog>`,
       },
