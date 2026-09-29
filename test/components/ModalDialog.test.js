@@ -21,6 +21,7 @@ describe('ModalDialog', () => {
 
   const standardSlots = {
     header: 'Standard Test Modal Header!',
+    notification: 'Standard test modal notification',
     default: 'This is the body text of our standard test modal.',
     actions: `<button class="button-1">${btn1Label}</button><button class="button-2">${btn2Label}</button>`,
     footer: 'Standard test modal footer',
@@ -28,6 +29,7 @@ describe('ModalDialog', () => {
 
   const modalSel = `[data-testid=${ourProps['dataTestid']}]`;
   const modalHdrSel = 'div.modal-header';
+  const modalNotificationSel = 'div.modal-notification';
   const modalBodySel = 'div.modal-body';
   const modalFooterSel = 'div.footer';
   const modalActionsSel = 'div.modal-actions';
@@ -49,6 +51,17 @@ describe('ModalDialog', () => {
     expect(modalHdr.isVisible()).toBe(true);
     expect(modalHdr.attributes().class).toBe('modal-header');
     expect(modalHdr.text()).toBe(testSlots['header']);
+
+    // verify the notification is displayed and correct when provided, and absent otherwise
+    const modalNotification = wrapper.find(modalNotificationSel);
+    if (testSlots['notification']) {
+      expect(modalNotification.exists()).toBe(true);
+      expect(modalNotification.isVisible()).toBe(true);
+      expect(modalNotification.attributes().class).toBe('modal-notification');
+      expect(modalNotification.text()).toBe(testSlots['notification']);
+    } else {
+      expect(modalNotification.exists()).toBe(false);
+    }
 
     // verify the body text is displayed and correct
     const modalBody = wrapper.find(modalBodySel);
@@ -97,7 +110,7 @@ describe('ModalDialog', () => {
     // to give time for the DOM to be updated (via happy-dom) otherwise won't be found
     await wrapper.vm.show();
 
-    // verify modal is visible with header, body, and close button
+    // verify modal is visible with header, notification, body, and close button
     await verifyBasicModal(wrapper, standardSlots);
 
     // verify action buttons are displayed; modal actions element contains the buttons
