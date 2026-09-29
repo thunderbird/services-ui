@@ -170,6 +170,58 @@ export const WithActions: Story = {
   },
 };
 
+export const WithNotification: Story = {
+  render: (args) => ({
+    components: { ModalDialog, PrimaryButton, TextInput, NoticeBar },
+    setup() {
+      const modal = ref(null);
+      const showError = ref(false);
+      const submit = () => {
+        showError.value = true;
+      };
+      return { args, modal, showError, submit };
+    },
+    template: `<div style="display:flex;flex-direction:column;gap:1rem;align-items:start;">
+      <notice-bar type="info">A modal with a notification slot, shown here after a failed form submission.</notice-bar>
+      <primary-button @click="modal.show()">Open Modal</primary-button>
+      <modal-dialog ref="modal">
+        <template #header>Modal Title</template>
+        <template #notification v-if="showError">
+          <notice-bar type="critical">Something went wrong. Please try again.</notice-bar>
+        </template>
+        <form style="display:flex;flex-direction:column;gap:1rem;">
+          <text-input name="one" label="Important field" required />
+          <text-input name="two" label="Another field" />
+        </form>
+        <template #actions>
+          <primary-button name="cancel" variant="outline">Cancel</primary-button>
+          <primary-button name="save" @click="submit">Save</primary-button>
+        </template>
+      </modal-dialog>
+    </div>`,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `<modal-dialog ref="modal">
+        <template #header>Modal Title</template>
+        <template #notification v-if="showError">
+          <notice-bar type="critical">Something went wrong. Please try again.</notice-bar>
+        </template>
+        <form>
+          <text-input name="one" label="Important field" required />
+          <text-input name="two" label="Another field" />
+        </form>
+        <template #actions>
+          <primary-button name="cancel" variant="outline">Cancel</primary-button>
+          <primary-button name="save" @click="submit">Save</primary-button>
+        </template>
+      </modal-dialog>`,
+      },
+    },
+  },
+};
+
 export const WithFooter: Story = {
   render: (args) => ({
     components: { ModalDialog, PrimaryButton, NoticeBar, LinkButton },

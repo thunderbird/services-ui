@@ -56,6 +56,9 @@ defineExpose({ show, hide })
         <div v-if="$slots.header" class="modal-header">
           <slot name="header"></slot>
         </div>
+        <div v-if="$slots.notification" class="modal-notification">
+          <slot name="notification"></slot>
+        </div>
         <div class="modal-body">
           <slot></slot>
         </div>
@@ -145,6 +148,12 @@ body.modal-active {
   font-weight: 500;
   line-height: 120%;
   color: var(--colour-ti-highlight);
+}
+
+.modal-notification {
+  padding: 0 3rem;
+  box-sizing: border-box;
+  margin-block-end: 1.5rem;
 }
 
 .modal-body {
