@@ -32,6 +32,7 @@ withDefaults(defineProps<Props>(), {
   justify-content: center;
   width: 1rem;
   height: 1rem;
+  flex-shrink: 0;
 }
 
 .text {
@@ -40,6 +41,7 @@ withDefaults(defineProps<Props>(), {
   font-weight: 600;
   line-height: normal;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .badge {
