@@ -121,11 +121,10 @@ body.modal-active {
 
 .modal-close {
   position: absolute;
-  right: 1.75rem;
-  top: 1.75rem;
+  right: 1.5rem;
+  top: 1.5rem;
   cursor: pointer;
-  color: var(--colour-ti-muted);
-  background-color: color-mix(in srgb, black 5%, transparent);;
+  background-color: transparent;
   border: 0;
   border-radius: 999px;
   display: flex;
