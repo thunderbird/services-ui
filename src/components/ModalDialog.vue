@@ -53,10 +53,16 @@ defineExpose({ show, hide })
         <button class="modal-close" @click="hide" aria-labelledby="modal-close-button">
           <x-icon />
         </button>
+        <div v-if="$slots.logo" class="modal-logo">
+          <slot name="logo"></slot>
+        </div>
         <div v-if="$slots.header" class="modal-header">
           <slot name="header"></slot>
         </div>
         <div class="modal-body">
+          <div v-if="$slots.notification" class="modal-notification">
+            <slot name="notification"></slot>
+          </div>
           <slot></slot>
         </div>
         <div v-if="$slots.actions" class="modal-actions">
@@ -107,7 +113,7 @@ body.modal-active {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  padding-top: 5rem;
+  padding-top: 1.5rem;
   box-sizing: border-box;
 
   display: flex;
@@ -118,15 +124,14 @@ body.modal-active {
 
 .modal-close {
   position: absolute;
-  right: 1.75rem;
-  top: 1.75rem;
+  right: 1.5rem;
+  top: 1.5rem;
   cursor: pointer;
-  color: var(--colour-ti-muted);
-  background-color: color-mix(in srgb, black 5%, transparent);;
+  background-color: transparent;
   border: 0;
   border-radius: 999px;
   display: flex;
-  padding: .5rem;
+  padding: 0;
 }
 
 /* Filter it for dark-mode B^) */
@@ -134,27 +139,49 @@ body.modal-active {
   filter: invert(0.75)
 }
 
+.modal-logo {
+  width: 100%;
+  max-height: 4.5rem;
+  box-sizing: border-box;
+  padding: 0 3rem;
+
+  ~ .modal-header,
+  ~ .modal-body {
+    margin-block-start: 0;
+  }
+}
+
 .modal-header {
   width: 100%;
   padding: 0 3rem;
   box-sizing: border-box;
-  margin-block-end: 1.5rem;
+  margin-block-start: 3rem;
+  margin-block-end: 0.75rem;
 
-  font-family: Metropolis, sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 1.5rem;
-  font-weight: 500;
-  line-height: 120%;
+  font-weight: 400;
   color: var(--colour-ti-highlight);
+
+  ~ .modal-body {
+    margin-block-start: 0;
+  }
+}
+
+.modal-notification {
+  box-sizing: border-box;
+  margin-block-end: .75rem;
 }
 
 .modal-body {
   padding: 0 3rem;
   box-sizing: border-box;
+  margin-block-start: 3rem;
   margin-block-end: 1.5rem;
 
-  font-size: 0.875rem;
-  line-height: 123%;
-  color: var(--colour-ti-secondary);
+  font-size: 1rem;
+  line-height: 1.32;
+  color: var(--colour-ti-base);
 
   &:last-child {
     margin-block-end: 3rem;

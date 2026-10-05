@@ -47,6 +47,7 @@ import SettingsIcon from '@/foundation/SettingsIcon.vue';
 import StatusExpiryIcon from '@/foundation/StatusExpiryIcon.vue';
 import StatusInfoIcon from '@/foundation/StatusInfoIcon.vue';
 import StatusWarningIcon from '@/foundation/StatusWarningIcon.vue';
+import XIcon from '@/foundation/XIcon.vue';
 
 // Types
 import {
@@ -107,6 +108,7 @@ export {
   StatusExpiryIcon,
   StatusInfoIcon,
   StatusWarningIcon,
+  XIcon,
   // Types
   AnimationTypes,
   ExpiryUnitTypes,
