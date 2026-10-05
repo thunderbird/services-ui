@@ -24,8 +24,8 @@ html {
   --colour-surface-raised: #ffffff;
   --colour-surface-lower: #f7f7f8;
   --colour-surface-subtle: #efeff1;
-  --colour-surface-subtle-light: #efeff1;
-  --colour-surface-subtle-dark: #232326;
+  --colour-surface-subtle-light: #efeff1; /* No override */
+  --colour-surface-subtle-dark: #232326; /* No override */
   --colour-surface-deep: #e4e4e7;
   --colour-surface-border: #d9d9de;
   --colour-surface-border-intense: #a1a1aa;
