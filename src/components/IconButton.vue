@@ -10,7 +10,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <base-button type="link" class="icon-only" :class="{ [size]: size }">
+  <base-button variant="link" class="icon-only" :class="{ [size]: size }">
     <template #iconLeft="slotData">
       <slot v-bind="slotData" />
     </template>
