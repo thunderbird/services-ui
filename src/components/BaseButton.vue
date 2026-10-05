@@ -27,8 +27,8 @@ withDefaults(defineProps<Props>(), {
     :is="href ? 'a' : 'button'"
     :href="href"
     class="base"
-    :class="{ [variant]: variant, small: size === 'small', [outline ? 'outline' : 'filled']: true }"
-    :type="type"
+    :class="[variant, { small: size === 'small', outline, filled: !outline }]"
+    :type="!href ? type : undefined"
     :data-testid="dataTestid"
     :disabled="disabled"
   >

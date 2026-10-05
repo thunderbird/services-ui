@@ -83,8 +83,8 @@ describe('BaseButton', () => {
         expect(wrapper.find('.icon').exists()).toBe(false);
       }
 
-      // native button type attribute always matches the type prop
-      expect(btn.attributes().type).toBe(ourProps['type']);
+      // native button type attribute matches the type prop, but is not set on anchor tags
+      expect(btn.attributes().type).toBe(ourProps['href'] ? undefined : ourProps['type']);
 
       // providing href turns button into an anchor tag
       if (href) {
