@@ -53,6 +53,9 @@ defineExpose({ show, hide })
         <button class="modal-close" @click="hide" aria-labelledby="modal-close-button">
           <x-icon />
         </button>
+        <div v-if="$slots.logo" class="modal-logo">
+          <slot name="logo"></slot>
+        </div>
         <div v-if="$slots.header" class="modal-header">
           <slot name="header"></slot>
         </div>
@@ -110,7 +113,7 @@ body.modal-active {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  padding-top: 5rem;
+  padding-top: 1.5rem;
   box-sizing: border-box;
 
   display: flex;
@@ -128,7 +131,7 @@ body.modal-active {
   border: 0;
   border-radius: 999px;
   display: flex;
-  padding: .5rem;
+  padding: 0;
 }
 
 /* Filter it for dark-mode B^) */
@@ -136,10 +139,22 @@ body.modal-active {
   filter: invert(0.75)
 }
 
+.modal-logo {
+  width: 100%;
+  max-height: 4.5rem;
+  box-sizing: border-box;
+  padding: 0 3rem;
+
+  ~ .modal-header {
+    margin-block-start: 0;
+  }
+}
+
 .modal-header {
   width: 100%;
   padding: 0 3rem;
   box-sizing: border-box;
+  margin-block-start: 3rem;
   margin-block-end: 0.75rem;
 
   font-family: Inter, sans-serif;
