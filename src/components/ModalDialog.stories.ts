@@ -131,6 +131,7 @@ export const WithLogoAndHeader: Story = {
     docs: {
       source: {
         code: `<modal-dialog ref="modal">
+        <template #logo><svg ...>...</svg></template>
         <template #header>Modal Title</template>
         <span>The blessed trials awaited in the hollow temple of Silverfen...</span>
       </modal-dialog>`,
