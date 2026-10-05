@@ -145,7 +145,8 @@ body.modal-active {
   box-sizing: border-box;
   padding: 0 3rem;
 
-  ~ .modal-header {
+  ~ .modal-header,
+  ~ .modal-body {
     margin-block-start: 0;
   }
 }
@@ -161,6 +162,10 @@ body.modal-active {
   font-size: 1.5rem;
   font-weight: 400;
   color: var(--colour-ti-highlight);
+
+  ~ .modal-body {
+    margin-block-start: 0;
+  }
 }
 
 .modal-notification {
@@ -171,6 +176,7 @@ body.modal-active {
 .modal-body {
   padding: 0 3rem;
   box-sizing: border-box;
+  margin-block-start: 3rem;
   margin-block-end: 1.5rem;
 
   font-size: 1rem;
