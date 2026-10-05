@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import BaseBadge from '@/components/BaseBadge.vue';
 import CheckCircleFilledIcon from '@/foundation/CheckCircleFilledIcon.vue';
 import { BaseBadgeTypes } from '@/definitions';
+import NoticeBar from './NoticeBar.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof BaseBadge> = {
@@ -81,6 +82,28 @@ export const Icon: Story = {
     docs: {
       source: {
         code: '<base-badge type="default">\n  <template #icon>\n    <check-circle-filled-icon />\n  </template>\n  Default\n</base-badge>\n...',
+      },
+    },
+  },
+};
+
+
+export const Counter: Story = {
+  render: () => ({
+    components: { BaseBadge, NoticeBar },
+    template: `
+      <notice-bar type="info" style="margin-bottom:1rem">Counter badges can have a class to manually set dark or light mode.</notice-bar>
+      <div style="display:flex;gap:.5rem;align-items:center;">
+        <base-badge type="counter">2</base-badge>
+        <base-badge class="dark" type="counter">2</base-badge>
+        <base-badge class="light" type="counter">2</base-badge>
+      </div>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<base-badge type="counter">2</base-badge>\n<base-badge class="dark" type="counter">2</base-badge>\n<base-badge class="light" type="counter">2</base-badge>',
       },
     },
   },

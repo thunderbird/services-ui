@@ -120,5 +120,14 @@ withDefaults(defineProps<Props>(), {
   color: var(--colour-ti-secondary);
   padding: 0.25rem 0.5rem;
   font-variant-numeric: tabular-nums;
+
+  &.dark {
+    background-color: var(--colour-surface-subtle-dark);
+    color: var(--colour-ti-secondary-dark);
+  }
+  &.light {
+    background-color: var(--colour-surface-subtle-light);
+    color: var(--colour-ti-secondary-light);
+  }
 }
 </style>
