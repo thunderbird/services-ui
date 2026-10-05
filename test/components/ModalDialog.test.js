@@ -63,12 +63,12 @@ describe('ModalDialog', () => {
       expect(modalNotification.exists()).toBe(false);
     }
 
-    // verify the body text is displayed and correct
+    // verify the body text is displayed and correct (can contain a notification)
     const modalBody = wrapper.find(modalBodySel);
     expect(modalBody.exists()).toBe(true);
     expect(modalBody.isVisible()).toBe(true);
     expect(modalBody.attributes().class).toBe('modal-body');
-    expect(modalBody.text()).toBe(testSlots['default']);
+    expect(modalBody.text()).toBe((testSlots['notification'] ?? '') + testSlots['default']);
 
     // verify dialog close button exists (will be tested in separate test)
     const closeBtn = wrapper.find(modalCloseBtnSel);
