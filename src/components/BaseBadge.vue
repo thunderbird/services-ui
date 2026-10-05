@@ -32,6 +32,7 @@ withDefaults(defineProps<Props>(), {
   justify-content: center;
   width: 1rem;
   height: 1rem;
+  flex-shrink: 0;
 }
 
 .text {
@@ -40,6 +41,7 @@ withDefaults(defineProps<Props>(), {
   font-weight: 600;
   line-height: normal;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .badge {
@@ -64,37 +66,33 @@ withDefaults(defineProps<Props>(), {
 }
 
 .subscription {
-  background: color-mix(in srgb, var(--colour-primary-default-dark), transparent 80%);
-  color: var(--colour-ti-secondary);
-
-  .icon {
-    color: var(--colour-primary-default);
-  }
+  background: color-mix(in srgb, var(--colour-accent-blue), transparent 80%);
+  color: var(--colour-ti-brand);
 }
 
 .pending {
   background-color: var(--colour-warning-soft);
   border-color: var(--colour-warning-default);
-  color: var(--colour-ti-secondary);
-
-  .icon {
-    color: var(--colour-ti-warning);
-  }
+  color: var(--colour-ti-warning);
 }
 
-.set,
+.set {
+  background-color: var(--colour-ti-secondary);
+  color: var(--colour-surface-base);
+}
+
 .verified {
   background-color: var(--colour-success-soft);
   border-color: var(--colour-ti-success);
-  color: var(--colour-ti-secondary);
+  color: var(--colour-ti-success);
 
   .icon {
-    color: var(--colour-ti-success);
+    color: var(--colour-success-default);
   }
 }
 
 .emails {
-  background-color: var(--colour-neutral-border);
+  background-color: var(--colour-surface-deep);
   color: var(--colour-ti-base);
 
   .icon {
@@ -102,9 +100,14 @@ withDefaults(defineProps<Props>(), {
   }
 }
 
-.not-set,
+.not-set {
+  background-color: transparent;
+  border-color: var(--colour-ti-critical);
+  color: var(--colour-ti-critical);
+}
+
 .default {
-  background-color: var(--colour-neutral-lower);
+  background-color: var(--colour-surface-subtle);
   color: var(--colour-ti-base);
 
   .icon {
@@ -113,9 +116,18 @@ withDefaults(defineProps<Props>(), {
 }
 
 .counter {
-  background: color-mix(in srgb, var(--colour-ti-highlight), transparent 60%);
-  color: var(--colour-ti-base);
+  background-color: var(--colour-surface-subtle);
+  color: var(--colour-ti-secondary);
   padding: 0.25rem 0.5rem;
   font-variant-numeric: tabular-nums;
+
+  &.dark {
+    background-color: var(--colour-surface-subtle-dark);
+    color: var(--colour-ti-secondary-dark);
+  }
+  &.light {
+    background-color: var(--colour-surface-subtle-light);
+    color: var(--colour-ti-secondary-light);
+  }
 }
 </style>

@@ -24,6 +24,8 @@ html {
   --colour-surface-raised: #ffffff;
   --colour-surface-lower: #f7f7f8;
   --colour-surface-subtle: #efeff1;
+  --colour-surface-subtle-light: #efeff1; /* No override */
+  --colour-surface-subtle-dark: #232326; /* No override */
   --colour-surface-deep: #e4e4e7;
   --colour-surface-border: #d9d9de;
   --colour-surface-border-intense: #a1a1aa;
@@ -88,9 +90,11 @@ html {
   --colour-ti-base-dark: #eeeef0; /* No override */
   --colour-ti-base-inverted: #fcfcfd;
   --colour-ti-secondary: #52525b;
+  --colour-ti-secondary-light: #52525b; /* No override */
+  --colour-ti-secondary-dark: #d4d4d8; /* No override */
   --colour-ti-muted: #71717a;
   --colour-ti-disabled: #a1a1aa;
-  --colour-ti-brand: #0b5cbd;
+  --colour-ti-brand: #085cbd;
   --colour-ti-highlight: #1373d9;
   --colour-ti-warning: #713f12;
   --colour-ti-critical: #b91c1c;
