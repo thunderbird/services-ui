@@ -89,15 +89,16 @@ export const Outline: Story = {
     },
     template: `
       <div style="display:flex;gap:.5rem;align-items:center;">
-        <primary-button>Filled</primary-button>
-        <primary-button outline>Outline</primary-button>
+        <primary-button outline>Primary</primary-button>
+        <brand-button outline>Brand</brand-button>
+        <danger-button outline>Danger</danger-button>
       </div>
     `,
   }),
   parameters: {
     docs: {
       source: {
-        code: '<primary-button>Filled</primary-button>\n<primary-button outline>Outline</primary-button>',
+        code: '<primary-button outline>Primary</primary-button>\n<brand-button outline>Brand</brand-button>\n<danger-button outline>Danger</danger-button>',
       },
     },
   },
