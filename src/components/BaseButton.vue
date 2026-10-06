@@ -79,11 +79,17 @@ a {
   font-size: var(--txt-input); /* 14px */
   font-weight: 400;
   line-height: 1;
-  padding: 0 1.12rem;
+  padding: 0 1rem;
   cursor: pointer;
   user-select: none;
 
   position: relative;
+  transition:
+    background-color var(--transition-duration) var(--transition-timing-function),
+    background-image var(--transition-duration) var(--transition-timing-function),
+    border var(--transition-duration) var(--transition-timing-function),
+    color var(--transition-duration) var(--transition-timing-function),
+    box-shadow var(--transition-duration) var(--transition-timing-function);
 
   .icon {
     display: flex;
@@ -109,9 +115,10 @@ a {
 
   &.filled {
     &:disabled {
-      background: var(--colour-neutral-border);
-      color: var(--colour-ti-muted);
+      background: var(--colour-surface-deep);
+      color: var(--colour-ti-disabled);
       cursor: not-allowed;
+      box-shadow: none;
     }
   }
 
@@ -157,19 +164,26 @@ a {
   &.filled {
     background: linear-gradient(
         180deg,
-        var(--colour-accent-blue) -31.82%,
-        var(--colour-primary-default) 8.74%,
+        var(--colour-accent-blue) -15.91%,
+        var(--colour-primary-default) 20.02%,
         var(--colour-primary-hover) 100%
       )
       border-box;
     color: var(--colour-neutral-base);
+    box-shadow: var(--shadow-elevation-2);
 
     &:hover:not(:disabled) {
       background: linear-gradient(180deg, var(--colour-primary-hover) 0%, var(--colour-primary-hover) 100%);
+      box-shadow: var(--shadow-elevation-1);
     }
 
     &:active:not(:disabled) {
       background: linear-gradient(180deg, var(--colour-primary-pressed) 0%, var(--colour-primary-pressed) 100%);
+    }
+
+    &:focus:not(:disabled):not(:active) {
+      background: linear-gradient(180deg, var(--colour-primary-hover) 0%, var(--colour-primary-hover) 100%);
+      box-shadow: var(--shadow-elevation-1);
     }
   }
 
@@ -337,17 +351,6 @@ a {
   & button {
     min-width: initial;
     height: 2rem;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .base {
-    transition:
-      background-color 250ms ease-in-out,
-      background 250ms ease-in-out,
-      border 250ms ease-in-out,
-      color 250ms ease-in-out,
-      box-shadow 250ms ease-in-out;
   }
 }
 </style>

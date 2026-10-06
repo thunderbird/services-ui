@@ -11,6 +11,8 @@ html {
   --transition-timing-function: initial;
   --transition-duration: 0;
 
+  /* elevation-1 */
+  --shadow-elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.10);
   --shadow-elevation-2: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
 }
 
