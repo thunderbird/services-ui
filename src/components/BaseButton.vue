@@ -44,20 +44,6 @@ withDefaults(defineProps<Props>(), {
   </component>
 </template>
 
-<style>
-html {
-  --button-destructive-color: var(--colour-danger-default);
-  --button-destructive-color-hover: var(--colour-danger-hover);
-  --button-destructive-color-active: var(--colour-danger-pressed);
-
-  &.dark {
-    --button-destructive-color: var(--colour-danger-pressed);
-    --button-destructive-color-hover: #f87171; /* TODO: var(--critical-hover) in Figma (?) */
-    --button-destructive-color-active: var(--colour-ti-critical);
-  }
-}
-</style>
-
 <style scoped>
 @import '@/assets/styles/mixins.pcss';
 
@@ -203,7 +189,8 @@ a {
     background: transparent;
     color: var(--colour-ti-highlight);
 
-    &:hover:not(:disabled) {
+    &:hover:not(:disabled),
+    &:focus:not(:disabled):not(:active) {
       --button-outline-border: var(--colour-primary-hover);
       &::before {
         padding: 0.125rem; /* Controls border-width */
@@ -299,29 +286,36 @@ a {
 
 .danger {
   &.filled {
-    background-color: var(--button-destructive-color);
-    color: var(--colour-neutral-base);
+    background-color: var(--colour-critical-default);
+    color: var(--colour-ti-base-inverted);
 
     &:hover:not(:disabled) {
-      background-color: var(--button-destructive-color-hover);
+      background-color: var(--colour-critical-hover);
     }
 
     &:active:not(:disabled) {
-      background-color: var(--button-destructive-color-active);
+      background-color: var(--colour-critical-pressed);
+      color: var(--colour-surface-lower);
+    }
+
+    &:focus:not(:disabled):not(:active) {
+      background-color: var(--colour-critical-hover);
+      outline-color: var(--colour-critical-hover);
     }
   }
 
   &.outline {
-    --button-outline-border: var(--button-destructive-color);
+    --button-outline-border: var(--colour-critical-default);
 
     position: relative;
     background: transparent;
-    color: var(--button-destructive-color);
+    color: var(--colour-critical-default);
 
-    &:hover:not(:disabled) {
-      --button-outline-border: var(--button-destructive-color-hover);
+    &:hover:not(:disabled),
+    &:focus:not(:disabled):not(:active) {
+      --button-outline-border: var(--colour-critical-hover);
 
-      color: var(--button-destructive-color-hover);
+      color: var(--colour-critical-hover);
 
       &::before {
         padding: 0.125rem; /* Controls border-width */
@@ -329,13 +323,17 @@ a {
     }
 
     &:active:not(:disabled) {
-      --button-outline-border: var(--button-destructive-color-active);
+      --button-outline-border: var(--colour-critical-pressed);
 
-      color: var(--button-destructive-color-active);
+      color: var(--colour-critical-pressed);
 
       &::before {
         padding: 0.125rem; /* Controls border-width */
       }
+    }
+
+    &:focus:not(:disabled):not(:active) {
+      outline-color: var(--colour-critical-hover);
     }
   }
 }
