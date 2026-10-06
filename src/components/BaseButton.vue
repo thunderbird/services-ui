@@ -152,9 +152,9 @@ a {
     }
 
     &:disabled {
-      --button-outline-border: var(--colour-neutral-border);
+      --button-outline-border: var(--colour-surface-border);
       background: var(--colour-neutral-base);
-      color: var(--colour-ti-muted);
+      color: var(--colour-ti-disabled);
       cursor: not-allowed;
     }
   }
@@ -330,7 +330,7 @@ a {
   &.outline:disabled,
   &.filled:disabled {
     background: none;
-    color: var(--colour-ti-muted);
+    color: var(--colour-ti-disabled);
     cursor: not-allowed;
   }
 
