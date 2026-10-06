@@ -142,6 +142,10 @@ a {
       background: var(--colour-neutral-base);
       color: var(--colour-ti-disabled);
       cursor: not-allowed;
+
+      &:is(.brand.filled) {
+        background: var(--colour-surface-border);
+      }
     }
   }
 }
