@@ -44,20 +44,6 @@ withDefaults(defineProps<Props>(), {
   </component>
 </template>
 
-<style>
-html {
-  --button-destructive-color: var(--colour-danger-default);
-  --button-destructive-color-hover: var(--colour-danger-hover);
-  --button-destructive-color-active: var(--colour-danger-pressed);
-
-  &.dark {
-    --button-destructive-color: var(--colour-danger-pressed);
-    --button-destructive-color-hover: #f87171; /* TODO: var(--critical-hover) in Figma (?) */
-    --button-destructive-color-active: var(--colour-ti-critical);
-  }
-}
-</style>
-
 <style scoped>
 @import '@/assets/styles/mixins.pcss';
 
@@ -79,11 +65,17 @@ a {
   font-size: var(--txt-input); /* 14px */
   font-weight: 400;
   line-height: 1;
-  padding: 0 1.12rem;
+  padding: 0 1rem;
   cursor: pointer;
   user-select: none;
 
   position: relative;
+  transition:
+    background-color var(--transition-duration) var(--transition-timing-function),
+    background-image var(--transition-duration) var(--transition-timing-function),
+    border var(--transition-duration) var(--transition-timing-function),
+    color var(--transition-duration) var(--transition-timing-function),
+    box-shadow var(--transition-duration) var(--transition-timing-function);
 
   .icon {
     display: flex;
@@ -109,9 +101,10 @@ a {
 
   &.filled {
     &:disabled {
-      background: var(--colour-neutral-border);
-      color: var(--colour-ti-muted);
+      background: var(--colour-surface-deep);
+      color: var(--colour-ti-disabled);
       cursor: not-allowed;
+      box-shadow: none;
     }
   }
 
@@ -145,10 +138,14 @@ a {
     }
 
     &:disabled {
-      --button-outline-border: var(--colour-neutral-border);
+      --button-outline-border: var(--colour-surface-border);
       background: var(--colour-neutral-base);
-      color: var(--colour-ti-muted);
+      color: var(--colour-ti-disabled);
       cursor: not-allowed;
+
+      &:is(.brand.filled) {
+        background: var(--colour-surface-border);
+      }
     }
   }
 }
@@ -157,37 +154,57 @@ a {
   &.filled {
     background: linear-gradient(
         180deg,
-        var(--colour-accent-blue) -31.82%,
-        var(--colour-primary-default) 8.74%,
+        var(--colour-accent-blue) -15.91%,
+        var(--colour-primary-default) 20.02%,
         var(--colour-primary-hover) 100%
       )
       border-box;
     color: var(--colour-neutral-base);
+    box-shadow: var(--shadow-elevation-2);
 
-    &:hover:not(:disabled) {
-      background: linear-gradient(180deg, var(--colour-primary-hover) 0%, var(--colour-primary-hover) 100%);
+    &:hover:not(:disabled),
+    &:focus:not(:disabled):not(:active) {
+      background: linear-gradient(
+        180deg,
+        var(--colour-primary-hover) 0%,
+        var(--colour-primary-hover) 100%
+      );
+      box-shadow: var(--shadow-elevation-1);
     }
 
     &:active:not(:disabled) {
-      background: linear-gradient(180deg, var(--colour-primary-pressed) 0%, var(--colour-primary-pressed) 100%);
+      background: linear-gradient(
+        180deg,
+        var(--colour-primary-pressed) 0%,
+        var(--colour-primary-pressed) 100%
+      );
     }
   }
 
   &.outline {
-    --button-outline-border: var(--colour-primary-default);
+    --button-outline-border: linear-gradient(
+      to bottom,
+      var(--colour-accent-blue) -127%,
+      var(--colour-ti-highlight) 87%,
+      var(--colour-primary-hover) 7%
+    ) border-box;
 
     position: relative;
     background: transparent;
-    color: var(--colour-primary-hover);
+    color: var(--colour-ti-highlight);
 
-    &:hover:not(:disabled) {
+    &:hover:not(:disabled),
+    &:focus:not(:disabled):not(:active) {
+      --button-outline-border: var(--colour-primary-hover);
       &::before {
         padding: 0.125rem; /* Controls border-width */
       }
     }
 
     &:active:not(:disabled) {
-      background: color-mix(in srgb, var(--colour-accent-blue), transparent 90%);
+      --button-outline-border: var(--colour-primary-pressed);
+      background-color: color-mix(in srgb, var(--colour-accent-blue), transparent 90%);
+      color: var(--colour-ti-brand);
       transition: none;
 
       &::before {
@@ -205,38 +222,67 @@ a {
 
   &.filled {
     /* For brand buttons, we are using one-off colours for light / dark mode */
-    --button-outline-border: linear-gradient(to bottom right, #7bc6f4 10%, #2b8cdc 60%) border-box;
+    --button-outline-border: linear-gradient(
+      to bottom right,
+      #7bc6f4 10%,
+      #2b8cdc 60%
+    ) border-box;
 
-    background: linear-gradient(329deg, var(--colour-primary-default) -21.06%, var(--colour-accent-blue) 64%);
+    background: linear-gradient(
+      329deg,
+      var(--colour-primary-default) -21.06%,
+      var(--colour-accent-blue) 64%
+    );
     color: var(--colour-ti-base-light);
     position: relative;
 
-    &:hover:not(:disabled) {
-      background: linear-gradient(var(--colour-primary-hover), var(--colour-primary-hover));
+    &:hover:not(:disabled),
+    &:focus:not(:disabled):not(:active) {
+      --button-outline-border: linear-gradient(
+        to bottom right,
+        #A0E1FF 10%,
+        #2b8cdc 60%
+      ) border-box;
+      background: linear-gradient(
+        var(--colour-primary-hover),
+        var(--colour-primary-hover)
+      );
       color: var(--colour-neutral-base);
     }
 
     &:active:not(:disabled) {
-      background: linear-gradient(var(--colour-primary-pressed), var(--colour-primary-pressed));
+      --button-outline-border: linear-gradient(
+        to bottom right,
+        #A0E1FF 10%,
+        #2b8cdc 60%
+      ) border-box;
+      background: linear-gradient(
+        var(--colour-primary-pressed),
+        var(--colour-primary-pressed)
+      );
       color: var(--colour-neutral-base);
     }
   }
 
   &.outline {
-    --button-outline-border: linear-gradient(99deg, var(--colour-accent-blue) 19.15%, var(--colour-accent-gray) 75.77%)
-      border-box;
+    --button-outline-border: linear-gradient(
+      99deg,
+      var(--colour-accent-blue) 19.15%,
+      var(--colour-accent-gray) 75.77%
+    ) border-box;
 
     position: relative;
     background: transparent;
     color: var(--colour-ti-base);
 
-    &:hover:not(:disabled) {
-      background: #f2f2f2;
+    &:hover:not(:disabled),
+    &:focus:not(:disabled):not(:active) {
+      background: var(--colour-surface-base);
       color: var(--colour-ti-base-light);
     }
 
     &:active:not(:disabled) {
-      background: #e3e3e3;
+      background: var(--colour-surface-lower);
       color: var(--colour-ti-base-light);
     }
   }
@@ -244,29 +290,36 @@ a {
 
 .danger {
   &.filled {
-    background-color: var(--button-destructive-color);
-    color: var(--colour-neutral-base);
+    background-color: var(--colour-critical-default);
+    color: var(--colour-ti-base-inverted);
 
     &:hover:not(:disabled) {
-      background-color: var(--button-destructive-color-hover);
+      background-color: var(--colour-critical-hover);
     }
 
     &:active:not(:disabled) {
-      background-color: var(--button-destructive-color-active);
+      background-color: var(--colour-critical-pressed);
+      color: var(--colour-surface-lower);
+    }
+
+    &:focus:not(:disabled):not(:active) {
+      background-color: var(--colour-critical-hover);
+      outline-color: var(--colour-critical-hover);
     }
   }
 
   &.outline {
-    --button-outline-border: var(--button-destructive-color);
+    --button-outline-border: var(--colour-critical-default);
 
     position: relative;
     background: transparent;
-    color: var(--button-destructive-color);
+    color: var(--colour-critical-default);
 
-    &:hover:not(:disabled) {
-      --button-outline-border: var(--button-destructive-color-hover);
+    &:hover:not(:disabled),
+    &:focus:not(:disabled):not(:active) {
+      --button-outline-border: var(--colour-critical-hover);
 
-      color: var(--button-destructive-color-hover);
+      color: var(--colour-critical-hover);
 
       &::before {
         padding: 0.125rem; /* Controls border-width */
@@ -274,13 +327,17 @@ a {
     }
 
     &:active:not(:disabled) {
-      --button-outline-border: var(--button-destructive-color-active);
+      --button-outline-border: var(--colour-critical-pressed);
 
-      color: var(--button-destructive-color-active);
+      color: var(--colour-critical-pressed);
 
       &::before {
         padding: 0.125rem; /* Controls border-width */
       }
+    }
+
+    &:focus:not(:disabled):not(:active) {
+      outline-color: var(--colour-critical-hover);
     }
   }
 }
@@ -313,7 +370,7 @@ a {
   &.outline:disabled,
   &.filled:disabled {
     background: none;
-    color: var(--colour-ti-muted);
+    color: var(--colour-ti-disabled);
     cursor: not-allowed;
   }
 
@@ -337,17 +394,6 @@ a {
   & button {
     min-width: initial;
     height: 2rem;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .base {
-    transition:
-      background-color 250ms ease-in-out,
-      background 250ms ease-in-out,
-      border 250ms ease-in-out,
-      color 250ms ease-in-out,
-      box-shadow 250ms ease-in-out;
   }
 }
 </style>
