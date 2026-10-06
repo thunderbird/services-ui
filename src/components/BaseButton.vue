@@ -172,23 +172,32 @@ a {
     color: var(--colour-neutral-base);
     box-shadow: var(--shadow-elevation-2);
 
-    &:hover:not(:disabled) {
-      background: linear-gradient(180deg, var(--colour-primary-hover) 0%, var(--colour-primary-hover) 100%);
+    &:hover:not(:disabled),
+    &:focus:not(:disabled):not(:active) {
+      background: linear-gradient(
+        180deg,
+        var(--colour-primary-hover) 0%,
+        var(--colour-primary-hover) 100%
+      );
       box-shadow: var(--shadow-elevation-1);
     }
 
     &:active:not(:disabled) {
-      background: linear-gradient(180deg, var(--colour-primary-pressed) 0%, var(--colour-primary-pressed) 100%);
-    }
-
-    &:focus:not(:disabled):not(:active) {
-      background: linear-gradient(180deg, var(--colour-primary-hover) 0%, var(--colour-primary-hover) 100%);
-      box-shadow: var(--shadow-elevation-1);
+      background: linear-gradient(
+        180deg,
+        var(--colour-primary-pressed) 0%,
+        var(--colour-primary-pressed) 100%
+      );
     }
   }
 
   &.outline {
-    --button-outline-border: linear-gradient(to bottom, var(--colour-accent-blue) -127%, var(--colour-ti-highlight) 87%, var(--colour-primary-hover) 7%) border-box;
+    --button-outline-border: linear-gradient(
+      to bottom,
+      var(--colour-accent-blue) -127%,
+      var(--colour-ti-highlight) 87%,
+      var(--colour-primary-hover) 7%
+    ) border-box;
 
     position: relative;
     background: transparent;
@@ -222,38 +231,67 @@ a {
 
   &.filled {
     /* For brand buttons, we are using one-off colours for light / dark mode */
-    --button-outline-border: linear-gradient(to bottom right, #7bc6f4 10%, #2b8cdc 60%) border-box;
+    --button-outline-border: linear-gradient(
+      to bottom right,
+      #7bc6f4 10%,
+      #2b8cdc 60%
+    ) border-box;
 
-    background: linear-gradient(329deg, var(--colour-primary-default) -21.06%, var(--colour-accent-blue) 64%);
+    background: linear-gradient(
+      329deg,
+      var(--colour-primary-default) -21.06%,
+      var(--colour-accent-blue) 64%
+    );
     color: var(--colour-ti-base-light);
     position: relative;
 
-    &:hover:not(:disabled) {
-      background: linear-gradient(var(--colour-primary-hover), var(--colour-primary-hover));
+    &:hover:not(:disabled),
+    &:focus:not(:disabled):not(:active) {
+      --button-outline-border: linear-gradient(
+        to bottom right,
+        #A0E1FF 10%,
+        #2b8cdc 60%
+      ) border-box;
+      background: linear-gradient(
+        var(--colour-primary-hover),
+        var(--colour-primary-hover)
+      );
       color: var(--colour-neutral-base);
     }
 
     &:active:not(:disabled) {
-      background: linear-gradient(var(--colour-primary-pressed), var(--colour-primary-pressed));
+      --button-outline-border: linear-gradient(
+        to bottom right,
+        #A0E1FF 10%,
+        #2b8cdc 60%
+      ) border-box;
+      background: linear-gradient(
+        var(--colour-primary-pressed),
+        var(--colour-primary-pressed)
+      );
       color: var(--colour-neutral-base);
     }
   }
 
   &.outline {
-    --button-outline-border: linear-gradient(99deg, var(--colour-accent-blue) 19.15%, var(--colour-accent-gray) 75.77%)
-      border-box;
+    --button-outline-border: linear-gradient(
+      99deg,
+      var(--colour-accent-blue) 19.15%,
+      var(--colour-accent-gray) 75.77%
+    ) border-box;
 
     position: relative;
     background: transparent;
     color: var(--colour-ti-base);
 
-    &:hover:not(:disabled) {
-      background: #f2f2f2;
+    &:hover:not(:disabled),
+    &:focus:not(:disabled):not(:active) {
+      background: var(--colour-surface-base);
       color: var(--colour-ti-base-light);
     }
 
     &:active:not(:disabled) {
-      background: #e3e3e3;
+      background: var(--colour-surface-lower);
       color: var(--colour-ti-base-light);
     }
   }
