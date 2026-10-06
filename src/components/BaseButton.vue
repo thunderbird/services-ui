@@ -188,20 +188,23 @@ a {
   }
 
   &.outline {
-    --button-outline-border: var(--colour-primary-default);
+    --button-outline-border: linear-gradient(to bottom, var(--colour-accent-blue) -127%, var(--colour-ti-highlight) 87%, var(--colour-primary-hover) 7%) border-box;
 
     position: relative;
     background: transparent;
-    color: var(--colour-primary-hover);
+    color: var(--colour-ti-highlight);
 
     &:hover:not(:disabled) {
+      --button-outline-border: var(--colour-primary-hover);
       &::before {
         padding: 0.125rem; /* Controls border-width */
       }
     }
 
     &:active:not(:disabled) {
-      background: color-mix(in srgb, var(--colour-accent-blue), transparent 90%);
+      --button-outline-border: var(--colour-primary-pressed);
+      background-color: color-mix(in srgb, var(--colour-accent-blue), transparent 90%);
+      color: var(--colour-ti-brand);
       transition: none;
 
       &::before {
