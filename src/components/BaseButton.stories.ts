@@ -83,7 +83,7 @@ export const Variant: Story = {
 
 export const Outline: Story = {
   render: (args) => ({
-    components: { PrimaryButton },
+    components: { PrimaryButton, BrandButton, DangerButton },
     setup() {
       return { args };
     },
@@ -128,21 +128,25 @@ export const Anchor: Story = {
 
 export const Disabled: Story = {
   render: (args) => ({
-    components: { PrimaryButton },
+    components: { PrimaryButton, BrandButton, DangerButton },
     setup() {
       return { args };
     },
     template: `
       <div style="display:flex;gap:.5rem;align-items:center;">
-        <primary-button disabled>Disabled</primary-button>
-        <primary-button outline disabled>Disabled</primary-button>
+        <primary-button disabled>Primary</primary-button>
+        <primary-button outline disabled>Primary</primary-button>
+        <brand-button disabled>Brand</brand-button>
+        <brand-button outline disabled>Brand</brand-button>
+        <danger-button disabled>Danger</danger-button>
+        <danger-button outline disabled>Danger</danger-button>
       </div>
     `,
   }),
   parameters: {
     docs: {
       source: {
-        code: '<primary-button disabled>Filled</primary-button>\n<primary-button outline disabled>Outline</primary-button>',
+        code: '<primary-button disabled>Primary</primary-button>\n<primary-button outline disabled>Primary</primary-button>\n<brand-button disabled>Brand</brand-button>\n<brand-button outline disabled>Brand</brand-button>\n<danger-button disabled>Danger</danger-button>\n<danger-button outline disabled>Danger</danger-button>',
       },
     },
   },
