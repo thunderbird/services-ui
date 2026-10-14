@@ -88,7 +88,7 @@ html {
   --colour-ti-base: #18181b;
   --colour-ti-base-light: #18181b; /* No override */
   --colour-ti-base-dark: #eeeef0; /* No override */
-  --colour-ti-base-inverted: #fcfcfd;
+  --colour-ti-base-inverted: #f7f7f8;
   --colour-ti-secondary: #52525b;
   --colour-ti-secondary-light: #52525b; /* No override */
   --colour-ti-secondary-dark: #d4d4d8; /* No override */
@@ -190,6 +190,7 @@ html {
      * Applied frequently for text and icons.
      */
     --colour-ti-base: #f7f7f8;
+    --colour-ti-base-inverted: #18181b;
     --colour-ti-secondary: #d4d4d8;
     --colour-ti-muted: #a1a1aa;
     --colour-ti-disabled: #71717a;
