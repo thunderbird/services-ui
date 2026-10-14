@@ -346,8 +346,7 @@ a {
   --colour-btn-border: transparent;
 
   background-color: transparent;
-  /* color-mix darkens the text just enough to meet 4.5:1 contrast */
-  color: color-mix(in srgb, var(--colour-primary-default) 92%, black);
+  color: var(--colour-ti-brand);
   text-decoration: underline;
   box-shadow: none !important;
   border: none !important;
