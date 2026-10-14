@@ -2,8 +2,11 @@
 @import './variables.css';
 
 /* Only for storybook */
-.__sb_preview_background.dark {
-  background-color: rgb(55, 65, 81);
+.__sb_preview_background {
+  background-color: var(--colour-surface-base);
+
+  /* Theme switching would otherwise fade colours, and axe samples mid-fade (false contrast violations) */
+  --transition-duration: 0s;
 }
 
 /* Apply this to your body or wrapper class for use with services-ui elements (temp) */
