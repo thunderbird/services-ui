@@ -38,7 +38,7 @@ importers:
         version: 10.5.10(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))
       '@storybook/addon-docs':
         specifier: 10.5.10
-        version: 10.5.10(@types/react@19.2.18)(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
+        version: 10.5.10(@types/react@19.2.18)(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
       '@storybook/addon-links':
         specifier: 10.5.10
         version: 10.5.10(@types/react@19.2.18)(react@19.2.8)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))
@@ -47,22 +47,22 @@ importers:
         version: 10.5.10(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))
       '@storybook/addon-vitest':
         specifier: 10.5.10
-        version: 10.5.10(@vitest/browser-playwright@4.1.11)(@vitest/browser@4.1.11(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11))(@vitest/runner@4.1.11)(react@19.2.8)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vitest@4.1.11)
+        version: 10.5.10(@vitest/browser-playwright@4.1.11)(@vitest/browser@4.1.11(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11))(@vitest/runner@4.1.11)(react@19.2.8)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vitest@4.1.11)
       '@storybook/vue3-vite':
         specifier: 10.5.10
-        version: 10.5.10(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vue@3.5.41(typescript@6.0.3))
+        version: 10.5.10(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vue@3.5.41(typescript@6.0.3))
       '@tsconfig/node24':
         specifier: 24.0.5
         version: 24.0.5
       '@vitejs/plugin-vue':
         specifier: 6.0.8
-        version: 6.0.8(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vue@3.5.41(typescript@6.0.3))
+        version: 6.0.8(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vue@3.5.41(typescript@6.0.3))
       '@vitest/browser':
         specifier: 4.1.11
-        version: 4.1.11(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11)
+        version: 4.1.11(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11)
       '@vitest/browser-playwright':
         specifier: 4.1.11
-        version: 4.1.11(playwright@1.62.1)(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11)
+        version: 4.1.11(playwright@1.62.1)(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11)
       '@vue/eslint-config-typescript':
         specifier: 14.9.0
         version: 14.9.0(eslint-plugin-vue@10.10.0(@typescript-eslint/parser@8.67.0(eslint@10.9.0(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint@10.9.0(supports-color@8.1.1))(vue-eslint-parser@10.4.1(eslint@10.9.0(supports-color@8.1.1))(supports-color@8.1.1)))(eslint@10.9.0(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
@@ -136,14 +136,14 @@ importers:
         specifier: 8.67.0
         version: 8.67.0(eslint@10.9.0(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
       vite:
-        specifier: 8.2.2
-        version: 8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
+        specifier: 8.2.4
+        version: 8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
       vite-plugin-dts:
         specifier: 5.0.3
-        version: 5.0.3(@microsoft/api-extractor@7.59.0(@types/node@26.2.0))(@vue/language-core@3.3.11)(esbuild@0.28.2)(rolldown@1.2.5)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
+        version: 5.0.3(@microsoft/api-extractor@7.59.0(@types/node@26.2.0))(@vue/language-core@3.3.11)(esbuild@0.28.2)(rolldown@1.2.5)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
       vitest:
         specifier: 4.1.11
-        version: 4.1.11(@types/node@26.2.0)(@vitest/browser-playwright@4.1.11)(happy-dom@20.11.6)(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
+        version: 4.1.11(@types/node@26.2.0)(@vitest/browser-playwright@4.1.11)(happy-dom@20.11.6)(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
       vue-tsc:
         specifier: 3.2.9
         version: 3.2.9(typescript@6.0.3)
@@ -3217,8 +3217,8 @@ packages:
       vite:
         optional: true
 
-  vite@8.2.2:
-    resolution: {integrity: sha512-cFKLV/PRgAUlIRm5WjMjJ86jrftzpqcgH+Us+DS8mI3CDNiH30Whrz8uHL3+MOLPAgqbMBAqWdAHAphOAM+z/Q==}
+  vite@8.2.4:
+    resolution: {integrity: sha512-lfauXnrf2x0p+UoA+wXh0dgFWnUjCyG6Js95KBkgaCwUU9k0DAHI4W6Q0WCx+h+5g+Alce1y4Zi2QjjK0UvGBw==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -4014,10 +4014,10 @@ snapshots:
       axe-core: 4.13.0
       storybook: 10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8)
 
-  '@storybook/addon-docs@10.5.10(@types/react@19.2.18)(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))':
+  '@storybook/addon-docs@10.5.10(@types/react@19.2.18)(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))':
     dependencies:
       '@mdx-js/react': 3.1.1(@types/react@19.2.18)(react@19.2.8)
-      '@storybook/csf-plugin': 10.5.10(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
+      '@storybook/csf-plugin': 10.5.10(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
       '@storybook/icons': 2.1.0(react@19.2.8)
       '@storybook/react-dom-shim': 10.5.10(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))
       react: 19.2.8
@@ -4046,37 +4046,37 @@ snapshots:
       storybook: 10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8)
       ts-dedent: 2.3.0
 
-  '@storybook/addon-vitest@10.5.10(@vitest/browser-playwright@4.1.11)(@vitest/browser@4.1.11(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11))(@vitest/runner@4.1.11)(react@19.2.8)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vitest@4.1.11)':
+  '@storybook/addon-vitest@10.5.10(@vitest/browser-playwright@4.1.11)(@vitest/browser@4.1.11(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11))(@vitest/runner@4.1.11)(react@19.2.8)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vitest@4.1.11)':
     dependencies:
       '@storybook/global': 5.0.0
       '@storybook/icons': 2.1.0(react@19.2.8)
       storybook: 10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8)
     optionalDependencies:
-      '@vitest/browser': 4.1.11(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11)
-      '@vitest/browser-playwright': 4.1.11(playwright@1.62.1)(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11)
+      '@vitest/browser': 4.1.11(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11)
+      '@vitest/browser-playwright': 4.1.11(playwright@1.62.1)(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11)
       '@vitest/runner': 4.1.11
-      vitest: 4.1.11(@types/node@26.2.0)(@vitest/browser-playwright@4.1.11)(happy-dom@20.11.6)(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
+      vitest: 4.1.11(@types/node@26.2.0)(@vitest/browser-playwright@4.1.11)(happy-dom@20.11.6)(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
     transitivePeerDependencies:
       - react
 
-  '@storybook/builder-vite@10.5.10(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))':
+  '@storybook/builder-vite@10.5.10(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))':
     dependencies:
-      '@storybook/csf-plugin': 10.5.10(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
+      '@storybook/csf-plugin': 10.5.10(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
       storybook: 10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8)
       ts-dedent: 2.3.0
-      vite: 8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
+      vite: 8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
     transitivePeerDependencies:
       - esbuild
       - rollup
       - webpack
 
-  '@storybook/csf-plugin@10.5.10(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))':
+  '@storybook/csf-plugin@10.5.10(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))':
     dependencies:
       storybook: 10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8)
       unplugin: 2.3.11
     optionalDependencies:
       esbuild: 0.28.2
-      vite: 8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
+      vite: 8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
 
   '@storybook/global@5.0.0': {}
 
@@ -4092,14 +4092,14 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
 
-  '@storybook/vue3-vite@10.5.10(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vue@3.5.41(typescript@6.0.3))':
+  '@storybook/vue3-vite@10.5.10(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vue@3.5.41(typescript@6.0.3))':
     dependencies:
-      '@storybook/builder-vite': 10.5.10(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
+      '@storybook/builder-vite': 10.5.10(esbuild@0.28.2)(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
       '@storybook/vue3': 10.5.10(storybook@10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vue@3.5.41(typescript@6.0.3))
       magic-string: 0.30.21
       storybook: 10.5.10(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8)
       typescript: 5.9.3
-      vite: 8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
+      vite: 8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
       vue-component-meta: 3.3.11(typescript@5.9.3)
       vue-docgen-api: 4.79.2(vue@3.5.41(typescript@6.0.3))
     transitivePeerDependencies:
@@ -4345,35 +4345,35 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.12.2':
     optional: true
 
-  '@vitejs/plugin-vue@6.0.8(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vue@3.5.41(typescript@6.0.3))':
+  '@vitejs/plugin-vue@6.0.8(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vue@3.5.41(typescript@6.0.3))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
-      vite: 8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
+      vite: 8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
       vue: 3.5.41(typescript@6.0.3)
 
-  '@vitest/browser-playwright@4.1.11(playwright@1.62.1)(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11)':
+  '@vitest/browser-playwright@4.1.11(playwright@1.62.1)(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11)':
     dependencies:
-      '@vitest/browser': 4.1.11(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11)
-      '@vitest/mocker': 4.1.11(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
+      '@vitest/browser': 4.1.11(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11)
+      '@vitest/mocker': 4.1.11(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
       playwright: 1.62.1
       tinyrainbow: 3.1.1
-      vitest: 4.1.11(@types/node@26.2.0)(@vitest/browser-playwright@4.1.11)(happy-dom@20.11.6)(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
+      vitest: 4.1.11(@types/node@26.2.0)(@vitest/browser-playwright@4.1.11)(happy-dom@20.11.6)(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
     transitivePeerDependencies:
       - bufferutil
       - msw
       - utf-8-validate
       - vite
 
-  '@vitest/browser@4.1.11(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11)':
+  '@vitest/browser@4.1.11(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11)':
     dependencies:
       '@blazediff/core': 1.9.1
-      '@vitest/mocker': 4.1.11(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
+      '@vitest/mocker': 4.1.11(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
       '@vitest/utils': 4.1.11
       magic-string: 0.30.21
       pngjs: 7.0.0
       sirv: 3.0.2
       tinyrainbow: 3.1.1
-      vitest: 4.1.11(@types/node@26.2.0)(@vitest/browser-playwright@4.1.11)(happy-dom@20.11.6)(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
+      vitest: 4.1.11(@types/node@26.2.0)(@vitest/browser-playwright@4.1.11)(happy-dom@20.11.6)(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
       ws: 8.21.3
     transitivePeerDependencies:
       - bufferutil
@@ -4398,13 +4398,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.1
 
-  '@vitest/mocker@4.1.11(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))':
+  '@vitest/mocker@4.1.11(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))':
     dependencies:
       '@vitest/spy': 4.1.11
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
+      vite: 8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
 
   '@vitest/pretty-format@3.2.4':
     dependencies:
@@ -6494,7 +6494,7 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unplugin-dts@1.0.3(@microsoft/api-extractor@7.59.0(@types/node@26.2.0))(@vue/language-core@3.3.11)(esbuild@0.28.2)(rolldown@1.2.5)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))):
+  unplugin-dts@1.0.3(@microsoft/api-extractor@7.59.0(@types/node@26.2.0))(@vue/language-core@3.3.11)(esbuild@0.28.2)(rolldown@1.2.5)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))):
     dependencies:
       '@rollup/pluginutils': 5.4.0
       '@volar/typescript': 2.4.28(typescript@6.0.3)
@@ -6510,7 +6510,7 @@ snapshots:
       '@vue/language-core': 3.3.11
       esbuild: 0.28.2
       rolldown: 1.2.5
-      vite: 8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
+      vite: 8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
     transitivePeerDependencies:
       - supports-color
 
@@ -6564,12 +6564,12 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  vite-plugin-dts@5.0.3(@microsoft/api-extractor@7.59.0(@types/node@26.2.0))(@vue/language-core@3.3.11)(esbuild@0.28.2)(rolldown@1.2.5)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))):
+  vite-plugin-dts@5.0.3(@microsoft/api-extractor@7.59.0(@types/node@26.2.0))(@vue/language-core@3.3.11)(esbuild@0.28.2)(rolldown@1.2.5)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))):
     dependencies:
-      unplugin-dts: 1.0.3(@microsoft/api-extractor@7.59.0(@types/node@26.2.0))(@vue/language-core@3.3.11)(esbuild@0.28.2)(rolldown@1.2.5)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
+      unplugin-dts: 1.0.3(@microsoft/api-extractor@7.59.0(@types/node@26.2.0))(@vue/language-core@3.3.11)(esbuild@0.28.2)(rolldown@1.2.5)(supports-color@8.1.1)(typescript@6.0.3)(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
     optionalDependencies:
       '@microsoft/api-extractor': 7.59.0(@types/node@26.2.0)
-      vite: 8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
+      vite: 8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
     transitivePeerDependencies:
       - '@rspack/core'
       - '@vue/language-core'
@@ -6579,7 +6579,7 @@ snapshots:
       - typescript
       - webpack
 
-  vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)):
+  vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)):
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.5
@@ -6592,10 +6592,10 @@ snapshots:
       fsevents: 2.3.3
       sugarss: 5.0.1(postcss@8.5.26)
 
-  vitest@4.1.11(@types/node@26.2.0)(@vitest/browser-playwright@4.1.11)(happy-dom@20.11.6)(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))):
+  vitest@4.1.11(@types/node@26.2.0)(@vitest/browser-playwright@4.1.11)(happy-dom@20.11.6)(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))):
     dependencies:
       '@vitest/expect': 4.1.11
-      '@vitest/mocker': 4.1.11(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
+      '@vitest/mocker': 4.1.11(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))
       '@vitest/pretty-format': 4.1.11
       '@vitest/runner': 4.1.11
       '@vitest/snapshot': 4.1.11
@@ -6612,11 +6612,11 @@ snapshots:
       tinyexec: 1.3.0
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.1
-      vite: 8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
+      vite: 8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26))
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 26.2.0
-      '@vitest/browser-playwright': 4.1.11(playwright@1.62.1)(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11)
+      '@vitest/browser-playwright': 4.1.11(playwright@1.62.1)(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.26)))(vitest@4.1.11)
       happy-dom: 20.11.6
     transitivePeerDependencies:
       - msw
