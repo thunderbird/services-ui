@@ -35,7 +35,7 @@
   "dependencies": {
     "@intlify/core-base": "11.4.9",
     "@vue/test-utils": "2.4.11",
-    "vue": "3.5.41",
+    "vue": "3.5.44",
     "vue-i18n": "11.4.9"
   },
   "devDependencies": {
