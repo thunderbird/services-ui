@@ -1,5 +1,4 @@
 # Simple workflow for running vue.js mounted component tests
-# TEMPORARY: touch to trigger validation for dependency-only PR #350; will be reverted.
 name: Run Component Tests
 
 on:
