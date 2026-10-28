@@ -65,7 +65,7 @@
     "eslint-plugin-vue": "10.10.0",
     "glob": "13.0.6",
     "globals": "17.11.0",
-    "happy-dom": "20.11.6",
+    "happy-dom": "21.0.4",
     "playwright": "1.62.1",
     "postcss": "8.5.29",
     "postcss-custom-media": "12.0.1",
