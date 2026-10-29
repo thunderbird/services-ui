@@ -14,9 +14,6 @@ importers:
       '@vue/test-utils':
         specifier: 2.4.11
         version: 2.4.11(@vue/compiler-dom@3.5.41)(@vue/server-renderer@3.5.44)(vue@3.5.44(typescript@6.0.3))
-      vue:
-        specifier: 3.5.44
-        version: 3.5.44(typescript@6.0.3)
       vue-i18n:
         specifier: 11.4.9
         version: 11.4.9(vue@3.5.44(typescript@6.0.3))
@@ -144,6 +141,9 @@ importers:
       vitest:
         specifier: 4.1.12
         version: 4.1.12(@types/node@26.2.0)(@vitest/browser-playwright@4.1.12)(happy-dom@21.0.4)(vite@8.2.4(@types/node@26.2.0)(esbuild@0.28.2)(sugarss@5.0.1(postcss@8.5.29)))
+      vue:
+        specifier: 3.5.44
+        version: 3.5.44(typescript@6.0.3)
       vue-tsc:
         specifier: 3.2.9
         version: 3.2.9(typescript@6.0.3)

@@ -35,7 +35,6 @@
   "dependencies": {
     "@intlify/core-base": "11.4.9",
     "@vue/test-utils": "2.4.11",
-    "vue": "3.5.44",
     "vue-i18n": "11.4.9"
   },
   "devDependencies": {
@@ -80,7 +79,11 @@
     "vite": "8.2.4",
     "vite-plugin-dts": "5.0.3",
     "vitest": "4.1.12",
+    "vue": "3.5.44",
     "vue-tsc": "3.2.9"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
   },
   "packageManager": "pnpm@11.23.0+sha512.f00082e5b283a199b74e079da28d155c008fe232f44c8a06ea7ddfa014ecf719fc362f790ecc67b28106ddac2afb24c49a9a079159da560b2ce7d1e98efd11af",
   "postcss": {
