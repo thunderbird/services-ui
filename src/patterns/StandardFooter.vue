@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { t } from '@/composable/i18n';
+import { I18nT } from 'vue-i18n';
+import { i18n, t } from '@/composable/i18n';
 import VisualDivider from '@/components/VisualDivider.vue';
 
 interface Props {
@@ -68,10 +69,10 @@ const getUrl = (key: keyof typeof urlMap): string => urlMap[key];
         </ul>
 
         <p>
-          <i18n-t keypath="footer.copywrite">
+          <i18n-t keypath="footer.copywrite" :i18n="i18n">
             <template v-slot:mzlaLink>
               <a :href="getUrl('mzlaLink')">
-                {{ $t('footer.mzlaLinkText') }}
+                {{ t('footer.mzlaLinkText') }}
               </a>
             </template>
             <template v-slot:currentYear>
@@ -79,7 +80,7 @@ const getUrl = (key: keyof typeof urlMap): string => urlMap[key];
             </template>
             <template v-slot:creativeCommonsLink>
               <a :href="getUrl('creativeCommonsLink')">
-                {{ $t('footer.creativeCommonsLinkText') }}
+                {{ t('footer.creativeCommonsLinkText') }}
               </a>
             </template>
           </i18n-t>
