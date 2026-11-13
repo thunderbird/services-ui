@@ -84,6 +84,66 @@ describe('ToolTip', () => {
     expect(toolTip.classes()).not.toContain('force-hidden');
   });
 
+  describe('Escape dismissal', () => {
+    const mountTooltip = (props = {}) => {
+      wrapper = mount(ToolTip, {
+        propsData: props,
+        slots: { default: () => h('button', 'Trigger'), content: 'Hello!' },
+      });
+      return {
+        anchor: wrapper.find('.tooltip-anchor'),
+        trigger: wrapper.find('button'),
+        toolTip: wrapper.find('[data-testid=tool-tip]'),
+      };
+    };
+
+    it('Escape on the trigger hides the tooltip', async () => {
+      const { trigger, toolTip } = mountTooltip();
+      await trigger.trigger('keydown', { key: 'Escape' });
+      expect(toolTip.classes()).toContain('force-hidden');
+    });
+
+    it('other keys do not hide the tooltip', async () => {
+      const { trigger, toolTip } = mountTooltip();
+      await trigger.trigger('keydown', { key: 'Enter' });
+      expect(toolTip.classes()).not.toContain('force-hidden');
+    });
+
+    it('mouseleave resets the dismissal', async () => {
+      const { anchor, trigger, toolTip } = mountTooltip();
+      await trigger.trigger('keydown', { key: 'Escape' });
+      await anchor.trigger('mouseleave');
+      expect(toolTip.classes()).not.toContain('force-hidden');
+    });
+
+    it('focus leaving the anchor resets the dismissal', async () => {
+      const { trigger, toolTip } = mountTooltip();
+      await trigger.trigger('keydown', { key: 'Escape' });
+      await trigger.trigger('focusout');
+      expect(toolTip.classes()).not.toContain('force-hidden');
+    });
+
+    it('Escape anywhere hides the tooltip only while hovered', async () => {
+      const { anchor, toolTip } = mountTooltip();
+      await anchor.trigger('mouseenter');
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+      await wrapper.vm.$nextTick();
+      expect(toolTip.classes()).toContain('force-hidden');
+
+      await anchor.trigger('mouseleave');
+      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+      await wrapper.vm.$nextTick();
+      expect(toolTip.classes()).not.toContain('force-hidden');
+    });
+
+    it('visible=true ignores Escape', async () => {
+      const { trigger, toolTip } = mountTooltip({ visible: true });
+      await trigger.trigger('keydown', { key: 'Escape' });
+      expect(toolTip.classes()).toContain('force-visible');
+      expect(toolTip.classes()).not.toContain('force-hidden');
+    });
+  });
+
   it('beak defaults to visible', () => {
     wrapper = mount(ToolTip, {
       slots: { default: 'Trigger', content: 'Hello!' },

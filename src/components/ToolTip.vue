@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // component properties
-import { useId } from 'vue';
+import { ref, useId } from 'vue';
+import { useEventListener } from '@vueuse/core';
 import { TooltipPosition } from '@/definitions';
 
 // component properties
@@ -10,7 +11,7 @@ interface Props {
   beak?: boolean;
   dataTestid?: string;
 }
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   position: TooltipPosition.Bottom,
   visible: undefined, // Explicit undefined default so Vue doesn't auto-cast an absent boolean prop to false.
   beak: true,
@@ -19,14 +20,55 @@ withDefaults(defineProps<Props>(), {
 
 // ID shared with consumers so they can wire aria-describedby onto the trigger they slot in.
 const tooltipId = useId();
+
+// Escape dismisses the tooltip until the pointer or focus leaves the anchor (WCAG 1.4.13).
+const dismissed = ref(false);
+const hovered = ref(false);
+
+// A tooltip forced open by the consumer is left alone.
+const onKeydown = (e: KeyboardEvent) => {
+  if (e.key === 'Escape' && props.visible !== true) {
+    dismissed.value = true;
+  }
+};
+
+// Leaving the anchor with pointer or focus resets the dismissal.
+const onMouseenter = () => {
+  hovered.value = true;
+};
+
+const onMouseleave = () => {
+  hovered.value = false;
+  dismissed.value = false;
+};
+
+const onFocusout = () => {
+  dismissed.value = false;
+};
+
+// While hovered, focus may be elsewhere, so listen for Escape on document level.
+useEventListener(() => (hovered.value ? document : null), 'keydown', onKeydown);
 </script>
 
 <template>
-  <div class="tooltip-anchor">
+  <div
+    class="tooltip-anchor"
+    @keydown="onKeydown"
+    @mouseenter="onMouseenter"
+    @mouseleave="onMouseleave"
+    @focusout="onFocusout"
+  >
     <slot :tooltip-id="tooltipId"></slot>
     <div
       class="tooltip"
-      :class="[position, { 'force-visible': visible === true, 'force-hidden': visible === false, 'no-beak': !beak }]"
+      :class="[
+        position,
+        {
+          'force-visible': visible === true,
+          'force-hidden': visible === false || (dismissed && visible !== true),
+          'no-beak': !beak,
+        },
+      ]"
       role="tooltip"
       :id="tooltipId"
       :data-testid="dataTestid"
