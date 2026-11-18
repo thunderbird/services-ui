@@ -17,6 +17,9 @@
   "refreshIcon": {
     "refreshLink": "Link ändern"
   },
+  "noticeBar": {
+    "close": "Schließen"
+  },
   "expiryIndicator": {
     "expired": "Abgelaufen",
     "second": "Läuft ab in {n} Sekunden | Läuft ab in {n} Sekunde | Läuft ab in {n} Sekunden",
