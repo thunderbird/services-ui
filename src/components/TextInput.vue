@@ -71,7 +71,7 @@ const props = withDefaults(defineProps<Props>(), {
   type: 'text',
 });
 
-const emit = defineEmits(['submit', 'blur']);
+const emit = defineEmits<{ submit: []; blur: [evt: Event] }>();
 defineExpose({ focus, reset });
 
 const onInvalid = (evt: Event) => {

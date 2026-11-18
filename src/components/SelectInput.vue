@@ -15,7 +15,7 @@ const isRequired = Object.hasOwn(attrs, 'required') && attrs.required !== false;
 const inputRef = ref<HTMLSelectElement>(null);
 const validationMessage = ref('');
 
-const emit = defineEmits(['submit', 'blur']);
+const emit = defineEmits<{ submit: []; blur: [evt: Event] }>();
 
 // component properties
 interface Props {
