@@ -33,15 +33,12 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@intlify/core-base": "^11.4.14",
-    "@vue/test-utils": "2.4.11",
     "vue-i18n": "^11.4.14"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@microsoft/api-extractor": "7.59.0",
     "@playwright/test": "1.62.1",
-    "@rushstack/eslint-patch": "1.16.1",
     "@storybook/addon-a11y": "10.6.2",
     "@storybook/addon-docs": "10.6.2",
     "@storybook/addon-links": "10.6.2",
@@ -53,6 +50,7 @@
     "@vitest/browser": "4.1.12",
     "@vitest/browser-playwright": "4.1.12",
     "@vue/eslint-config-typescript": "14.9.0",
+    "@vue/test-utils": "2.4.11",
     "@vue/tsconfig": "0.9.1",
     "@vueuse/core": "14.4.0",
     "autoprefixer": "10.5.4",
