@@ -52,7 +52,7 @@
     "@vue/eslint-config-typescript": "14.9.0",
     "@vue/test-utils": "2.6.0",
     "@vue/tsconfig": "0.9.1",
-    "@vueuse/core": "14.4.0",
+    "@vueuse/core": "15.0.0",
     "autoprefixer": "10.6.2",
     "eslint": "10.15.0",
     "eslint-import-resolver-typescript": "4.4.5",
