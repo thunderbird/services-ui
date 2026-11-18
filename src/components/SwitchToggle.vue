@@ -6,7 +6,7 @@ import SwitchCheckIcon from '@/foundation/SwitchCheckIcon.vue';
 const model = defineModel();
 
 // component emits
-const emit = defineEmits(['changed']);
+const emit = defineEmits<{ changed: [value: boolean] }>();
 
 // component properties
 interface Props {

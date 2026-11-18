@@ -64,7 +64,7 @@ const props = withDefaults(defineProps<Props>(), {
   dataTestid: 'text-area',
 });
 
-const emit = defineEmits(['submit', 'blur']);
+const emit = defineEmits<{ submit: []; blur: [evt: Event] }>();
 defineExpose({ focus, reset });
 
 const onInvalid = (evt: Event) => {

@@ -55,7 +55,7 @@ const reset = () => {
   validationMessage.value = '';
 };
 
-const emit = defineEmits(['change']);
+const emit = defineEmits<{ change: [value: boolean] }>();
 defineExpose({ focus, reset });
 
 const onInvalid = (evt: Event) => {

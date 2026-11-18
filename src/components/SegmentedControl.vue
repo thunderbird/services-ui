@@ -21,7 +21,7 @@ withDefaults(defineProps<Props>(), {
 });
 
 const model = defineModel<string | number>({ default: null });
-const emit = defineEmits(['click']);
+const emit = defineEmits<{ click: [option: SelectOption<string | number>] }>();
 
 /**
  * Update the model with the selected option

@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const model = defineModel<(string | number)[]>({ default: () => [] });
-const emit = defineEmits(['click']);
+const emit = defineEmits<{ click: [] }>();
 
 const isDirty = ref(false);
 const emptyError = computed(() => props.required && isDirty.value && model?.value.length === 0);
