@@ -22,6 +22,7 @@ describe('NoticeBar', () => {
   it.each(testCases)('$type noticebar renders correctly', ({ type, text, dataTestid, expIconAriaLabel }) => {
     const ourProps = {
       type: type,
+      closable: false,
       dataTestid: dataTestid,
     };
     const ourSlots = {
@@ -51,12 +52,16 @@ describe('NoticeBar', () => {
     expect(nbIcon.isVisible()).toBe(true);
     const nbIconAriaLabel = nbIcon.find('svg').attributes()['aria-label'];
     expect(nbIconAriaLabel).toBe(expIconAriaLabel);
+
+    // verify no close button is rendered by default
+    expect(wrapper.find('button.notice-close').exists()).toBe(false);
   });
 
   describe('NoticeBar with CTA', () => {
     var wrapper;
     const ourProps = {
       type: NoticeBarTypes.Info,
+      closable: false,
       dataTestid: `info-noticebar-with-cta`,
     };
     const nbBtnLabel = 'Click me!';
@@ -93,6 +98,63 @@ describe('NoticeBar', () => {
       await nbBtn.trigger('click');
       expect(wrapper.emitted().click, 'expected click event to have been emitted').toBeTruthy();
       expect(wrapper.emitted()['click'].length).toBe(1);
+    });
+  });
+
+  describe('NoticeBar with close button', () => {
+    var wrapper;
+    const ourProps = {
+      type: NoticeBarTypes.Info,
+      closable: true,
+      dataTestid: `info-noticebar-closable`,
+    };
+    const nbCloseBtnSel = 'button.notice-close';
+
+    beforeEach(() => {
+      // mount a closable noticebar
+      wrapper = mount(NoticeBar, {
+        propsData: ourProps,
+        slots: { default: 'This noticebar can be closed!' },
+      });
+
+      expect(wrapper.props()).toEqual(ourProps);
+    });
+
+    afterEach(() => {
+      wrapper.unmount();
+    });
+
+    it('close button renders correctly on noticebar', async () => {
+      const nbCloseBtn = wrapper.find(nbCloseBtnSel);
+      expect(nbCloseBtn.exists()).toBe(true);
+      expect(nbCloseBtn.isVisible()).toBe(true);
+      expect(nbCloseBtn.attributes()['aria-label']).toBe('Close');
+    });
+
+    it('clicking on noticebar close button hides the noticebar and emits a close event', async () => {
+      // click on close button and verify noticebar is gone and event triggered
+      await wrapper.find(nbCloseBtnSel).trigger('click');
+      expect(wrapper.find(`[data-testid=${ourProps['dataTestid']}]`).exists()).toBe(false);
+      expect(wrapper.emitted().close, 'expected close event to have been emitted').toBeTruthy();
+      expect(wrapper.emitted()['close'].length).toBe(1);
+    });
+
+    it('closed noticebar can be reopened via exposed show function', async () => {
+      // close noticebar, then reopen it from outside
+      const nbSel = `[data-testid=${ourProps['dataTestid']}]`;
+      await wrapper.find(nbCloseBtnSel).trigger('click');
+      expect(wrapper.find(nbSel).exists()).toBe(false);
+      wrapper.vm.show();
+      await wrapper.vm.$nextTick();
+      expect(wrapper.find(nbSel).exists()).toBe(true);
+    });
+
+    it('noticebar can be hidden via exposed hide function', async () => {
+      const nbSel = `[data-testid=${ourProps['dataTestid']}]`;
+      wrapper.vm.hide();
+      await wrapper.vm.$nextTick();
+      expect(wrapper.find(nbSel).exists()).toBe(false);
+      expect(wrapper.emitted()['close'].length).toBe(1);
     });
   });
 });

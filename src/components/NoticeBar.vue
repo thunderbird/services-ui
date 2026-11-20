@@ -1,19 +1,26 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { NoticeBarTypes } from '@/definitions';
+import { t } from '@/composable/i18n';
 
 import NoticeInfoIcon from '@/foundation/NoticeInfoIcon.vue';
 import NoticeSuccessIcon from '@/foundation/NoticeSuccessIcon.vue';
 import NoticeWarningIcon from '@/foundation/NoticeWarningIcon.vue';
 import NoticeCriticalIcon from '@/foundation/NoticeCriticalIcon.vue';
+import XIcon from '@/foundation/XIcon.vue';
+
+// component emits
+const emit = defineEmits<{ close: [] }>();
 
 // component properties
 interface Props {
   type?: NoticeBarTypes;
+  closable?: boolean; // show a close button that hides the bar and emits a close event
   dataTestid?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
   type: NoticeBarTypes.Info,
+  closable: false,
   dataTestid: 'notice-bar',
 });
 
@@ -21,10 +28,22 @@ const isInfo = computed(() => props.type === NoticeBarTypes.Info);
 const isSuccess = computed(() => props.type === NoticeBarTypes.Success);
 const isWarning = computed(() => props.type === NoticeBarTypes.Warning);
 const isError = computed(() => props.type === NoticeBarTypes.Critical);
+
+// Visibility can be controlled from outside via template ref, e.g. to reopen a closed bar
+const isVisible = ref(true);
+const show = () => {
+  isVisible.value = true;
+};
+const hide = () => {
+  isVisible.value = false;
+  emit('close');
+};
+
+defineExpose({ show, hide });
 </script>
 
 <template>
-  <div :class="{ [type]: type }" class="notice notice-bar" :data-testid="dataTestid">
+  <div v-if="isVisible" :class="{ [type]: type }" class="notice notice-bar" :data-testid="dataTestid">
     <div class="notice-bar-content">
       <span class="icon">
         <notice-info-icon v-if="isInfo" />
@@ -39,6 +58,15 @@ const isError = computed(() => props.type === NoticeBarTypes.Critical);
     <div class="cta" v-if="$slots?.cta">
       <slot name="cta" />
     </div>
+    <button
+      v-if="closable"
+      class="notice-close"
+      type="button"
+      :aria-label="t('noticeBar.close')"
+      @click="hide"
+    >
+      <x-icon />
+    </button>
   </div>
 </template>
 
@@ -55,8 +83,14 @@ const isError = computed(() => props.type === NoticeBarTypes.Critical);
   flex-wrap: wrap;
   gap: 0.5rem;
 
-  &:has(.cta) {
+  &:has(.cta, .notice-close) {
     padding: 0.75rem 0.75rem 0.75rem 1rem;
+  }
+
+  /* Reserve space for the close button */
+  &:has(.notice-close) {
+    position: relative;
+    padding-right: 3.25rem;
   }
 }
 
@@ -88,6 +122,19 @@ const isError = computed(() => props.type === NoticeBarTypes.Critical);
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+.notice-close {
+  /* Keep close button in the first row, even if content wraps */
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .info {
