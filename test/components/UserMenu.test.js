@@ -25,7 +25,7 @@ describe('UserMenu', () => {
 
     const trigger = wrapper.find(triggerSel);
     expect(trigger.exists()).toBe(true);
-    expect(trigger.attributes('aria-label')).toBe(t('userMenu.openLabel'));
+    expect(trigger.find('.screen-reader-only').text()).toBe(t('userMenu.openLabel'));
     expect(trigger.attributes('title')).toBe(t('userMenu.openLabel'));
     expect(trigger.find('.initials').text()).toBe('JD');
 
@@ -50,7 +50,7 @@ describe('UserMenu', () => {
     });
 
     const trigger = wrapper.find(triggerSel);
-    expect(trigger.attributes('aria-label')).toBe('Open account menu');
+    expect(trigger.find('.screen-reader-only').text()).toBe('Open account menu');
     expect(trigger.attributes('title')).toBe('Open account menu');
     expect(wrapper.find('[role=menu]').attributes('aria-label')).toBe('Account menu');
   });

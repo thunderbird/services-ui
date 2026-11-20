@@ -8,7 +8,7 @@ interface Props {
   username: string;
   avatarUrl?: string;
   dataTestid?: string;
-  triggerLabel?: string; // aria-label / title for the trigger button.
+  triggerLabel?: string; // Screen reader label / title for the trigger button.
   menuLabel?: string; // aria-label for the popover's menu.
   forceDark?: boolean; // Render the popover in dark mode regardless of the current theme.
 }
@@ -33,8 +33,10 @@ function close() {
 
 <template>
   <details ref="details" class="user-menu" :data-testid="props.dataTestid" @keydown.escape="close">
-    <summary class="trigger" :aria-label="props.triggerLabel" :title="props.triggerLabel">
-      <user-avatar :username="props.username" :avatar-url="props.avatarUrl" />
+    <!-- Label as hidden text instead of aria-label (accessible name must contain the visible initials) -->
+    <summary class="trigger" :title="props.triggerLabel">
+      <span class="screen-reader-only">{{ props.triggerLabel }}</span>
+      <user-avatar :username="props.username" :avatar-url="props.avatarUrl" aria-hidden="true" />
     </summary>
     <!-- Slotted links should set role="menuitem" themselves, as it can't be applied from here -->
     <div class="popover" :class="{ dark: props.forceDark }" role="menu" :aria-label="props.menuLabel" @click="close">

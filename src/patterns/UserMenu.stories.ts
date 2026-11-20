@@ -27,7 +27,7 @@ const meta: Meta<typeof UserMenu> = {
       control: 'text',
     },
     triggerLabel: {
-      description: 'aria-label and title for the trigger button.',
+      description: 'Screen reader label and title for the trigger button.',
       control: 'text',
     },
     menuLabel: {
