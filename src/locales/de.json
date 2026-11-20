@@ -78,6 +78,10 @@
   "userAvatar": {
     "altText": "Avatar von {username}"
   },
+  "userMenu": {
+    "openLabel": "Benutzermenü öffnen",
+    "menuLabel": "Benutzermenü"
+  },
   "loadingSkeleton": {
     "loadingMessage": "Laden."
   }
