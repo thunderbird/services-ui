@@ -63,6 +63,7 @@ import StandardFooter from '@/patterns/StandardFooter.vue';
 import CopyToClipboard from './patterns/CopyToClipboard.vue';
 import AppDrawer from '@/patterns/AppDrawer.vue';
 export type { AppDrawerApp } from '@/patterns/AppDrawer.vue';
+import UserMenu from '@/patterns/UserMenu.vue';
 
 export {
   // Badges
@@ -119,4 +120,5 @@ export {
   AppDrawer,
   CopyToClipboard,
   StandardFooter,
+  UserMenu,
 };
