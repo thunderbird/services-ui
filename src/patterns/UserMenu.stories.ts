@@ -18,6 +18,9 @@ const meta: Meta<typeof UserMenu> = {
     forceDark: false,
   },
   argTypes: {
+    default: {
+      table: { disable: true },
+    },
     username: {
       description: 'Name of the logged in user, used for the avatar initials.',
       control: 'text',

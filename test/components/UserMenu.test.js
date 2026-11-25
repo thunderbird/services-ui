@@ -79,6 +79,24 @@ describe('UserMenu', () => {
     expect(items[1].attributes('href')).toBe('#logout');
   });
 
+  it('opens the popover and shows the menu items when clicking the trigger', async () => {
+    wrapper = mount(UserMenu, {
+      propsData: { username, dataTestid },
+      slots,
+      attachTo: document.body,
+    });
+
+    const details = wrapper.find(detailsSel);
+    const items = wrapper.findAll('[role=menu] [role=menuitem]');
+    expect(details.element.open).toBe(false);
+    expect(items.every((item) => !item.isVisible())).toBe(true);
+
+    await wrapper.find(triggerSel).trigger('click');
+
+    expect(details.element.open).toBe(true);
+    expect(items.every((item) => item.isVisible())).toBe(true);
+  });
+
   it('closes the popover when clicking a menu item', async () => {
     wrapper = mount(UserMenu, {
       propsData: { username, dataTestid },
