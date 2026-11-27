@@ -64,6 +64,15 @@ describe('RelativeTime', () => {
     expect(wrapper.find(timeSel).attributes('datetime')).toBe(fiveMinutesAgo.toISOString());
   });
 
+  it('renders nothing if datetime is null', () => {
+    wrapper = mount(RelativeTime, {
+      propsData: { datetime: null, dataTestid },
+    });
+
+    expect(wrapper.find(timeSel).exists()).toBe(false);
+    expect(wrapper.find(tooltipSel).exists()).toBe(false);
+  });
+
   it('shows the full timestamp in a tooltip linked to the time element', () => {
     wrapper = mount(RelativeTime, {
       propsData: { datetime: fiveMinutesAgo, dataTestid },

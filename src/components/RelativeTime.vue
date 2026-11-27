@@ -7,7 +7,7 @@ import ToolTip from '@/components/ToolTip.vue';
 
 // component properties
 interface Props {
-  datetime: Date | number | string;
+  datetime: Date | number | string | null;
   format?: Intl.RelativeTimeFormatStyle;
   tooltipPosition?: TooltipPosition;
   dataTestid?: string;
@@ -42,7 +42,7 @@ const absolute = computed(() => new Intl.DateTimeFormat(
 </script>
 
 <template>
-  <tool-tip :position="tooltipPosition" :data-testid="`${dataTestid}-tooltip`">
+  <tool-tip v-if="datetime !== null" :position="tooltipPosition" :data-testid="`${dataTestid}-tooltip`">
     <template #default="{ tooltipId }">
       <time :datetime="isoString" tabindex="0" :aria-describedby="tooltipId" :data-testid="dataTestid">
         {{ relative }}

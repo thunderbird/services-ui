@@ -25,7 +25,7 @@ const meta: Meta<typeof RelativeTime> = {
   },
   argTypes: {
     datetime: {
-      description: 'Date to display, as Date object, timestamp or date string.',
+      description: 'Date to display, as Date object, timestamp or date string. Renders nothing if null.',
       control: 'date',
     },
     format: {
