@@ -110,3 +110,26 @@ export const PastAndFuture: Story = {
     },
   },
 };
+
+export const TooltipPositions: Story = {
+  render: () => ({
+    components: { RelativeTime },
+    setup() {
+      return { fiveMinutesAgo, TooltipPosition };
+    },
+    template: `
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4rem;padding:4rem 0;">
+        <p v-for="position in TooltipPosition" :key="position" style="margin:0;">
+          Last signed in <relative-time :datetime="fiveMinutesAgo" :tooltip-position="position" /> from Firefox on Linux.
+        </p>
+      </div>
+    `,
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: '<p>\n  Last signed in <relative-time :datetime="date" :tooltip-position="TooltipPosition.Top" /> from Firefox on Linux.\n</p>\n<p>\n  Last signed in <relative-time :datetime="date" :tooltip-position="TooltipPosition.Bottom" /> from Firefox on Linux.\n</p>\n<p>\n  Last signed in <relative-time :datetime="date" :tooltip-position="TooltipPosition.Left" /> from Firefox on Linux.\n</p>\n<p>\n  Last signed in <relative-time :datetime="date" :tooltip-position="TooltipPosition.Right" /> from Firefox on Linux.\n</p>',
+      },
+    },
+  },
+};
