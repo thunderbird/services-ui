@@ -26,6 +26,7 @@ import SegmentedControl from '@/components/SegmentedControl.vue';
 import LoadingSkeleton from '@/components/LoadingSkeleton.vue';
 import NoticeBar from '@/components/NoticeBar.vue';
 import ModalDialog from '@/components/ModalDialog.vue';
+import RelativeTime from '@/components/RelativeTime.vue';
 import ToolTip from '@/components/ToolTip.vue';
 import UserAvatar from '@/components/UserAvatar.vue';
 import VisualDivider from '@/components/VisualDivider.vue';
@@ -89,6 +90,7 @@ export {
   LoadingSkeleton,
   ModalDialog,
   NoticeBar,
+  RelativeTime,
   ToolTip,
   UserAvatar,
   VisualDivider,
